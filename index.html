@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 고졸검정고시 수학 합격 프로그램</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Malgun Gothic','Apple SD Gothic Neo',sans-serif;background:#f0f4ff;color:#1e293b;min-height:100vh}
+.screen{display:none}.screen.active{display:block}
+header{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:white;padding:16px 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+header h1{font-size:18px;flex:1}
+.back-btn{background:rgba(255,255,255,.2);border:none;color:white;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:14px;display:none}
+.container{max-width:700px;margin:0 auto;padding:16px}
+.card{background:white;border-radius:14px;padding:20px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,.07)}
+.btn{padding:13px 24px;border-radius:10px;border:none;cursor:pointer;font-size:16px;font-weight:700;transition:.2s;display:inline-block}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:#2563eb;color:white}.btn-primary:hover{background:#1d4ed8}
+.btn-success{background:#16a34a;color:white}
+.btn-outline{background:white;border:2px solid #2563eb;color:#2563eb}
+.btn-gray{background:#64748b;color:white}
+.btn-full{width:100%;text-align:center}
+.btn-sm{padding:8px 16px;font-size:14px}
+.progress-bar{height:10px;background:#e2e8f0;border-radius:5px;overflow:hidden;margin:8px 0}
+.progress-fill{height:100%;background:linear-gradient(90deg,#2563eb,#06b6d4);border-radius:5px;transition:.4s}
+.choice-btn{width:100%;padding:14px 16px;margin-bottom:9px;background:white;border:2px solid #e2e8f0;border-radius:10px;text-align:left;cursor:pointer;font-size:15px;transition:.18s;display:flex;align-items:center;gap:10px}
+.choice-btn:hover:not(:disabled){border-color:#2563eb;background:#eff6ff}
+.choice-btn.selected{border-color:#2563eb;background:#eff6ff}
+.choice-btn.correct{border-color:#16a34a!important;background:#dcfce7!important;color:#15803d;font-weight:700}
+.choice-btn.wrong{border-color:#dc2626!important;background:#fee2e2!important;color:#b91c1c}
+.choice-btn.show-correct{border-color:#16a34a!important;background:#dcfce7!important}
+.choice-btn:disabled{cursor:not-allowed}
+.choice-num{min-width:28px;height:28px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
+.choice-btn.selected .choice-num{background:#2563eb;color:white}
+.choice-btn.correct .choice-num{background:#16a34a;color:white}
+.choice-btn.wrong .choice-num{background:#dc2626;color:white}
+.choice-btn.show-correct .choice-num{background:#16a34a;color:white}
+.concept-box{background:#eff6ff;border-left:4px solid #2563eb;padding:16px;border-radius:0 10px 10px 0;margin-bottom:20px;line-height:1.7;font-size:15px}
+.explanation-box{background:#fef9c3;border-left:4px solid #eab308;padding:14px;border-radius:0 10px 10px 0;margin-top:14px;display:none;line-height:1.7;font-size:14px}
+.explanation-box.show{display:block}
+.streak-row{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.streak-dot{width:14px;height:14px;border-radius:50%;background:#e2e8f0;transition:.3s}
+.streak-dot.filled{background:#16a34a}
+.streak-label{font-size:13px;color:#64748b}
+.unit-item{display:flex;align-items:center;padding:14px 16px;background:white;border-radius:10px;margin-bottom:8px;cursor:pointer;border:2px solid transparent;transition:.18s;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.unit-item:hover{border-color:#93c5fd;transform:translateY(-1px)}
+.unit-item.mastered{background:#f0fdf4;border-color:#86efac}
+.unit-num{min-width:34px;height:34px;border-radius:50%;background:#2563eb;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+.unit-item.mastered .unit-num{background:#16a34a}
+.unit-title{flex:1;margin-left:12px;font-size:14px;font-weight:600}
+.unit-sub{font-size:12px;color:#64748b;font-weight:400}
+.score-display{text-align:center;padding:24px 0}
+.score-num{font-size:64px;font-weight:900;line-height:1}
+.score-label{font-size:16px;color:#64748b;margin-top:4px}
+.verdict{text-align:center;font-size:28px;font-weight:900;padding:18px;border-radius:12px;margin:16px 0}
+.verdict.pass{background:#dcfce7;color:#15803d;border:3px solid #16a34a}
+.verdict.fail{background:#fee2e2;color:#b91c1c;border:3px solid #dc2626}
+.result-item{padding:14px;border-radius:10px;margin-bottom:10px;border:2px solid}
+.result-item.correct{border-color:#86efac;background:#f0fdf4}
+.result-item.wrong{border-color:#fca5a5;background:#fff1f2}
+.result-q{font-size:14px;font-weight:600;margin-bottom:6px}
+.result-answer{font-size:13px;color:#64748b;margin-bottom:4px}
+.result-exp{font-size:13px;background:rgba(0,0,0,.04);padding:8px 12px;border-radius:6px;margin-top:6px;line-height:1.6}
+.home-stat{text-align:center;padding:20px 0}
+.home-stat-num{font-size:42px;font-weight:900;color:#2563eb}
+.home-stat-label{font-size:14px;color:#64748b;margin-top:2px}
+.exam-q-wrap{margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid #e2e8f0}
+.exam-q-wrap:last-child{border-bottom:none}
+.exam-q-header{font-size:15px;font-weight:700;margin-bottom:12px;color:#1e40af}
+.q-text{font-size:15px;line-height:1.6;margin-bottom:12px}
+.tag{display:inline-block;background:#eff6ff;color:#2563eb;font-size:11px;font-weight:700;padding:3px 8px;border-radius:20px;margin-bottom:8px}
+.tag.green{background:#f0fdf4;color:#16a34a}
+.section-title{font-size:18px;font-weight:800;color:#1e293b;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.divider{height:1px;background:#e2e8f0;margin:16px 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.info-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:14px;text-align:center}
+.info-box-num{font-size:28px;font-weight:900}
+.info-box-label{font-size:12px;color:#64748b;margin-top:2px}
+@media(max-width:480px){.container{padding:10px}.card{padding:16px}.score-num{font-size:48px}.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <button class="back-btn" id="backBtn" onclick="goBack()">← 뒤로</button>
+  <h1 id="headerTitle">📚 검정고시 수학 합격 프로그램</h1>
+</header>
+
+<!-- HOME SCREEN -->
+<div class="screen active" id="screen-home">
+  <div class="container">
+    <div class="card" style="background:linear-gradient(135deg,#2563eb,#06b6d4);color:white;padding:24px">
+      <div style="font-size:13px;opacity:.85;margin-bottom:6px">2026년 2차 고졸학력검정고시 수학</div>
+      <div style="font-size:22px;font-weight:900;margin-bottom:4px">합격을 향한 맞춤 학습!</div>
+      <div style="font-size:13px;opacity:.85">60점 이상이면 합격 · 20개 유형 완벽 마스터</div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">📊 학습 현황</div>
+      <div class="grid2">
+        <div class="info-box">
+          <div class="info-box-num" id="masteredCount" style="color:#16a34a">0</div>
+          <div class="info-box-label">완료한 유형</div>
+        </div>
+        <div class="info-box">
+          <div class="info-box-num" id="remainCount" style="color:#2563eb">20</div>
+          <div class="info-box-label">남은 유형</div>
+        </div>
+      </div>
+      <div class="progress-bar" style="margin-top:14px">
+        <div class="progress-fill" id="homeProgress" style="width:0%"></div>
+      </div>
+      <div style="text-align:right;font-size:12px;color:#64748b;margin-top:4px" id="homeProgressLabel">0 / 20 완료</div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">📖 학습 모드</div>
+      <div style="font-size:14px;color:#64748b;margin-bottom:14px;line-height:1.6">개념 설명 → 연습 문제 반복<br>2회 연속 정답 시 해당 유형 완료!</div>
+      <button class="btn btn-primary btn-full" onclick="showLearnList()">학습 시작하기 →</button>
+    </div>
+
+    <div class="card">
+      <div class="section-title">📝 최종 모의고사</div>
+      <div style="font-size:14px;color:#64748b;margin-bottom:14px;line-height:1.6">실전 시험 형식 · 20문제 · 5점×20 = 100점<br>60점 이상 합격 판정</div>
+      <button class="btn btn-outline btn-full" onclick="showExam()">모의고사 도전하기 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- LEARN LIST SCREEN -->
+<div class="screen" id="screen-list">
+  <div class="container">
+    <div class="card" style="padding:14px 20px">
+      <div style="font-size:13px;color:#64748b;margin-bottom:4px">전체 진도</div>
+      <div class="progress-bar"><div class="progress-fill" id="listProgress" style="width:0%"></div></div>
+      <div style="text-align:right;font-size:12px;color:#64748b;margin-top:2px" id="listProgressLabel">0 / 20</div>
+    </div>
+    <div id="unitList"></div>
+  </div>
+</div>
+
+<!-- PRACTICE SCREEN -->
+<div class="screen" id="screen-practice">
+  <div class="container">
+    <div class="card" style="padding:14px 18px;margin-bottom:10px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span class="tag" id="practiceTag">유형 1/20</span>
+        <button class="btn btn-sm" style="background:#fef3c7;color:#92400e;border:none;cursor:pointer" onclick="skipUnit()">이미 알아요 ✓</button>
+      </div>
+      <div style="font-size:16px;font-weight:800;margin-top:8px" id="practiceUnitTitle"></div>
+    </div>
+
+    <div class="card" id="conceptCard">
+      <div style="font-size:13px;font-weight:700;color:#2563eb;margin-bottom:8px">💡 개념 정리</div>
+      <div class="concept-box" id="conceptBox"></div>
+    </div>
+
+    <div class="card" id="practiceQCard">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <span style="font-size:13px;color:#64748b" id="qProgress">문제 1/4</span>
+        <div class="streak-row" style="margin:0">
+          <div class="streak-dot" id="dot1"></div>
+          <div class="streak-dot" id="dot2"></div>
+          <span class="streak-label" id="streakLabel">연속 정답: 0/2</span>
+        </div>
+      </div>
+      <div class="q-text" id="practiceQText"></div>
+      <div id="practiceChoices"></div>
+      <div class="explanation-box" id="practiceExp"></div>
+      <div style="margin-top:14px;display:flex;gap:8px" id="practiceBtns">
+        <button class="btn btn-primary" id="submitPracticeBtn" onclick="submitPractice()" style="display:none">제출하기</button>
+        <button class="btn btn-success" id="nextPracticeBtn" onclick="nextPractice()" style="display:none">다음 문제 →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXAM SCREEN -->
+<div class="screen" id="screen-exam">
+  <div class="container">
+    <div class="card" style="background:linear-gradient(135deg,#1e40af,#2563eb);color:white;padding:20px">
+      <div style="font-size:20px;font-weight:900;margin-bottom:4px">📝 최종 모의고사</div>
+      <div style="font-size:13px;opacity:.85">20문제 × 5점 = 100점 · 60점 이상 합격</div>
+      <div class="progress-bar" style="margin-top:12px;background:rgba(255,255,255,.3)">
+        <div class="progress-fill" id="examProgress" style="width:0%;background:white"></div>
+      </div>
+      <div style="font-size:12px;opacity:.8;margin-top:4px" id="examProgressLabel">0 / 20 답변</div>
+    </div>
+    <div id="examQuestions"></div>
+    <div class="card" style="text-align:center">
+      <div style="font-size:13px;color:#64748b;margin-bottom:12px" id="examSubmitHint">모든 문제에 답하면 제출할 수 있습니다</div>
+      <button class="btn btn-primary btn-full" id="examSubmitBtn" onclick="submitExam()" style="opacity:.5;pointer-events:none">최종 제출하기</button>
+    </div>
+  </div>
+</div>
+
+<!-- RESULTS SCREEN -->
+<div class="screen" id="screen-results">
+  <div class="container">
+    <div class="card">
+      <div class="score-display">
+        <div class="score-num" id="resultScore">0</div>
+        <div class="score-label">점 / 100점</div>
+      </div>
+      <div class="verdict" id="resultVerdict"></div>
+      <div class="grid2" style="margin-bottom:14px">
+        <div class="info-box">
+          <div class="info-box-num" id="correctCount" style="color:#16a34a">0</div>
+          <div class="info-box-label">정답 ✓</div>
+        </div>
+        <div class="info-box">
+          <div class="info-box-num" id="wrongCount" style="color:#dc2626">0</div>
+          <div class="info-box-label">오답 ✗</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-outline btn-full" style="flex:1" onclick="showHome()">홈으로</button>
+        <button class="btn btn-primary btn-full" style="flex:1" onclick="showExam()">다시 도전</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="section-title">📋 문제별 해설</div>
+      <div id="resultItems"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// DATA
+// ============================================================
+const UNITS = [
+  {
+    id:0, title:"다항식의 연산", sub:"덧셈과 뺄셈",
+    concept:`<b>핵심 방법:</b> 같은 차수(동류항)끼리 계수를 더하거나 뺍니다.<br><br>
+예) A = 2x² + 3x + 1, B = x² − x + 4<br>
+A + B = (2+1)x² + (3−1)x + (1+4) = <b>3x² + 2x + 5</b>`,
+    practice:[
+      {q:"A = x³ − 1, B = 2x³ + 4 일 때, A + B는?",
+       c:["2x³ + 2","2x³ + 3","3x³ + 3","3x³ + 4"],a:2,
+       exp:"x³항: 1+2=3, 상수항: −1+4=3 → <b>3x³ + 3</b>"},
+      {q:"A = 3x² + x, B = x² − x 일 때, A + B는?",
+       c:["3x²","4x²","4x² + 2x","5x²"],a:1,
+       exp:"x²항: 3+1=4, x항: 1+(−1)=0 → <b>4x²</b>"},
+      {q:"A = 2x + 5, B = 3x − 2 일 때, A + B는?",
+       c:["4x + 2","4x + 3","5x + 3","6x + 3"],a:2,
+       exp:"x항: 2+3=5, 상수항: 5+(−2)=3 → <b>5x + 3</b>"},
+      {q:"A = x² + 3x + 1, B = 2x² − x + 2 일 때, A + B는?",
+       c:["3x² + x + 2","3x² + 2x + 2","3x² + 2x + 3","3x² + 3x + 3"],a:2,
+       exp:"x²: 1+2=3, x: 3+(−1)=2, 상수: 1+2=3 → <b>3x² + 2x + 3</b>"}
+    ],
+    exam:{q:"A = x² + 2, B = 2x² + 3 일 때, A + B는?",
+          c:["2x² + 4","3x² + 4","3x² + 5","4x² + 5"],a:2,
+          exp:"x²항: 1+2=3, 상수항: 2+3=5 → <b>3x² + 5</b>"}
+  },
+  {
+    id:1, title:"항등식의 성질", sub:"미정계수 구하기",
+    concept:`<b>항등식:</b> x에 어떤 값을 넣어도 성립하는 등식<br><br>
+→ 양변의 <b>같은 차수의 계수가 서로 같아야</b> 합니다.<br><br>
+예) ax² + 3x + 1 = 5x² + bx + 1 이 항등식<br>
+x²: a = 5, x: 3 = b → a = 5, b = 3`,
+    practice:[
+      {q:"2x² + ax + 3 = bx² + 5x + 3 이 항등식일 때, a + b의 값은?",
+       c:["5","6","7","8"],a:2,
+       exp:"x²항: b=2, x항: a=5 → a+b = <b>7</b>"},
+      {q:"x² − ax + 4 = bx² − 2x + 4 이 항등식일 때, a + b의 값은?",
+       c:["1","2","3","4"],a:2,
+       exp:"x²항: b=1, x항: a=2 → a+b = <b>3</b>"},
+      {q:"4x² + 3x + a = bx² + cx + 5 가 항등식일 때, a + b + c의 값은?",
+       c:["10","11","12","13"],a:2,
+       exp:"상수항: a=5, x²항: b=4, x항: c=3 → a+b+c = <b>12</b>"},
+      {q:"ax² + x − 2 = 5x² + bx − 2 가 항등식일 때, a + b의 값은?",
+       c:["4","5","6","7"],a:2,
+       exp:"x²항: a=5, x항: b=1 → a+b = <b>6</b>"}
+    ],
+    exam:{q:"ax² + 2x + 1 = 3x² + bx + 1 이 항등식일 때, a + b의 값은?",
+          c:["3","4","5","6"],a:2,
+          exp:"x²항: a=3, x항: b=2 → a+b = <b>5</b>"}
+  },
+  {
+    id:2, title:"나머지 정리", sub:"대입하여 나머지 계산",
+    concept:`<b>나머지 정리:</b> 다항식 f(x)를 (x − a)로 나눈 나머지는 <b>f(a)</b><br><br>
+• (x − 1)로 나눈 나머지 → f(1) 계산<br>
+• (x + 1)로 나눈 나머지 → f(−1) 계산<br>
+• (x − 2)로 나눈 나머지 → f(2) 계산<br><br>
+예) f(x) = x² + x + 1을 (x−2)로 나눈 나머지<br>
+= f(2) = 4 + 2 + 1 = <b>7</b>`,
+    practice:[
+      {q:"2x³ − x + 1을 x − 1로 나누었을 때의 나머지는?",
+       c:["1","2","3","4"],a:1,
+       exp:"f(1) = 2(1)³ − 1 + 1 = 2 − 1 + 1 = <b>2</b>"},
+      {q:"x³ + 3x² + 2를 x + 1로 나누었을 때의 나머지는?",
+       c:["2","3","4","5"],a:2,
+       exp:"f(−1) = (−1)³ + 3(−1)² + 2 = −1 + 3 + 2 = <b>4</b>"},
+      {q:"x² − 4x + 5를 x − 2로 나누었을 때의 나머지는?",
+       c:["1","2","3","4"],a:0,
+       exp:"f(2) = 4 − 8 + 5 = <b>1</b>"},
+      {q:"3x² + x − 1을 x − 1로 나누었을 때의 나머지는?",
+       c:["1","2","3","4"],a:2,
+       exp:"f(1) = 3 + 1 − 1 = <b>3</b>"}
+    ],
+    exam:{q:"x² + 2x + 3을 x − 1로 나누었을 때의 나머지는?",
+          c:["4","5","6","7"],a:2,
+          exp:"f(1) = 1 + 2 + 3 = <b>6</b>"}
+  },
+  {
+    id:3, title:"인수분해 공식", sub:"세제곱 합·차 공식",
+    concept:`<b>핵심 공식:</b><br><br>
+• x³ − a³ = <b>(x − a)(x² + ax + a²)</b><br>
+• x³ + a³ = <b>(x + a)(x² − ax + a²)</b><br><br>
+암기 팁: 부호 패턴<br>
+차: (빼기)(같은부호 더하기 양수)<br>
+합: (더하기)(반대부호 더하기 양수)`,
+    practice:[
+      {q:"x³ + 2³ = (x + a)(x² − 2x + 4) 일 때, 상수 a의 값은?",
+       c:["1","2","3","4"],a:1,
+       exp:"x³ + 2³ = (x + 2)(x² − 2x + 4), 따라서 a = <b>2</b>"},
+      {q:"x³ − 2³ = (x − a)(x² + 2x + 4) 일 때, 상수 a의 값은?",
+       c:["1","2","3","4"],a:1,
+       exp:"x³ − 2³ = (x − 2)(x² + 2x + 4), 따라서 a = <b>2</b>"},
+      {q:"x³ + 3³ = (x + a)(x² − 3x + 9) 일 때, 상수 a의 값은?",
+       c:["1","2","3","4"],a:2,
+       exp:"x³ + 3³ = (x + 3)(x² − 3x + 9), 따라서 a = <b>3</b>"},
+      {q:"x³ − 4³ = (x − a)(x² + 4x + 16) 일 때, 상수 a의 값은?",
+       c:["1","2","3","4"],a:3,
+       exp:"x³ − 4³ = (x − 4)(x² + 4x + 16), 따라서 a = <b>4</b>"}
+    ],
+    exam:{q:"x³ − 1³ = (x − a)(x² + x + 1) 일 때, 상수 a의 값은?",
+          c:["1","2","3","4"],a:0,
+          exp:"x³ − 1³ = (x − 1)(x² + x + 1), 따라서 a = <b>1</b>"}
+  },
+  {
+    id:4, title:"복소수와 켤레복소수", sub:"켤레복소수 성질",
+    concept:`<b>켤레복소수:</b> a + bi의 켤레복소수는 <b>a − bi</b><br><br>
+• 실수부는 그대로, 허수부 부호만 반대<br><br>
+<b>복소수가 같은 조건:</b> a + bi = c + di<br>
+→ 실수부끼리 같고(a = c), 허수부끼리 같다(b = d)<br><br>
+예) 2 + ai의 켤레복소수가 b − 3i<br>
+→ 2 − ai = b − 3i → a = 3, b = 2`,
+    practice:[
+      {q:"a − 4i의 켤레복소수가 1 + bi일 때, a + b의 값은?",
+       c:["3","4","5","6"],a:2,
+       exp:"켤레복소수: a + 4i = 1 + bi → a=1, b=4 → a+b = <b>5</b>"},
+      {q:"2 + ai의 켤레복소수가 b − 5i일 때, a + b의 값은?",
+       c:["5","6","7","8"],a:2,
+       exp:"켤레복소수: 2 − ai = b − 5i → a=5, b=2 → a+b = <b>7</b>"},
+      {q:"5 + 3i의 켤레복소수가 a + bi일 때, a + b의 값은?",
+       c:["0","1","2","3"],a:2,
+       exp:"켤레복소수: 5 − 3i = a + bi → a=5, b=−3 → a+b = <b>2</b>"},
+      {q:"1 − ai의 켤레복소수가 b + 2i일 때, a + b의 값은?",
+       c:["1","2","3","4"],a:2,
+       exp:"켤레복소수: 1 + ai = b + 2i → a=2, b=1 → a+b = <b>3</b>"}
+    ],
+    exam:{q:"3 + ai의 켤레복소수가 b − 2i일 때, a + b의 값은?",
+          c:["3","4","5","6"],a:2,
+          exp:"켤레복소수: 3 − ai = b − 2i → a=2, b=3 → a+b = <b>5</b>"}
+  },
+  {
+    id:5, title:"이차방정식과 중근", sub:"판별식으로 중근 조건",
+    concept:`<b>중근 조건:</b> ax² + bx + c = 0 이 중근을 가지려면<br>
+<b>판별식 D = b² − 4ac = 0</b><br><br>
+예) x² − 6x + a = 0 이 중근<br>
+D = (−6)² − 4a = 36 − 4a = 0<br>
+→ 4a = 36 → <b>a = 9</b>`,
+    practice:[
+      {q:"이차방정식 x² + 6x + a = 0이 중근을 가질 때, 상수 a의 값은?",
+       c:["6","8","9","12"],a:2,
+       exp:"D = 36 − 4a = 0 → 4a = 36 → a = <b>9</b>"},
+      {q:"이차방정식 x² − 8x + a = 0이 중근을 가질 때, 상수 a의 값은?",
+       c:["12","14","16","18"],a:2,
+       exp:"D = 64 − 4a = 0 → 4a = 64 → a = <b>16</b>"},
+      {q:"이차방정식 x² + 4x + a = 0이 중근을 가질 때, 상수 a의 값은?",
+       c:["2","3","4","5"],a:2,
+       exp:"D = 16 − 4a = 0 → 4a = 16 → a = <b>4</b>"},
+      {q:"이차방정식 x² − 10x + a = 0이 중근을 가질 때, 상수 a의 값은?",
+       c:["16","20","25","30"],a:2,
+       exp:"D = 100 − 4a = 0 → 4a = 100 → a = <b>25</b>"}
+    ],
+    exam:{q:"이차방정식 x² − 2x + a = 0이 중근을 가질 때, 상수 a의 값은?",
+          c:["1","2","3","4"],a:0,
+          exp:"D = 4 − 4a = 0 → 4a = 4 → a = <b>1</b>"}
+  },
+  {
+    id:6, title:"근과 계수의 관계", sub:"두 근의 합과 곱",
+    concept:`x² 계수가 1인 이차방정식 x² + bx + c = 0의 두 근 α, β에 대해<br><br>
+• 두 근의 합: α + β = <b>−b</b><br>
+• 두 근의 곱: αβ = <b>c</b><br><br>
+즉 상수항 c = 두 근의 곱<br><br>
+예) 두 근이 2, 3이면: x² − 5x + <b>6</b> = 0`,
+    practice:[
+      {q:"두 수 2, 5를 근으로 하는 x² − 7x + a = 0에서 a의 값은?",
+       c:["8","9","10","11"],a:2,
+       exp:"상수항 = 두 근의 곱: 2 × 5 = <b>10</b>"},
+      {q:"두 수 1, 2를 근으로 하는 x² − 3x + a = 0에서 a의 값은?",
+       c:["1","2","3","4"],a:1,
+       exp:"상수항 = 두 근의 곱: 1 × 2 = <b>2</b>"},
+      {q:"두 수 3, 4를 근으로 하는 x² − 7x + a = 0에서 a의 값은?",
+       c:["10","11","12","13"],a:2,
+       exp:"상수항 = 두 근의 곱: 3 × 4 = <b>12</b>"},
+      {q:"두 수 1, 5를 근으로 하는 x² − 6x + a = 0에서 a의 값은?",
+       c:["3","4","5","6"],a:2,
+       exp:"상수항 = 두 근의 곱: 1 × 5 = <b>5</b>"}
+    ],
+    exam:{q:"두 수 1, 4를 근으로 하는 x² − 5x + a = 0에서 a의 값은?",
+          c:["2","3","4","5"],a:2,
+          exp:"상수항 = 두 근의 곱: 1 × 4 = <b>4</b>"}
+  },
+  {
+    id:7, title:"이차함수의 최대·최소", sub:"꼭짓점과 범위",
+    concept:`y = a(x − p)² + q 형태에서<br>
+• <b>a > 0</b>: 아래로 볼록, x = p에서 <b>최솟값 q</b><br>
+• <b>a < 0</b>: 위로 볼록, x = p에서 <b>최댓값 q</b><br><br>
+제한된 범위가 있을 때: 꼭짓점이 범위 안에 있으면 꼭짓점값이 극값!<br>
+범위 밖이면 범위의 끝점에서 확인.`,
+    practice:[
+      {q:"−1 ≤ x ≤ 2일 때, y = −(x−1)² + 5의 최댓값은?",
+       c:["3","4","5","6"],a:2,
+       exp:"꼭짓점 x=1이 범위 안 → 최댓값 = 꼭짓점값 = <b>5</b>"},
+      {q:"1 ≤ x ≤ 4일 때, y = (x−2)² + 1의 최솟값은?",
+       c:["1","2","3","4"],a:0,
+       exp:"꼭짓점 x=2이 범위 안, a>0이므로 최솟값 = 꼭짓점값 = <b>1</b>"},
+      {q:"−2 ≤ x ≤ 1일 때, y = −(x+1)² + 3의 최댓값은?",
+       c:["1","2","3","4"],a:2,
+       exp:"꼭짓점 x=−1이 범위 안, a<0이므로 최댓값 = 꼭짓점값 = <b>3</b>"},
+      {q:"2 ≤ x ≤ 5일 때, y = (x−3)² − 4의 최솟값은?",
+       c:["−5","−4","−3","−2"],a:1,
+       exp:"꼭짓점 x=3이 범위 안, a>0이므로 최솟값 = 꼭짓점값 = <b>−4</b>"}
+    ],
+    exam:{q:"0 ≤ x ≤ 3일 때, y = (x−1)² + 2의 최솟값은?",
+          c:["1","2","3","4"],a:1,
+          exp:"꼭짓점 x=1이 범위 안, a>0이므로 최솟값 = 꼭짓점값 = <b>2</b>"}
+  },
+  {
+    id:8, title:"삼차방정식의 해", sub:"근 대입하여 미정계수",
+    concept:`x = k가 방정식 f(x) = 0의 근이면<br>
+→ <b>f(k) = 0</b>을 이용해 미정계수를 구합니다.<br><br>
+예) x³ + ax − 2 = 0의 한 근이 1<br>
+f(1) = 1 + a − 2 = 0 → a = <b>1</b>`,
+    practice:[
+      {q:"x³ + x² + x + a = 0의 한 근이 −1일 때, 상수 a의 값은?",
+       c:["1","2","3","4"],a:0,
+       exp:"f(−1) = −1+1−1+a = 0 → a = <b>1</b>"},
+      {q:"x³ − 3x² + 2x + a = 0의 한 근이 2일 때, 상수 a의 값은?",
+       c:["0","1","2","−1"],a:0,
+       exp:"f(2) = 8−12+4+a = 0 → a = <b>0</b>"},
+      {q:"x³ + 4x² − x + a = 0의 한 근이 1일 때, 상수 a의 값은?",
+       c:["−2","−3","−4","−5"],a:2,
+       exp:"f(1) = 1+4−1+a = 0 → a = <b>−4</b>"},
+      {q:"x³ − x² − 5x + a = 0의 한 근이 −1일 때, 상수 a의 값은?",
+       c:["−5","−4","−3","−2"],a:2,
+       exp:"f(−1) = −1−1+5+a = 0 → a = <b>−3</b>"}
+    ],
+    exam:{q:"x³ − 2x² + x + a = 0의 한 근이 1일 때, 상수 a의 값은?",
+          c:["0","1","2","3"],a:0,
+          exp:"f(1) = 1−2+1+a = 0 → a = <b>0</b>"}
+  },
+  {
+    id:9, title:"연립일차부등식", sub:"공통 범위 찾기",
+    concept:`두 부등식을 각각 풀고 <b>공통되는 범위</b>를 구합니다.<br><br>
+예) { x − 1 < 4  →  x < 5<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{ 2x > x + 2  →  x > 2<br><br>
+공통 범위: <b>2 < x < 5</b>`,
+    practice:[
+      {q:"연립부등식 x+3 < 8, 4x > x+6 의 해가 2 < x < a일 때, a의 값은?",
+       c:["3","4","5","6"],a:2,
+       exp:"x < 5, x > 2 → 공통: 2 < x < 5 → a = <b>5</b>"},
+      {q:"연립부등식 x−1 < 4, 3x > x+4 의 해가 2 < x < a일 때, a의 값은?",
+       c:["3","4","5","6"],a:2,
+       exp:"x < 5, x > 2 → 공통: 2 < x < 5 → a = <b>5</b>"},
+      {q:"연립부등식 x+2 < 9, 5x > x+12 의 해가 3 < x < a일 때, a의 값은?",
+       c:["5","6","7","8"],a:2,
+       exp:"x < 7, x > 3 → 공통: 3 < x < 7 → a = <b>7</b>"},
+      {q:"연립부등식 x−3 < 2, 2x > x+3 의 해가 3 < x < a일 때, a의 값은?",
+       c:["3","4","5","6"],a:2,
+       exp:"x < 5, x > 3 → 공통: 3 < x < 5 → a = <b>5</b>"}
+    ],
+    exam:{q:"연립부등식 x−2 < 3, 2x > x+1 의 해가 1 < x < a일 때, a의 값은?",
+          c:["3","4","5","6"],a:2,
+          exp:"x < 5, x > 1 → 공통: 1 < x < 5 → a = <b>5</b>"}
+  },
+  {
+    id:10, title:"선분의 내분점", sub:"내분점 공식",
+    concept:`두 점 A(x₁, y₁), B(x₂, y₂)를 <b>m : n</b>으로 내분하는 점:<br><br>
+<b>( (mx₂ + nx₁) / (m+n), (my₂ + ny₁) / (m+n) )</b><br><br>
+예) A(0,0), B(4,6)을 1:1로 내분하는 점(중점)<br>
+= ( (1×4+1×0)/2, (1×6+1×0)/2 ) = <b>(2, 3)</b>`,
+    practice:[
+      {q:"두 점 A(−3, 0), B(1, 4)를 3:1로 내분하는 점의 좌표는?",
+       c:["(−1, 2)","(0, 3)","(1, 3)","(1, 4)"],a:1,
+       exp:"x: (3×1+1×(−3))/4 = 0/4 = 0, y: (3×4+1×0)/4 = 12/4 = 3 → <b>(0, 3)</b>"},
+      {q:"두 점 A(0, 0), B(6, 9)를 1:2로 내분하는 점의 좌표는?",
+       c:["(1, 2)","(2, 3)","(3, 4)","(4, 6)"],a:1,
+       exp:"x: (1×6+2×0)/3 = 2, y: (1×9+2×0)/3 = 3 → <b>(2, 3)</b>"},
+      {q:"두 점 A(−1, −2), B(3, 2)를 1:1로 내분하는 점(중점)의 좌표는?",
+       c:["(0, −1)","(1, 0)","(1, 1)","(2, 0)"],a:1,
+       exp:"중점: ((−1+3)/2, (−2+2)/2) = <b>(1, 0)</b>"},
+      {q:"두 점 A(2, 1), B(7, 6)을 2:3으로 내분하는 점의 좌표는?",
+       c:["(3, 3)","(4, 3)","(4, 4)","(5, 4)"],a:1,
+       exp:"x: (2×7+3×2)/5 = 20/5 = 4, y: (2×6+3×1)/5 = 15/5 = 3 → <b>(4, 3)</b>"}
+    ],
+    exam:{q:"두 점 A(1, 2), B(4, 5)를 2:1로 내분하는 점의 좌표는?",
+          c:["(2, 3)","(2, 4)","(3, 4)","(3, 5)"],a:2,
+          exp:"x: (2×4+1×1)/3 = 9/3 = 3, y: (2×5+1×2)/3 = 12/3 = 4 → <b>(3, 4)</b>"}
+  },
+  {
+    id:11, title:"점과 직선 사이의 거리", sub:"거리 공식",
+    concept:`점 (x₀, y₀)에서 직선 <b>ax + by + c = 0</b>까지의 거리:<br><br>
+<b>d = |ax₀ + by₀ + c| / √(a² + b²)</b><br><br>
+원점 (0, 0)에서의 거리: <b>d = |c| / √(a² + b²)</b><br><br>
+예) 원점에서 3x + 4y − 10 = 0까지의 거리<br>
+= |−10| / √(9+16) = 10/5 = <b>2</b>`,
+    practice:[
+      {q:"원점과 직선 5x − 12y + 26 = 0 사이의 거리는?",
+       c:["1","2","3","4"],a:1,
+       exp:"|26| / √(25+144) = 26 / √169 = 26/13 = <b>2</b>"},
+      {q:"원점과 직선 x − y + √2 = 0 사이의 거리는?",
+       c:["1","√2","2","3"],a:0,
+       exp:"|√2| / √(1+1) = √2 / √2 = <b>1</b>"},
+      {q:"원점과 직선 8x + 6y − 20 = 0 사이의 거리는?",
+       c:["1","2","3","4"],a:1,
+       exp:"|−20| / √(64+36) = 20 / √100 = 20/10 = <b>2</b>"},
+      {q:"원점과 직선 3x − 4y + 15 = 0 사이의 거리는?",
+       c:["1","2","3","4"],a:2,
+       exp:"|15| / √(9+16) = 15/5 = <b>3</b>"}
+    ],
+    exam:{q:"원점과 직선 3x + 4y − 10 = 0 사이의 거리는?",
+          c:["1","2","3","4"],a:1,
+          exp:"|−10| / √(9+16) = 10/5 = <b>2</b>"}
+  },
+  {
+    id:12, title:"원과 직선의 위치 관계", sub:"접할 조건",
+    concept:`원 x² + y² = r²에 직선 <b>y = k</b>가 접할 조건:<br>
+→ 원의 반지름 = 원심에서 직선까지의 거리<br>
+→ <b>|k| = r</b><br><br>
+예) x² + y² = 9에 y = a가 접하면<br>
+|a| = √9 = 3 → 자연수 a = <b>3</b>`,
+    practice:[
+      {q:"직선 y = a와 원 x² + y² = 16이 한 점에서 만날 때, 자연수 a의 값은?",
+       c:["2","3","4","5"],a:2,
+       exp:"반지름 = √16 = 4, |a| = 4 → 자연수 a = <b>4</b>"},
+      {q:"직선 x = a와 원 x² + y² = 25가 한 점에서 만날 때, 자연수 a의 값은?",
+       c:["3","4","5","6"],a:2,
+       exp:"반지름 = √25 = 5, |a| = 5 → 자연수 a = <b>5</b>"},
+      {q:"직선 y = a와 원 x² + y² = 1이 한 점에서 만날 때, 자연수 a의 값은?",
+       c:["1","2","3","4"],a:0,
+       exp:"반지름 = √1 = 1, |a| = 1 → 자연수 a = <b>1</b>"},
+      {q:"직선 y = a와 원 x² + y² = 36이 한 점에서 만날 때, 자연수 a의 값은?",
+       c:["4","5","6","7"],a:2,
+       exp:"반지름 = √36 = 6, |a| = 6 → 자연수 a = <b>6</b>"}
+    ],
+    exam:{q:"직선 y = a와 원 x² + y² = 4가 한 점에서 만날 때, 자연수 a의 값은?",
+          c:["1","2","3","4"],a:1,
+          exp:"반지름 = √4 = 2, |a| = 2 → 자연수 a = <b>2</b>"}
+  },
+  {
+    id:13, title:"도형의 대칭이동", sub:"원점 대칭",
+    concept:`<b>원점 대칭이동:</b> 점 (x, y) → <b>(−x, −y)</b><br><br>
+x좌표, y좌표 모두 부호가 반대가 됩니다.<br><br>
+예) 점 (2, 3)의 원점 대칭: <b>(−2, −3)</b><br>
+점 (−4, 1)의 원점 대칭: <b>(4, −1)</b>`,
+    practice:[
+      {q:"점 (−1, 5)를 원점에 대하여 대칭이동한 점의 좌표는?",
+       c:["(1, 5)","(−1, −5)","(1, −5)","(5, −1)"],a:2,
+       exp:"(−1, 5) → (−(−1), −5) = <b>(1, −5)</b>"},
+      {q:"점 (2, −6)을 원점에 대하여 대칭이동한 점의 좌표는?",
+       c:["(2, 6)","(−2, −6)","(−2, 6)","(6, −2)"],a:2,
+       exp:"(2, −6) → (−2, 6) = <b>(−2, 6)</b>"},
+      {q:"점 (−4, −2)를 원점에 대하여 대칭이동한 점의 좌표는?",
+       c:["(4, −2)","(−4, 2)","(4, 2)","(2, 4)"],a:2,
+       exp:"(−4, −2) → (4, 2) = <b>(4, 2)</b>"},
+      {q:"점 (0, 7)을 원점에 대하여 대칭이동한 점의 좌표는?",
+       c:["(0, 7)","(7, 0)","(0, −7)","(−7, 0)"],a:2,
+       exp:"(0, 7) → (0, −7) = <b>(0, −7)</b>"}
+    ],
+    exam:{q:"점 (3, 4)를 원점에 대하여 대칭이동한 점의 좌표는?",
+          c:["(3, −4)","(−3, 4)","(−3, −4)","(4, 3)"],a:2,
+          exp:"(3, 4) → (−3, −4) = <b>(−3, −4)</b>"}
+  },
+  {
+    id:14, title:"집합의 연산", sub:"교집합 A∩B",
+    concept:`<b>교집합 A ∩ B:</b> A와 B 두 집합에 <b>모두 속하는 원소</b>의 집합<br><br>
+예) A = {1, 2, 3, 4}, B = {3, 4, 5}<br>
+A ∩ B = <b>{3, 4}</b><br><br>
+팁: 두 집합을 비교해서 겹치는 원소만 고르세요!`,
+    practice:[
+      {q:"A = {a, b, c}, B = {b, c, d}일 때, A ∩ B는?",
+       c:["{a, b}","{c, d}","{b, c}","{a, d}"],a:2,
+       exp:"공통 원소: b, c → <b>{b, c}</b>"},
+      {q:"A = {3, 5, 7}, B = {5, 7, 9}일 때, A ∩ B는?",
+       c:["{3, 5}","{7, 9}","{5, 7}","{3, 9}"],a:2,
+       exp:"공통 원소: 5, 7 → <b>{5, 7}</b>"},
+      {q:"A = {2, 4, 8}, B = {4, 6, 8}일 때, A ∩ B는?",
+       c:["{2, 4}","{6, 8}","{4, 8}","{2, 6}"],a:2,
+       exp:"공통 원소: 4, 8 → <b>{4, 8}</b>"},
+      {q:"A = {10, 20}, B = {20, 30}일 때, A ∩ B는?",
+       c:["{10}","{30}","{20}","{10, 30}"],a:2,
+       exp:"공통 원소: 20 → <b>{20}</b>"}
+    ],
+    exam:{q:"A = {1, 2, 3}, B = {2, 3, 4}일 때, A ∩ B는?",
+          c:["{1, 2}","{3, 4}","{2, 3}","{1, 4}"],a:2,
+          exp:"공통 원소: 2, 3 → <b>{2, 3}</b>"}
+  },
+  {
+    id:15, title:"명제의 필요충분조건", sub:"진리집합이 같아야",
+    concept:`p ⟺ q (필요충분조건) ↔ 두 조건의 <b>진리집합이 완전히 같음</b><br><br>
+예) p: x = 3, q: (x − a)² = 0<br>
+q를 풀면 x = a → p와 같으려면 <b>a = 3</b><br><br>
+p: x = k, q: 2x − a = 0 → x = a/2<br>
+k = a/2 → <b>a = 2k</b>`,
+    practice:[
+      {q:"p: x = 5, q: x − a = 0이 필요충분조건일 때, a의 값은?",
+       c:["3","4","5","6"],a:2,
+       exp:"x − a = 0 → x = a, p: x=5와 같으려면 a = <b>5</b>"},
+      {q:"p: x = −2, q: (x − a)² = 0이 필요충분조건일 때, a의 값은?",
+       c:["0","−1","−2","2"],a:2,
+       exp:"(x−a)² = 0 → x = a, a = <b>−2</b>"},
+      {q:"p: x = 10, q: 2x − a = 0이 필요충분조건일 때, a의 값은?",
+       c:["10","15","20","25"],a:2,
+       exp:"2x − a = 0 → x = a/2 = 10 → a = <b>20</b>"},
+      {q:"p: x = 4, q: (x − a)² = 0이 필요충분조건일 때, a의 값은?",
+       c:["2","3","4","5"],a:2,
+       exp:"(x−a)² = 0 → x = a, a = <b>4</b>"}
+    ],
+    exam:{q:"p: x = 3, q: (x − a)² = 0이 필요충분조건일 때, a의 값은?",
+          c:["1","2","3","4"],a:2,
+          exp:"(x−a)² = 0 → x = a, a = <b>3</b>"}
+  },
+  {
+    id:16, title:"역함수의 값", sub:"f(a)=b ↔ f⁻¹(b)=a",
+    concept:`<b>역함수의 핵심:</b><br>
+f(a) = b 이면 → f⁻¹(b) = <b>a</b><br><br>
+방법: f⁻¹(k)를 구할 때는<br>
+→ f(?) = k 가 되는 ?를 찾으면 됩니다!<br><br>
+예) f(3) = 7이면 f⁻¹(7) = <b>3</b>`,
+    practice:[
+      {q:"f(a) = 1, f(b) = 2, f(c) = 3일 때, f⁻¹(2)의 값은?",
+       c:["a","b","c","없음"],a:1,
+       exp:"f(b) = 2 이므로 f⁻¹(2) = <b>b</b>"},
+      {q:"f(2) = 5, f(4) = 7, f(6) = 9일 때, f⁻¹(7)의 값은?",
+       c:["2","3","4","6"],a:2,
+       exp:"f(4) = 7 이므로 f⁻¹(7) = <b>4</b>"},
+      {q:"f(1) = 3, f(2) = 6, f(3) = 9, f(4) = 12일 때, f⁻¹(3)의 값은?",
+       c:["1","2","3","4"],a:0,
+       exp:"f(1) = 3 이므로 f⁻¹(3) = <b>1</b>"},
+      {q:"f(5) = 10, f(6) = 12, f(7) = 14일 때, f⁻¹(14)의 값은?",
+       c:["5","6","7","14"],a:2,
+       exp:"f(7) = 14 이므로 f⁻¹(14) = <b>7</b>"}
+    ],
+    exam:{q:"f(1) = 2, f(3) = 4, f(5) = 6, f(7) = 8일 때, f⁻¹(4)의 값은?",
+          c:["1","2","3","5"],a:2,
+          exp:"f(3) = 4 이므로 f⁻¹(4) = <b>3</b>"}
+  },
+  {
+    id:17, title:"유리함수의 점근선", sub:"수평·수직 점근선",
+    concept:`y = k / (x − p) + q 형태의 유리함수:<br><br>
+• 수직 점근선: <b>x = p</b><br>
+• 수평 점근선: <b>y = q</b><br><br>
+예) y = 2/(x − 3) + 5<br>
+→ 수직 점근선: x = 3, 수평 점근선: <b>y = 5</b>`,
+    practice:[
+      {q:"유리함수 y = 1/(x+1) − 4의 점근선 y = a에서 a의 값은?",
+       c:["−2","−3","−4","−5"],a:2,
+       exp:"y = 1/(x+1) + (−4) → 수평 점근선 y = <b>−4</b>"},
+      {q:"유리함수 y = 1/(x−5) + 2의 점근선 y = a에서 a의 값은?",
+       c:["1","2","3","5"],a:1,
+       exp:"y = 1/(x−5) + 2 → 수평 점근선 y = <b>2</b>"},
+      {q:"유리함수 y = 3/(x−3) + 6의 점근선 y = a에서 a의 값은?",
+       c:["3","4","5","6"],a:3,
+       exp:"y = 3/(x−3) + 6 → 수평 점근선 y = <b>6</b>"},
+      {q:"유리함수 y = 1/(x+4) − 1의 점근선 y = a에서 a의 값은?",
+       c:["1","0","−1","−4"],a:2,
+       exp:"y = 1/(x+4) + (−1) → 수평 점근선 y = <b>−1</b>"}
+    ],
+    exam:{q:"유리함수 y = 1/(x−2) + 3의 점근선 y = a에서 a의 값은?",
+          c:["1","2","3","4"],a:2,
+          exp:"y = 1/(x−2) + 3 → 수평 점근선 y = <b>3</b>"}
+  },
+  {
+    id:18, title:"순열", sub:"순서 있는 배열 nPr",
+    concept:`<b>순열 nPr:</b> 서로 다른 n개에서 r개를 골라 <b>순서 있게</b> 나열<br><br>
+<b>nPr = n × (n−1) × … × (n−r+1)</b><br><br>
+• ₅P₂ = 5 × 4 = 20<br>
+• ₄P₃ = 4 × 3 × 2 = 24<br><br>
+순서가 중요한 경우: 반장·부반장 선출, 왼쪽·오른쪽 배치 등`,
+    practice:[
+      {q:"3명의 학생 중 반장과 부반장을 각각 1명씩 뽑는 경우의 수는?",
+       c:["3","4","6","9"],a:2,
+       exp:"₃P₂ = 3 × 2 = <b>6</b>"},
+      {q:"서로 다른 4권의 책 중 2권을 택하여 나란히 꽂는 경우의 수는?",
+       c:["6","8","10","12"],a:3,
+       exp:"₄P₂ = 4 × 3 = <b>12</b>"},
+      {q:"6개의 숫자 카드 중 서로 다른 2개를 나열하여 만드는 두 자리 자연수의 수는?",
+       c:["24","26","28","30"],a:3,
+       exp:"₆P₂ = 6 × 5 = <b>30</b>"},
+      {q:"4가지 색깔 중 2가지를 골라 윗부분·아랫부분을 서로 다르게 칠하는 경우의 수는?",
+       c:["6","8","10","12"],a:3,
+       exp:"₄P₂ = 4 × 3 = <b>12</b>"}
+    ],
+    exam:{q:"서로 다른 5개의 인형 중 2개를 택하여 왼쪽과 오른쪽에 각각 놓는 경우의 수는?",
+          c:["10","15","20","25"],a:2,
+          exp:"₅P₂ = 5 × 4 = <b>20</b>"}
+  },
+  {
+    id:19, title:"조합", sub:"순서 없는 선택 nCr",
+    concept:`<b>조합 nCr:</b> 서로 다른 n개에서 r개를 <b>순서 없이</b> 선택<br><br>
+<b>nCr = nPr ÷ r! = n! / (r! × (n−r)!)</b><br><br>
+• ₅C₂ = (5×4) ÷ 2 = 20 ÷ 2 = 10<br>
+• ₆C₂ = (6×5) ÷ 2 = 15<br><br>
+순서가 중요하지 않은 경우: 대표 선출, 색깔 고르기 등`,
+    practice:[
+      {q:"4개의 과일 중에서 서로 다른 2개를 선택하는 경우의 수는?",
+       c:["4","5","6","8"],a:2,
+       exp:"₄C₂ = (4×3) ÷ 2 = 12 ÷ 2 = <b>6</b>"},
+      {q:"6가지 운동 프로그램 중 2개를 선택하는 경우의 수는?",
+       c:["10","12","15","18"],a:2,
+       exp:"₆C₂ = (6×5) ÷ 2 = 30 ÷ 2 = <b>15</b>"},
+      {q:"5가지 색깔 중 2가지를 선택하는 경우의 수는?",
+       c:["8","9","10","12"],a:2,
+       exp:"₅C₂ = (5×4) ÷ 2 = 20 ÷ 2 = <b>10</b>"},
+      {q:"어느 세 점도 일직선 위에 없는 4개의 점으로 만들 수 있는 선분의 개수는?",
+       c:["4","5","6","8"],a:2,
+       exp:"₄C₂ = (4×3) ÷ 2 = <b>6</b>"}
+    ],
+    exam:{q:"5명의 동아리 회원 중 대표 2명을 선출하는 경우의 수는?",
+          c:["5","8","10","12"],a:2,
+          exp:"₅C₂ = (5×4) ÷ 2 = 20 ÷ 2 = <b>10</b>"}
+  }
+];
+
+// ============================================================
+// STATE
+// ============================================================
+let ST = {
+  mastered: new Set(),
+  streaks: {},      // unitId -> consecutive correct count
+  qIndex: {},       // unitId -> current practice question index (cyclic)
+  currentUnit: 0,
+  selected: null,   // currently selected choice index
+  submitted: false, // whether current q was submitted
+  examAnswers: new Array(20).fill(null),
+  examSubmitted: false
+};
+
+function saveState() {
+  try {
+    localStorage.setItem('kgs_st', JSON.stringify({
+      mastered: [...ST.mastered],
+      streaks: ST.streaks,
+      qIndex: ST.qIndex,
+      examAnswers: ST.examAnswers,
+      examSubmitted: ST.examSubmitted
+    }));
+  } catch(e){}
+}
+
+function loadState() {
+  try {
+    const d = JSON.parse(localStorage.getItem('kgs_st')||'null');
+    if (d) {
+      ST.mastered = new Set(d.mastered||[]);
+      ST.streaks = d.streaks||{};
+      ST.qIndex = d.qIndex||{};
+      ST.examAnswers = d.examAnswers||new Array(20).fill(null);
+      ST.examSubmitted = d.examSubmitted||false;
+    }
+  } catch(e){}
+}
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('screen-'+id).classList.add('active');
+  const backBtn = document.getElementById('backBtn');
+  const title = document.getElementById('headerTitle');
+  if (id==='home') {
+    backBtn.style.display='none';
+    title.textContent='📚 검정고시 수학 합격 프로그램';
+  } else if (id==='list') {
+    backBtn.style.display='inline-block';
+    title.textContent='📖 학습 모드';
+  } else if (id==='practice') {
+    backBtn.style.display='inline-block';
+  } else if (id==='exam') {
+    backBtn.style.display='inline-block';
+    title.textContent='📝 최종 모의고사';
+  } else if (id==='results') {
+    backBtn.style.display='inline-block';
+    title.textContent='📊 채점 결과';
+  }
+  window.scrollTo(0,0);
+}
+
+function goBack() {
+  const active = document.querySelector('.screen.active');
+  if (!active) return;
+  const id = active.id.replace('screen-','');
+  if (id==='list') showHome();
+  else if (id==='practice') showLearnList();
+  else if (id==='exam') showHome();
+  else if (id==='results') showHome();
+}
+
+function showHome() {
+  const m = ST.mastered.size;
+  document.getElementById('masteredCount').textContent=m;
+  document.getElementById('remainCount').textContent=20-m;
+  const pct = m/20*100;
+  document.getElementById('homeProgress').style.width=pct+'%';
+  document.getElementById('homeProgressLabel').textContent=m+' / 20 완료';
+  showScreen('home');
+}
+
+// ============================================================
+// LEARN LIST
+// ============================================================
+function showLearnList() {
+  renderUnitList();
+  showScreen('list');
+}
+
+function renderUnitList() {
+  const m = ST.mastered.size;
+  const pct = m/20*100;
+  document.getElementById('listProgress').style.width=pct+'%';
+  document.getElementById('listProgressLabel').textContent=m+' / 20 완료';
+
+  const el = document.getElementById('unitList');
+  el.innerHTML = UNITS.map((u,i)=>{
+    const done = ST.mastered.has(u.id);
+    const streak = ST.streaks[u.id]||0;
+    return `<div class="unit-item ${done?'mastered':''}" onclick="startUnit(${u.id})">
+      <div class="unit-num">${i+1}</div>
+      <div style="flex:1;margin-left:12px">
+        <div class="unit-title">${u.title}</div>
+        <div class="unit-sub">${u.sub}</div>
+      </div>
+      <div style="font-size:20px">${done?'✅':streak>0?'🔥':'📘'}</div>
+    </div>`;
+  }).join('');
+}
+
+// ============================================================
+// PRACTICE
+// ============================================================
+function startUnit(id) {
+  ST.currentUnit = id;
+  ST.selected = null;
+  ST.submitted = false;
+  if (ST.qIndex[id]===undefined) ST.qIndex[id]=0;
+  renderPractice();
+  showScreen('practice');
+  document.getElementById('headerTitle').textContent = UNITS[id].title;
+}
+
+function renderPractice() {
+  const id = ST.currentUnit;
+  const unit = UNITS[id];
+  const qi = ST.qIndex[id]||0;
+  const q = unit.practice[qi % unit.practice.length];
+  const streak = ST.streaks[id]||0;
+
+  document.getElementById('practiceTag').textContent=`유형 ${id+1}/20`;
+  document.getElementById('practiceUnitTitle').textContent=`${unit.title} — ${unit.sub}`;
+  document.getElementById('conceptBox').innerHTML=unit.concept;
+  document.getElementById('qProgress').textContent=`문제 ${(qi%unit.practice.length)+1}/${unit.practice.length}`;
+
+  // streak dots
+  document.getElementById('dot1').className='streak-dot'+(streak>=1?' filled':'');
+  document.getElementById('dot2').className='streak-dot'+(streak>=2?' filled':'');
+  document.getElementById('streakLabel').textContent=`연속 정답: ${Math.min(streak,2)}/2`;
+
+  document.getElementById('practiceQText').innerHTML=q.q;
+
+  const choicesEl = document.getElementById('practiceChoices');
+  choicesEl.innerHTML=q.c.map((ch,i)=>
+    `<button class="choice-btn" id="choice${i}" onclick="selectChoice(${i})" ${ST.submitted?'disabled':''}>
+      <span class="choice-num">${['①','②','③','④'][i]}</span>
+      <span>${ch}</span>
+    </button>`
+  ).join('');
+
+  const expEl = document.getElementById('practiceExp');
+  expEl.className='explanation-box';
+  expEl.innerHTML='';
+
+  document.getElementById('submitPracticeBtn').style.display='none';
+  document.getElementById('nextPracticeBtn').style.display='none';
+
+  if (ST.submitted) renderSubmittedState();
+}
+
+function selectChoice(idx) {
+  if (ST.submitted) return;
+  ST.selected = idx;
+  document.querySelectorAll('.choice-btn').forEach((b,i)=>{
+    b.className='choice-btn'+(i===idx?' selected':'');
+  });
+  document.getElementById('submitPracticeBtn').style.display='inline-block';
+}
+
+function submitPractice() {
+  if (ST.selected===null) return;
+  ST.submitted=true;
+  renderSubmittedState();
+  saveState();
+}
+
+function renderSubmittedState() {
+  const id=ST.currentUnit;
+  const unit=UNITS[id];
+  const qi=ST.qIndex[id]||0;
+  const q=unit.practice[qi%unit.practice.length];
+  const correct = ST.selected===q.a;
+
+  document.querySelectorAll('.choice-btn').forEach((b,i)=>{
+    b.disabled=true;
+    if(i===q.a) b.classList.add('correct');
+    else if(i===ST.selected && !correct) b.classList.add('wrong');
+  });
+
+  const expEl=document.getElementById('practiceExp');
+  expEl.innerHTML=`<b>${correct?'✅ 정답입니다!':'❌ 틀렸습니다.'}</b><br><br>
+  <b>풀이:</b> ${q.exp}`;
+  expEl.className='explanation-box show';
+
+  // Update streak
+  if(correct){
+    ST.streaks[id]=(ST.streaks[id]||0)+1;
+  } else {
+    ST.streaks[id]=0;
+  }
+
+  // Update streak dots immediately
+  const streak=ST.streaks[id]||0;
+  document.getElementById('dot1').className='streak-dot'+(streak>=1?' filled':'');
+  document.getElementById('dot2').className='streak-dot'+(streak>=2?' filled':'');
+  document.getElementById('streakLabel').textContent=`연속 정답: ${Math.min(streak,2)}/2`;
+
+  document.getElementById('submitPracticeBtn').style.display='none';
+
+  if(streak>=2){
+    // mastered!
+    expEl.innerHTML += `<br><br>🎉 <b>2회 연속 정답! 이 개념을 완전히 이해했습니다!</b>`;
+    document.getElementById('nextPracticeBtn').textContent='다음 유형으로 →';
+    document.getElementById('nextPracticeBtn').style.display='inline-block';
+    document.getElementById('nextPracticeBtn').onclick=()=>masterAndNext(id);
+  } else {
+    document.getElementById('nextPracticeBtn').textContent='다음 문제 →';
+    document.getElementById('nextPracticeBtn').style.display='inline-block';
+    document.getElementById('nextPracticeBtn').onclick=nextPractice;
+  }
+}
+
+function nextPractice() {
+  const id=ST.currentUnit;
+  ST.qIndex[id]=(ST.qIndex[id]||0)+1;
+  ST.selected=null;
+  ST.submitted=false;
+  saveState();
+  renderPractice();
+}
+
+function masterAndNext(id) {
+  ST.mastered.add(id);
+  saveState();
+  // find next unmastered
+  let next = UNITS.find(u=>u.id>id && !ST.mastered.has(u.id));
+  if(!next) next = UNITS.find(u=>!ST.mastered.has(u.id));
+  if(!next){
+    alert('🎉 모든 개념을 완료했습니다! 최종 모의고사에 도전하세요!');
+    showLearnList();
+    return;
+  }
+  startUnit(next.id);
+}
+
+function skipUnit() {
+  const id=ST.currentUnit;
+  ST.mastered.add(id);
+  saveState();
+  let next=UNITS.find(u=>u.id>id && !ST.mastered.has(u.id));
+  if(!next) next=UNITS.find(u=>!ST.mastered.has(u.id));
+  if(!next){
+    alert('🎉 모든 개념을 완료했습니다! 최종 모의고사에 도전하세요!');
+    showLearnList();
+    return;
+  }
+  startUnit(next.id);
+}
+
+// ============================================================
+// EXAM
+// ============================================================
+function showExam() {
+  if (ST.examSubmitted) {
+    if (!confirm('이미 제출한 시험이 있습니다. 다시 시작하시겠습니까?')) return;
+    ST.examAnswers=new Array(20).fill(null);
+    ST.examSubmitted=false;
+    saveState();
+  }
+  renderExam();
+  showScreen('exam');
+}
+
+function renderExam() {
+  const el=document.getElementById('examQuestions');
+  el.innerHTML=UNITS.map((u,i)=>{
+    const q=u.exam;
+    const sel=ST.examAnswers[i];
+    return `<div class="card exam-q-wrap">
+      <div class="exam-q-header">문제 ${i+1} <span style="font-weight:400;color:#64748b;font-size:13px">· ${u.title}</span></div>
+      <div class="q-text">${q.q}</div>
+      ${q.c.map((ch,ci)=>`
+        <div class="exam-choice ${sel===ci?'selected':''}" id="ec${i}_${ci}" onclick="selectExamChoice(${i},${ci})">
+          <span style="font-weight:700;color:#64748b;margin-right:8px">${['①','②','③','④'][ci]}</span>${ch}
+        </div>`).join('')}
+    </div>`;
+  }).join('');
+  updateExamProgress();
+}
+
+function selectExamChoice(qi,ci) {
+  if(ST.examSubmitted) return;
+  ST.examAnswers[qi]=ci;
+  // update UI
+  for(let k=0;k<4;k++){
+    const el=document.getElementById(`ec${qi}_${k}`);
+    if(el) el.className='exam-choice'+(k===ci?' selected':'');
+  }
+  updateExamProgress();
+  saveState();
+}
+
+function updateExamProgress() {
+  const answered=ST.examAnswers.filter(a=>a!==null).length;
+  const pct=answered/20*100;
+  document.getElementById('examProgress').style.width=pct+'%';
+  document.getElementById('examProgressLabel').textContent=`${answered} / 20 답변`;
+  const btn=document.getElementById('examSubmitBtn');
+  const hint=document.getElementById('examSubmitHint');
+  if(answered>=20){
+    btn.style.opacity='1';
+    btn.style.pointerEvents='auto';
+    hint.textContent='모든 문제에 답했습니다. 제출하세요!';
+    hint.style.color='#16a34a';
+  } else {
+    btn.style.opacity='.5';
+    btn.style.pointerEvents='none';
+    hint.textContent=`${20-answered}문제 더 답해야 제출할 수 있습니다`;
+    hint.style.color='#64748b';
+  }
+}
+
+function submitExam() {
+  const unanswered=ST.examAnswers.filter(a=>a===null).length;
+  if(unanswered>0){
+    alert(`아직 ${unanswered}문제에 답하지 않았습니다.`);
+    return;
+  }
+  if(!confirm('최종 제출하시겠습니까? 제출 후에는 수정할 수 없습니다.')) return;
+  ST.examSubmitted=true;
+  saveState();
+  showResults();
+}
+
+// ============================================================
+// RESULTS
+// ============================================================
+function showResults() {
+  let correct=0;
+  UNITS.forEach((u,i)=>{
+    if(ST.examAnswers[i]===u.exam.a) correct++;
+  });
+  const score=correct*5;
+  const pass=score>=60;
+
+  document.getElementById('resultScore').textContent=score;
+  document.getElementById('resultScore').style.color=pass?'#16a34a':'#dc2626';
+
+  const vEl=document.getElementById('resultVerdict');
+  if(pass){
+    vEl.textContent='🎉 합격!';
+    vEl.className='verdict pass';
+  } else {
+    vEl.textContent='😢 불합격 — 다시 도전!';
+    vEl.className='verdict fail';
+  }
+
+  document.getElementById('correctCount').textContent=correct;
+  document.getElementById('wrongCount').textContent=20-correct;
+
+  const itemsEl=document.getElementById('resultItems');
+  itemsEl.innerHTML=UNITS.map((u,i)=>{
+    const isCorrect=ST.examAnswers[i]===u.exam.a;
+    const userAns=ST.examAnswers[i]!==null?u.exam.c[ST.examAnswers[i]]:'미답';
+    const correctAns=u.exam.c[u.exam.a];
+    return `<div class="result-item ${isCorrect?'correct':'wrong'}">
+      <div class="result-q">${i+1}번. ${u.exam.q}</div>
+      <div class="result-answer" style="font-size:13px">
+        내 답: <b>${userAns}</b> ${isCorrect?'✅':'❌'}
+        ${!isCorrect?` | 정답: <b style="color:#16a34a">${correctAns}</b>`:''}
+      </div>
+      <div class="result-exp">💡 ${u.exam.exp}</div>
+    </div>`;
+  }).join('');
+
+  showScreen('results');
+}
+
+// ============================================================
+// INIT
+// ============================================================
+loadState();
+showHome();
+</script>
+</body>
+</html>
