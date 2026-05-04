@@ -35,6 +35,9 @@ header h1{font-size:18px;flex:1}
 .choice-btn.correct .choice-num{background:#16a34a;color:white}
 .choice-btn.wrong .choice-num{background:#dc2626;color:white}
 .choice-btn.show-correct .choice-num{background:#16a34a;color:white}
+.deep-box{background:#fef2f2;border-left:4px solid #dc2626;padding:16px;border-radius:0 10px 10px 0;margin-top:12px;line-height:1.8;font-size:14px}
+.warn-card{border:2px solid #f59e0b!important}
+.danger-card{border:2px solid #dc2626!important;background:#fff8f8!important}
 .concept-box{background:#eff6ff;border-left:4px solid #2563eb;padding:16px;border-radius:0 10px 10px 0;margin-bottom:20px;line-height:1.7;font-size:15px}
 .explanation-box{background:#fef9c3;border-left:4px solid #eab308;padding:14px;border-radius:0 10px 10px 0;margin-top:14px;display:none;line-height:1.7;font-size:14px}
 .explanation-box.show{display:block}
@@ -162,7 +165,8 @@ header h1{font-size:18px;flex:1}
         <div class="streak-row" style="margin:0">
           <div class="streak-dot" id="dot1"></div>
           <div class="streak-dot" id="dot2"></div>
-          <span class="streak-label" id="streakLabel">연속 정답: 0/2</span>
+          <div class="streak-dot" id="dot3"></div>
+          <span class="streak-label" id="streakLabel">연속 정답: 0/3</span>
         </div>
       </div>
       <div class="q-text" id="practiceQText"></div>
@@ -729,15 +733,44 @@ f(a) = b 이면 → f⁻¹(b) = <b>a</b><br><br>
 ];
 
 // ============================================================
+// DEEP CONCEPTS — 3회 연속 오답 시 표시할 심화 설명
+// ============================================================
+const DEEP = {
+  0:`<b>📌 단계별 풀이법</b><br><br>① 같은 차수(x의 지수가 같은 것)끼리 묶습니다<br>② 각 묶음의 계수만 더합니다<br><br><b>예) A = 3x² + 2x,&nbsp; B = x² + 5</b><br>A + B = (3<b>+1</b>)x² + 2x + 5 = <b>4x² + 2x + 5</b><br><br>💡 x²은 x²끼리, x는 x끼리, 숫자는 숫자끼리!`,
+  1:`<b>📌 항등식이란?</b><br><br>어떤 x 값을 넣어도 항상 참 → 좌변 = 우변이 완전히 같아야 함<br>→ <b>같은 차수의 계수가 반드시 같습니다</b><br><br><b>예) ax² + 3x + b = 5x² + cx + 2</b><br>x²: a = 5<br>x : 3 = c → c = 3<br>상수: b = 2<br><br>💡 차수별로 계수를 나란히 맞춰보세요!`,
+  2:`<b>📌 나머지 정리 원리</b><br><br>f(x) = (x−a)·Q(x) + <b>나머지</b><br>x=a 대입: f(a) = 0 + 나머지 = <b>나머지</b><br><br><b>예) x²+3x+2 를 (x−1)로 나눈 나머지</b><br>f(1) = 1 + 3 + 2 = <b>6</b><br><br>💡 (x−k) → f(k),&nbsp; (x+k) → f(−k) 대입!`,
+  3:`<b>📌 공식 암기법</b><br><br>x³ − a³ = (x−a)(x² + ax + a²)<br>x³ + a³ = (x+a)(x² − ax + a²)<br><br><b>예) x³ − 8 = x³ − 2³ → a=2</b><br>= (x−<b>2</b>)(x² + <b>2</b>x + <b>4</b>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↑&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↑&nbsp;&nbsp;&nbsp;&nbsp;↑<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ax&nbsp;&nbsp;a²<br><br>💡 (x±a) 에서 a를 찾아 공식에 대입하면 끝!`,
+  4:`<b>📌 켤레복소수 원리</b><br><br>a+bi의 켤레 = <b>a−bi</b> (허수부 부호만 반대)<br><br><b>예) 2+ai 의 켤레 = b−5i</b><br>켤레 계산: 2 − ai = b − 5i<br>실수부: 2 = b<br>허수부: −a = −5 → a = 5<br>∴ a+b = 5+2 = <b>7</b><br><br>💡 켤레 만든 뒤 실수부/허수부 각각 비교!`,
+  5:`<b>📌 중근 조건 이해</b><br><br>중근 = 두 근이 같은 경우 → 판별식 D = 0<br><b>D = b² − 4ac = 0</b><br><br><b>예) x² − 6x + a = 0이 중근</b><br>(−6)² − 4a = 0<br>36 − 4a = 0<br>a = <b>9</b><br><br>💡 공식: a = (x항 계수)² ÷ 4`,
+  6:`<b>📌 근과 계수 원리</b><br><br>(x−α)(x−β) = x² −(α+β)x + <b>αβ</b><br>→ 상수항 = <b>두 근의 곱</b><br><br><b>예) 두 근이 3, 5 → x²−8x+a=0</b><br>a = 3 × 5 = <b>15</b><br>확인: (x−3)(x−5) = x²−8x+15 ✓<br><br>💡 상수항 = 두 근을 곱한 값!`,
+  7:`<b>📌 최대·최솟값 찾기</b><br><br>y = a(x−p)² + q 에서 꼭짓점 (p, q)<br>• a > 0 (아래로 볼록): 꼭짓점에서 <b>최솟값</b><br>• a < 0 (위로 볼록): 꼭짓점에서 <b>최댓값</b><br><br><b>예) 0≤x≤4, y=(x−2)²+1</b><br>꼭짓점 x=2가 범위 [0,4] 안 → 최솟값 = <b>1</b><br>끝점 x=0,4: y=5 → 최댓값 = 5<br><br>💡 꼭짓점이 범위 안에 있으면 꼭짓점값이 극값!`,
+  8:`<b>📌 근 대입법</b><br><br>x=k가 근이면 <b>f(k) = 0</b><br><br><b>예) x³+2x²−x+a=0의 한 근이 2</b><br>f(2) = 8 + 8 − 2 + a = 0<br>14 + a = 0<br>a = <b>−14</b><br><br>계산 순서: ① x에 숫자 대입 → ② 계산 → ③ a 구함<br><br>💡 그냥 x 자리에 숫자를 넣고 계산하면 끝!`,
+  9:`<b>📌 연립부등식 푸는 법</b><br><br>① 각 부등식을 따로 풀기<br>② 두 범위의 <b>공통 부분</b> 찾기<br><br><b>예) x+1 < 6 이고 3x > x+4</b><br>①: x < 5<br>②: 2x > 4 → x > 2<br>공통: <b>2 < x < 5</b><br><br>💡 수직선에 두 범위를 표시하고 겹치는 부분!`,
+  10:`<b>📌 내분점 공식</b><br><br>A(x₁,y₁), B(x₂,y₂)를 m:n 내분:<br>x = <b>(mx₂ + nx₁) ÷ (m+n)</b><br>y = <b>(my₂ + ny₁) ÷ (m+n)</b><br><br><b>예) A(1,2), B(5,6)을 1:1로 내분</b><br>x = (1×5 + 1×1) ÷ 2 = 6÷2 = 3<br>y = (1×6 + 1×2) ÷ 2 = 8÷2 = 4 → <b>(3,4)</b><br><br>💡 B에 m, A에 n을 곱하고 m+n으로 나눠요!`,
+  11:`<b>📌 거리 공식</b><br><br>원점에서 ax+by+c=0까지의 거리:<br>d = <b>|c| ÷ √(a²+b²)</b><br><br><b>예) 원점에서 4x+3y−10=0</b><br>분자: |−10| = 10<br>분모: √(16+9) = √25 = 5<br>d = 10÷5 = <b>2</b><br><br>💡 분자 = c절댓값, 분모 = a²+b²루트!`,
+  12:`<b>📌 접선 조건</b><br><br>x²+y²=r²에 직선 y=a가 접할 때:<br>반지름 = 원점→직선 거리<br>r = <b>|a|</b><br><br><b>예) x²+y²=9에 y=a가 접함</b><br>반지름 = √9 = 3<br>|a| = 3 → 자연수 a = <b>3</b><br><br>💡 반지름 = √(우변), 그 값이 |a|!`,
+  13:`<b>📌 대칭이동 정리</b><br><br>• x축 대칭: (x, y) → (x, <b>−y</b>)<br>• y축 대칭: (x, y) → (<b>−x</b>, y)<br>• 원점 대칭: (x, y) → (<b>−x, −y</b>) ← 둘 다!<br><br><b>예) (5, −3)의 원점 대칭</b><br>→ (−5, 3)<br><br>💡 원점 대칭 = x, y 둘 다 부호 반대!`,
+  14:`<b>📌 교집합 찾기</b><br><br>A ∩ B = A와 B 모두에 속한 원소<br><br><b>예) A={1,3,5,7}, B={3,6,7,9}</b><br>1 → B에 없음 ✗<br>3 → B에 있음 ✓<br>5 → B에 없음 ✗<br>7 → B에 있음 ✓<br>→ A ∩ B = <b>{3, 7}</b><br><br>💡 A의 원소를 하나씩 B에서 찾기!`,
+  15:`<b>📌 필요충분조건 이해</b><br><br>p ⟺ q = 두 조건의 진리집합이 완전히 같음<br><br><b>예) p: x=3, q: (x−a)²=0</b><br>q 풀기: x = a<br>p와 같으려면: a = <b>3</b><br><br><b>예) p: x=4, q: 2x−a=0</b><br>q 풀기: x = a/2<br>a/2 = 4 → a = <b>8</b><br><br>💡 q를 x=?로 풀고 p의 x값과 같다고 놓기!`,
+  16:`<b>📌 역함수 원리</b><br><br>f(a)=b 이면 → <b>f⁻¹(b) = a</b><br>(화살표 방향이 반대!)<br><br><b>예) f(2)=5, f(4)=7, f(6)=9</b><br>f⁻¹(7) = ? → "f(?)=7을 만족하는 ?"<br>f(4)=7 이므로 f⁻¹(7) = <b>4</b><br><br>💡 결과값을 가진 입력값을 찾으면 끝!`,
+  17:`<b>📌 점근선 이해</b><br><br>y = k/(x−p) + q 에서<br>• 수직 점근선: <b>x = p</b><br>• 수평 점근선: <b>y = q</b><br><br><b>예) y = 3/(x−2) + 4</b><br>x→∞ 이면 3/(x−2)→0 → y→4<br>수평 점근선: <b>y = 4</b><br><br>💡 +q 부분의 숫자가 바로 수평 점근선!`,
+  18:`<b>📌 순열 이해</b><br><br>순열 = 순서가 중요한 배열<br>nPr = n×(n−1)×…×(n−r+1)<br><br><b>예) 5명 중 반장·부반장 = ₅P₂</b><br>반장: 5가지, 부반장: 4가지<br>5 × 4 = <b>20</b><br><br>역할이 구분 → 순열 / 단순 선발 → 조합<br><br>💡 자리가 구분되면 순열, n부터 하나씩 줄여 곱하기!`,
+  19:`<b>📌 조합 이해</b><br><br>조합 = 순서 무관 선택<br>nCr = nPr ÷ r!<br><br><b>예) 6명 중 3명 = ₆C₃</b><br>= (6×5×4) ÷ (3×2×1) = 120÷6 = <b>20</b><br><br><b>₅C₂ 계산:</b><br>= (5×4) ÷ (2×1) = 20÷2 = <b>10</b><br><br>💡 순열에서 r!로 나누면 조합!`
+};
+
+// ============================================================
 // STATE
 // ============================================================
 let ST = {
   mastered: new Set(),
-  streaks: {},      // unitId -> consecutive correct count
-  qIndex: {},       // unitId -> current practice question index (cyclic)
+  streaks: {},       // unitId -> consecutive correct count
+  wrongStreaks: {},   // unitId -> consecutive wrong count
+  qIndex: {},        // unitId -> current practice question index (cyclic)
   currentUnit: 0,
-  selected: null,   // currently selected choice index
-  submitted: false, // whether current q was submitted
+  selected: null,    // 셔플된 선택지 기준 선택 인덱스
+  submitted: false,
+  choiceOrder: [],   // 현재 문제 선택지 셔플 순서 [원본인덱스, ...]
+  currentAnswerIdx: 0, // 셔플 후 정답의 위치
   examAnswers: new Array(20).fill(null),
   examSubmitted: false
 };
@@ -747,6 +780,7 @@ function saveState() {
     localStorage.setItem('kgs_st', JSON.stringify({
       mastered: [...ST.mastered],
       streaks: ST.streaks,
+      wrongStreaks: ST.wrongStreaks,
       qIndex: ST.qIndex,
       examAnswers: ST.examAnswers,
       examSubmitted: ST.examSubmitted
@@ -760,11 +794,21 @@ function loadState() {
     if (d) {
       ST.mastered = new Set(d.mastered||[]);
       ST.streaks = d.streaks||{};
+      ST.wrongStreaks = d.wrongStreaks||{};
       ST.qIndex = d.qIndex||{};
       ST.examAnswers = d.examAnswers||new Array(20).fill(null);
       ST.examSubmitted = d.examSubmitted||false;
     }
   } catch(e){}
+}
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length-1; i > 0; i--) {
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
 }
 
 // ============================================================
@@ -858,27 +902,38 @@ function startUnit(id) {
 function renderPractice() {
   const id = ST.currentUnit;
   const unit = UNITS[id];
-  const qi = ST.qIndex[id]||0;
-  const q = unit.practice[qi % unit.practice.length];
+  const qi = (ST.qIndex[id]||0) % unit.practice.length;
+  const q = unit.practice[qi];
   const streak = ST.streaks[id]||0;
+  const wrongStreak = ST.wrongStreaks[id]||0;
 
   document.getElementById('practiceTag').textContent=`유형 ${id+1}/20`;
   document.getElementById('practiceUnitTitle').textContent=`${unit.title} — ${unit.sub}`;
   document.getElementById('conceptBox').innerHTML=unit.concept;
-  document.getElementById('qProgress').textContent=`문제 ${(qi%unit.practice.length)+1}/${unit.practice.length}`;
+  document.getElementById('qProgress').textContent=`문제 ${qi+1}/${unit.practice.length}`;
 
-  // streak dots
+  // 정답 streak 점 3개
   document.getElementById('dot1').className='streak-dot'+(streak>=1?' filled':'');
   document.getElementById('dot2').className='streak-dot'+(streak>=2?' filled':'');
-  document.getElementById('streakLabel').textContent=`연속 정답: ${Math.min(streak,2)}/2`;
+  document.getElementById('dot3').className='streak-dot'+(streak>=3?' filled':'');
+  document.getElementById('streakLabel').textContent=`연속 정답: ${Math.min(streak,3)}/3`;
+
+  // 오답 연속 경고 표시
+  const qCard = document.getElementById('practiceQCard');
+  qCard.className = 'card' + (wrongStreak>=3?' danger-card': wrongStreak>=2?' warn-card':'');
 
   document.getElementById('practiceQText').innerHTML=q.q;
 
+  // 선택지 셔플
+  const order = shuffle([0,1,2,3]);
+  ST.choiceOrder = order;
+  ST.currentAnswerIdx = order.indexOf(q.a);
+
   const choicesEl = document.getElementById('practiceChoices');
-  choicesEl.innerHTML=q.c.map((ch,i)=>
-    `<button class="choice-btn" id="choice${i}" onclick="selectChoice(${i})" ${ST.submitted?'disabled':''}>
-      <span class="choice-num">${['①','②','③','④'][i]}</span>
-      <span>${ch}</span>
+  choicesEl.innerHTML = order.map((origIdx, dispIdx)=>
+    `<button class="choice-btn" id="choice${dispIdx}" onclick="selectChoice(${dispIdx})">
+      <span class="choice-num">${['①','②','③','④'][dispIdx]}</span>
+      <span>${q.c[origIdx]}</span>
     </button>`
   ).join('');
 
@@ -888,15 +943,13 @@ function renderPractice() {
 
   document.getElementById('submitPracticeBtn').style.display='none';
   document.getElementById('nextPracticeBtn').style.display='none';
-
-  if (ST.submitted) renderSubmittedState();
 }
 
-function selectChoice(idx) {
+function selectChoice(dispIdx) {
   if (ST.submitted) return;
-  ST.selected = idx;
+  ST.selected = dispIdx;
   document.querySelectorAll('.choice-btn').forEach((b,i)=>{
-    b.className='choice-btn'+(i===idx?' selected':'');
+    b.className='choice-btn'+(i===dispIdx?' selected':'');
   });
   document.getElementById('submitPracticeBtn').style.display='inline-block';
 }
@@ -904,61 +957,83 @@ function selectChoice(idx) {
 function submitPractice() {
   if (ST.selected===null) return;
   ST.submitted=true;
-  renderSubmittedState();
+  const id = ST.currentUnit;
+  const unit = UNITS[id];
+  const qi = (ST.qIndex[id]||0) % unit.practice.length;
+  const q = unit.practice[qi];
+  const correct = ST.selected === ST.currentAnswerIdx;
+
+  // 선택지 정오 표시 (셔플된 위치 기준)
+  document.querySelectorAll('.choice-btn').forEach((b,dispIdx)=>{
+    b.disabled=true;
+    if(dispIdx === ST.currentAnswerIdx) b.classList.add('correct');
+    else if(dispIdx === ST.selected && !correct) b.classList.add('wrong');
+  });
+
+  // streak 업데이트
+  if (correct) {
+    ST.streaks[id] = (ST.streaks[id]||0) + 1;
+    ST.wrongStreaks[id] = 0;
+  } else {
+    ST.streaks[id] = 0;
+    ST.wrongStreaks[id] = (ST.wrongStreaks[id]||0) + 1;
+  }
+
+  const streak = ST.streaks[id];
+  const wrongStreak = ST.wrongStreaks[id];
+
+  // streak 점 업데이트
+  document.getElementById('dot1').className='streak-dot'+(streak>=1?' filled':'');
+  document.getElementById('dot2').className='streak-dot'+(streak>=2?' filled':'');
+  document.getElementById('dot3').className='streak-dot'+(streak>=3?' filled':'');
+  document.getElementById('streakLabel').textContent=`연속 정답: ${Math.min(streak,3)}/3`;
+
+  // 카드 테두리 색상
+  const qCard = document.getElementById('practiceQCard');
+  qCard.className = 'card' + (wrongStreak>=3?' danger-card': wrongStreak>=2?' warn-card':'');
+
+  // 해설 박스 구성
+  const expEl = document.getElementById('practiceExp');
+  let expHTML = `<b>${correct?'✅ 정답입니다!':'❌ 틀렸습니다.'}</b><br><br><b>풀이:</b> ${q.exp}`;
+
+  if (!correct) {
+    if (wrongStreak === 2) {
+      expHTML += `<br><br>⚠️ <b>두 번 연속 틀렸어요.</b> 위의 개념 설명을 다시 읽어보세요!`;
+    } else if (wrongStreak >= 3) {
+      expHTML += `
+        <div class="deep-box">
+          <b>🚨 세 번 연속 틀렸습니다. 기초부터 다시 확인해봐요!</b><br><br>
+          ${DEEP[id]}
+        </div>`;
+    }
+  }
+
+  if (streak >= 3) {
+    expHTML += `<br><br>🎉 <b>3회 연속 정답! 이 개념을 완전히 이해했습니다!</b>`;
+  }
+
+  expEl.innerHTML = expHTML;
+  expEl.className = 'explanation-box show';
+  document.getElementById('submitPracticeBtn').style.display='none';
+
+  const nextBtn = document.getElementById('nextPracticeBtn');
+  if (streak >= 3) {
+    nextBtn.textContent = '다음 유형으로 →';
+    nextBtn.onclick = ()=>masterAndNext(id);
+  } else {
+    nextBtn.textContent = wrongStreak>=3 ? '다시 도전 →' : '다음 문제 →';
+    nextBtn.onclick = nextPractice;
+  }
+  nextBtn.style.display = 'inline-block';
+
   saveState();
 }
 
-function renderSubmittedState() {
-  const id=ST.currentUnit;
-  const unit=UNITS[id];
-  const qi=ST.qIndex[id]||0;
-  const q=unit.practice[qi%unit.practice.length];
-  const correct = ST.selected===q.a;
-
-  document.querySelectorAll('.choice-btn').forEach((b,i)=>{
-    b.disabled=true;
-    if(i===q.a) b.classList.add('correct');
-    else if(i===ST.selected && !correct) b.classList.add('wrong');
-  });
-
-  const expEl=document.getElementById('practiceExp');
-  expEl.innerHTML=`<b>${correct?'✅ 정답입니다!':'❌ 틀렸습니다.'}</b><br><br>
-  <b>풀이:</b> ${q.exp}`;
-  expEl.className='explanation-box show';
-
-  // Update streak
-  if(correct){
-    ST.streaks[id]=(ST.streaks[id]||0)+1;
-  } else {
-    ST.streaks[id]=0;
-  }
-
-  // Update streak dots immediately
-  const streak=ST.streaks[id]||0;
-  document.getElementById('dot1').className='streak-dot'+(streak>=1?' filled':'');
-  document.getElementById('dot2').className='streak-dot'+(streak>=2?' filled':'');
-  document.getElementById('streakLabel').textContent=`연속 정답: ${Math.min(streak,2)}/2`;
-
-  document.getElementById('submitPracticeBtn').style.display='none';
-
-  if(streak>=2){
-    // mastered!
-    expEl.innerHTML += `<br><br>🎉 <b>2회 연속 정답! 이 개념을 완전히 이해했습니다!</b>`;
-    document.getElementById('nextPracticeBtn').textContent='다음 유형으로 →';
-    document.getElementById('nextPracticeBtn').style.display='inline-block';
-    document.getElementById('nextPracticeBtn').onclick=()=>masterAndNext(id);
-  } else {
-    document.getElementById('nextPracticeBtn').textContent='다음 문제 →';
-    document.getElementById('nextPracticeBtn').style.display='inline-block';
-    document.getElementById('nextPracticeBtn').onclick=nextPractice;
-  }
-}
-
 function nextPractice() {
-  const id=ST.currentUnit;
-  ST.qIndex[id]=(ST.qIndex[id]||0)+1;
-  ST.selected=null;
-  ST.submitted=false;
+  const id = ST.currentUnit;
+  ST.qIndex[id] = ((ST.qIndex[id]||0) + 1) % UNITS[id].practice.length;
+  ST.selected = null;
+  ST.submitted = false;
   saveState();
   renderPractice();
 }
@@ -966,10 +1041,9 @@ function nextPractice() {
 function masterAndNext(id) {
   ST.mastered.add(id);
   saveState();
-  // find next unmastered
   let next = UNITS.find(u=>u.id>id && !ST.mastered.has(u.id));
-  if(!next) next = UNITS.find(u=>!ST.mastered.has(u.id));
-  if(!next){
+  if (!next) next = UNITS.find(u=>!ST.mastered.has(u.id));
+  if (!next) {
     alert('🎉 모든 개념을 완료했습니다! 최종 모의고사에 도전하세요!');
     showLearnList();
     return;
@@ -978,12 +1052,12 @@ function masterAndNext(id) {
 }
 
 function skipUnit() {
-  const id=ST.currentUnit;
+  const id = ST.currentUnit;
   ST.mastered.add(id);
   saveState();
-  let next=UNITS.find(u=>u.id>id && !ST.mastered.has(u.id));
-  if(!next) next=UNITS.find(u=>!ST.mastered.has(u.id));
-  if(!next){
+  let next = UNITS.find(u=>u.id>id && !ST.mastered.has(u.id));
+  if (!next) next = UNITS.find(u=>!ST.mastered.has(u.id));
+  if (!next) {
     alert('🎉 모든 개념을 완료했습니다! 최종 모의고사에 도전하세요!');
     showLearnList();
     return;
