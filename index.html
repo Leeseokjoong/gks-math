@@ -189,6 +189,17 @@ header h1{font-size:18px;flex:1}
   </div>
 </div>
 
+<!-- EXAM SELECT SCREEN -->
+<div class="screen" id="screen-exam-select">
+  <div class="container">
+    <div class="card" style="background:linear-gradient(135deg,#1e40af,#2563eb);color:white;padding:20px">
+      <div style="font-size:20px;font-weight:900;margin-bottom:4px">📝 최종 모의고사</div>
+      <div style="font-size:13px;opacity:.85">5회분 · 20문제 × 5점 = 100점 · 60점 이상 합격</div>
+    </div>
+    <div id="examSetList"></div>
+  </div>
+</div>
+
 <!-- EXAM SCREEN -->
 <div class="screen" id="screen-exam">
   <div class="container">
@@ -229,7 +240,7 @@ header h1{font-size:18px;flex:1}
       </div>
       <div style="display:flex;gap:8px">
         <button class="btn btn-outline btn-full" style="flex:1" onclick="showHome()">홈으로</button>
-        <button class="btn btn-primary btn-full" style="flex:1" onclick="showExam()">다시 도전</button>
+        <button class="btn btn-primary btn-full" style="flex:1" onclick="showExamSelect()">모의고사 목록</button>
       </div>
     </div>
     <div class="card">
@@ -768,6 +779,101 @@ const DEEP = {
 };
 
 // ============================================================
+// EXAM SETS (5회분)
+// ============================================================
+const EXAM_SETS = [
+  null, // 1회: UNITS[i].exam 사용
+  [
+    {q:"A = 2x² − 3, B = x² + 5 일 때, A + B는?",c:["2x²+1","3x²+2","3x²+3","4x²+2"],a:1,exp:"x²항: 2+1=3, 상수항: −3+5=2 → <b>3x²+2</b>"},
+    {q:"3x² + ax + 2 = bx² + 4x + 2 가 항등식일 때, a+b는?",c:["5","6","7","8"],a:2,exp:"x²항: b=3, x항: a=4 → a+b = <b>7</b>"},
+    {q:"f(x) = x² + 3x − 2 를 (x−2)로 나눈 나머지는?",c:["4","6","8","10"],a:2,exp:"f(2) = 4+6−2 = <b>8</b>"},
+    {q:"x³ − 27을 인수분해하면?",c:["(x−3)(x²+3x+9)","(x+3)(x²−3x+9)","(x−3)(x²−3x+9)","(x+3)(x²+3x+9)"],a:0,exp:"x³−3³ = (x−3)(x²+<b>3</b>x+<b>9</b>) → <b>(x−3)(x²+3x+9)</b>"},
+    {q:"3+ai의 켤레복소수가 b−4i일 때, a+b는?",c:["5","6","7","8"],a:2,exp:"켤레: 3−ai = b−4i → b=3, a=4 → a+b = <b>7</b>"},
+    {q:"x² − 8x + a = 0이 중근을 가질 때, a는?",c:["12","14","16","18"],a:2,exp:"D=0: 64−4a=0 → a = <b>16</b>"},
+    {q:"x² + bx + 8 = 0의 두 근이 2, 4일 때, b는?",c:["−4","−5","−6","−7"],a:2,exp:"두 근의 합 = −b = 2+4=6 → b = <b>−6</b>"},
+    {q:"y = (x−3)² + 2의 최솟값은?",c:["0","1","2","3"],a:2,exp:"꼭짓점 (3,2), a>0 → 최솟값 = <b>2</b>"},
+    {q:"x³ − x² + ax + 6 = 0의 한 근이 3일 때, a는?",c:["−6","−7","−8","−9"],a:2,exp:"f(3) = 27−9+3a+6=0 → 3a=−24 → a = <b>−8</b>"},
+    {q:"x−2 < 3 이고 2x > x+1 을 동시에 만족하는 자연수의 개수는?",c:["2","3","4","5"],a:1,exp:"x<5 이고 x>1 → 자연수: 2,3,4 → <b>3개</b>"},
+    {q:"A(2,4), B(8,10)을 1:2로 내분하는 점의 좌표는?",c:["(3,5)","(4,6)","(5,7)","(6,8)"],a:1,exp:"x=(1×8+2×2)/3=4, y=(1×10+2×4)/3=6 → <b>(4,6)</b>"},
+    {q:"원점에서 직선 3x+4y−15=0까지의 거리는?",c:["2","3","4","5"],a:1,exp:"d = |−15|/√(9+16) = 15/5 = <b>3</b>"},
+    {q:"원 x²+y²=16에 직선 y=b가 접할 때, 자연수 b는?",c:["2","3","4","5"],a:2,exp:"반지름=4, |b|=4 → b = <b>4</b>"},
+    {q:"점 (−2,5)를 y축에 대칭이동한 점의 좌표는?",c:["(2,−5)","(2,5)","(−2,−5)","(5,−2)"],a:1,exp:"y축 대칭: x 부호 반대 → <b>(2,5)</b>"},
+    {q:"A={2,4,6,8}, B={4,8,12,16} 일 때, A∩B는?",c:["{4}","{4,8}","{4,8,12}","{2,4,8}"],a:1,exp:"공통 원소: 4, 8 → A∩B = <b>{4,8}</b>"},
+    {q:"p: x=5, q: 3x−a=0 이 필요충분조건일 때, a는?",c:["10","12","15","18"],a:2,exp:"q: x=a/3=5 → a = <b>15</b>"},
+    {q:"f(3)=7, f(5)=9, f(7)=11 일 때, f⁻¹(9)는?",c:["3","4","5","6"],a:2,exp:"f(5)=9 → f⁻¹(9) = <b>5</b>"},
+    {q:"y = 4/(x−3) + 2의 수평 점근선은?",c:["y=1","y=2","y=3","y=4"],a:1,exp:"x→∞ 이면 4/(x−3)→0 → y→2 → 수평 점근선 <b>y=2</b>"},
+    {q:"서로 다른 6개의 책 중 2권을 순서 있게 나열하는 경우의 수는?",c:["20","24","28","30"],a:3,exp:"₆P₂ = 6×5 = <b>30</b>"},
+    {q:"7명의 학생 중 대표 2명을 선출하는 경우의 수는?",c:["14","18","21","24"],a:2,exp:"₇C₂ = (7×6)/2 = <b>21</b>"}
+  ],
+  [
+    {q:"A = 3x³ + 2x, B = x³ − 2x 일 때, A + B는?",c:["3x³","4x³","5x³","6x³"],a:1,exp:"x³: 3+1=4, x항: 2+(−2)=0 → <b>4x³</b>"},
+    {q:"ax³ + 2x² + b = 3x³ + cx² + 4 가 항등식일 때, a+b+c는?",c:["7","8","9","10"],a:2,exp:"x³: a=3, 상수: b=4, x²: c=2 → a+b+c = <b>9</b>"},
+    {q:"f(x) = 2x² − x + 1 을 (x+1)로 나눈 나머지는?",c:["2","3","4","5"],a:2,exp:"f(−1) = 2+1+1 = <b>4</b>"},
+    {q:"x³ + 1을 인수분해하면?",c:["(x+1)(x²+x+1)","(x−1)(x²+x+1)","(x+1)(x²−x+1)","(x−1)(x²−x+1)"],a:2,exp:"x³+1³ = (x+1)(x²−x+1) → <b>(x+1)(x²−x+1)</b>"},
+    {q:"a+3i의 켤레복소수가 5+bi일 때, a+b는?",c:["0","1","2","3"],a:2,exp:"켤레: a−3i = 5+bi → a=5, b=−3 → a+b = <b>2</b>"},
+    {q:"x² + 4x + a = 0이 중근을 가질 때, a는?",c:["2","3","4","5"],a:2,exp:"D=0: 16−4a=0 → a = <b>4</b>"},
+    {q:"x² − 7x + a = 0의 두 근이 3, 4일 때, a는?",c:["10","11","12","13"],a:2,exp:"두 근의 곱 = 3×4 = <b>12</b>"},
+    {q:"y = −(x−1)² + 4의 최댓값은?",c:["2","3","4","5"],a:2,exp:"꼭짓점 (1,4), a<0 → 최댓값 = <b>4</b>"},
+    {q:"x³ + ax² − 6x + 4 = 0의 한 근이 1일 때, a는?",c:["0","1","2","3"],a:1,exp:"f(1) = 1+a−6+4=0 → a = <b>1</b>"},
+    {q:"2x−1 > 3 이고 x+2 < 8 을 동시에 만족하는 자연수의 개수는?",c:["2","3","4","5"],a:1,exp:"x>2 이고 x<6 → 자연수: 3,4,5 → <b>3개</b>"},
+    {q:"A(0,0), B(6,9)를 2:1로 내분하는 점의 좌표는?",c:["(3,4)","(4,5)","(4,6)","(5,7)"],a:2,exp:"x=(2×6+1×0)/3=4, y=(2×9+1×0)/3=6 → <b>(4,6)</b>"},
+    {q:"원점에서 직선 5x+12y−26=0까지의 거리는?",c:["1","2","3","4"],a:1,exp:"d = |−26|/√(25+144) = 26/13 = <b>2</b>"},
+    {q:"원 x²+y²=25에 직선 x=a가 접할 때, 자연수 a는?",c:["3","4","5","6"],a:2,exp:"반지름=5, |a|=5 → a = <b>5</b>"},
+    {q:"점 (4,−3)을 x축에 대칭이동한 점의 좌표는?",c:["(−4,3)","(4,3)","(−4,−3)","(3,4)"],a:1,exp:"x축 대칭: y 부호 반대 → <b>(4,3)</b>"},
+    {q:"A={1,2,3,4,5}, B={2,4,6,8} 일 때, A∩B는?",c:["{2}","{2,4}","{2,4,6}","{1,2,4}"],a:1,exp:"공통 원소: 2, 4 → A∩B = <b>{2,4}</b>"},
+    {q:"p: x=6, q: 2x−a=0 이 필요충분조건일 때, a는?",c:["8","10","12","14"],a:2,exp:"q: x=a/2=6 → a = <b>12</b>"},
+    {q:"f(1)=4, f(4)=7, f(7)=10 일 때, f⁻¹(4)는?",c:["1","2","3","4"],a:0,exp:"f(1)=4 → f⁻¹(4) = <b>1</b>"},
+    {q:"y = 2/(x+1) − 3의 수평 점근선은?",c:["y=−1","y=−2","y=−3","y=−4"],a:2,exp:"x→∞ 이면 2/(x+1)→0 → y→−3 → 수평 점근선 <b>y=−3</b>"},
+    {q:"5명 중 회장·부회장·총무를 각 1명씩 뽑는 경우의 수는?",c:["40","50","60","70"],a:2,exp:"₅P₃ = 5×4×3 = <b>60</b>"},
+    {q:"8명의 학생 중 3명을 선택하는 경우의 수는?",c:["40","48","56","64"],a:2,exp:"₈C₃ = (8×7×6)/(3×2×1) = <b>56</b>"}
+  ],
+  [
+    {q:"A = x² − 2x + 1, B = 2x² + x − 3 일 때, A − B는?",c:["−x²−3x+4","−x²+3x−4","x²−3x+4","x²+3x−4"],a:0,exp:"A−B = (1−2)x²+(−2−1)x+(1+3) = <b>−x²−3x+4</b>"},
+    {q:"a(x+1) + b(x−1) = 4x + 2 가 항등식일 때, a+b는?",c:["2","3","4","5"],a:2,exp:"(a+b)x+(a−b)=4x+2 → a+b=4, a−b=2 → a=3,b=1 → a+b = <b>4</b>"},
+    {q:"f(x) = x³ + 2x − 5 를 (x−1)로 나눈 나머지는?",c:["−3","−2","−1","0"],a:1,exp:"f(1) = 1+2−5 = <b>−2</b>"},
+    {q:"8x³ − 1을 인수분해하면?",c:["(2x−1)(4x²+2x+1)","(2x+1)(4x²−2x+1)","(2x−1)(4x²−2x+1)","(2x+1)(4x²+2x+1)"],a:0,exp:"(2x)³−1³ = (2x−1)(4x²+2x+1) → <b>(2x−1)(4x²+2x+1)</b>"},
+    {q:"(2+ai)의 켤레복소수가 b−5i일 때, a+b는?",c:["5","6","7","8"],a:2,exp:"켤레: 2−ai = b−5i → b=2, a=5 → a+b = <b>7</b>"},
+    {q:"x² − 10x + a = 0이 중근을 가질 때, a는?",c:["20","22","25","28"],a:2,exp:"D=0: 100−4a=0 → a = <b>25</b>"},
+    {q:"x² − ax + 6 = 0의 두 근이 2, 3일 때, a는?",c:["3","4","5","6"],a:2,exp:"두 근의 합 = a = 2+3 = <b>5</b>"},
+    {q:"y = 2(x−1)² − 3에서 x=2일 때 y의 값은?",c:["−3","−2","−1","0"],a:2,exp:"y = 2(2−1)²−3 = 2−3 = <b>−1</b>"},
+    {q:"x³ − 2x² + ax − 4 = 0의 한 근이 2일 때, a는?",c:["1","2","3","4"],a:1,exp:"f(2) = 8−8+2a−4=0 → 2a=4 → a = <b>2</b>"},
+    {q:"x+3 > 5 이고 3x < x+8 을 동시에 만족하는 자연수의 개수는?",c:["1","2","3","4"],a:0,exp:"x>2 이고 x<4 → 자연수: 3 → <b>1개</b>"},
+    {q:"A(−2,1), B(4,7)을 1:2로 내분하는 점의 좌표는?",c:["(0,2)","(0,3)","(1,3)","(1,4)"],a:1,exp:"x=(1×4+2×(−2))/3=0, y=(1×7+2×1)/3=3 → <b>(0,3)</b>"},
+    {q:"원점에서 직선 8x+6y−20=0까지의 거리는?",c:["1","2","3","4"],a:1,exp:"d = |−20|/√(64+36) = 20/10 = <b>2</b>"},
+    {q:"원 x²+y²=4에 직선 y=a가 접할 때, 자연수 a는?",c:["1","2","3","4"],a:1,exp:"반지름=2, |a|=2 → a = <b>2</b>"},
+    {q:"점 (3,4)를 원점에 대칭이동한 점의 좌표는?",c:["(−3,4)","(3,−4)","(−3,−4)","(4,3)"],a:2,exp:"원점 대칭: x,y 부호 모두 반대 → <b>(−3,−4)</b>"},
+    {q:"A={x|x는 6의 약수}, B={1,2,4,8} 일 때, A∩B는?",c:["{1}","{1,2}","{1,2,3}","{1,2,6}"],a:1,exp:"A={1,2,3,6}, B={1,2,4,8} → A∩B = <b>{1,2}</b>"},
+    {q:"p: x=4, q: 2x−a=0 이 필요충분조건일 때, a는?",c:["6","7","8","9"],a:2,exp:"q: x=a/2=4 → a = <b>8</b>"},
+    {q:"f(2)=5, f(5)=8, f(8)=11 일 때, f⁻¹(5)는?",c:["1","2","3","4"],a:1,exp:"f(2)=5 → f⁻¹(5) = <b>2</b>"},
+    {q:"y = 5/(x−1) + 3의 수평 점근선은?",c:["y=1","y=2","y=3","y=5"],a:2,exp:"x→∞ 이면 5/(x−1)→0 → y→3 → 수평 점근선 <b>y=3</b>"},
+    {q:"4가지 서로 다른 색 중 2가지를 택하여 위·아래에 칠하는 경우의 수는?",c:["8","10","12","14"],a:2,exp:"₄P₂ = 4×3 = <b>12</b>"},
+    {q:"10명 중 대표 2명을 선출하는 경우의 수는?",c:["35","40","45","50"],a:2,exp:"₁₀C₂ = (10×9)/2 = <b>45</b>"}
+  ],
+  [
+    {q:"A = x² + 3x, B = 2x² − x + 4 일 때, A − B는?",c:["−x²+4x−4","−x²+4x+4","x²+4x−4","x²+2x+4"],a:0,exp:"A−B = (1−2)x²+(3+1)x+(0−4) = <b>−x²+4x−4</b>"},
+    {q:"(a+b)x + (a−b) = 6x + 2 가 항등식일 때, a+b는?",c:["4","5","6","7"],a:2,exp:"x항: a+b=6, 상수항: a−b=2 → a=4,b=2 → a+b = <b>6</b>"},
+    {q:"f(x) = x² − 2x + 3 을 (x−3)으로 나눈 나머지는?",c:["4","5","6","7"],a:2,exp:"f(3) = 9−6+3 = <b>6</b>"},
+    {q:"x³ + 8을 인수분해하면?",c:["(x+2)(x²+2x+4)","(x−2)(x²+2x+4)","(x+2)(x²−2x+4)","(x−2)(x²−2x+4)"],a:2,exp:"x³+2³ = (x+2)(x²−2x+4) → <b>(x+2)(x²−2x+4)</b>"},
+    {q:"(a+2i)의 켤레복소수가 3−bi일 때, a+b는?",c:["3","4","5","6"],a:2,exp:"켤레: a−2i = 3−bi → a=3, b=2 → a+b = <b>5</b>"},
+    {q:"x² − 6x + a = 0이 중근을 가질 때, a는?",c:["7","8","9","10"],a:2,exp:"D=0: 36−4a=0 → a = <b>9</b>"},
+    {q:"x² − bx + 12 = 0의 두 근이 3, 4일 때, b는?",c:["5","6","7","8"],a:2,exp:"두 근의 합 = b = 3+4 = <b>7</b>"},
+    {q:"y = (x+2)² − 5의 꼭짓점 좌표는?",c:["(2,5)","(−2,5)","(2,−5)","(−2,−5)"],a:3,exp:"y=a(x−p)²+q 형태 → 꼭짓점 (p,q) = <b>(−2,−5)</b>"},
+    {q:"x³ + 3x² + ax − 4 = 0의 한 근이 1일 때, a는?",c:["−2","−1","0","1"],a:2,exp:"f(1) = 1+3+a−4=0 → a = <b>0</b>"},
+    {q:"3x > x+4 이고 x+5 < 2x+3 을 동시에 만족하는 가장 작은 자연수는?",c:["2","3","4","5"],a:1,exp:"2x>4→x>2, −x<−2→x>2 → 공통: x>2 → 가장 작은 자연수 = <b>3</b>"},
+    {q:"A(1,3), B(7,9)를 2:1로 내분하는 점의 좌표는?",c:["(3,5)","(4,6)","(5,7)","(6,8)"],a:2,exp:"x=(2×7+1×1)/3=5, y=(2×9+1×3)/3=7 → <b>(5,7)</b>"},
+    {q:"원점에서 직선 6x+8y−30=0까지의 거리는?",c:["2","3","4","5"],a:1,exp:"d = |−30|/√(36+64) = 30/10 = <b>3</b>"},
+    {q:"원 x²+y²=36에 직선 y=a가 접할 때, 자연수 a는?",c:["4","5","6","7"],a:2,exp:"반지름=6, |a|=6 → a = <b>6</b>"},
+    {q:"점 (−3,2)를 x축에 대칭이동한 점의 좌표는?",c:["(3,2)","(−3,2)","(3,−2)","(−3,−2)"],a:3,exp:"x축 대칭: y 부호 반대 → <b>(−3,−2)</b>"},
+    {q:"A={1,3,5,7,9}, B={3,6,9,12} 일 때, n(A∩B)는?",c:["1","2","3","4"],a:1,exp:"A∩B={3,9} → n(A∩B) = <b>2</b>"},
+    {q:"p: x=7, q: x−a=0 이 필요충분조건일 때, a는?",c:["5","6","7","8"],a:2,exp:"q: x=a=7 → a = <b>7</b>"},
+    {q:"f(0)=3, f(3)=6, f(6)=9 일 때, f⁻¹(6)는?",c:["0","2","3","6"],a:2,exp:"f(3)=6 → f⁻¹(6) = <b>3</b>"},
+    {q:"y = 1/(x+2) + 5의 수평 점근선은?",c:["y=1","y=2","y=5","y=7"],a:2,exp:"x→∞ 이면 1/(x+2)→0 → y→5 → 수평 점근선 <b>y=5</b>"},
+    {q:"서로 다른 7개의 공 중 2개를 택하여 나열하는 경우의 수는?",c:["36","40","42","48"],a:2,exp:"₇P₂ = 7×6 = <b>42</b>"},
+    {q:"6명 중 대표 3명을 선출하는 경우의 수는?",c:["15","18","20","24"],a:2,exp:"₆C₃ = (6×5×4)/(3×2×1) = <b>20</b>"}
+  ]
+];
+
+// ============================================================
 // STATE
 // ============================================================
 let ST = {
@@ -780,8 +886,10 @@ let ST = {
   submitted: false,
   choiceOrder: [],   // 현재 문제 선택지 셔플 순서 [원본인덱스, ...]
   currentAnswerIdx: 0, // 셔플 후 정답의 위치
+  currentExam: 0,
   examAnswers: new Array(20).fill(null),
-  examSubmitted: false
+  examSubmitted: false,
+  examScores: new Array(5).fill(null)
 };
 
 function saveState() {
@@ -791,8 +899,10 @@ function saveState() {
       streaks: ST.streaks,
       wrongStreaks: ST.wrongStreaks,
       qIndex: ST.qIndex,
+      currentExam: ST.currentExam,
       examAnswers: ST.examAnswers,
-      examSubmitted: ST.examSubmitted
+      examSubmitted: ST.examSubmitted,
+      examScores: ST.examScores
     }));
   } catch(e){}
 }
@@ -805,8 +915,10 @@ function loadState() {
       ST.streaks = d.streaks||{};
       ST.wrongStreaks = d.wrongStreaks||{};
       ST.qIndex = d.qIndex||{};
+      ST.currentExam = d.currentExam||0;
       ST.examAnswers = d.examAnswers||new Array(20).fill(null);
       ST.examSubmitted = d.examSubmitted||false;
+      ST.examScores = d.examScores||new Array(5).fill(null);
     }
   } catch(e){}
 }
@@ -836,9 +948,12 @@ function showScreen(id) {
     title.textContent='📖 학습 모드';
   } else if (id==='practice') {
     backBtn.style.display='inline-block';
-  } else if (id==='exam') {
+  } else if (id==='exam-select') {
     backBtn.style.display='inline-block';
     title.textContent='📝 최종 모의고사';
+  } else if (id==='exam') {
+    backBtn.style.display='inline-block';
+    title.textContent=`📝 모의고사 ${ST.currentExam+1}회`;
   } else if (id==='results') {
     backBtn.style.display='inline-block';
     title.textContent='📊 채점 결과';
@@ -852,8 +967,9 @@ function goBack() {
   const id = active.id.replace('screen-','');
   if (id==='list') showHome();
   else if (id==='practice') showLearnList();
-  else if (id==='exam') showHome();
-  else if (id==='results') showHome();
+  else if (id==='exam-select') showHome();
+  else if (id==='exam') showExamSelect();
+  else if (id==='results') showExamSelect();
 }
 
 function showHome() {
@@ -1077,21 +1193,57 @@ function skipUnit() {
 // ============================================================
 // EXAM
 // ============================================================
+function getExamSet(idx) {
+  if (idx === 0) return UNITS.map(u => u.exam);
+  return EXAM_SETS[idx];
+}
+
 function showExam() {
-  if (ST.examSubmitted) {
-    if (!confirm('이미 제출한 시험이 있습니다. 다시 시작하시겠습니까?')) return;
-    ST.examAnswers=new Array(20).fill(null);
-    ST.examSubmitted=false;
-    saveState();
-  }
+  showExamSelect();
+}
+
+function showExamSelect() {
+  const el = document.getElementById('examSetList');
+  el.innerHTML = [1,2,3,4,5].map((num, idx) => {
+    const score = ST.examScores[idx];
+    const hasScore = score !== null;
+    const pass = hasScore && score >= 60;
+    return `<div class="card" style="cursor:pointer;border:2px solid ${hasScore?(pass?'#16a34a':'#dc2626'):'#e2e8f0'}" onclick="startExam(${idx})">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <div>
+          <div style="font-size:17px;font-weight:800">📝 모의고사 ${num}회</div>
+          <div style="font-size:13px;color:#64748b;margin-top:3px">20문제 · 5점×20 = 100점</div>
+        </div>
+        <div style="text-align:right">
+          ${hasScore
+            ? `<div style="font-size:22px;font-weight:900;color:${pass?'#16a34a':'#dc2626'}">${score}점</div>
+               <div style="font-size:12px;color:${pass?'#16a34a':'#dc2626'};font-weight:700">${pass?'합격 ✅':'불합격 ❌'}</div>`
+            : `<div style="font-size:13px;color:#94a3b8">미응시</div>`
+          }
+        </div>
+      </div>
+      <div style="margin-top:12px">
+        <button class="btn btn-primary btn-full btn-sm" onclick="event.stopPropagation();startExam(${idx})">${hasScore?'다시 도전 →':'시작하기 →'}</button>
+      </div>
+    </div>`;
+  }).join('');
+  showScreen('exam-select');
+}
+
+function startExam(idx) {
+  ST.currentExam = idx;
+  ST.examAnswers = new Array(20).fill(null);
+  ST.examSubmitted = false;
+  saveState();
   renderExam();
   showScreen('exam');
 }
 
 function renderExam() {
+  const questions = getExamSet(ST.currentExam);
   const el=document.getElementById('examQuestions');
-  el.innerHTML=UNITS.map((u,i)=>{
-    const q=u.exam;
+  el.innerHTML=questions.map((q,i)=>{
+    const u=UNITS[i];
     const sel=ST.examAnswers[i];
     return `<div class="card exam-q-wrap">
       <div class="exam-q-header">문제 ${i+1} <span style="font-weight:400;color:#64748b;font-size:13px">· ${u.title}</span></div>
@@ -1146,6 +1298,10 @@ function submitExam() {
   }
   if(!confirm('최종 제출하시겠습니까? 제출 후에는 수정할 수 없습니다.')) return;
   ST.examSubmitted=true;
+  // 점수 계산 후 저장
+  const questions=getExamSet(ST.currentExam);
+  const correct=questions.filter((q,i)=>ST.examAnswers[i]===q.a).length;
+  ST.examScores[ST.currentExam]=correct*5;
   saveState();
   showResults();
 }
@@ -1154,9 +1310,10 @@ function submitExam() {
 // RESULTS
 // ============================================================
 function showResults() {
+  const questions=getExamSet(ST.currentExam);
   let correct=0;
-  UNITS.forEach((u,i)=>{
-    if(ST.examAnswers[i]===u.exam.a) correct++;
+  questions.forEach((q,i)=>{
+    if(ST.examAnswers[i]===q.a) correct++;
   });
   const score=correct*5;
   const pass=score>=60;
@@ -1177,17 +1334,18 @@ function showResults() {
   document.getElementById('wrongCount').textContent=20-correct;
 
   const itemsEl=document.getElementById('resultItems');
-  itemsEl.innerHTML=UNITS.map((u,i)=>{
-    const isCorrect=ST.examAnswers[i]===u.exam.a;
-    const userAns=ST.examAnswers[i]!==null?u.exam.c[ST.examAnswers[i]]:'미답';
-    const correctAns=u.exam.c[u.exam.a];
+  itemsEl.innerHTML=questions.map((q,i)=>{
+    const u=UNITS[i];
+    const isCorrect=ST.examAnswers[i]===q.a;
+    const userAns=ST.examAnswers[i]!==null?q.c[ST.examAnswers[i]]:'미답';
+    const correctAns=q.c[q.a];
     return `<div class="result-item ${isCorrect?'correct':'wrong'}">
-      <div class="result-q">${i+1}번. ${u.exam.q}</div>
+      <div class="result-q">${i+1}번. ${q.q}</div>
       <div class="result-answer" style="font-size:13px">
         내 답: <b>${userAns}</b> ${isCorrect?'✅':'❌'}
         ${!isCorrect?` | 정답: <b style="color:#16a34a">${correctAns}</b>`:''}
       </div>
-      <div class="result-exp">💡 ${u.exam.exp}</div>
+      <div class="result-exp">💡 ${q.exp}</div>
     </div>`;
   }).join('');
 
