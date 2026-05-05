@@ -89,6 +89,27 @@ header h1{font-size:18px;flex:1}
 .info-box-num{font-size:28px;font-weight:900}
 .info-box-label{font-size:12px;color:#64748b;margin-top:2px}
 @media(max-width:480px){.container{padding:10px}.card{padding:16px}.score-num{font-size:48px}.grid2{grid-template-columns:1fr}}
+
+/* ── 공식 채우기 인터랙티브 데모 공통 ── */
+.fi-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.fi-point-group{display:flex;align-items:center;gap:4px;background:white;border:2px solid #e2e8f0;border-radius:10px;padding:7px 11px}
+.fi-plbl{font-weight:800;font-size:14px}
+.fi-comma{color:#94a3b8;margin:0 2px;font-size:14px}
+.fi-ratio{background:#fef3c7;border:2px solid #f59e0b;border-radius:20px;padding:4px 10px;font-weight:700;color:#92400e;font-size:13px;white-space:nowrap}
+.fi-chip{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:32px;padding:0 8px;background:#2563eb;color:white;border-radius:8px;font-size:16px;font-weight:700;cursor:grab;touch-action:none;user-select:none;transition:transform .12s,box-shadow .12s}
+.fi-chip:active{cursor:grabbing}
+.fi-chip.fi-used{background:#86efac!important;color:#15803d!important;cursor:default!important}
+.fi-formula-box{background:white;border:2px solid #e2e8f0;border-radius:12px;padding:14px 16px;margin-bottom:8px}
+.fi-fline{display:flex;align-items:center;gap:5px;flex-wrap:wrap;line-height:2}
+.fi-ft{font-size:15px;font-weight:600;color:#334155}
+.fi-slot{display:inline-flex;align-items:center;justify-content:center;min-width:38px;height:36px;padding:0 7px;border:2.5px dashed #93c5fd;border-radius:8px;background:#eff6ff;color:#93c5fd;font-size:12px;font-weight:700;transition:.18s;white-space:nowrap}
+.fi-slot.fi-hint{border-color:#f59e0b!important;background:#fffbeb!important;color:#d97706!important;transform:scale(1.12)}
+.fi-slot.fi-filled{border-style:solid!important;border-color:#16a34a!important;background:#dcfce7!important;color:#15803d!important;font-size:15px!important}
+.fi-slot.fi-wrong{border-color:#dc2626!important;background:#fee2e2!important;animation:fiShake .32s}
+.fi-result{display:none;margin-top:10px;padding:14px;background:linear-gradient(135deg,#1d4ed8,#0891b2);color:white;border-radius:12px;text-align:center;line-height:2;font-size:15px;font-weight:700}
+.fi-reset{background:none;border:1px solid #cbd5e1;border-radius:6px;padding:4px 12px;font-size:12px;color:#64748b;cursor:pointer;margin-top:6px}
+.fi-reset:hover{background:#f1f5f9}
+@keyframes fiShake{0%,100%{transform:translateX(0)}30%{transform:translateX(-5px)}70%{transform:translateX(5px)}}
 </style>
 </head>
 <body>
@@ -528,14 +549,48 @@ x²+bx+a=0이 중근이 되려면 <b>(x + b/2)²</b> 꼴이 되어야 해.<br>
   },
   {
     id:10, title:"선분의 내분점", sub:"내분점 공식",
-    concept:`A, B를 m:n으로 내분하는 점 공식 — <b>B에 m, A에 n을 곱해서 더하고 (m+n)으로 나눠!</b><br><br>
-x좌표 = (m×Bx + n×Ax) ÷ (m+n)<br>
-y좌표 = (m×By + n×Ay) ÷ (m+n)<br><br>
-예) A(1,2), B(4,5)를 2:1로 내분<br>
-→ x = (2×4 + 1×1) ÷ 3 = 9÷3 = <b>3</b><br>
-→ y = (2×5 + 1×2) ÷ 3 = 12÷3 = <b>4</b><br>
-→ 정답: <b>(3, 4)</b><br><br>
-💡 헷갈리면: 비율이 2:1이면 B 쪽을 2배, A 쪽을 1배!`,
+    concept:`<div id="fi-demo-10">
+<div style="font-size:13px;color:#334155;background:#f8fafc;border-radius:8px;padding:8px 12px;margin-bottom:12px;line-height:1.6"><b>규칙: B에 m배 · A에 n배</b> 곱해서 더하고 <b>(m+n)</b>으로 나눠!<br>값을 드래그해서 공식의 빈 칸에 넣어봐.</div>
+<div class="fi-row">
+  <div class="fi-point-group">
+    <span class="fi-plbl" style="color:#2563eb">A (</span>
+    <span class="fi-chip" data-type="Ax" data-val="1">1</span>
+    <span class="fi-comma">,</span>
+    <span class="fi-chip" data-type="Ay" data-val="2">2</span>
+    <span class="fi-plbl">)</span>
+  </div>
+  <div class="fi-ratio">2 : 1 내분</div>
+  <div class="fi-point-group">
+    <span class="fi-plbl" style="color:#dc2626">B (</span>
+    <span class="fi-chip" data-type="Bx" data-val="4">4</span>
+    <span class="fi-comma">,</span>
+    <span class="fi-chip" data-type="By" data-val="5">5</span>
+    <span class="fi-plbl">)</span>
+  </div>
+</div>
+<div class="fi-formula-box">
+  <div class="fi-fline">
+    <span class="fi-ft">x = (</span><b style="color:#2563eb;font-size:16px">2</b><span class="fi-ft">×</span>
+    <span class="fi-slot" data-needs="Bx">Bx?</span>
+    <span class="fi-ft">+</span><b style="color:#16a34a;font-size:16px">1</b><span class="fi-ft">×</span>
+    <span class="fi-slot" data-needs="Ax">Ax?</span>
+    <span class="fi-ft">) ÷ 3</span>
+  </div>
+  <div class="fi-fline" style="margin-top:8px">
+    <span class="fi-ft">y = (</span><b style="color:#2563eb;font-size:16px">2</b><span class="fi-ft">×</span>
+    <span class="fi-slot" data-needs="By">By?</span>
+    <span class="fi-ft">+</span><b style="color:#16a34a;font-size:16px">1</b><span class="fi-ft">×</span>
+    <span class="fi-slot" data-needs="Ay">Ay?</span>
+    <span class="fi-ft">) ÷ 3</span>
+  </div>
+</div>
+<div class="fi-result" id="fi-result-10">
+  x = (2×<b>4</b> + 1×<b>1</b>) ÷ 3 = <b style="font-size:19px">3</b><br>
+  y = (2×<b>5</b> + 1×<b>2</b>) ÷ 3 = <b style="font-size:19px">4</b><br>
+  <span style="font-size:17px">내분점 = <b>(3, 4) 🎉</b></span>
+</div>
+<div style="text-align:center"><button class="fi-reset" onclick="resetFiDemo('fi-demo-10')">↺ 다시하기</button></div>
+</div>`,
     practice:[
       {q:"두 점 A(−3, 0), B(1, 4)를 3:1로 내분하는 점의 좌표는?",
        c:["(−1, 2)","(0, 3)","(1, 3)","(1, 4)"],a:1,
@@ -556,13 +611,44 @@ y좌표 = (m×By + n×Ay) ÷ (m+n)<br><br>
   },
   {
     id:11, title:"점과 직선 사이의 거리", sub:"거리 공식",
-    concept:`원점(0,0)에서 직선 ax+by+c=0까지의 거리 — 공식 딱 하나만 외워!<br><br>
-<b>d = |c| ÷ √(a²+b²)</b><br><br>
-예) 원점에서 3x+4y−10=0까지의 거리<br>
-→ 분자: |−10| = <b>10</b><br>
-→ 분모: √(3²+4²) = √(9+16) = √25 = <b>5</b><br>
-→ d = 10÷5 = <b>2</b><br><br>
-💡 분자 = 상수항(c)의 절댓값 / 분모 = x,y 계수를 각각 제곱해서 더한 뒤 루트!`,
+    concept:`<div id="fi-demo-11">
+<div style="font-size:13px;color:#334155;background:#f8fafc;border-radius:8px;padding:8px 12px;margin-bottom:12px;line-height:1.6"><b>공식: d = |c| ÷ √(a²+b²)</b><br>직선 ax+by+c=0의 계수 a, b, c를 각 자리에 드래그해 넣어봐!</div>
+<div class="fi-row">
+  <div class="fi-point-group" style="gap:6px">
+    <span class="fi-plbl" style="color:#7c3aed">직선:</span>
+    <span class="fi-chip" data-type="ca" data-val="3" style="background:#7c3aed">3</span>
+    <span style="font-size:14px;font-weight:700">x +</span>
+    <span class="fi-chip" data-type="cb" data-val="4" style="background:#7c3aed">4</span>
+    <span style="font-size:14px;font-weight:700">y −</span>
+    <span class="fi-chip" data-type="cc" data-val="10" style="background:#dc2626">10</span>
+    <span style="font-size:14px;font-weight:700">= 0</span>
+  </div>
+</div>
+<div class="fi-formula-box">
+  <div class="fi-fline">
+    <span class="fi-ft">d =</span>
+    <span style="display:inline-flex;flex-direction:column;align-items:center;gap:3px">
+      <span style="display:flex;align-items:center;gap:4px;border-bottom:2px solid #334155;padding-bottom:3px">
+        <span class="fi-ft">|</span><span class="fi-slot" data-needs="cc">c?</span><span class="fi-ft">|</span>
+      </span>
+      <span style="display:flex;align-items:center;gap:4px">
+        <span class="fi-ft">√(</span>
+        <span class="fi-slot" data-needs="ca">a?</span>
+        <span class="fi-ft">²+</span>
+        <span class="fi-slot" data-needs="cb">b?</span>
+        <span class="fi-ft">²)</span>
+      </span>
+    </span>
+    <span class="fi-ft">=</span>
+    <span class="fi-ft" id="fi-11-step" style="color:#64748b;font-size:13px"></span>
+  </div>
+</div>
+<div class="fi-result" id="fi-result-11">
+  d = |−10| ÷ √(3²+4²) = 10 ÷ √25 = 10 ÷ <b>5</b> = <b style="font-size:19px">2</b> 🎉<br>
+  <span style="font-size:13px;opacity:.85">분자 = |상수항| · 분모 = √(x계수²+y계수²)</span>
+</div>
+<div style="text-align:center"><button class="fi-reset" onclick="resetFiDemo('fi-demo-11')">↺ 다시하기</button></div>
+</div>`,
     practice:[
       {q:"원점과 직선 5x − 12y + 26 = 0 사이의 거리는?",
        c:["1","2","3","4"],a:1,
@@ -1086,6 +1172,8 @@ function renderPractice() {
   document.getElementById('practiceTag').textContent=`유형 ${id+1}/20`;
   document.getElementById('practiceUnitTitle').textContent=`${unit.title} — ${unit.sub}`;
   document.getElementById('conceptBox').innerHTML=unit.concept;
+  if (id===10) setTimeout(()=>initFiDemo('fi-demo-10','fi-result-10',4), 30);
+  if (id===11) setTimeout(()=>initFiDemo('fi-demo-11','fi-result-11',3), 30);
   document.getElementById('qProgress').textContent=`문제 ${qi+1}/${unit.practice.length}`;
 
   // 정답 streak 점 3개
@@ -1401,6 +1489,138 @@ function showResults() {
   }).join('');
 
   showScreen('results');
+}
+
+// ============================================================
+// FILL-IN DEMO — 공식 채우기 인터랙티브 (내분점, 거리 공식 등)
+// ============================================================
+function initFiDemo(demoId, resultId, totalSlots) {
+  const demo = document.getElementById(demoId);
+  if (!demo) return;
+  const filled = {};
+
+  demo.querySelectorAll('.fi-chip').forEach(chip => {
+    chip.addEventListener('pointerdown', e => {
+      if (chip.classList.contains('fi-used')) return;
+      e.preventDefault();
+      dragFiChip(e, chip, demo, filled, resultId, totalSlots);
+    }, { passive: false });
+  });
+}
+
+function dragFiChip(e, chip, demo, filled, resultId, totalSlots) {
+  const cR = chip.getBoundingClientRect();
+  const startX = e.clientX, startY = e.clientY;
+
+  // 드래그 클론 생성
+  const clone = document.createElement('div');
+  clone.textContent = chip.dataset.val;
+  Object.assign(clone.style, {
+    position:'fixed', left:cR.left+'px', top:cR.top+'px',
+    width:cR.width+'px', height:cR.height+'px', margin:'0',
+    background: chip.style.background || '#2563eb',
+    color:'white', borderRadius:'8px',
+    display:'flex', alignItems:'center', justifyContent:'center',
+    fontSize:'16px', fontWeight:'700', zIndex:'9999',
+    pointerEvents:'none',
+    boxShadow:'0 8px 20px rgba(37,99,235,0.45)',
+    transform:'scale(1.2)'
+  });
+  document.body.appendChild(clone);
+  chip.style.opacity = '0.25';
+
+  // 매칭 슬롯 강조
+  demo.querySelectorAll('.fi-slot').forEach(s => {
+    if (s.dataset.needs === chip.dataset.type && !s.dataset.filled)
+      s.classList.add('fi-hint');
+  });
+
+  function onMove(ev) {
+    clone.style.left = (cR.left + ev.clientX - startX) + 'px';
+    clone.style.top  = (cR.top  + ev.clientY - startY) + 'px';
+  }
+
+  function onUp(ev) {
+    document.removeEventListener('pointermove', onMove);
+    document.removeEventListener('pointerup', onUp);
+    demo.querySelectorAll('.fi-slot').forEach(s => s.classList.remove('fi-hint'));
+
+    clone.style.visibility = 'hidden';
+    const under = document.elementFromPoint(ev.clientX, ev.clientY);
+    clone.style.visibility = '';
+    const slot = under ? under.closest('.fi-slot') : null;
+
+    const curL = parseFloat(clone.style.left);
+    const curT = parseFloat(clone.style.top);
+
+    if (slot && !slot.dataset.filled && slot.dataset.needs === chip.dataset.type) {
+      // 정확한 슬롯 — 날아가기 애니메이션
+      const sR = slot.getBoundingClientRect();
+      const dx = sR.left - curL + (sR.width - cR.width) / 2;
+      const dy = sR.top  - curT + (sR.height - cR.height) / 2;
+      clone.animate(
+        [{ transform:'scale(1.2)' },
+         { transform:`translate(${dx}px,${dy}px) scale(0.85)`, opacity:'0.5' }],
+        { duration:240, easing:'cubic-bezier(.34,1.56,.64,1)', fill:'forwards' }
+      ).onfinish = () => {
+        clone.remove();
+        chip.style.opacity = '';
+        chip.classList.add('fi-used');
+        slot.textContent = chip.dataset.val;
+        slot.classList.add('fi-filled');
+        slot.dataset.filled = '1';
+        filled[chip.dataset.type] = chip.dataset.val;
+        if (Object.keys(filled).length >= totalSlots) showFiResult(resultId);
+      };
+    } else {
+      // 틀린 슬롯 — 흔들기 + 되돌아가기
+      if (slot && !slot.dataset.filled) {
+        slot.classList.add('fi-wrong');
+        setTimeout(() => slot.classList.remove('fi-wrong'), 350);
+      }
+      const dxBack = cR.left - curL, dyBack = cR.top - curT;
+      clone.animate(
+        [{ transform:'scale(1.2)' },
+         { transform:`translate(${dxBack}px,${dyBack}px) scale(1)` }],
+        { duration:220, easing:'ease-out', fill:'forwards' }
+      ).onfinish = () => { clone.remove(); chip.style.opacity = ''; };
+    }
+  }
+
+  document.addEventListener('pointermove', onMove);
+  document.addEventListener('pointerup', onUp);
+}
+
+function showFiResult(resultId) {
+  const el = document.getElementById(resultId);
+  if (!el) return;
+  el.style.display = 'block';
+  el.animate(
+    [{ transform:'scale(0.6) translateY(8px)', opacity:'0' },
+     { transform:'scale(1.04) translateY(-3px)', opacity:'1', offset:0.65 },
+     { transform:'scale(1) translateY(0)',      opacity:'1' }],
+    { duration:480, easing:'ease-out' }
+  );
+}
+
+function resetFiDemo(demoId) {
+  const demo = document.getElementById(demoId);
+  if (!demo) return;
+  demo.querySelectorAll('.fi-chip').forEach(c => {
+    c.style.opacity = '';
+    c.classList.remove('fi-used');
+  });
+  demo.querySelectorAll('.fi-slot').forEach(s => {
+    s.classList.remove('fi-filled','fi-wrong','fi-hint');
+    delete s.dataset.filled;
+    s.textContent = s.dataset.needs + '?';
+  });
+  const r = demo.querySelector('.fi-result');
+  if (r) r.style.display = 'none';
+  // 재초기화 — resultId와 totalSlots는 data 속성에서 읽기
+  const ri  = demo.dataset.resultId   || demoId.replace('fi-demo','fi-result');
+  const tot = parseInt(demo.dataset.totalSlots || demo.querySelectorAll('.fi-slot').length);
+  initFiDemo(demoId, ri, tot);
 }
 
 // ============================================================
