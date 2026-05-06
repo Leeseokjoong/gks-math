@@ -38,7 +38,33 @@ header h1{font-size:18px;flex:1}
 .deep-box{background:#fef2f2;border-left:4px solid #dc2626;padding:16px;border-radius:0 10px 10px 0;margin-top:12px;line-height:1.8;font-size:14px}
 .warn-card{border:2px solid #f59e0b!important}
 .danger-card{border:2px solid #dc2626!important;background:#fff8f8!important}
-.concept-box{background:#eff6ff;border-left:4px solid #2563eb;padding:16px;border-radius:0 10px 10px 0;margin-bottom:20px;line-height:1.7;font-size:15px}
+/* ── 채팅 스타일 개념 카드 (땡중샘 디자인) ── */
+@keyframes conceptSlideIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes csStepIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.chat-concept-bg{background:#b2c7d9;border-radius:16px;padding:16px 14px 20px;margin-bottom:20px;box-shadow:0 4px 20px rgba(37,99,235,.15);animation:conceptSlideIn .4s cubic-bezier(.22,1,.36,1)}
+.t-name-label{font-size:11px;font-weight:800;color:#3d5166;letter-spacing:.8px;margin-bottom:8px;padding-left:2px}
+.t-msg-concept{background:white;border-radius:4px 16px 16px 16px;padding:16px 18px;box-shadow:0 1px 6px rgba(0,0,0,.10)}
+.concept-inner-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;padding-bottom:10px;border-bottom:2px solid #e2e8f0}
+.concept-inner-badge{font-size:11px;font-weight:800;color:#2563eb;background:#eff6ff;border-radius:6px;padding:3px 10px;letter-spacing:.5px}
+.concept-inner-num{font-size:11px;color:#94a3b8;font-weight:700}
+.concept-inner-title{font-size:15px;font-weight:800;color:#1e293b;margin-bottom:14px;line-height:1.4}
+/* 개념 내부 블록 */
+.concept-box{line-height:1.8;font-size:14.5px;color:#1e293b}
+.concept-box b{color:#1d4ed8;font-weight:800}
+.concept-box > *{opacity:0;animation:csStepIn .3s ease forwards}
+.concept-box .step-row{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;background:#f8faff;border-radius:10px;margin:0}
+.concept-box .step-row + .step-row{margin-top:8px}
+.concept-box .step-num{min-width:24px;height:24px;border-radius:50%;background:#2563eb;color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.concept-box .step-text{font-size:14px;line-height:1.7;color:#334155}
+.concept-box .step-text b{color:#1d4ed8}
+.concept-box .formula-box{background:#eff6ff;border:1.5px solid #93c5fd;border-radius:12px;padding:14px 16px;text-align:center;font-size:15px;font-weight:700;color:#1e40af;letter-spacing:.02em;margin:0}
+.concept-box .tip-box{background:#eff6ff;border-left:3px solid #2563eb;border-radius:0 10px 10px 0;padding:10px 14px;font-size:13px;color:#1e40af;font-weight:600;line-height:1.6;margin:0}
+.concept-box .example-block{background:#1e293b;border-radius:10px;padding:12px 14px;font-size:13.5px;line-height:1.9;color:#e2e8f0;margin:0}
+.concept-box .example-block .ex-label{font-size:11px;font-weight:800;color:#94a3b8;letter-spacing:.08em;margin-bottom:5px}
+.concept-box .example-block b{color:#a5b4fc}
+.concept-box .arrow{color:#60a5fa;font-weight:800;margin:0 4px}
+/* 스텝 사이 간격 */
+.concept-box > * + *{margin-top:8px}
 .explanation-box{background:#fef9c3;border-left:4px solid #eab308;padding:14px;border-radius:0 10px 10px 0;margin-top:14px;display:none;line-height:1.7;font-size:14px}
 .explanation-box.show{display:block}
 .streak-row{display:flex;align-items:center;gap:8px;margin-bottom:14px}
@@ -121,7 +147,7 @@ header h1{font-size:18px;flex:1}
 <!-- HEADER -->
 <header>
   <button class="back-btn" id="backBtn" onclick="goBack()">← 뒤로</button>
-  <h1 id="headerTitle">📚 검정고시 수학 합격 비법서</h1>
+  <h1 id="headerTitle"> 검정고시 수학 합격 비법서</h1>
 </header>
 
 <!-- HOME SCREEN -->
@@ -129,12 +155,12 @@ header h1{font-size:18px;flex:1}
   <div class="container">
     <div class="card" style="background:linear-gradient(135deg,#2563eb,#06b6d4);color:white;padding:24px">
       <div style="font-size:13px;opacity:.85;margin-bottom:6px">2026년 2차 고졸학력검정고시 수학</div>
-      <div style="font-size:22px;font-weight:900;margin-bottom:4px">검정고시 수학 합격 비법서 📖</div>
+      <div style="font-size:22px;font-weight:900;margin-bottom:4px">검정고시 수학 합격 비법서 </div>
       <div style="font-size:13px;opacity:.85">60점 이상이면 합격 · 20개 유형 완벽 마스터</div>
     </div>
 
     <div class="card">
-      <div class="section-title">📊 학습 현황</div>
+      <div class="section-title"> 학습 현황</div>
       <div class="grid2">
         <div class="info-box">
           <div class="info-box-num" id="masteredCount" style="color:#16a34a">0</div>
@@ -152,13 +178,13 @@ header h1{font-size:18px;flex:1}
     </div>
 
     <div class="card">
-      <div class="section-title">📖 학습 모드</div>
+      <div class="section-title"> 학습 모드</div>
       <div style="font-size:14px;color:#64748b;margin-bottom:14px;line-height:1.6">개념 설명 → 연습 문제 반복<br>2회 연속 정답 시 해당 유형 완료!</div>
       <button class="btn btn-primary btn-full" onclick="showLearnList()">학습 시작하기 →</button>
     </div>
 
     <div class="card">
-      <div class="section-title">📝 최종 모의고사</div>
+      <div class="section-title"> 최종 모의고사</div>
       <div style="font-size:14px;color:#64748b;margin-bottom:14px;line-height:1.6">실전 시험 형식 · 20문제 · 5점×20 = 100점<br>60점 이상 합격 판정</div>
       <button class="btn btn-outline btn-full" onclick="showExam()">모의고사 도전하기 →</button>
     </div>
@@ -183,14 +209,21 @@ header h1{font-size:18px;flex:1}
     <div class="card" style="padding:14px 18px;margin-bottom:10px">
       <div style="display:flex;justify-content:space-between;align-items:center">
         <span class="tag" id="practiceTag">유형 1/20</span>
-        <button class="btn btn-sm" style="background:#fef3c7;color:#92400e;border:none;cursor:pointer" onclick="skipUnit()">이미 알아요 ✓</button>
+        <button class="btn btn-sm" style="background:#fef3c7;color:#92400e;border:none;cursor:pointer" onclick="skipUnit()">이미 알아요 </button>
       </div>
       <div style="font-size:16px;font-weight:800;margin-top:8px" id="practiceUnitTitle"></div>
     </div>
 
-    <div class="card" id="conceptCard">
-      <div style="font-size:13px;font-weight:700;color:#2563eb;margin-bottom:8px">💡 개념 정리</div>
-      <div class="concept-box" id="conceptBox"></div>
+    <div class="chat-concept-bg" id="conceptCard">
+      <div class="t-name-label">선생님</div>
+      <div class="t-msg-concept">
+        <div class="concept-inner-header">
+          <span class="concept-inner-badge">개념 정리</span>
+          <span class="concept-inner-num" id="conceptHeaderNum"></span>
+        </div>
+        <div class="concept-inner-title" id="conceptHeaderTitle"></div>
+        <div class="concept-box" id="conceptBox"></div>
+      </div>
     </div>
 
     <div class="card" id="practiceQCard">
@@ -218,7 +251,7 @@ header h1{font-size:18px;flex:1}
 <div class="screen" id="screen-exam-select">
   <div class="container">
     <div class="card" style="background:linear-gradient(135deg,#1e40af,#2563eb);color:white;padding:20px">
-      <div style="font-size:20px;font-weight:900;margin-bottom:4px">📝 최종 모의고사</div>
+      <div style="font-size:20px;font-weight:900;margin-bottom:4px"> 최종 모의고사</div>
       <div style="font-size:13px;opacity:.85">5회분 · 20문제 × 5점 = 100점 · 60점 이상 합격</div>
     </div>
     <div id="examSetList"></div>
@@ -229,7 +262,7 @@ header h1{font-size:18px;flex:1}
 <div class="screen" id="screen-exam">
   <div class="container">
     <div class="card" style="background:linear-gradient(135deg,#1e40af,#2563eb);color:white;padding:20px">
-      <div style="font-size:20px;font-weight:900;margin-bottom:4px">📝 최종 모의고사</div>
+      <div style="font-size:20px;font-weight:900;margin-bottom:4px"> 최종 모의고사</div>
       <div style="font-size:13px;opacity:.85">20문제 × 5점 = 100점 · 60점 이상 합격</div>
       <div class="progress-bar" style="margin-top:12px;background:rgba(255,255,255,.3)">
         <div class="progress-fill" id="examProgress" style="width:0%;background:white"></div>
@@ -256,11 +289,11 @@ header h1{font-size:18px;flex:1}
       <div class="grid2" style="margin-bottom:14px">
         <div class="info-box">
           <div class="info-box-num" id="correctCount" style="color:#16a34a">0</div>
-          <div class="info-box-label">정답 ✓</div>
+          <div class="info-box-label">정답 </div>
         </div>
         <div class="info-box">
           <div class="info-box-num" id="wrongCount" style="color:#dc2626">0</div>
-          <div class="info-box-label">오답 ✗</div>
+          <div class="info-box-label">오답 </div>
         </div>
       </div>
       <div style="display:flex;gap:8px">
@@ -269,7 +302,7 @@ header h1{font-size:18px;flex:1}
       </div>
     </div>
     <div class="card">
-      <div class="section-title">📋 문제별 해설</div>
+      <div class="section-title"> 문제별 해설</div>
       <div id="resultItems"></div>
     </div>
   </div>
@@ -282,12 +315,12 @@ header h1{font-size:18px;flex:1}
 const UNITS = [
   {
     id:0, title:"다항식의 연산", sub:"덧셈과 뺄셈",
-    concept:`A+B, A-B 문제는 <b>x², x, 숫자</b> 이렇게 3종류로 나눠서 각각 더하거나 빼면 끝이야.<br><br>
-예) A = x³−1, B = 2x³+4 일 때 A+B<br>
-→ x³끼리: 1+2 = <b>3</b> → 3x³<br>
-→ 숫자끼리: −1+4 = <b>3</b><br>
-→ 정답: <b>3x³+3</b><br><br>
-💡 같은 종류끼리만 계산! 다른 종류는 건드리지 마!`,
+    concept:`<div class="formula-box">같은 모양끼리만 더하거나 빼기</div>
+<div class="step-row"><div class="step-num">1</div><div class="step-text"><b>+, −</b> 부호로 식을 조각조각 나누기<br>(예: 2x²+3x−1 → 2x², 3x, −1 세 조각)</div></div>
+<div class="step-row"><div class="step-num">2</div><div class="step-text">x²끼리, x끼리, 숫자끼리 <b>같은 모양</b>으로 묶기</div></div>
+<div class="step-row"><div class="step-num">3</div><div class="step-text">묶은 것끼리 <b>x 앞 숫자</b>만 더하거나 빼기</div></div>
+<div class="example-block"><div class="ex-label">예시</div>A = 2x²+3x−1, B = x²−x+4 → A+B<br>x²끼리: 2 + 1 = <b>3</b> &nbsp;(x² 앞에 아무것도 없으면 1)<br>x끼리: 3 + (−1) = <b>2</b> &nbsp;(−x는 앞 숫자가 −1)<br>숫자끼리: (−1) + 4 = <b>3</b><br><span class="arrow">→</span> 정답: <b>3x²+2x+3</b></div>
+<div class="tip-box">'x 앞 숫자'를 <b>계수</b>, +/− 사이의 한 조각을 <b>항</b>이라고 불러요. x²와 x는 사과·배처럼 다른 과일 — 절대 합치면 안 돼요!</div>`,
     practice:[
       {q:"A = x³ − 1, B = 2x³ + 4 일 때, A + B는?",
        c:["2x³ + 2","2x³ + 3","3x³ + 3","3x³ + 4"],a:2,
@@ -308,12 +341,12 @@ const UNITS = [
   },
   {
     id:1, title:"항등식의 성질", sub:"미정계수 구하기",
-    concept:`항등식 문제는 '=' 좌우를 보고 <b>같은 자리 계수를 같다고 놓으면</b> 끝이야.<br><br>
-예) 2x² + ax + 3 = bx² + 5x + 3<br>
-→ x² 앞 숫자: 2 = b → <b>b = 2</b><br>
-→ x 앞 숫자: a = 5 → <b>a = 5</b><br>
-→ a+b = <b>7</b><br><br>
-💡 왼쪽 미지수(a,b) → 오른쪽 숫자랑 짝지어 등호로 연결하면 끝!`,
+    concept:`<div class="formula-box">왼쪽 = 오른쪽이 되려면<br>x² 자리·x 자리·숫자 자리가 <b>각각</b> 같아야 함</div>
+<div class="step-row"><div class="step-num">1</div><div class="step-text">왼쪽과 오른쪽에서 x² 앞 숫자, x 앞 숫자, 그냥 숫자를 각각 찾기</div></div>
+<div class="step-row"><div class="step-num">2</div><div class="step-text">같은 자리끼리 <b>=</b>로 묶어 작은 식 만들기</div></div>
+<div class="step-row"><div class="step-num">3</div><div class="step-text">그 식들을 풀어 모르는 글자 값 구하기</div></div>
+<div class="example-block"><div class="ex-label">예시</div>2x²+ax+3 = bx²+5x+3 (어떤 x를 넣어도 성립)<br>x² 자리: 왼쪽 2, 오른쪽 b → 2 = b → <b>b = 2</b><br>x 자리: 왼쪽 a, 오른쪽 5 → a = 5 → <b>a = 5</b><br>숫자 자리: 3 = 3 (자동으로 맞음)<br><span class="arrow">→</span> a + b = <b>7</b></div>
+<div class="tip-box">'어떤 x를 넣어도 성립하는 식'을 <b>항등식</b>이라고 해요. '모든 x에 대해' 또는 '항상'이라는 말이 있으면 항등식 → 자리별로 비교!</div>`,
     practice:[
       {q:"2x² + ax + 3 = bx² + 5x + 3 이 항등식일 때, a + b의 값은?",
        c:["5","6","7","8"],a:2,
@@ -334,13 +367,11 @@ const UNITS = [
   },
   {
     id:2, title:"나머지 정리", sub:"대입하여 나머지 계산",
-    concept:`f(x)를 <b>(x−2)</b>로 나눈 나머지? → (x−2)=0이 되는 값 <b>x=2</b>를 f(x)에 그냥 대입해서 계산하면 그게 나머지야!<br><br>
-• (x−1)로 나눔 → <b>x=1</b> 대입<br>
-• (x+1)로 나눔 → <b>x=−1</b> 대입<br>
-• (x−3)으로 나눔 → <b>x=3</b> 대입<br><br>
-예) f(x) = x²+x+1 을 (x−2)로 나눈 나머지<br>
-→ f(2) = 4+2+1 = <b>7</b><br><br>
-💡 나누는 식에서 x= 얼마로 놓으면 0이 되는지 찾아서 그 값을 대입!`,
+    concept:`<div class="formula-box">f(x)를 (x − a)로 나눈 나머지 = f(a)<br>(괄호 안을 0으로 만드는 a를 식에 그대로 넣기)</div>
+<div class="step-row"><div class="step-num">1</div><div class="step-text">나누는 식 (x − a)에서 <b>괄호 안을 0으로 만드는 x 값</b> 찾기</div></div>
+<div class="step-row"><div class="step-num">2</div><div class="step-text">원래 식의 <b>x 자리에 그 값을 그대로 넣기</b> → 답이 나머지</div></div>
+<div class="example-block"><div class="ex-label">예시</div>x²+x+1 을 (x − 2)로 나눈 나머지<br>(x − 2) = 0 → x = 2<br>x 자리에 2 넣기: 2² + 2 + 1<br>= 4 + 2 + 1 = <b>7</b><br><span class="arrow">→</span> 나머지 = <b>7</b></div>
+<div class="tip-box">f(x)는 'x 자리에 무엇을 넣으면 결과가 나오는 식', 이 규칙을 <b>나머지정리</b>라고 해요. (x+1)로 나눌 땐 x+1=0 → <b>x = −1</b>! 부호가 가장 잦은 실수예요.</div>`,
     practice:[
       {q:"2x³ − x + 1을 x − 1로 나누었을 때의 나머지는?",
        c:["1","2","3","4"],a:1,
@@ -361,12 +392,12 @@ const UNITS = [
   },
   {
     id:3, title:"인수분해 공식", sub:"세제곱 합·차 공식",
-    concept:`x³−숫자³ 꼴이 나오면 <b>숫자의 세제곱근(a)</b>을 찾아서 공식에 끼워 넣으면 돼.<br><br>
-x³−a³ = <b>(x−a)(x²+ax+a²)</b><br>
-x³+a³ = <b>(x+a)(x²−ax+a²)</b><br><br>
-예) x³−8 → 8=2³ 이니까 a=2<br>
-= (x−<b>2</b>)(x²+<b>2</b>x+<b>4</b>)<br><br>
-💡 a를 찾는 법: 숫자가 1→a=1, 8→a=2, 27→a=3, 64→a=4`,
+    concept:`<div class="formula-box">a³+b³ = (a+b)(a²−ab+b²)<br>a³−b³ = (a−b)(a²+ab+b²)</div>
+<div class="step-row"><div class="step-num">1</div><div class="step-text">세제곱 안의 수 찾기 — 8 = 2³, 27 = 3³ 처럼 (예: x³−8 → a=x, b=2)</div></div>
+<div class="step-row"><div class="step-num">2</div><div class="step-text">앞 괄호: 식의 <b>원래 부호 그대로</b> (+이면 +, −이면 −)</div></div>
+<div class="step-row"><div class="step-num">3</div><div class="step-text">뒤 괄호: 가운데 부호만 <b>반대로</b> 쓰기</div></div>
+<div class="example-block"><div class="ex-label">예시</div>x³ − 8 쪼개기<br>x³ − 8 = x³ − 2³ (a = x, b = 2)<br>원래 부호 −이므로 차 공식 사용<br>앞 괄호: (x − 2) — 부호 그대로<br>뒤 괄호: (x² + 2x + 4) — 가운데 부호 반대(+로)<br><span class="arrow">→</span> <b>(x − 2)(x² + 2x + 4)</b></div>
+<div class="tip-box">곱하기 형태로 쪼개는 걸 <b>인수분해</b>라고 해요. 앞 괄호는 그대로, 뒤 괄호 가운데 부호는 반대! 헷갈리면 공식을 통째로 외우세요.</div>`,
     practice:[
       {q:"x³ + 2³ = (x + a)(x² − 2x + 4) 일 때, 상수 a의 값은?",
        c:["1","2","3","4"],a:1,
@@ -387,14 +418,11 @@ x³+a³ = <b>(x+a)(x²−ax+a²)</b><br><br>
   },
   {
     id:4, title:"복소수와 켤레복소수", sub:"켤레복소수 성질",
-    concept:`켤레복소수는 <b>i 앞 부호만 반대</b>로 바꾼 거야. 2+3i의 켤레 → 2−3i<br><br>
-문제 푸는 법: 켤레를 직접 만들어서 주어진 식과 같다고 놓으면 돼!<br><br>
-예) 2+ai의 켤레복소수가 b−5i<br>
-→ 켤레 만들기: 2+ai → <b>2−ai</b><br>
-→ 2−ai = b−5i 로 놓고<br>
-→ 실수부: b=2 / 허수부: a=5<br>
-→ a+b = <b>7</b><br><br>
-💡 켤레 만들고 → 같다고 놓고 → 실수부/허수부 각각 비교!`,
+    concept:`<div class="formula-box">a + bi 의 짝꿍 = a − bi<br>(i 앞 부호만 뒤집기, 앞쪽 숫자는 그대로)</div>
+<div class="step-row"><div class="step-num">1</div><div class="step-text">두 식이 같으려면 <b>i 없는 부분끼리, i 있는 부분끼리</b> 따로 같아야 함</div></div>
+<div class="step-row"><div class="step-num">2</div><div class="step-text">짝꿍을 만들 땐 <b>i 앞 부호만 반대</b>로</div></div>
+<div class="example-block"><div class="ex-label">예시</div>(3 + ai)의 짝꿍이 b − 4i 일 때 a + b<br>(3 + ai)의 짝꿍 = 3 − ai (i 앞 부호만 반대)<br>3 − ai = b − 4i 양쪽 비교<br>i 없는 부분: 3 = b → <b>b = 3</b><br>i 앞 숫자 비교: −a = −4 → <b>a = 4</b><br><span class="arrow">→</span> a + b = <b>7</b></div>
+<div class="tip-box">i가 들어간 수를 <b>복소수</b>, 그 짝꿍을 <b>켤레복소수</b>라고 해요. i 없는 부분을 실수부, i 앞 숫자를 허수부라고 부르고, 두 식이 같으면 각각이 같아야 합니다.</div>`,
     practice:[
       {q:"a − 4i의 켤레복소수가 1 + bi일 때, a + b의 값은?",
        c:["3","4","5","6"],a:2,
@@ -415,15 +443,12 @@ x³+a³ = <b>(x+a)(x²−ax+a²)</b><br><br>
   },
   {
     id:5, title:"이차방정식과 중근", sub:"판별식으로 중근 조건",
-    concept:`중근 = 두 근이 똑같은 것 = <b>(x − k)² = 0</b> 꼴로 인수분해되는 것!<br><br>
-x²+bx+a=0이 중근이 되려면 <b>(x + b/2)²</b> 꼴이 되어야 해.<br>
-그러려면 상수항 a = <b>(b/2)²</b> 이어야 해!<br><br>
-예) x²−6x+a=0 이 중근<br>
-→ x 앞 숫자 −6의 절반 = <b>−3</b><br>
-→ 그걸 제곱: (−3)² = <b>9</b><br>
-→ a = <b>9</b> (확인: (x−3)²=x²−6x+9 ✓)<br><br>
-💡 <b>x 앞 숫자 ÷ 2 → 제곱 → 그게 상수항!</b><br>
-(x²의 계수가 1일 때만 이 방법을 써!)`,
+    concept:`<div class="formula-box">x² + ◯x + △ = 0 이 답 하나만 가지려면<br>△ = (◯ ÷ 2)²</div>
+<div class="step-row"><div class="step-num">1</div><div class="step-text">x² 앞 숫자가 1인지 확인 (다르면 양변을 그 수로 나누기)</div></div>
+<div class="step-row"><div class="step-num">2</div><div class="step-text">x 앞 숫자를 <b>2로 나눈 뒤 제곱</b> → 그 값이 마지막 숫자</div></div>
+<div class="step-row"><div class="step-num">3</div><div class="step-text">검산: (x ± □)² 모양으로 묶이는지 확인</div></div>
+<div class="example-block"><div class="ex-label">예시</div>x² − 6x + a = 0 이 답 하나만 가질 때 a<br>x 앞 숫자: −6<br>−6 ÷ 2 = −3<br>(−3)² = <b>9</b><br>검산: x² − 6x + 9 = (x − 3)² → 답 x = 3 (하나) OK<br><span class="arrow">→</span> a = <b>9</b></div>
+<div class="tip-box">답이 두 개 같아 하나로 겹치는 걸 <b>중근</b>, (x ± □)² 모양을 <b>완전제곱식</b>이라고 해요. 중근이 되려면 완전제곱식이 되어야 합니다!</div>`,
     practice:[
       {q:"이차방정식 x² + 6x + a = 0이 중근을 가질 때, 상수 a의 값은?",
        c:["6","8","9","12"],a:2,
@@ -444,13 +469,12 @@ x²+bx+a=0이 중근이 되려면 <b>(x + b/2)²</b> 꼴이 되어야 해.<br>
   },
   {
     id:6, title:"근과 계수의 관계", sub:"두 근의 합과 곱",
-    concept:`'두 근이 ○, △이고 x²+bx+a=0에서 a를 구하라' → <b>두 근을 곱하면 상수항 a</b>야!<br><br>
-• 상수항 = 두 근의 <b>곱</b><br>
-• x 앞 계수 = 두 근의 합의 <b>부호 반대</b><br><br>
-예) 두 근이 3, 4 → x²−7x+a=0<br>
-→ a = 3×4 = <b>12</b><br>
-→ 확인: 3+4=7 → x 앞이 −7 ✓<br><br>
-💡 문제에서 a를 구하라고 하면 무조건 두 근을 곱하면 끝!`,
+    concept:`<div class="formula-box">x² 앞 숫자가 1일 때 (예: x² − 5x + 6 = 0)<br>두 답의 합 = <b>−</b>(x 앞 숫자) &nbsp;&nbsp; 두 답의 곱 = (그냥 숫자)</div>
+<div class="step-row"><div class="step-num">1</div><div class="step-text">두 답의 합 → x 앞 숫자에 <b>마이너스</b> 붙이기</div></div>
+<div class="step-row"><div class="step-num">2</div><div class="step-text">두 답의 곱 → 그냥 숫자(맨 뒤) 그대로</div></div>
+<div class="step-row"><div class="step-num">3</div><div class="step-text">x² 앞에 1이 아닌 수가 있으면 양변을 그 수로 나눈 뒤 적용</div></div>
+<div class="example-block"><div class="ex-label">예시</div>x² − 5x + 6 = 0 의 두 답의 합과 곱<br>x 앞 숫자: −5 → 합: <b>−(−5) = 5</b><br>그냥 숫자: 6 → 곱: <b>6</b><br>검산: (x−2)(x−3)=0 → 답 2와 3 (합=5, 곱=6) OK</div>
+<div class="tip-box">방정식의 답을 <b>근</b>, 'x 앞 숫자'를 <b>계수</b>라고 해요. 합 공식의 <b>마이너스</b>가 가장 잦은 실수입니다!</div>`,
     practice:[
       {q:"두 수 2, 5를 근으로 하는 x² − 7x + a = 0에서 a의 값은?",
        c:["8","9","10","11"],a:2,
@@ -471,12 +495,12 @@ x²+bx+a=0이 중근이 되려면 <b>(x + b/2)²</b> 꼴이 되어야 해.<br>
   },
   {
     id:7, title:"이차함수의 최대·최소", sub:"꼭짓점과 범위",
-    concept:`y = (x−p)²+q 꼴이면 꼭짓점이 <b>(p, q)</b>야. 최솟값/최댓값은 그냥 <b>q</b>!<br><br>
-• <b>+ 붙은 꼴</b> (아래로 볼록): 꼭짓점에서 <b>최솟값 = q</b><br>
-• <b>− 붙은 꼴</b> (위로 볼록): 꼭짓점에서 <b>최댓값 = q</b><br><br>
-예) 0≤x≤3, y=(x−1)²+2 의 최솟값<br>
-→ 꼭짓점 x=1이 범위[0,3] 안에 있음 → 최솟값 = <b>2</b><br><br>
-💡 꼭짓점의 x가 범위 안에 있으면 q가 답! 범위 밖이면 끝점(0 또는 3)을 대입해봐!`,
+    concept:`<div class="formula-box">y = a(x − p)² + q 모양일 때<br>그래프가 꺾이는 점 = <b>(p, q)</b></div>
+<div class="step-row"><div class="step-num">1</div><div class="step-text">식이 y = a(x − p)² + q 모양인지 확인</div></div>
+<div class="step-row"><div class="step-num">2</div><div class="step-text">괄호 안의 <b>p</b>(부호 반대로!), 마지막의 <b>q</b>를 그대로 읽기 → 꺾이는 점 (p, q)</div></div>
+<div class="step-row"><div class="step-num">3</div><div class="step-text">a가 양수면 q가 가장 작은 값(<b>최솟값</b>), 음수면 가장 큰 값(<b>최댓값</b>)</div></div>
+<div class="example-block"><div class="ex-label">예시</div>y = 2(x − 3)² + 1 의 가장 작은 값<br>괄호 안 −3 → p = 3 (부호 반대로 읽기)<br>+1 → q = 1<br>꺾이는 점: (3, 1)<br>a = 2 &gt; 0 → 그릇 모양(아래로 볼록) → 1이 가장 낮은 값<br><span class="arrow">→</span> 최솟값 = <b>1</b></div>
+<div class="tip-box">그래프가 꺾이는 점을 <b>꼭짓점</b>이라고 해요. y = (x + 2)² + 3 → p = <b>−2</b>! 괄호 안 부호와 반대로 읽기.</div>`,
     practice:[
       {q:"−1 ≤ x ≤ 2일 때, y = −(x−1)² + 5의 최댓값은?",
        c:["3","4","5","6"],a:2,
@@ -497,13 +521,12 @@ x²+bx+a=0이 중근이 되려면 <b>(x + b/2)²</b> 꼴이 되어야 해.<br>
   },
   {
     id:8, title:"삼차방정식의 해", sub:"근 대입하여 미정계수",
-    concept:`'한 근이 2'라고 하면 <b>x=2를 방정식에 그냥 대입</b>하고 =0으로 놓으면 미지수 a가 나와!<br><br>
-예) x³+ax−2=0의 한 근이 1<br>
-→ x=1 대입: 1³+a×1−2 = 0<br>
-→ 1+a−2 = 0<br>
-→ a = <b>1</b><br><br>
-💡 순서: ① 주어진 근을 x에 대입 → ② 계산 → ③ a= 으로 정리!<br>
-계산할 때 1³=1, 2³=8, 3³=27, (−1)³=−1 기억해둬!`,
+    concept:`<div class="formula-box">'x = k가 답이다' = 'x 자리에 k를 넣으면 식이 0이 된다'</div>
+<div class="step-row"><div class="step-num">1</div><div class="step-text">'답이 k'라는 말 = 'x 자리에 k 넣으면 식 전체 = 0'</div></div>
+<div class="step-row"><div class="step-num">2</div><div class="step-text">x 자리에 k를 넣은 식 = 0 으로 놓기</div></div>
+<div class="step-row"><div class="step-num">3</div><div class="step-text">남은 모르는 글자 풀기</div></div>
+<div class="example-block"><div class="ex-label">예시</div>x³ + ax − 2 = 0 의 답 중 하나가 1일 때 a<br>x 자리에 1 넣기: (1)³ + a × (1) − 2 = 0<br>1 + a − 2 = 0<br>a − 1 = 0<br><span class="arrow">→</span> a = <b>1</b></div>
+<div class="tip-box">방정식이 0이 되게 하는 x 값을 <b>근</b>(=답)이라고 해요. 대입할 때 거듭제곱과 부호 실수가 가장 잦아요!</div>`,
     practice:[
       {q:"x³ + x² + x + a = 0의 한 근이 −1일 때, 상수 a의 값은?",
        c:["1","2","3","4"],a:0,
@@ -524,15 +547,12 @@ x²+bx+a=0이 중근이 되려면 <b>(x + b/2)²</b> 꼴이 되어야 해.<br>
   },
   {
     id:9, title:"연립일차부등식", sub:"공통 범위 찾기",
-    concept:`부등식 2개를 각각 <b>x < ? / x > ?</b> 형태로 풀고, 두 범위가 겹치는 부분을 찾으면 돼!<br><br>
-예) x−1 < 4 이고 2x > x+2<br>
-→ ① x < 5<br>
-→ ② x > 2<br>
-→ 공통: <b>2 < x < 5</b><br><br>
-💡 수직선에 이렇게 그려봐:<br>
-①: ────────●&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(5 미만)<br>
-②: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;●──────── (2 초과)<br>
-겹치는 가운데 부분이 정답!`,
+    concept:`<div class="formula-box">두 부등식을 따로 풀고 → <b>겹치는 범위</b> 찾기</div>
+<div class="step-row"><div class="step-num">1</div><div class="step-text">첫 번째 부등식 풀어 x 범위 구하기</div></div>
+<div class="step-row"><div class="step-num">2</div><div class="step-text">두 번째 부등식 풀어 x 범위 구하기</div></div>
+<div class="step-row"><div class="step-num">3</div><div class="step-text">두 범위를 <b>수직선</b>(숫자 직선)에 그려 겹치는 부분 찾기</div></div>
+<div class="example-block"><div class="ex-label">예시</div>2x &gt; 2 이고 x &lt; 5 인 자연수 x의 개수<br>① 2x &gt; 2 → 양변 ÷ 2 → x &gt; 1<br>② x &lt; 5<br>겹치는 범위: 1 &lt; x &lt; 5<br>그 사이 자연수: 2, 3, 4 → <b>3개</b></div>
+<div class="tip-box">두 부등식을 동시에 만족하는 걸 <b>연립부등식</b>이라고 해요. 수직선에 색칠하면 겹치는 부분이 한눈에! &lt; 와 ≤ 끝점 차이 확인 필수.</div>`,
     practice:[
       {q:"연립부등식 x+3 < 8, 4x > x+6 의 해가 2 < x < a일 때, a의 값은?",
        c:["3","4","5","6"],a:2,
@@ -553,76 +573,12 @@ x²+bx+a=0이 중근이 되려면 <b>(x + b/2)²</b> 꼴이 되어야 해.<br>
   },
   {
     id:10, title:"선분의 내분점", sub:"내분점 공식",
-    concept:`<div id="fi-demo-10">
-<div style="font-size:13px;color:#334155;background:#f8fafc;border-radius:8px;padding:8px 12px;margin-bottom:12px;line-height:1.6"><b>규칙: B에 m배 · A에 n배</b> 곱해서 더하고 <b>(m+n)</b>으로 나눠!<br>값을 드래그해서 공식의 빈 칸에 넣어봐.</div>
-<div class="fi-row">
-  <div class="fi-point-group">
-    <span class="fi-plbl" style="color:#2563eb">A (</span>
-    <span class="fi-chip" data-type="Ax" data-val="1">1</span>
-    <span class="fi-comma">,</span>
-    <span class="fi-chip" data-type="Ay" data-val="2">2</span>
-    <span class="fi-plbl">)</span>
-  </div>
-  <div class="fi-ratio">2 : 1 내분</div>
-  <div class="fi-point-group">
-    <span class="fi-plbl" style="color:#dc2626">B (</span>
-    <span class="fi-chip" data-type="Bx" data-val="4">4</span>
-    <span class="fi-comma">,</span>
-    <span class="fi-chip" data-type="By" data-val="5">5</span>
-    <span class="fi-plbl">)</span>
-  </div>
-</div>
-<div class="fi-formula-box">
-  <div class="fi-fline" style="margin-bottom:16px">
-    <span class="fi-ft" style="font-size:16px">x =</span>
-    <div class="fi-frac">
-      <div class="fi-frac-top">
-        <b style="color:#2563eb">2</b><span class="fi-ft">×</span>
-        <span class="fi-slot" data-needs="Bx">Bx?</span>
-        <span class="fi-ft">+</span>
-        <b style="color:#16a34a">1</b><span class="fi-ft">×</span>
-        <span class="fi-slot" data-needs="Ax">Ax?</span>
-      </div>
-      <div class="fi-frac-line"></div>
-      <div class="fi-frac-bot">m + n &nbsp;=&nbsp; 3</div>
-    </div>
-  </div>
-  <div class="fi-fline">
-    <span class="fi-ft" style="font-size:16px">y =</span>
-    <div class="fi-frac">
-      <div class="fi-frac-top">
-        <b style="color:#2563eb">2</b><span class="fi-ft">×</span>
-        <span class="fi-slot" data-needs="By">By?</span>
-        <span class="fi-ft">+</span>
-        <b style="color:#16a34a">1</b><span class="fi-ft">×</span>
-        <span class="fi-slot" data-needs="Ay">Ay?</span>
-      </div>
-      <div class="fi-frac-line"></div>
-      <div class="fi-frac-bot">m + n &nbsp;=&nbsp; 3</div>
-    </div>
-  </div>
-</div>
-<div class="fi-result" id="fi-result-10">
-  <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:6px">
-    <span>x =</span>
-    <span style="display:inline-flex;flex-direction:column;align-items:center">
-      <span>2×<b>4</b> + 1×<b>1</b></span>
-      <span style="width:100%;height:2px;background:white;display:block;margin:3px 0"></span>
-      <span>3</span>
-    </span>
-    <span>= <b style="font-size:20px">3</b></span>
-    <span style="margin-left:10px">y =</span>
-    <span style="display:inline-flex;flex-direction:column;align-items:center">
-      <span>2×<b>5</b> + 1×<b>2</b></span>
-      <span style="width:100%;height:2px;background:white;display:block;margin:3px 0"></span>
-      <span>3</span>
-    </span>
-    <span>= <b style="font-size:20px">4</b></span>
-  </div>
-  <span style="font-size:18px">내분점 = <b>(3, 4) 🎉</b></span>
-</div>
-<div style="text-align:center"><button class="fi-reset" onclick="resetFiDemo('fi-demo-10')">↺ 다시하기</button></div>
-</div>`,
+    concept:`<div class="formula-box">두 점 A(x₁, y₁), B(x₂, y₂) 사이를 m : n 으로 나누는 점<br>x = (m × Bx + n × Ax) ÷ (m+n) (y도 같은 방식)</div>
+<div class="step-row"><div class="step-num">1</div><div class="step-text">m : n 비율 확인 — <b>m은 B 점에, n은 A 점에</b> 짝짓기 (X자로 곱하기)</div></div>
+<div class="step-row"><div class="step-num">2</div><div class="step-text">x 좌표: (m × B의 x) + (n × A의 x), 그걸 (m+n)으로 나누기</div></div>
+<div class="step-row"><div class="step-num">3</div><div class="step-text">y 좌표도 똑같은 방식으로 계산</div></div>
+<div class="example-block"><div class="ex-label">예시</div>A(1, 2)와 B(7, 8)을 2 : 1 로 나누는 점<br>x: (2 × 7 + 1 × 1) ÷ (2+1) = (14+1) ÷ 3 = 15 ÷ 3 = <b>5</b><br>y: (2 × 8 + 1 × 2) ÷ (2+1) = (16+2) ÷ 3 = 18 ÷ 3 = <b>6</b><br><span class="arrow">→</span> <b>(5, 6)</b></div>
+<div class="tip-box">두 점 사이를 비율로 나누는 점을 <b>내분점</b>이라고 해요. m은 B에, n은 A에 — X자로 짝짓기! 같은 글자끼리 곱하면 틀려요.</div>`,
     practice:[
       {q:"두 점 A(−3, 0), B(1, 4)를 3:1로 내분하는 점의 좌표는?",
        c:["(−1, 2)","(0, 3)","(1, 3)","(1, 4)"],a:1,
@@ -643,44 +599,12 @@ x²+bx+a=0이 중근이 되려면 <b>(x + b/2)²</b> 꼴이 되어야 해.<br>
   },
   {
     id:11, title:"점과 직선 사이의 거리", sub:"거리 공식",
-    concept:`<div id="fi-demo-11">
-<div style="font-size:13px;color:#334155;background:#f8fafc;border-radius:8px;padding:8px 12px;margin-bottom:12px;line-height:1.6"><b>공식: d = |c| ÷ √(a²+b²)</b><br>직선 ax+by+c=0의 계수 a, b, c를 각 자리에 드래그해 넣어봐!</div>
-<div class="fi-row">
-  <div class="fi-point-group" style="gap:6px">
-    <span class="fi-plbl" style="color:#7c3aed">직선:</span>
-    <span class="fi-chip" data-type="ca" data-val="3" style="background:#7c3aed">3</span>
-    <span style="font-size:14px;font-weight:700">x +</span>
-    <span class="fi-chip" data-type="cb" data-val="4" style="background:#7c3aed">4</span>
-    <span style="font-size:14px;font-weight:700">y −</span>
-    <span class="fi-chip" data-type="cc" data-val="10" style="background:#dc2626">10</span>
-    <span style="font-size:14px;font-weight:700">= 0</span>
-  </div>
-</div>
-<div class="fi-formula-box">
-  <div class="fi-fline">
-    <span class="fi-ft">d =</span>
-    <span style="display:inline-flex;flex-direction:column;align-items:center;gap:3px">
-      <span style="display:flex;align-items:center;gap:4px;border-bottom:2px solid #334155;padding-bottom:3px">
-        <span class="fi-ft">|</span><span class="fi-slot" data-needs="cc">c?</span><span class="fi-ft">|</span>
-      </span>
-      <span style="display:flex;align-items:center;gap:4px">
-        <span class="fi-ft">√(</span>
-        <span class="fi-slot" data-needs="ca">a?</span>
-        <span class="fi-ft">²+</span>
-        <span class="fi-slot" data-needs="cb">b?</span>
-        <span class="fi-ft">²)</span>
-      </span>
-    </span>
-    <span class="fi-ft">=</span>
-    <span class="fi-ft" id="fi-11-step" style="color:#64748b;font-size:13px"></span>
-  </div>
-</div>
-<div class="fi-result" id="fi-result-11">
-  d = |−10| ÷ √(3²+4²) = 10 ÷ √25 = 10 ÷ <b>5</b> = <b style="font-size:19px">2</b> 🎉<br>
-  <span style="font-size:13px;opacity:.85">분자 = |상수항| · 분모 = √(x계수²+y계수²)</span>
-</div>
-<div style="text-align:center"><button class="fi-reset" onclick="resetFiDemo('fi-demo-11')">↺ 다시하기</button></div>
-</div>`,
+    concept:`<div class="formula-box">점(x₀, y₀)에서 직선 ax + by + c = 0 까지의 거리<br>d = |ax₀ + by₀ + c| ÷ √(a² + b²)</div>
+<div class="step-row"><div class="step-num">1</div><div class="step-text">직선식을 ax + by + c = 0 모양으로 정리하고 a, b, c 찾기</div></div>
+<div class="step-row"><div class="step-num">2</div><div class="step-text">위(분자): 점의 좌표를 식에 넣은 결과의 절댓값 | |</div></div>
+<div class="step-row"><div class="step-num">3</div><div class="step-text">아래(분모): √(a² + b²) 계산 후 위 ÷ 아래</div></div>
+<div class="example-block"><div class="ex-label">예시</div>원점 (0, 0)에서 3x + 4y − 15 = 0 까지의 거리<br>위: |3 × 0 + 4 × 0 − 15| = |−15| = 15<br>아래: √(3² + 4²) = √(9 + 16) = √25 = 5<br><span class="arrow">→</span> 거리 = 15 ÷ 5 = <b>3</b></div>
+<div class="tip-box">| | 표시는 <b>절댓값</b>(부호 떼고 양수로 만들기)이에요. 3·4·5 / 5·12·13 같은 수가 자주 등장 — √ 안이 딱 떨어지는지 확인!</div>`,
     practice:[
       {q:"원점과 직선 5x − 12y + 26 = 0 사이의 거리는?",
        c:["1","2","3","4"],a:1,
@@ -701,14 +625,12 @@ x²+bx+a=0이 중근이 되려면 <b>(x + b/2)²</b> 꼴이 되어야 해.<br>
   },
   {
     id:12, title:"원과 직선의 위치 관계", sub:"접할 조건",
-    concept:`x²+y²=r²에 y=a 또는 x=a가 접한다 → <b>우변을 루트 씌우면 그게 바로 a야!</b><br><br>
-예) x²+y²=9에 y=a가 접함<br>
-→ 반지름 = √9 = <b>3</b><br>
-→ 자연수 a = <b>3</b><br><br>
-예) x²+y²=25에 x=a가 접함<br>
-→ 반지름 = √25 = <b>5</b><br>
-→ 자연수 a = <b>5</b><br><br>
-💡 x²+y²=□ 에서 □의 루트값 = 반지름 = a!`,
+    concept:`<div class="formula-box">원의 가운데에서 직선까지 거리 = 반지름 → <b>딱 한 점에서 만남</b></div>
+<div class="step-row"><div class="step-num">1</div><div class="step-text">원 x² + y² = r² 에서 반지름 r = √(우변)</div></div>
+<div class="step-row"><div class="step-num">2</div><div class="step-text">직선이 y = k 모양이면 원점에서 직선까지 거리 = <b>|k|</b></div></div>
+<div class="step-row"><div class="step-num">3</div><div class="step-text">|k| = r 로 놓고 k 값 구하기 (자연수 조건이면 양수만)</div></div>
+<div class="example-block"><div class="ex-label">예시</div>원 x² + y² = 9 에 직선 y = a(자연수)가 딱 한 점에서 만날 때 a<br>반지름: r = √9 = 3<br>원점에서 y = a까지 거리 = |a|<br>|a| = 3 → a = 3 또는 −3<br>자연수 조건 → <b>a = 3</b></div>
+<div class="tip-box">딱 한 점에서 만나는 걸 <b>접한다</b>고 해요. 원의 가운데가 원점이 아닐 때도 같은 원리: '중심에서 직선까지 거리 = 반지름'!</div>`,
     practice:[
       {q:"직선 y = a와 원 x² + y² = 16이 한 점에서 만날 때, 자연수 a의 값은?",
        c:["2","3","4","5"],a:2,
@@ -729,13 +651,11 @@ x²+bx+a=0이 중근이 되려면 <b>(x + b/2)²</b> 꼴이 되어야 해.<br>
   },
   {
     id:13, title:"도형의 대칭이동", sub:"원점 대칭",
-    concept:`대칭이동 3가지 규칙만 외워! 어느 축을 기준으로 하느냐에 따라 부호가 바뀌는 게 달라.<br><br>
-• <b>x축 대칭</b>: y 부호 반대 → (x, y) → (x, <b>−y</b>)<br>
-• <b>y축 대칭</b>: x 부호 반대 → (x, y) → (<b>−x</b>, y)<br>
-• <b>원점 대칭</b>: 둘 다 부호 반대 → (x, y) → (<b>−x, −y</b>)<br><br>
-예) (3, 4)의 원점 대칭 → (−3, −4)<br>
-예) (3, 4)의 x축 대칭 → (3, −4)<br><br>
-💡 원점 대칭 = x축 + y축 대칭을 동시에!`,
+    concept:`<div class="formula-box">x축 대칭: (a, b) → (a, −b) &nbsp; y축 대칭: (a, b) → (−a, b)<br>원점 대칭: (a, b) → (−a, −b) &nbsp; y = x 대칭: (a, b) → (b, a)</div>
+<div class="step-row"><div class="step-num">1</div><div class="step-text">어떤 축/점을 거울 삼아 비추는지 확인</div></div>
+<div class="step-row"><div class="step-num">2</div><div class="step-text">규칙대로 부호 바꾸거나 좌표 자리 바꾸기</div></div>
+<div class="example-block"><div class="ex-label">예시</div>점 (3, −4)의 각 대칭점<br>x축 대칭 → y만 부호 반대 → <b>(3, 4)</b><br>y축 대칭 → x만 부호 반대 → <b>(−3, −4)</b><br>원점 대칭 → 둘 다 부호 반대 → <b>(−3, 4)</b><br>y = x 대칭 → x와 y 자리 바꿈 → <b>(−4, 3)</b></div>
+<div class="tip-box">거울로 비추듯 옮기는 걸 <b>대칭이동</b>이라고 해요. x축 대칭 = y만 뒤집기, y축 대칭 = x만 뒤집기 (이름과 반대!).</div>`,
     practice:[
       {q:"점 (−1, 5)를 원점에 대하여 대칭이동한 점의 좌표는?",
        c:["(1, 5)","(−1, −5)","(1, −5)","(5, −1)"],a:2,
@@ -756,14 +676,12 @@ x²+bx+a=0이 중근이 되려면 <b>(x + b/2)²</b> 꼴이 되어야 해.<br>
   },
   {
     id:14, title:"집합의 연산", sub:"교집합 A∩B",
-    concept:`A∩B(교집합) = A에도 있고 B에도 있는 원소만 골라내면 돼. <b>A의 원소를 하나씩 B에서 찾아봐!</b><br><br>
-예) A={1,2,3,4}, B={3,4,5}<br>
-→ 1: B에 없음 ✗<br>
-→ 2: B에 없음 ✗<br>
-→ 3: B에 있음 ✓<br>
-→ 4: B에 있음 ✓<br>
-→ A∩B = <b>{3, 4}</b><br><br>
-💡 n(A∩B)를 묻는 문제는 공통 원소 개수만 세면 끝!`,
+    concept:`<div class="formula-box">A ∩ B: 두 집합 <b>모두</b>에 들어 있는 것<br>A ∪ B: 두 집합 중 <b>한 쪽이라도</b> 들어 있는 것</div>
+<div class="step-row"><div class="step-num">1</div><div class="step-text">A 안의 것과 B 안의 것을 따로 나열</div></div>
+<div class="step-row"><div class="step-num">2</div><div class="step-text">A에도 있고 B에도 있는 것만 골라내기</div></div>
+<div class="step-row"><div class="step-num">3</div><div class="step-text">{ } 안에 쓰기, n( ) 은 개수</div></div>
+<div class="example-block"><div class="ex-label">예시</div>A = {1, 2, 3, 4}, B = {3, 4, 5, 6} 일 때 A ∩ B 와 그 개수<br>A의 것 중 B에도 있는 것: 3 ✓, 4 ✓<br>A ∩ B = <b>{3, 4}</b><br><span class="arrow">→</span> 개수 n(A ∩ B) = <b>2</b></div>
+<div class="tip-box">{ } 안에 들어가는 것을 <b>원소</b>, 공통으로 든 모임을 <b>교집합</b>(∩), 한 쪽이라도 든 모임을 <b>합집합</b>(∪)이라고 해요. ∩ = X자(공통), ∪ = 컵 모양(전부 담기).</div>`,
     practice:[
       {q:"A = {a, b, c}, B = {b, c, d}일 때, A ∩ B는?",
        c:["{a, b}","{c, d}","{b, c}","{a, d}"],a:2,
@@ -784,15 +702,12 @@ x²+bx+a=0이 중근이 되려면 <b>(x + b/2)²</b> 꼴이 되어야 해.<br>
   },
   {
     id:15, title:"명제의 필요충분조건", sub:"진리집합이 같아야",
-    concept:`p⟺q(필요충분조건) 문제 푸는 법: <b>q를 x=얼마로 풀고, p의 x값과 같다고 놓으면 끝!</b><br><br>
-예) p: x=5, q: 2x−a=0<br>
-→ q 풀기: 2x=a → x = a/2<br>
-→ p와 같으려면: a/2 = 5<br>
-→ a = <b>10</b><br><br>
-예) p: x=3, q: (x−a)²=0<br>
-→ q 풀기: x=a<br>
-→ a = <b>3</b><br><br>
-💡 q를 x=?로 풀고 → p의 x값과 같다고 등호!`,
+    concept:`<div class="formula-box">p ↔ q (필요충분) → 두 조건을 만족하는 x 값이 <b>완전히 같음</b></div>
+<div class="step-row"><div class="step-num">1</div><div class="step-text">'필요충분조건' = 두 조건이 정확히 같은 x를 가져야 함</div></div>
+<div class="step-row"><div class="step-num">2</div><div class="step-text">q를 풀어 'x = ___' 모양으로 만들기</div></div>
+<div class="step-row"><div class="step-num">3</div><div class="step-text">p의 x 값과 같아지도록 모르는 글자 결정</div></div>
+<div class="example-block"><div class="ex-label">예시</div>p: x = 5, &nbsp; q: 2x − a = 0 이 필요충분일 때 a<br>q 풀기: 2x = a → x = a / 2<br>p 와 같으려면: a / 2 = 5<br>양변 × 2<br><span class="arrow">→</span> a = <b>10</b></div>
+<div class="tip-box">참·거짓을 가릴 수 있는 문장을 <b>명제</b>, 두 조건이 정확히 같은 x들을 가지면 <b>필요충분조건</b>이라고 해요. q를 'x = ?' 모양으로 만든 뒤 p와 맞추세요.</div>`,
     practice:[
       {q:"p: x = 5, q: x − a = 0이 필요충분조건일 때, a의 값은?",
        c:["3","4","5","6"],a:2,
@@ -813,12 +728,11 @@ x²+bx+a=0이 중근이 되려면 <b>(x + b/2)²</b> 꼴이 되어야 해.<br>
   },
   {
     id:16, title:"역함수의 값", sub:"f(a)=b ↔ f⁻¹(b)=a",
-    concept:`f⁻¹(k) 를 구할 때는 <b>"f(?)=k가 되는 ? 찾기"</b>가 전부야. 화살표 방향이 반대!<br><br>
-예) f(2)=5, f(4)=7, f(6)=9 일 때 f⁻¹(7)=?<br>
-→ "f(?)=7"을 만족하는 ?를 표에서 찾아<br>
-→ f(<b>4</b>)=7 이므로 f⁻¹(7) = <b>4</b><br><br>
-💡 f⁻¹를 보는 순간: 주어진 값(7)을 결과값으로 가지는 입력값을 역으로 찾아!<br>
-따로 계산할 필요 없이 표에서 눈으로 찾으면 끝!`,
+    concept:`<div class="formula-box">f(a) = b 이면 → f⁻¹(b) = a<br>(입력과 출력을 거꾸로 뒤집은 것)</div>
+<div class="step-row"><div class="step-num">1</div><div class="step-text">f⁻¹(k) 구하기 → <b>f(?) = k</b> 인 ? 를 찾기</div></div>
+<div class="step-row"><div class="step-num">2</div><div class="step-text">표나 식에서 결과(오른쪽)가 k 인 것의 입력값(왼쪽)을 읽기</div></div>
+<div class="example-block"><div class="ex-label">예시</div>f(3) = 7 일 때 f⁻¹(7) 의 값<br>f(?) = 7 인 ? 찾기<br>주어진 조건: f(<b>3</b>) = 7<br><span class="arrow">→</span> f⁻¹(7) = <b>3</b></div>
+<div class="tip-box">x를 넣으면 결과가 나오는 식을 <b>함수</b>(f), 거꾸로 가는 식을 <b>역함수</b>(f⁻¹)라고 해요. 화살표를 거꾸로 따라가면 끝!</div>`,
     practice:[
       {q:"f(a) = 1, f(b) = 2, f(c) = 3일 때, f⁻¹(2)의 값은?",
        c:["a","b","c","없음"],a:1,
@@ -839,14 +753,11 @@ x²+bx+a=0이 중근이 되려면 <b>(x + b/2)²</b> 꼴이 되어야 해.<br>
   },
   {
     id:17, title:"유리함수의 점근선", sub:"수평·수직 점근선",
-    concept:`y = k/(x−p) + q 꼴에서 점근선 찾기 — <b>뒤에 붙은 숫자가 수평 점근선!</b><br><br>
-• 수평 점근선: y = <b>q</b> (뒤에 +q 또는 −q)<br>
-• 수직 점근선: x = <b>p</b> (분모가 0이 되는 값)<br><br>
-예) y = 2/(x−3) + <b>5</b><br>
-→ 수평 점근선: <b>y = 5</b><br>
-→ 수직 점근선: x = 3<br><br>
-💡 시험에서 수평 점근선을 묻는 경우가 대부분이야.<br>
-+5 → y=5, −3 → y=−3, +q → y=q, 그냥 외워!`,
+    concept:`<div class="formula-box">y = k / (x − a) + b 모양일 때<br>세로선: x = a &nbsp;&nbsp; 가로선: y = b</div>
+<div class="step-row"><div class="step-num">1</div><div class="step-text">분수의 <b>아래 부분을 0으로 만드는 x</b> → 세로선</div></div>
+<div class="step-row"><div class="step-num">2</div><div class="step-text">맨 끝의 + b 부분 → 가로선 y = b</div></div>
+<div class="example-block"><div class="ex-label">예시</div>y = 3 / (x − 2) + 4 의 점근선<br>분수의 아래 (x − 2) = 0 → x = 2 → <b>세로선: x = 2</b><br>맨 끝 +4 → <b>가로선: y = 4</b></div>
+<div class="tip-box">분수의 아래를 <b>분모</b>, 그래프가 가까이 가지만 닿지 않는 선을 <b>점근선</b>이라고 해요. y = 3/(x+2)+4 → x+2=0 → x = <b>−2</b>! 부호 반대로 읽기.</div>`,
     practice:[
       {q:"유리함수 y = 1/(x+1) − 4의 점근선 y = a에서 a의 값은?",
        c:["−2","−3","−4","−5"],a:2,
@@ -867,12 +778,11 @@ x²+bx+a=0이 중근이 되려면 <b>(x + b/2)²</b> 꼴이 되어야 해.<br>
   },
   {
     id:18, title:"순열", sub:"순서 있는 배열 nPr",
-    concept:`순서가 있는 선택 = 순열! <b>n부터 시작해서 r개를 곱해나가면</b> 끝이야.<br><br>
-• ₅P₂ = 5×4 = <b>20</b> (5개 중 2개를 순서 있게)<br>
-• ₄P₃ = 4×3×2 = <b>24</b> (4개 중 3개를 순서 있게)<br>
-• ₃P₂ = 3×2 = <b>6</b><br><br>
-순서가 있는 경우: 반장·부반장, 1등·2등, 왼쪽·오른쪽 배치<br><br>
-💡 "자리가 구분되면 순열" — n에서 시작해서 하나씩 줄여가며 r개 곱하기!`,
+    concept:`<div class="formula-box">ₙPᵣ = n × (n−1) × (n−2) × … <b>(r 개 곱하기)</b></div>
+<div class="step-row"><div class="step-num">1</div><div class="step-text">'순서대로 줄 세우기', '자리 정하기' 키워드 → 순열</div></div>
+<div class="step-row"><div class="step-num">2</div><div class="step-text">n 부터 1씩 줄여가며 <b>r 개</b>만 곱하기</div></div>
+<div class="example-block"><div class="ex-label">예시</div>ₙPᵣ 계산 연습<br>₅P₃ = 5 × 4 × 3 = <b>60</b> &nbsp;(5에서 3개 곱)<br>₄P₂ = 4 × 3 = <b>12</b> &nbsp;(4에서 2개 곱)<br>₆P₂ = 6 × 5 = <b>30</b> &nbsp;(6에서 2개 곱)</div>
+<div class="tip-box">순서를 따져 줄 세우는 가짓수를 <b>순열</b>(P)이라고 해요. '나열·배열·줄세우기·자리정하기'면 순열! 정확히 r 개만 곱하기.</div>`,
     practice:[
       {q:"3명의 학생 중 반장과 부반장을 각각 1명씩 뽑는 경우의 수는?",
        c:["3","4","6","9"],a:2,
@@ -893,14 +803,12 @@ x²+bx+a=0이 중근이 되려면 <b>(x + b/2)²</b> 꼴이 되어야 해.<br>
   },
   {
     id:19, title:"조합", sub:"순서 없는 선택 nCr",
-    concept:`순서 없이 뽑는 선택 = 조합! <b>n부터 r개 곱하고, r!으로 나누면</b> 끝이야.<br><br>
-• ₅C₂ = (5×4) ÷ (2×1) = <b>10</b><br>
-• ₆C₂ = (6×5) ÷ (2×1) = <b>15</b><br>
-• ₆C₃ = (6×5×4) ÷ (3×2×1) = <b>20</b><br><br>
-순서가 없는 경우: 대표 선출, 팀 구성, 색깔 선택<br><br>
-💡 <b>순열 vs 조합 구분법:</b><br>
-"반장·부반장 뽑기" → 역할 다름 → <b>순열</b><br>
-"대표 2명 뽑기" → 역할 같음 → <b>조합</b>`,
+    concept:`<div class="formula-box">ₙCᵣ = ₙPᵣ ÷ r! &nbsp;(순서 중복 제거한 순열)</div>
+<div class="step-row"><div class="step-num">1</div><div class="step-text">'순서 없이 뽑기·고르기' 키워드 → 조합</div></div>
+<div class="step-row"><div class="step-num">2</div><div class="step-text">위(분자): n 부터 r 개 곱하기 (순열과 같음)</div></div>
+<div class="step-row"><div class="step-num">3</div><div class="step-text">아래(분모): r! = r × (r−1) × … × 1 로 나누기</div></div>
+<div class="example-block"><div class="ex-label">예시</div>ₙCᵣ 계산 연습<br>₅C₂ = (5 × 4) ÷ (2 × 1) = 20 ÷ 2 = <b>10</b><br>₆C₃ = (6 × 5 × 4) ÷ (3 × 2 × 1) = 120 ÷ 6 = <b>20</b></div>
+<div class="tip-box">순서 상관없이 뽑는 가짓수를 <b>조합</b>(C)이라고 해요. r! 은 r부터 1까지 다 곱한 것 (예: 3! = 3×2×1 = 6). '선택·고르기·뽑기'면 조합!</div>`,
     practice:[
       {q:"4개의 과일 중에서 서로 다른 2개를 선택하는 경우의 수는?",
        c:["4","5","6","8"],a:2,
@@ -925,26 +833,26 @@ x²+bx+a=0이 중근이 되려면 <b>(x + b/2)²</b> 꼴이 되어야 해.<br>
 // DEEP CONCEPTS — 3회 연속 오답 시 표시할 심화 설명
 // ============================================================
 const DEEP = {
-  0:`<b>📌 단계별 풀이법</b><br><br>① 같은 차수(x의 지수가 같은 것)끼리 묶습니다<br>② 각 묶음의 계수만 더합니다<br><br><b>예) A = 3x² + 2x,&nbsp; B = x² + 5</b><br>A + B = (3<b>+1</b>)x² + 2x + 5 = <b>4x² + 2x + 5</b><br><br>💡 x²은 x²끼리, x는 x끼리, 숫자는 숫자끼리!`,
-  1:`<b>📌 항등식이란?</b><br><br>어떤 x 값을 넣어도 항상 참 → 좌변 = 우변이 완전히 같아야 함<br>→ <b>같은 차수의 계수가 반드시 같습니다</b><br><br><b>예) ax² + 3x + b = 5x² + cx + 2</b><br>x²: a = 5<br>x : 3 = c → c = 3<br>상수: b = 2<br><br>💡 차수별로 계수를 나란히 맞춰보세요!`,
-  2:`<b>📌 나머지 정리 원리</b><br><br>f(x) = (x−a)·Q(x) + <b>나머지</b><br>x=a 대입: f(a) = 0 + 나머지 = <b>나머지</b><br><br><b>예) x²+3x+2 를 (x−1)로 나눈 나머지</b><br>f(1) = 1 + 3 + 2 = <b>6</b><br><br>💡 (x−k) → f(k),&nbsp; (x+k) → f(−k) 대입!`,
-  3:`<b>📌 공식 암기법</b><br><br>x³ − a³ = (x−a)(x² + ax + a²)<br>x³ + a³ = (x+a)(x² − ax + a²)<br><br><b>예) x³ − 8 = x³ − 2³ → a=2</b><br>= (x−<b>2</b>)(x² + <b>2</b>x + <b>4</b>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↑&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↑&nbsp;&nbsp;&nbsp;&nbsp;↑<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ax&nbsp;&nbsp;a²<br><br>💡 (x±a) 에서 a를 찾아 공식에 대입하면 끝!`,
-  4:`<b>📌 켤레복소수 원리</b><br><br>a+bi의 켤레 = <b>a−bi</b> (허수부 부호만 반대)<br><br><b>예) 2+ai 의 켤레 = b−5i</b><br>켤레 계산: 2 − ai = b − 5i<br>실수부: 2 = b<br>허수부: −a = −5 → a = 5<br>∴ a+b = 5+2 = <b>7</b><br><br>💡 켤레 만든 뒤 실수부/허수부 각각 비교!`,
-  5:`<b>📌 중근 조건 이해</b><br><br>중근 = 두 근이 같은 경우 → 판별식 D = 0<br><b>D = b² − 4ac = 0</b><br><br><b>예) x² − 6x + a = 0이 중근</b><br>(−6)² − 4a = 0<br>36 − 4a = 0<br>a = <b>9</b><br><br>💡 공식: a = (x항 계수)² ÷ 4`,
-  6:`<b>📌 근과 계수 원리</b><br><br>(x−α)(x−β) = x² −(α+β)x + <b>αβ</b><br>→ 상수항 = <b>두 근의 곱</b><br><br><b>예) 두 근이 3, 5 → x²−8x+a=0</b><br>a = 3 × 5 = <b>15</b><br>확인: (x−3)(x−5) = x²−8x+15 ✓<br><br>💡 상수항 = 두 근을 곱한 값!`,
-  7:`<b>📌 최대·최솟값 찾기</b><br><br>y = a(x−p)² + q 에서 꼭짓점 (p, q)<br>• a > 0 (아래로 볼록): 꼭짓점에서 <b>최솟값</b><br>• a < 0 (위로 볼록): 꼭짓점에서 <b>최댓값</b><br><br><b>예) 0≤x≤4, y=(x−2)²+1</b><br>꼭짓점 x=2가 범위 [0,4] 안 → 최솟값 = <b>1</b><br>끝점 x=0,4: y=5 → 최댓값 = 5<br><br>💡 꼭짓점이 범위 안에 있으면 꼭짓점값이 극값!`,
-  8:`<b>📌 근 대입법</b><br><br>x=k가 근이면 <b>f(k) = 0</b><br><br><b>예) x³+2x²−x+a=0의 한 근이 2</b><br>f(2) = 8 + 8 − 2 + a = 0<br>14 + a = 0<br>a = <b>−14</b><br><br>계산 순서: ① x에 숫자 대입 → ② 계산 → ③ a 구함<br><br>💡 그냥 x 자리에 숫자를 넣고 계산하면 끝!`,
-  9:`<b>📌 연립부등식 푸는 법</b><br><br>① 각 부등식을 따로 풀기<br>② 두 범위의 <b>공통 부분</b> 찾기<br><br><b>예) x+1 < 6 이고 3x > x+4</b><br>①: x < 5<br>②: 2x > 4 → x > 2<br>공통: <b>2 < x < 5</b><br><br>💡 수직선에 두 범위를 표시하고 겹치는 부분!`,
-  10:`<b>📌 내분점 공식</b><br><br>A(x₁,y₁), B(x₂,y₂)를 m:n 내분:<br>x = <b>(mx₂ + nx₁) ÷ (m+n)</b><br>y = <b>(my₂ + ny₁) ÷ (m+n)</b><br><br><b>예) A(1,2), B(5,6)을 1:1로 내분</b><br>x = (1×5 + 1×1) ÷ 2 = 6÷2 = 3<br>y = (1×6 + 1×2) ÷ 2 = 8÷2 = 4 → <b>(3,4)</b><br><br>💡 B에 m, A에 n을 곱하고 m+n으로 나눠요!`,
-  11:`<b>📌 거리 공식</b><br><br>원점에서 ax+by+c=0까지의 거리:<br>d = <b>|c| ÷ √(a²+b²)</b><br><br><b>예) 원점에서 4x+3y−10=0</b><br>분자: |−10| = 10<br>분모: √(16+9) = √25 = 5<br>d = 10÷5 = <b>2</b><br><br>💡 분자 = c절댓값, 분모 = a²+b²루트!`,
-  12:`<b>📌 접선 조건</b><br><br>x²+y²=r²에 직선 y=a가 접할 때:<br>반지름 = 원점→직선 거리<br>r = <b>|a|</b><br><br><b>예) x²+y²=9에 y=a가 접함</b><br>반지름 = √9 = 3<br>|a| = 3 → 자연수 a = <b>3</b><br><br>💡 반지름 = √(우변), 그 값이 |a|!`,
-  13:`<b>📌 대칭이동 정리</b><br><br>• x축 대칭: (x, y) → (x, <b>−y</b>)<br>• y축 대칭: (x, y) → (<b>−x</b>, y)<br>• 원점 대칭: (x, y) → (<b>−x, −y</b>) ← 둘 다!<br><br><b>예) (5, −3)의 원점 대칭</b><br>→ (−5, 3)<br><br>💡 원점 대칭 = x, y 둘 다 부호 반대!`,
-  14:`<b>📌 교집합 찾기</b><br><br>A ∩ B = A와 B 모두에 속한 원소<br><br><b>예) A={1,3,5,7}, B={3,6,7,9}</b><br>1 → B에 없음 ✗<br>3 → B에 있음 ✓<br>5 → B에 없음 ✗<br>7 → B에 있음 ✓<br>→ A ∩ B = <b>{3, 7}</b><br><br>💡 A의 원소를 하나씩 B에서 찾기!`,
-  15:`<b>📌 필요충분조건 이해</b><br><br>p ⟺ q = 두 조건의 진리집합이 완전히 같음<br><br><b>예) p: x=3, q: (x−a)²=0</b><br>q 풀기: x = a<br>p와 같으려면: a = <b>3</b><br><br><b>예) p: x=4, q: 2x−a=0</b><br>q 풀기: x = a/2<br>a/2 = 4 → a = <b>8</b><br><br>💡 q를 x=?로 풀고 p의 x값과 같다고 놓기!`,
-  16:`<b>📌 역함수 원리</b><br><br>f(a)=b 이면 → <b>f⁻¹(b) = a</b><br>(화살표 방향이 반대!)<br><br><b>예) f(2)=5, f(4)=7, f(6)=9</b><br>f⁻¹(7) = ? → "f(?)=7을 만족하는 ?"<br>f(4)=7 이므로 f⁻¹(7) = <b>4</b><br><br>💡 결과값을 가진 입력값을 찾으면 끝!`,
-  17:`<b>📌 점근선 이해</b><br><br>y = k/(x−p) + q 에서<br>• 수직 점근선: <b>x = p</b><br>• 수평 점근선: <b>y = q</b><br><br><b>예) y = 3/(x−2) + 4</b><br>x→∞ 이면 3/(x−2)→0 → y→4<br>수평 점근선: <b>y = 4</b><br><br>💡 +q 부분의 숫자가 바로 수평 점근선!`,
-  18:`<b>📌 순열 이해</b><br><br>순열 = 순서가 중요한 배열<br>nPr = n×(n−1)×…×(n−r+1)<br><br><b>예) 5명 중 반장·부반장 = ₅P₂</b><br>반장: 5가지, 부반장: 4가지<br>5 × 4 = <b>20</b><br><br>역할이 구분 → 순열 / 단순 선발 → 조합<br><br>💡 자리가 구분되면 순열, n부터 하나씩 줄여 곱하기!`,
-  19:`<b>📌 조합 이해</b><br><br>조합 = 순서 무관 선택<br>nCr = nPr ÷ r!<br><br><b>예) 6명 중 3명 = ₆C₃</b><br>= (6×5×4) ÷ (3×2×1) = 120÷6 = <b>20</b><br><br><b>₅C₂ 계산:</b><br>= (5×4) ÷ (2×1) = 20÷2 = <b>10</b><br><br>💡 순열에서 r!로 나누면 조합!`
+  0:`<b> 단계별 풀이법</b><br><br>① 같은 차수(x의 지수가 같은 것)끼리 묶습니다<br>② 각 묶음의 계수만 더합니다<br><br><b>예) A = 3x² + 2x,&nbsp; B = x² + 5</b><br>A + B = (3<b>+1</b>)x² + 2x + 5 = <b>4x² + 2x + 5</b><br><br> x²은 x²끼리, x는 x끼리, 숫자는 숫자끼리!`,
+  1:`<b> 항등식이란?</b><br><br>어떤 x 값을 넣어도 항상 참 → 좌변 = 우변이 완전히 같아야 함<br>→ <b>같은 차수의 계수가 반드시 같습니다</b><br><br><b>예) ax² + 3x + b = 5x² + cx + 2</b><br>x²: a = 5<br>x : 3 = c → c = 3<br>상수: b = 2<br><br> 차수별로 계수를 나란히 맞춰보세요!`,
+  2:`<b> 나머지 정리 원리</b><br><br>f(x) = (x−a)·Q(x) + <b>나머지</b><br>x=a 대입: f(a) = 0 + 나머지 = <b>나머지</b><br><br><b>예) x²+3x+2 를 (x−1)로 나눈 나머지</b><br>f(1) = 1 + 3 + 2 = <b>6</b><br><br> (x−k) → f(k),&nbsp; (x+k) → f(−k) 대입!`,
+  3:`<b> 공식 암기법</b><br><br>x³ − a³ = (x−a)(x² + ax + a²)<br>x³ + a³ = (x+a)(x² − ax + a²)<br><br><b>예) x³ − 8 = x³ − 2³ → a=2</b><br>= (x−<b>2</b>)(x² + <b>2</b>x + <b>4</b>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↑&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↑&nbsp;&nbsp;&nbsp;&nbsp;↑<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ax&nbsp;&nbsp;a²<br><br> (x±a) 에서 a를 찾아 공식에 대입하면 끝!`,
+  4:`<b> 켤레복소수 원리</b><br><br>a+bi의 켤레 = <b>a−bi</b> (허수부 부호만 반대)<br><br><b>예) 2+ai 의 켤레 = b−5i</b><br>켤레 계산: 2 − ai = b − 5i<br>실수부: 2 = b<br>허수부: −a = −5 → a = 5<br>∴ a+b = 5+2 = <b>7</b><br><br> 켤레 만든 뒤 실수부/허수부 각각 비교!`,
+  5:`<b> 중근 조건 이해</b><br><br>중근 = 두 근이 같은 경우 → 판별식 D = 0<br><b>D = b² − 4ac = 0</b><br><br><b>예) x² − 6x + a = 0이 중근</b><br>(−6)² − 4a = 0<br>36 − 4a = 0<br>a = <b>9</b><br><br> 공식: a = (x항 계수)² ÷ 4`,
+  6:`<b> 근과 계수 원리</b><br><br>(x−α)(x−β) = x² −(α+β)x + <b>αβ</b><br>→ 상수항 = <b>두 근의 곱</b><br><br><b>예) 두 근이 3, 5 → x²−8x+a=0</b><br>a = 3 × 5 = <b>15</b><br>확인: (x−3)(x−5) = x²−8x+15 <br><br> 상수항 = 두 근을 곱한 값!`,
+  7:`<b> 최대·최솟값 찾기</b><br><br>y = a(x−p)² + q 에서 꼭짓점 (p, q)<br>• a > 0 (아래로 볼록): 꼭짓점에서 <b>최솟값</b><br>• a < 0 (위로 볼록): 꼭짓점에서 <b>최댓값</b><br><br><b>예) 0≤x≤4, y=(x−2)²+1</b><br>꼭짓점 x=2가 범위 [0,4] 안 → 최솟값 = <b>1</b><br>끝점 x=0,4: y=5 → 최댓값 = 5<br><br> 꼭짓점이 범위 안에 있으면 꼭짓점값이 극값!`,
+  8:`<b> 근 대입법</b><br><br>x=k가 근이면 <b>f(k) = 0</b><br><br><b>예) x³+2x²−x+a=0의 한 근이 2</b><br>f(2) = 8 + 8 − 2 + a = 0<br>14 + a = 0<br>a = <b>−14</b><br><br>계산 순서: ① x에 숫자 대입 → ② 계산 → ③ a 구함<br><br> 그냥 x 자리에 숫자를 넣고 계산하면 끝!`,
+  9:`<b> 연립부등식 푸는 법</b><br><br>① 각 부등식을 따로 풀기<br>② 두 범위의 <b>공통 부분</b> 찾기<br><br><b>예) x+1 < 6 이고 3x > x+4</b><br>①: x < 5<br>②: 2x > 4 → x > 2<br>공통: <b>2 < x < 5</b><br><br> 수직선에 두 범위를 표시하고 겹치는 부분!`,
+  10:`<b> 내분점 공식</b><br><br>A(x₁,y₁), B(x₂,y₂)를 m:n 내분:<br>x = <b>(mx₂ + nx₁) ÷ (m+n)</b><br>y = <b>(my₂ + ny₁) ÷ (m+n)</b><br><br><b>예) A(1,2), B(5,6)을 1:1로 내분</b><br>x = (1×5 + 1×1) ÷ 2 = 6÷2 = 3<br>y = (1×6 + 1×2) ÷ 2 = 8÷2 = 4 → <b>(3,4)</b><br><br> B에 m, A에 n을 곱하고 m+n으로 나눠요!`,
+  11:`<b> 거리 공식</b><br><br>원점에서 ax+by+c=0까지의 거리:<br>d = <b>|c| ÷ √(a²+b²)</b><br><br><b>예) 원점에서 4x+3y−10=0</b><br>분자: |−10| = 10<br>분모: √(16+9) = √25 = 5<br>d = 10÷5 = <b>2</b><br><br> 분자 = c절댓값, 분모 = a²+b²루트!`,
+  12:`<b> 접선 조건</b><br><br>x²+y²=r²에 직선 y=a가 접할 때:<br>반지름 = 원점→직선 거리<br>r = <b>|a|</b><br><br><b>예) x²+y²=9에 y=a가 접함</b><br>반지름 = √9 = 3<br>|a| = 3 → 자연수 a = <b>3</b><br><br> 반지름 = √(우변), 그 값이 |a|!`,
+  13:`<b> 대칭이동 정리</b><br><br>• x축 대칭: (x, y) → (x, <b>−y</b>)<br>• y축 대칭: (x, y) → (<b>−x</b>, y)<br>• 원점 대칭: (x, y) → (<b>−x, −y</b>) ← 둘 다!<br><br><b>예) (5, −3)의 원점 대칭</b><br>→ (−5, 3)<br><br> 원점 대칭 = x, y 둘 다 부호 반대!`,
+  14:`<b> 교집합 찾기</b><br><br>A ∩ B = A와 B 모두에 속한 원소<br><br><b>예) A={1,3,5,7}, B={3,6,7,9}</b><br>1 → B에 없음 <br>3 → B에 있음 <br>5 → B에 없음 <br>7 → B에 있음 <br>→ A ∩ B = <b>{3, 7}</b><br><br> A의 원소를 하나씩 B에서 찾기!`,
+  15:`<b> 필요충분조건 이해</b><br><br>p ⟺ q = 두 조건의 진리집합이 완전히 같음<br><br><b>예) p: x=3, q: (x−a)²=0</b><br>q 풀기: x = a<br>p와 같으려면: a = <b>3</b><br><br><b>예) p: x=4, q: 2x−a=0</b><br>q 풀기: x = a/2<br>a/2 = 4 → a = <b>8</b><br><br> q를 x=?로 풀고 p의 x값과 같다고 놓기!`,
+  16:`<b> 역함수 원리</b><br><br>f(a)=b 이면 → <b>f⁻¹(b) = a</b><br>(화살표 방향이 반대!)<br><br><b>예) f(2)=5, f(4)=7, f(6)=9</b><br>f⁻¹(7) = ? → "f(?)=7을 만족하는 ?"<br>f(4)=7 이므로 f⁻¹(7) = <b>4</b><br><br> 결과값을 가진 입력값을 찾으면 끝!`,
+  17:`<b> 점근선 이해</b><br><br>y = k/(x−p) + q 에서<br>• 수직 점근선: <b>x = p</b><br>• 수평 점근선: <b>y = q</b><br><br><b>예) y = 3/(x−2) + 4</b><br>x→∞ 이면 3/(x−2)→0 → y→4<br>수평 점근선: <b>y = 4</b><br><br> +q 부분의 숫자가 바로 수평 점근선!`,
+  18:`<b> 순열 이해</b><br><br>순열 = 순서가 중요한 배열<br>nPr = n×(n−1)×…×(n−r+1)<br><br><b>예) 5명 중 반장·부반장 = ₅P₂</b><br>반장: 5가지, 부반장: 4가지<br>5 × 4 = <b>20</b><br><br>역할이 구분 → 순열 / 단순 선발 → 조합<br><br> 자리가 구분되면 순열, n부터 하나씩 줄여 곱하기!`,
+  19:`<b> 조합 이해</b><br><br>조합 = 순서 무관 선택<br>nCr = nPr ÷ r!<br><br><b>예) 6명 중 3명 = ₆C₃</b><br>= (6×5×4) ÷ (3×2×1) = 120÷6 = <b>20</b><br><br><b>₅C₂ 계산:</b><br>= (5×4) ÷ (2×1) = 20÷2 = <b>10</b><br><br> 순열에서 r!로 나누면 조합!`
 };
 
 // ============================================================
@@ -1039,6 +947,116 @@ const EXAM_SETS = [
     {q:"y = 1/(x+2) + 5의 수평 점근선은?",c:["y=1","y=2","y=5","y=7"],a:2,exp:"x→∞ 이면 1/(x+2)→0 → y→5 → 수평 점근선 <b>y=5</b>"},
     {q:"서로 다른 7개의 공 중 2개를 택하여 나열하는 경우의 수는?",c:["36","40","42","48"],a:2,exp:"₇P₂ = 7×6 = <b>42</b>"},
     {q:"6명 중 대표 3명을 선출하는 경우의 수는?",c:["15","18","20","24"],a:2,exp:"₆C₃ = (6×5×4)/(3×2×1) = <b>20</b>"}
+  ],
+  [
+    {q:"A = 2x² + 3x − 1, B = x² − x + 2 일 때, A + B는?",c:["3x²+2x+1","3x²+2x−1","4x²+2x+1","3x²+4x+1"],a:0,exp:"x²: 2+1=3, x: 3+(−1)=2, 상수: −1+2=1 → <b>3x²+2x+1</b>"},
+    {q:"ax² + bx + 3 = 2x² + 4x + c 가 항등식일 때, a+b+c는?",c:["7","8","9","10"],a:2,exp:"x²: a=2, x: b=4, 상수: c=3 → a+b+c = <b>9</b>"},
+    {q:"f(x) = x² + x − 5 를 (x−2)로 나눈 나머지는?",c:["−1","0","1","2"],a:2,exp:"f(2) = 4+2−5 = <b>1</b>"},
+    {q:"27x³ − 8을 인수분해하면?",c:["(3x+2)(9x²+6x+4)","(3x−2)(9x²+6x+4)","(3x−2)(9x²−6x+4)","(3x+2)(9x²−6x+4)"],a:1,exp:"(3x)³−2³ = (3x−2)((3x)²+3x·2+4) = <b>(3x−2)(9x²+6x+4)</b>"},
+    {q:"3 + 2i의 켤레복소수가 a + bi일 때, a + b는?",c:["−1","0","1","2"],a:2,exp:"켤레: 3−2i → a=3, b=−2 → a+b = <b>1</b>"},
+    {q:"x² − bx + 9 = 0이 중근을 가질 때, 양수 b는?",c:["3","4","5","6"],a:3,exp:"b/2 제곱=9 → (b/2)²=9 → b/2=3 → b = <b>6</b>"},
+    {q:"x² − 5x + 6 = 0의 두 근의 합은?",c:["3","4","5","6"],a:2,exp:"근의 합 = −(−5)/1 = <b>5</b>"},
+    {q:"y = −(x + 1)² + 3의 최댓값은?",c:["1","2","3","4"],a:2,exp:"꼭짓점 (−1,3), a<0 → 최댓값 = <b>3</b>"},
+    {q:"x³ + x² − ax + 2 = 0의 한 근이 −2일 때, a는?",c:["0","1","2","3"],a:1,exp:"f(−2) = −8+4+2a+2=0 → 2a=2 → a = <b>1</b>"},
+    {q:"x − 1 < 4 이고 2x > x + 3 을 동시에 만족하는 자연수의 개수는?",c:["0","1","2","3"],a:1,exp:"x<5 이고 x>3 → 자연수: 4 → <b>1개</b>"},
+    {q:"A(1,2), B(4,5)를 1:2로 내분하는 점의 좌표는?",c:["(2,3)","(3,4)","(3,3)","(2,4)"],a:0,exp:"x=(1×4+2×1)/3=2, y=(1×5+2×2)/3=3 → <b>(2,3)</b>"},
+    {q:"원점에서 직선 4x + 3y − 10 = 0까지의 거리는?",c:["1","2","3","4"],a:1,exp:"d = |−10|/√(16+9) = 10/5 = <b>2</b>"},
+    {q:"원 x² + y² = 9에 직선 y = a가 접할 때, 자연수 a는?",c:["1","2","3","4"],a:2,exp:"반지름=3, |a|=3 → a = <b>3</b>"},
+    {q:"점 (2, −3)을 y축에 대칭이동한 점의 좌표는?",c:["(−2,3)","(2,3)","(−2,−3)","(3,−2)"],a:2,exp:"y축 대칭: x 부호 반대 → <b>(−2,−3)</b>"},
+    {q:"A = {1, 4, 7}, B = {2, 4, 6, 8} 일 때, A ∩ B는?",c:["{4}","{2,4}","{4,7}","{1,4}"],a:0,exp:"공통 원소: 4 → A∩B = <b>{4}</b>"},
+    {q:"p: x = 3, q: ax − 3 = 0 이 필요충분조건일 때, a는?",c:["1","2","3","4"],a:0,exp:"q: x=3/a=3 → a = <b>1</b>"},
+    {q:"f(2) = 5, f(5) = 8, f(8) = 11 일 때, f⁻¹(8)는?",c:["2","3","4","5"],a:3,exp:"f(5)=8 → f⁻¹(8) = <b>5</b>"},
+    {q:"y = 3/(x − 2) + 4의 수평 점근선은?",c:["y=2","y=3","y=4","y=7"],a:2,exp:"x→∞ 이면 3/(x−2)→0 → y→4 → 수평 점근선 <b>y=4</b>"},
+    {q:"5명 중 3명을 순서 있게 나열하는 경우의 수는?",c:["30","40","50","60"],a:3,exp:"₅P₃ = 5×4×3 = <b>60</b>"},
+    {q:"9명의 학생 중 대표 2명을 선출하는 경우의 수는?",c:["30","33","36","39"],a:2,exp:"₉C₂ = (9×8)/2 = <b>36</b>"}
+  ],
+  [
+    {q:"A = 4x² − 2x + 1, B = x² + 3x − 2 일 때, A − B는?",c:["3x²−5x+3","3x²+5x+3","5x²−5x+3","3x²−5x−3"],a:0,exp:"x²: 4−1=3, x: −2−3=−5, 상수: 1−(−2)=3 → <b>3x²−5x+3</b>"},
+    {q:"2ax + 3b = 6x + 9 가 항등식일 때, a + b는?",c:["4","5","6","7"],a:2,exp:"x항: 2a=6→a=3, 상수: 3b=9→b=3 → a+b = <b>6</b>"},
+    {q:"f(x) = x³ − 3x + 2 를 (x − 2)로 나눈 나머지는?",c:["2","3","4","5"],a:2,exp:"f(2) = 8−6+2 = <b>4</b>"},
+    {q:"x³ + 27을 인수분해하면?",c:["(x+3)(x²+3x+9)","(x−3)(x²+3x+9)","(x+3)(x²−3x+9)","(x−3)(x²−3x+9)"],a:2,exp:"x³+3³ = (x+3)(x²−3x+9) → <b>(x+3)(x²−3x+9)</b>"},
+    {q:"(2 + ai) + (b − 3i) = 5 − i 일 때, a + b는?",c:["3","4","5","6"],a:2,exp:"실수: 2+b=5→b=3, 허수: a−3=−1→a=2 → a+b = <b>5</b>"},
+    {q:"x² + 10x + a = 0이 중근을 가질 때, a는?",c:["20","22","25","28"],a:2,exp:"(10/2)² = 25 → a = <b>25</b>"},
+    {q:"x² + 4x − 5 = 0의 두 근을 α, β라 할 때, α + β는?",c:["−6","−5","−4","−3"],a:2,exp:"근의 합 = −4/1 = <b>−4</b>"},
+    {q:"y = (x − 2)² + 1의 최솟값은?",c:["0","1","2","3"],a:1,exp:"꼭짓점 (2,1), a>0 → 최솟값 = <b>1</b>"},
+    {q:"x³ − ax² + 3x − 2 = 0의 한 근이 1일 때, a는?",c:["1","2","3","4"],a:1,exp:"f(1) = 1−a+3−2=0 → 2−a=0 → a = <b>2</b>"},
+    {q:"2x + 1 > 5 이고 x + 3 < 7 을 동시에 만족하는 자연수의 개수는?",c:["0","1","2","3"],a:1,exp:"x>2 이고 x<4 → 자연수: 3 → <b>1개</b>"},
+    {q:"A(3, 6), B(9, 0)을 1:2로 내분하는 점의 좌표는?",c:["(4,4)","(5,4)","(6,4)","(5,5)"],a:1,exp:"x=(1×9+2×3)/3=5, y=(1×0+2×6)/3=4 → <b>(5,4)</b>"},
+    {q:"원점에서 직선 7x + 24y − 25 = 0까지의 거리는?",c:["1","2","3","4"],a:0,exp:"d = |−25|/√(49+576) = 25/25 = <b>1</b>"},
+    {q:"원 x² + y² = 49에 직선 y = a가 접할 때, 자연수 a는?",c:["5","6","7","8"],a:2,exp:"반지름=7, |a|=7 → a = <b>7</b>"},
+    {q:"점 (−1, 4)를 원점에 대칭이동한 점의 좌표는?",c:["(1,−4)","(−1,−4)","(1,4)","(4,−1)"],a:0,exp:"원점 대칭: x, y 부호 모두 반대 → <b>(1,−4)</b>"},
+    {q:"A = {2, 4, 6, 8}, B = {1, 2, 3, 4} 일 때, n(A ∩ B)는?",c:["1","2","3","4"],a:1,exp:"A∩B = {2,4} → n(A∩B) = <b>2</b>"},
+    {q:"p: x = 5, q: x − a = 0 이 필요충분조건일 때, a는?",c:["3","4","5","6"],a:2,exp:"q: x=a=5 → a = <b>5</b>"},
+    {q:"g(2) = 7, g(7) = 12, g(12) = 17 일 때, g⁻¹(12)는?",c:["5","6","7","8"],a:2,exp:"g(7)=12 → g⁻¹(12) = <b>7</b>"},
+    {q:"y = −2/(x + 3) + 1의 수평 점근선은?",c:["y=−2","y=−1","y=0","y=1"],a:3,exp:"x→∞ 이면 −2/(x+3)→0 → y→1 → 수평 점근선 <b>y=1</b>"},
+    {q:"서로 다른 4가지 색 중 3가지를 순서 있게 배열하는 경우의 수는?",c:["12","18","24","32"],a:2,exp:"₄P₃ = 4×3×2 = <b>24</b>"},
+    {q:"10명의 학생 중 3명을 선택하는 경우의 수는?",c:["100","110","120","130"],a:2,exp:"₁₀C₃ = (10×9×8)/(3×2×1) = <b>120</b>"}
+  ],
+  [
+    {q:"A = 3x³ − x + 4, B = x³ + 2x − 1 일 때, A + B는?",c:["4x³+x+2","4x³+x+3","4x³+3x+3","5x³+x+3"],a:1,exp:"x³: 3+1=4, x: −1+2=1, 상수: 4+(−1)=3 → <b>4x³+x+3</b>"},
+    {q:"ax² + 3x + b = 4x² + 3x − 2 가 항등식일 때, a + b는?",c:["0","1","2","3"],a:2,exp:"x²: a=4, 상수: b=−2 → a+b = <b>2</b>"},
+    {q:"f(x) = 2x² + 3x − 1 을 (x + 2)로 나눈 나머지는?",c:["−1","0","1","2"],a:2,exp:"f(−2) = 8−6−1 = <b>1</b>"},
+    {q:"x³ − 64를 인수분해하면?",c:["(x+4)(x²+4x+16)","(x−4)(x²+4x+16)","(x−4)(x²−4x+16)","(x+4)(x²−4x+16)"],a:1,exp:"x³−4³ = (x−4)(x²+4x+16) → <b>(x−4)(x²+4x+16)</b>"},
+    {q:"(3 + ai)의 켤레복소수가 3 + 2i일 때, a는?",c:["−3","−2","−1","2"],a:1,exp:"켤레: 3−ai = 3+2i → a = <b>−2</b>"},
+    {q:"x² − 12x + a = 0이 중근을 가질 때, a는?",c:["30","33","36","40"],a:2,exp:"(12/2)² = 36 → a = <b>36</b>"},
+    {q:"x² + 7x + 10 = 0의 두 근의 곱은?",c:["7","8","9","10"],a:3,exp:"근의 곱 = 10/1 = <b>10</b>"},
+    {q:"y = 2(x − 3)² + 1의 꼭짓점 좌표는?",c:["(−3,1)","(3,−1)","(3,1)","(−3,−1)"],a:2,exp:"y=a(x−p)²+q → 꼭짓점 (p,q) = <b>(3,1)</b>"},
+    {q:"2x³ − x² + ax + 3 = 0의 한 근이 −1일 때, a는?",c:["−2","−1","0","1"],a:2,exp:"f(−1) = −2−1−a+3=0 → −a=0 → a = <b>0</b>"},
+    {q:"x − 3 > 0 이고 2x < x + 5 를 동시에 만족하는 자연수의 개수는?",c:["0","1","2","3"],a:1,exp:"x>3 이고 x<5 → 자연수: 4 → <b>1개</b>"},
+    {q:"A(0, 3), B(6, 9)를 1:1로 내분하는 점의 좌표는?",c:["(2,5)","(3,6)","(4,7)","(5,8)"],a:1,exp:"중점: x=(0+6)/2=3, y=(3+9)/2=6 → <b>(3,6)</b>"},
+    {q:"점 (2, 1)에서 직선 3x + 4y − 20 = 0까지의 거리는?",c:["1","2","3","4"],a:1,exp:"d = |6+4−20|/√(9+16) = 10/5 = <b>2</b>"},
+    {q:"원 (x−1)² + y² = 25에 직선 x = a가 접할 때, 자연수 a는?",c:["4","5","6","7"],a:2,exp:"중심 (1,0), 반지름=5, |a−1|=5 → a=6 또는 a=−4 → 자연수 a = <b>6</b>"},
+    {q:"점 (5, −2)를 y축에 대칭이동한 점의 좌표는?",c:["(−5,2)","(5,2)","(−5,−2)","(2,−5)"],a:2,exp:"y축 대칭: x 부호 반대 → <b>(−5,−2)</b>"},
+    {q:"A = {1, 2, 3, 5}, B = {2, 4, 5, 7} 일 때, A ∩ B는?",c:["{2}","{5}","{2,5}","{2,4,5}"],a:2,exp:"공통 원소: 2, 5 → A∩B = <b>{2,5}</b>"},
+    {q:"p: 2x = 10, q: x = a 이 필요충분조건일 때, a는?",c:["3","4","5","6"],a:2,exp:"2x=10 → x=5 → q: x=a=5 → a = <b>5</b>"},
+    {q:"h(1) = 3, h(3) = 9, h(9) = 27 일 때, h⁻¹(9)는?",c:["1","2","3","4"],a:2,exp:"h(3)=9 → h⁻¹(9) = <b>3</b>"},
+    {q:"y = 4/(x + 2) − 3의 수평 점근선은?",c:["y=−4","y=−3","y=2","y=4"],a:1,exp:"x→∞ 이면 4/(x+2)→0 → y→−3 → 수평 점근선 <b>y=−3</b>"},
+    {q:"서로 다른 6개에서 3개를 순서 있게 나열하는 경우의 수는?",c:["60","80","100","120"],a:3,exp:"₆P₃ = 6×5×4 = <b>120</b>"},
+    {q:"8명 중 4명을 선택하는 경우의 수는?",c:["50","60","70","80"],a:2,exp:"₈C₄ = (8×7×6×5)/(4×3×2×1) = <b>70</b>"}
+  ],
+  [
+    {q:"A = x² + 2x − 3, B = −x² + x + 1 일 때, 2A + B는?",c:["x²+3x−5","x²+5x−5","2x²+5x−5","x²+5x−4"],a:1,exp:"2A = 2x²+4x−6, B = −x²+x+1 → x²+5x−5 → <b>x²+5x−5</b>"},
+    {q:"3x + a = bx + 4 가 항등식일 때, a + b는?",c:["5","6","7","8"],a:2,exp:"x항: b=3, 상수: a=4 → a+b = <b>7</b>"},
+    {q:"f(x) = x⁴ − 2x + 1 을 (x − 1)로 나눈 나머지는?",c:["−1","0","1","2"],a:1,exp:"f(1) = 1−2+1 = <b>0</b>"},
+    {q:"64x³ + 1을 인수분해하면?",c:["(4x−1)(16x²+4x+1)","(4x+1)(16x²+4x+1)","(4x+1)(16x²−4x+1)","(4x−1)(16x²−4x+1)"],a:2,exp:"(4x)³+1³ = (4x+1)(16x²−4x+1) → <b>(4x+1)(16x²−4x+1)</b>"},
+    {q:"2 + ai의 켤레복소수가 b − 3i일 때, a + b는?",c:["3","4","5","6"],a:2,exp:"켤레: 2−ai = b−3i → a=3, b=2 → a+b = <b>5</b>"},
+    {q:"x² − 8x + a = 0이 중근을 가질 때, a는?",c:["12","14","16","18"],a:2,exp:"(8/2)² = 16 → a = <b>16</b>"},
+    {q:"x² − 3x + 2 = 0의 두 근을 α, β라 할 때, αβ는?",c:["1","2","3","4"],a:1,exp:"근의 곱 = 2/1 = <b>2</b>"},
+    {q:"y = −3(x + 1)² + 6의 최댓값은?",c:["3","4","5","6"],a:3,exp:"꼭짓점 (−1,6), a<0 → 최댓값 = <b>6</b>"},
+    {q:"x³ + 2x² + ax + 4 = 0의 한 근이 −1일 때, a는?",c:["3","4","5","6"],a:2,exp:"f(−1) = −1+2−a+4=0 → 5−a=0 → a = <b>5</b>"},
+    {q:"x > 2 이고 x < 7 을 동시에 만족하는 자연수의 개수는?",c:["2","3","4","5"],a:2,exp:"자연수: 3, 4, 5, 6 → <b>4개</b>"},
+    {q:"A(−1, 0), B(5, 6)을 2:1로 내분하는 점의 좌표는?",c:["(2,3)","(3,4)","(3,3)","(4,5)"],a:1,exp:"x=(2×5+1×(−1))/3=3, y=(2×6+1×0)/3=4 → <b>(3,4)</b>"},
+    {q:"점 (4, 0)에서 직선 3x − 4y + 8 = 0까지의 거리는?",c:["2","3","4","5"],a:2,exp:"d = |12+0+8|/√(9+16) = 20/5 = <b>4</b>"},
+    {q:"원 x² + (y−2)² = 9에 직선 y = a가 접할 때, 자연수 a는?",c:["3","4","5","6"],a:2,exp:"중심 (0,2), 반지름=3, |a−2|=3 → a=5 또는 a=−1 → 자연수 a = <b>5</b>"},
+    {q:"점 (−4, 3)을 x축에 대칭이동한 점의 좌표는?",c:["(4,−3)","(4,3)","(−4,3)","(−4,−3)"],a:3,exp:"x축 대칭: y 부호 반대 → <b>(−4,−3)</b>"},
+    {q:"전체집합 U = {1,2,3,4,5,6}, A = {2,4,6} 일 때, n(Aᶜ)는?",c:["2","3","4","5"],a:1,exp:"Aᶜ = {1,3,5} → n(Aᶜ) = <b>3</b>"},
+    {q:"p: x = 9, q: 3x − a = 0 이 필요충분조건일 때, a는?",c:["18","21","24","27"],a:3,exp:"q: x=a/3=9 → a = <b>27</b>"},
+    {q:"f(4) = 10, f(6) = 14, f(10) = 18 일 때, f⁻¹(14)는?",c:["4","5","6","7"],a:2,exp:"f(6)=14 → f⁻¹(14) = <b>6</b>"},
+    {q:"y = 6/(x − 4) + 2의 수평 점근선은?",c:["y=2","y=4","y=6","y=8"],a:0,exp:"x→∞ 이면 6/(x−4)→0 → y→2 → 수평 점근선 <b>y=2</b>"},
+    {q:"5명 중 회장, 부회장을 각 1명씩 뽑는 경우의 수는?",c:["10","15","20","25"],a:2,exp:"₅P₂ = 5×4 = <b>20</b>"},
+    {q:"12명 중 대표 2명을 선출하는 경우의 수는?",c:["56","60","66","72"],a:2,exp:"₁₂C₂ = (12×11)/2 = <b>66</b>"}
+  ],
+  [
+    {q:"A = 5x² − 2x + 3, B = 2x² + x − 1 일 때, A − B는?",c:["3x²−3x+4","3x²+3x+4","3x²−3x−4","7x²−x+2"],a:0,exp:"x²: 5−2=3, x: −2−1=−3, 상수: 3−(−1)=4 → <b>3x²−3x+4</b>"},
+    {q:"(a−1)x² + bx + (c+2) = 0 이 항등식일 때, a+b+c는?",c:["−2","−1","0","1"],a:1,exp:"a−1=0→a=1, b=0, c+2=0→c=−2 → a+b+c = <b>−1</b>"},
+    {q:"f(x) = x² − x + 4 를 (x − 3)으로 나눈 나머지는?",c:["8","9","10","11"],a:2,exp:"f(3) = 9−3+4 = <b>10</b>"},
+    {q:"2x³ − 16을 인수분해하면?",c:["2(x−2)(x²+2x+4)","2(x+2)(x²−2x+4)","(x−2)(2x²+4x+8)","2(x−2)(x²+4x+4)"],a:0,exp:"2(x³−8) = 2(x−2)(x²+2x+4) → <b>2(x−2)(x²+2x+4)</b>"},
+    {q:"(1 + 2i) + (a + bi) = 4 + i 일 때, a + b는?",c:["0","1","2","3"],a:2,exp:"실수: 1+a=4→a=3, 허수: 2+b=1→b=−1 → a+b = <b>2</b>"},
+    {q:"x² + 6x + a = 0이 중근을 가질 때, a는?",c:["6","7","8","9"],a:3,exp:"(6/2)² = 9 → a = <b>9</b>"},
+    {q:"x² + 2x − 8 = 0의 두 근의 합은?",c:["−4","−3","−2","−1"],a:2,exp:"근의 합 = −2/1 = <b>−2</b>"},
+    {q:"y = 3(x + 4)² − 2에서 x = −3일 때, y의 값은?",c:["−1","0","1","2"],a:2,exp:"y = 3(−3+4)²−2 = 3(1)−2 = <b>1</b>"},
+    {q:"x³ − x² − x + a = 0의 한 근이 2일 때, a는?",c:["−4","−3","−2","−1"],a:2,exp:"f(2) = 8−4−2+a=0 → 2+a=0 → a = <b>−2</b>"},
+    {q:"4x < 3x + 6 이고 x > 1 을 동시에 만족하는 자연수의 개수는?",c:["2","3","4","5"],a:2,exp:"x<6 이고 x>1 → 자연수: 2,3,4,5 → <b>4개</b>"},
+    {q:"A(2, 4), B(8, 10)을 2:1로 내분하는 점의 좌표는?",c:["(5,7)","(6,7)","(6,8)","(7,8)"],a:2,exp:"x=(2×8+1×2)/3=6, y=(2×10+1×4)/3=8 → <b>(6,8)</b>"},
+    {q:"점 (1, 2)에서 직선 4x + 3y − 15 = 0까지의 거리는?",c:["1","2","3","4"],a:0,exp:"d = |4+6−15|/√(16+9) = 5/5 = <b>1</b>"},
+    {q:"원 (x+1)² + (y−3)² = 16에 직선 y = a가 접할 때, 자연수 a는?",c:["5","6","7","8"],a:2,exp:"중심 (−1,3), 반지름=4, |a−3|=4 → a=7 또는 a=−1 → 자연수 a = <b>7</b>"},
+    {q:"점 (2, 5)를 직선 y = x에 대칭이동한 점의 좌표는?",c:["(−2,−5)","(5,−2)","(−5,2)","(5,2)"],a:3,exp:"y=x 대칭: x↔y 교환 → <b>(5,2)</b>"},
+    {q:"A = {1,2,3,4,6,12}, B = {2,4,6,8} 일 때, A ∩ B는?",c:["{2,4}","{4,6}","{2,4,6}","{2,4,6,8}"],a:2,exp:"공통 원소: 2, 4, 6 → A∩B = <b>{2,4,6}</b>"},
+    {q:"p: x = −3, q: x + a = 0 이 필요충분조건일 때, a는?",c:["1","2","3","4"],a:2,exp:"q: x=−a=−3 → a = <b>3</b>"},
+    {q:"h(x) = 2x + 1 일 때, h⁻¹(9)는?",c:["3","4","5","6"],a:1,exp:"h(4)=9 → h⁻¹(9) = <b>4</b>"},
+    {q:"y = −3/(x + 5) + 2의 수평 점근선은?",c:["y=−3","y=0","y=2","y=5"],a:2,exp:"x→∞ 이면 −3/(x+5)→0 → y→2 → 수평 점근선 <b>y=2</b>"},
+    {q:"서로 다른 문자 A, B, C, D, E 중 2개를 순서 있게 배열하는 경우의 수는?",c:["15","18","20","24"],a:2,exp:"₅P₂ = 5×4 = <b>20</b>"},
+    {q:"남학생 5명, 여학생 4명 중 2명을 선택하는 경우의 수는?",c:["30","33","36","39"],a:2,exp:"₉C₂ = (9×8)/2 = <b>36</b>"}
   ]
 ];
 
@@ -1058,7 +1076,7 @@ let ST = {
   currentExam: 0,
   examAnswers: new Array(20).fill(null),
   examSubmitted: false,
-  examScores: new Array(5).fill(null)
+  examScores: new Array(10).fill(null)
 };
 
 function saveState() {
@@ -1087,9 +1105,21 @@ function loadState() {
       ST.currentExam = d.currentExam||0;
       ST.examAnswers = d.examAnswers||new Array(20).fill(null);
       ST.examSubmitted = d.examSubmitted||false;
-      ST.examScores = d.examScores||new Array(5).fill(null);
+      ST.examScores = d.examScores||new Array(10).fill(null);
     }
   } catch(e){}
+}
+
+// 개념 카드 스텝 스태거 애니메이션
+function animateConceptSteps(box) {
+  const els = Array.from(box.children);
+  els.forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.animation = 'none';
+    el.offsetHeight; // reflow
+    el.style.animation = `csStepIn .32s ease forwards`;
+    el.style.animationDelay = `${i * 90}ms`;
+  });
 }
 
 function shuffle(arr) {
@@ -1111,21 +1141,21 @@ function showScreen(id) {
   const title = document.getElementById('headerTitle');
   if (id==='home') {
     backBtn.style.display='none';
-    title.textContent='📚 검정고시 수학 합격 비법서';
+    title.textContent=' 검정고시 수학 합격 비법서';
   } else if (id==='list') {
     backBtn.style.display='inline-block';
-    title.textContent='📖 학습 모드';
+    title.textContent=' 학습 모드';
   } else if (id==='practice') {
     backBtn.style.display='inline-block';
   } else if (id==='exam-select') {
     backBtn.style.display='inline-block';
-    title.textContent='📝 최종 모의고사';
+    title.textContent=' 최종 모의고사';
   } else if (id==='exam') {
     backBtn.style.display='inline-block';
-    title.textContent=`📝 모의고사 ${ST.currentExam+1}회`;
+    title.textContent=` 모의고사 ${ST.currentExam+1}회`;
   } else if (id==='results') {
     backBtn.style.display='inline-block';
-    title.textContent='📊 채점 결과';
+    title.textContent=' 채점 결과';
   }
   window.scrollTo(0,0);
 }
@@ -1175,7 +1205,7 @@ function renderUnitList() {
         <div class="unit-title">${u.title}</div>
         <div class="unit-sub">${u.sub}</div>
       </div>
-      <div style="font-size:20px">${done?'✅':streak>0?'🔥':'📘'}</div>
+      <div style="font-size:20px">${done?'':streak>0?'':''}</div>
     </div>`;
   }).join('');
 }
@@ -1203,9 +1233,17 @@ function renderPractice() {
 
   document.getElementById('practiceTag').textContent=`유형 ${id+1}/20`;
   document.getElementById('practiceUnitTitle').textContent=`${unit.title} — ${unit.sub}`;
-  document.getElementById('conceptBox').innerHTML=unit.concept;
-  if (id===10) setTimeout(()=>initFiDemo('fi-demo-10','fi-result-10',4), 30);
-  if (id===11) setTimeout(()=>initFiDemo('fi-demo-11','fi-result-11',3), 30);
+  document.getElementById('conceptHeaderTitle').textContent=unit.title;
+  document.getElementById('conceptHeaderNum').textContent=`${id+1} / 20`;
+  // 개념 카드 애니메이션 재실행
+  const cw = document.getElementById('conceptCard');
+  cw.style.animation='none';
+  cw.offsetHeight;
+  cw.style.animation='';
+  // 개념 내용 설정 + 스텝 스태거 애니메이션
+  const cb = document.getElementById('conceptBox');
+  cb.innerHTML = unit.concept;
+  animateConceptSteps(cb);
   document.getElementById('qProgress').textContent=`문제 ${qi+1}/${unit.practice.length}`;
 
   // 정답 streak 점 3개
@@ -1290,22 +1328,22 @@ function submitPractice() {
 
   // 해설 박스 구성
   const expEl = document.getElementById('practiceExp');
-  let expHTML = `<b>${correct?'✅ 정답입니다!':'❌ 틀렸습니다.'}</b><br><br><b>풀이:</b> ${q.exp}`;
+  let expHTML = `<b>${correct?' 정답입니다!':' 틀렸습니다.'}</b><br><br><b>풀이:</b> ${q.exp}`;
 
   if (!correct) {
     if (wrongStreak === 2) {
-      expHTML += `<br><br>⚠️ <b>두 번 연속 틀렸어요.</b> 위의 개념 설명을 다시 읽어보세요!`;
+      expHTML += `<br><br> <b>두 번 연속 틀렸어요.</b> 위의 개념 설명을 다시 읽어보세요!`;
     } else if (wrongStreak >= 3) {
       expHTML += `
         <div class="deep-box">
-          <b>🚨 세 번 연속 틀렸습니다. 기초부터 다시 확인해봐요!</b><br><br>
+          <b> 세 번 연속 틀렸습니다. 기초부터 다시 확인해봐요!</b><br><br>
           ${DEEP[id]}
         </div>`;
     }
   }
 
   if (streak >= 3) {
-    expHTML += `<br><br>🎉 <b>3회 연속 정답! 이 개념을 완전히 이해했습니다!</b>`;
+    expHTML += `<br><br> <b>3회 연속 정답! 이 개념을 완전히 이해했습니다!</b>`;
   }
 
   expEl.innerHTML = expHTML;
@@ -1340,7 +1378,7 @@ function masterAndNext(id) {
   let next = UNITS.find(u=>u.id>id && !ST.mastered.has(u.id));
   if (!next) next = UNITS.find(u=>!ST.mastered.has(u.id));
   if (!next) {
-    alert('🎉 모든 개념을 완료했습니다! 최종 모의고사에 도전하세요!');
+    alert(' 모든 개념을 완료했습니다! 최종 모의고사에 도전하세요!');
     showLearnList();
     return;
   }
@@ -1354,7 +1392,7 @@ function skipUnit() {
   let next = UNITS.find(u=>u.id>id && !ST.mastered.has(u.id));
   if (!next) next = UNITS.find(u=>!ST.mastered.has(u.id));
   if (!next) {
-    alert('🎉 모든 개념을 완료했습니다! 최종 모의고사에 도전하세요!');
+    alert(' 모든 개념을 완료했습니다! 최종 모의고사에 도전하세요!');
     showLearnList();
     return;
   }
@@ -1375,20 +1413,20 @@ function showExam() {
 
 function showExamSelect() {
   const el = document.getElementById('examSetList');
-  el.innerHTML = [1,2,3,4,5].map((num, idx) => {
+  el.innerHTML = [1,2,3,4,5,6,7,8,9,10].map((num, idx) => {
     const score = ST.examScores[idx];
     const hasScore = score !== null;
     const pass = hasScore && score >= 60;
     return `<div class="card" style="cursor:pointer;border:2px solid ${hasScore?(pass?'#16a34a':'#dc2626'):'#e2e8f0'}" onclick="startExam(${idx})">
       <div style="display:flex;align-items:center;justify-content:space-between">
         <div>
-          <div style="font-size:17px;font-weight:800">📝 모의고사 ${num}회</div>
+          <div style="font-size:17px;font-weight:800"> 모의고사 ${num}회</div>
           <div style="font-size:13px;color:#64748b;margin-top:3px">20문제 · 5점×20 = 100점</div>
         </div>
         <div style="text-align:right">
           ${hasScore
             ? `<div style="font-size:22px;font-weight:900;color:${pass?'#16a34a':'#dc2626'}">${score}점</div>
-               <div style="font-size:12px;color:${pass?'#16a34a':'#dc2626'};font-weight:700">${pass?'합격 ✅':'불합격 ❌'}</div>`
+               <div style="font-size:12px;color:${pass?'#16a34a':'#dc2626'};font-weight:700">${pass?'합격 ':'불합격 '}</div>`
             : `<div style="font-size:13px;color:#94a3b8">미응시</div>`
           }
         </div>
@@ -1494,10 +1532,10 @@ function showResults() {
 
   const vEl=document.getElementById('resultVerdict');
   if(pass){
-    vEl.textContent='🎉 합격!';
+    vEl.textContent=' 합격!';
     vEl.className='verdict pass';
   } else {
-    vEl.textContent='😢 불합격 — 다시 도전!';
+    vEl.textContent=' 불합격 — 다시 도전!';
     vEl.className='verdict fail';
   }
 
@@ -1513,10 +1551,10 @@ function showResults() {
     return `<div class="result-item ${isCorrect?'correct':'wrong'}">
       <div class="result-q">${i+1}번. ${q.q}</div>
       <div class="result-answer" style="font-size:13px">
-        내 답: <b>${userAns}</b> ${isCorrect?'✅':'❌'}
+        내 답: <b>${userAns}</b> ${isCorrect?'':''}
         ${!isCorrect?` | 정답: <b style="color:#16a34a">${correctAns}</b>`:''}
       </div>
-      <div class="result-exp">💡 ${q.exp}</div>
+      <div class="result-exp"> ${q.exp}</div>
     </div>`;
   }).join('');
 
