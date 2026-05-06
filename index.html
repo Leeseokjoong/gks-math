@@ -109,6 +109,10 @@ header h1{font-size:18px;flex:1}
 .fi-result{display:none;margin-top:10px;padding:14px;background:linear-gradient(135deg,#1d4ed8,#0891b2);color:white;border-radius:12px;text-align:center;line-height:2;font-size:15px;font-weight:700}
 .fi-reset{background:none;border:1px solid #cbd5e1;border-radius:6px;padding:4px 12px;font-size:12px;color:#64748b;cursor:pointer;margin-top:6px}
 .fi-reset:hover{background:#f1f5f9}
+.fi-frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 4px}
+.fi-frac-top{display:flex;align-items:center;gap:5px;padding-bottom:5px;flex-wrap:wrap;justify-content:center}
+.fi-frac-line{width:100%;min-width:100px;height:2.5px;background:#334155;border-radius:2px}
+.fi-frac-bot{padding-top:5px;font-size:14px;font-weight:700;color:#334155;letter-spacing:.5px}
 @keyframes fiShake{0%,100%{transform:translateX(0)}30%{transform:translateX(-5px)}70%{transform:translateX(5px)}}
 </style>
 </head>
@@ -569,25 +573,53 @@ x²+bx+a=0이 중근이 되려면 <b>(x + b/2)²</b> 꼴이 되어야 해.<br>
   </div>
 </div>
 <div class="fi-formula-box">
-  <div class="fi-fline">
-    <span class="fi-ft">x = (</span><b style="color:#2563eb;font-size:16px">2</b><span class="fi-ft">×</span>
-    <span class="fi-slot" data-needs="Bx">Bx?</span>
-    <span class="fi-ft">+</span><b style="color:#16a34a;font-size:16px">1</b><span class="fi-ft">×</span>
-    <span class="fi-slot" data-needs="Ax">Ax?</span>
-    <span class="fi-ft">) ÷ 3</span>
+  <div class="fi-fline" style="margin-bottom:16px">
+    <span class="fi-ft" style="font-size:16px">x =</span>
+    <div class="fi-frac">
+      <div class="fi-frac-top">
+        <b style="color:#2563eb">2</b><span class="fi-ft">×</span>
+        <span class="fi-slot" data-needs="Bx">Bx?</span>
+        <span class="fi-ft">+</span>
+        <b style="color:#16a34a">1</b><span class="fi-ft">×</span>
+        <span class="fi-slot" data-needs="Ax">Ax?</span>
+      </div>
+      <div class="fi-frac-line"></div>
+      <div class="fi-frac-bot">m + n &nbsp;=&nbsp; 3</div>
+    </div>
   </div>
-  <div class="fi-fline" style="margin-top:8px">
-    <span class="fi-ft">y = (</span><b style="color:#2563eb;font-size:16px">2</b><span class="fi-ft">×</span>
-    <span class="fi-slot" data-needs="By">By?</span>
-    <span class="fi-ft">+</span><b style="color:#16a34a;font-size:16px">1</b><span class="fi-ft">×</span>
-    <span class="fi-slot" data-needs="Ay">Ay?</span>
-    <span class="fi-ft">) ÷ 3</span>
+  <div class="fi-fline">
+    <span class="fi-ft" style="font-size:16px">y =</span>
+    <div class="fi-frac">
+      <div class="fi-frac-top">
+        <b style="color:#2563eb">2</b><span class="fi-ft">×</span>
+        <span class="fi-slot" data-needs="By">By?</span>
+        <span class="fi-ft">+</span>
+        <b style="color:#16a34a">1</b><span class="fi-ft">×</span>
+        <span class="fi-slot" data-needs="Ay">Ay?</span>
+      </div>
+      <div class="fi-frac-line"></div>
+      <div class="fi-frac-bot">m + n &nbsp;=&nbsp; 3</div>
+    </div>
   </div>
 </div>
 <div class="fi-result" id="fi-result-10">
-  x = (2×<b>4</b> + 1×<b>1</b>) ÷ 3 = <b style="font-size:19px">3</b><br>
-  y = (2×<b>5</b> + 1×<b>2</b>) ÷ 3 = <b style="font-size:19px">4</b><br>
-  <span style="font-size:17px">내분점 = <b>(3, 4) 🎉</b></span>
+  <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:6px">
+    <span>x =</span>
+    <span style="display:inline-flex;flex-direction:column;align-items:center">
+      <span>2×<b>4</b> + 1×<b>1</b></span>
+      <span style="width:100%;height:2px;background:white;display:block;margin:3px 0"></span>
+      <span>3</span>
+    </span>
+    <span>= <b style="font-size:20px">3</b></span>
+    <span style="margin-left:10px">y =</span>
+    <span style="display:inline-flex;flex-direction:column;align-items:center">
+      <span>2×<b>5</b> + 1×<b>2</b></span>
+      <span style="width:100%;height:2px;background:white;display:block;margin:3px 0"></span>
+      <span>3</span>
+    </span>
+    <span>= <b style="font-size:20px">4</b></span>
+  </div>
+  <span style="font-size:18px">내분점 = <b>(3, 4) 🎉</b></span>
 </div>
 <div style="text-align:center"><button class="fi-reset" onclick="resetFiDemo('fi-demo-10')">↺ 다시하기</button></div>
 </div>`,
