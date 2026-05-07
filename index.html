@@ -340,6 +340,95 @@ header h1{font-size:18px;flex:1}
 .id-final.show{opacity:1}
 .id-final b{color:#1d4ed8}
 
+/* ── 연립부등식 수직선 (Unit 9) ── */
+.nl-demo{background:#f8faff;border-radius:12px;padding:14px;margin:0}
+.nl-tbox{position:relative;height:54px;background:white;border:1.5px solid #e2e8f0;border-radius:8px;margin:6px 0;overflow:hidden}
+.nl-aline{position:absolute;left:8%;right:2%;top:50%;height:2px;background:#e2e8f0;transform:translateY(-50%)}
+.nl-bnd{position:absolute;height:7px;border-radius:3px;opacity:0;transition:opacity .5s}
+.nl-bnd.show{opacity:.8}
+.nl-bnd-a{background:#1d4ed8;top:calc(50% - 9px);left:21%;width:77%}
+.nl-bnd-b{background:#0891b2;top:calc(50% + 2px);left:8%;width:74%}
+.nl-bnd-ov{background:#10b981;height:13px;top:calc(50% - 6.5px);left:21%;width:61%;opacity:0;z-index:2;transition:opacity .5s .5s}
+.nl-bnd-ov.show{opacity:1}
+.nl-ocir{position:absolute;width:10px;height:10px;border-radius:50%;background:white;border:2.5px solid;top:50%;transform:translate(-50%,-50%);opacity:0;transition:opacity .3s;z-index:3}
+.nl-ocir.show{opacity:1}
+.nl-tk{position:absolute;bottom:3px;font-size:10px;font-weight:700;color:#94a3b8;transform:translateX(-50%)}
+.nl-lgd{display:flex;gap:8px;flex-wrap:wrap;font-size:11px;font-weight:700;margin:4px 0 8px}
+.nl-lgd span{padding:3px 9px;border-radius:20px}
+.nl-la{background:#dbeafe;color:#1d4ed8}.nl-lb{background:#e0f2fe;color:#0891b2}.nl-lov{background:#dcfce7;color:#15803d}
+.nl-btn{display:block;width:100%;padding:10px;background:var(--cn-primary);color:white;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:.2s;margin-top:8px}
+.nl-res{text-align:center;font-size:14px;font-weight:700;opacity:0;transition:opacity .4s;margin-top:8px;padding:10px;background:white;border-radius:8px;border:2px solid #93c5fd}
+.nl-res.show{opacity:1}.nl-res b{color:var(--cn-primary)}
+
+/* ── 내분점 슬라이더 (Unit 10) ── */
+.ip-demo{background:#f8faff;border-radius:12px;padding:14px;margin:0}
+.ip-seg{position:relative;height:56px;background:white;border:1.5px solid #e2e8f0;border-radius:8px;margin:6px 0;display:flex;align-items:center;padding:0 20px}
+.ip-line{flex:1;height:3px;background:#e2e8f0;border-radius:2px;position:relative}
+.ip-ep{width:14px;height:14px;border-radius:50%;background:#475569;flex-shrink:0;position:relative;z-index:2}
+.ip-ep span{position:absolute;top:-19px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:800;color:#475569;white-space:nowrap}
+.ip-pt{position:absolute;width:16px;height:16px;border-radius:50%;background:var(--cn-primary);border:2.5px solid white;box-shadow:0 2px 8px rgba(29,78,216,.3);top:50%;transform:translate(-50%,-50%);left:0%;transition:left 1.1s cubic-bezier(.22,1,.36,1)}
+.ip-pt span{position:absolute;bottom:-19px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:800;color:var(--cn-primary);white-space:nowrap}
+.ip-calc{display:flex;gap:8px;margin-top:8px}
+.ip-cc{flex:1;background:white;border:1.5px solid #e2e8f0;border-radius:8px;padding:8px 6px;text-align:center;opacity:0;transition:opacity .4s,transform .4s;transform:translateY(6px)}
+.ip-cc.show{opacity:1;transform:translateY(0)}
+.ip-cc-lbl{font-size:10px;font-weight:800;color:#94a3b8;margin-bottom:2px}
+.ip-cc-val{font-size:12px;font-weight:700;color:#1e293b}
+.ip-btn{display:block;width:100%;padding:10px;background:var(--cn-primary);color:white;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:.2s;margin-top:8px}
+.ip-res{text-align:center;font-size:14px;font-weight:700;opacity:0;transition:opacity .4s;margin-top:8px;padding:10px;background:white;border-radius:8px;border:2px solid #93c5fd}
+.ip-res.show{opacity:1}.ip-res b{color:var(--cn-primary)}
+
+/* ── 점과 직선 거리 공식 (Unit 11) ── */
+.pt-demo{background:#f8faff;border-radius:12px;padding:14px;margin:0}
+.pt-frac-wrap{display:flex;flex-direction:column;align-items:center;background:white;border:1.5px solid #e2e8f0;border-radius:10px;padding:14px 16px;margin:6px 0}
+.pt-row{display:flex;align-items:center;gap:4px;flex-wrap:wrap;justify-content:center}
+.pt-fline{width:100%;min-width:140px;height:2.5px;background:#334155;border-radius:2px;margin:5px 0}
+.pt-slot{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:28px;padding:0 5px;border:2px dashed #93c5fd;border-radius:6px;background:#eff6ff;color:#93c5fd;font-size:12px;font-weight:700;transition:.25s}
+.pt-slot.filled{border-style:solid;border-color:var(--cn-primary);background:#dbeafe;color:var(--cn-primary)}
+.pt-slot.final{border-color:#10b981;background:#dcfce7;color:#15803d;font-size:15px;font-weight:900}
+.pt-txt{font-size:13px;font-weight:600;color:#334155}
+.pt-abs{font-size:15px;font-weight:800;color:#64748b}
+.pt-btn{display:block;width:100%;padding:10px;background:var(--cn-primary);color:white;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:.2s;margin-top:10px}
+.pt-res{text-align:center;font-size:14px;font-weight:700;opacity:0;transition:opacity .4s;margin-top:8px;padding:10px;background:white;border-radius:8px;border:2px solid #93c5fd}
+.pt-res.show{opacity:1}.pt-res b{color:#10b981;font-size:16px}
+
+/* ── 집합 벤다이어그램 (Unit 14) ── */
+.vn-demo{background:#f8faff;border-radius:12px;padding:14px;margin:0}
+.vn-box{position:relative;height:100px;background:white;border:1.5px solid #e2e8f0;border-radius:8px;margin:6px 0;overflow:hidden}
+.vn-circle{position:absolute;width:76px;height:76px;border-radius:50%;border:2.5px solid;top:50%;transform:translateY(-50%);opacity:0;transition:opacity .4s}
+.vn-circle.show{opacity:1}
+.vn-ca{left:10%;border-color:#1d4ed8;background:rgba(29,78,216,.08)}
+.vn-cb{right:10%;border-color:#0891b2;background:rgba(8,145,178,.08)}
+.vn-cl{position:absolute;font-size:12px;font-weight:800;top:8px}
+.vn-cl-a{left:12%;color:#1d4ed8}.vn-cl-b{right:12%;color:#0891b2}
+.vn-el{position:absolute;font-size:12px;font-weight:700;opacity:0;transition:opacity .3s,transform .3s;transform:scale(.5)}
+.vn-el.show{opacity:1;transform:scale(1)}
+.vn-ov{position:absolute;left:50%;width:26%;height:76px;transform:translate(-50%,-50%);top:50%;background:rgba(29,78,216,.18);border-radius:0;clip-path:ellipse(50% 50%);opacity:0;transition:opacity .4s;pointer-events:none}
+.vn-ov.show{opacity:1}
+.vn-btn{display:block;width:100%;padding:10px;background:var(--cn-primary);color:white;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:.2s;margin-top:8px}
+.vn-res{text-align:center;font-size:14px;font-weight:700;opacity:0;transition:opacity .4s;margin-top:8px;padding:10px;background:white;border-radius:8px;border:2px solid #93c5fd}
+.vn-res.show{opacity:1}.vn-res b{color:var(--cn-primary)}
+
+/* ── 역함수 화살표 반전 (Unit 16) ── */
+.iv-demo{background:#f8faff;border-radius:12px;padding:14px;margin:0}
+.iv-nodes{display:flex;align-items:center;justify-content:center;gap:0;margin:8px 0}
+.iv-node{width:56px;height:56px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;flex-shrink:0}
+.iv-nin{background:#dbeafe;border:2.5px solid #1d4ed8;color:#1d4ed8}
+.iv-nout{background:#dcfce7;border:2.5px solid #10b981;color:#15803d}
+.iv-nval{font-size:20px;line-height:1}
+.iv-nlbl{font-size:10px;font-weight:700;color:#94a3b8;margin-top:2px}
+.iv-mid{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:0 8px}
+.iv-arrow{width:100%;display:flex;align-items:center;gap:4px;opacity:0;transition:opacity .4s}
+.iv-arrow.show{opacity:1}
+.iv-aline{flex:1;height:2.5px;border-radius:2px}
+.iv-af{background:#1d4ed8}.iv-ab{background:#7c3aed}
+.iv-ahead{font-size:14px;line-height:1}
+.iv-albl{font-size:11px;font-weight:700;text-align:center;opacity:0;transition:opacity .3s;margin-top:-2px}
+.iv-albl.show{opacity:1}
+.iv-lbl-f{color:#1d4ed8}.iv-lbl-inv{color:#7c3aed}
+.iv-btn{display:block;width:100%;padding:10px;background:var(--cn-primary);color:white;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:.2s;margin-top:8px}
+.iv-res{text-align:center;font-size:14px;font-weight:700;opacity:0;transition:opacity .4s;margin-top:8px;padding:10px;background:white;border-radius:8px;border:2px solid #93c5fd}
+.iv-res.show{opacity:1}.iv-res b{color:#7c3aed}
+
 /* ── 왜 그럴까 접기/펴기 ── */
 .why-wrap{margin:0}
 .why-btn{width:100%;background:none;border:1.5px solid #8b5cf6;border-radius:8px;color:#7c3aed;font-size:13px;font-weight:700;padding:7px 14px;cursor:pointer;text-align:left;display:flex;align-items:center;justify-content:space-between;transition:.18s}
@@ -895,6 +984,27 @@ const UNITS = [
 <div class="step-row"><div class="step-num">2</div><div class="step-text">두 번째 부등식 풀어 x 범위 구하기</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">두 범위를 <b>수직선</b>(숫자 직선)에 그려 겹치는 부분 찾기</div></div>
 <div class="example-block"><div class="ex-label">예시</div>2x &gt; 2 이고 x &lt; 5 인 자연수 x의 개수<br>① 2x &gt; 2 → 양변 ÷ 2 → x &gt; 1<br>② x &lt; 5<br>겹치는 범위: 1 &lt; x &lt; 5<br>그 사이 자연수: 2, 3, 4 → <b>3개</b></div>
+<div class="nl-demo" id="nlDemo9">
+  <div style="font-size:11px;font-weight:800;color:#94a3b8;letter-spacing:.08em;margin-bottom:10px">버튼을 눌러 두 범위를 수직선에 그려보세요 👇</div>
+  <div class="nl-lgd"><span class="nl-la">① x &gt; 1</span><span class="nl-lb">② x &lt; 5</span><span class="nl-lov">겹치는 범위</span></div>
+  <div class="nl-tbox">
+    <div class="nl-aline"></div>
+    <div class="nl-bnd nl-bnd-a" id="nlBndA9"></div>
+    <div class="nl-bnd nl-bnd-b" id="nlBndB9"></div>
+    <div class="nl-bnd nl-bnd-ov" id="nlBndOv9"></div>
+    <div class="nl-ocir" id="nlOcir1_9" style="left:21%;border-color:#1d4ed8"></div>
+    <div class="nl-ocir" id="nlOcir5_9" style="left:82%;border-color:#0891b2"></div>
+    <div class="nl-tk" style="left:8%">0</div>
+    <div class="nl-tk" style="left:21%">1</div>
+    <div class="nl-tk" style="left:36%">2</div>
+    <div class="nl-tk" style="left:51%">3</div>
+    <div class="nl-tk" style="left:67%">4</div>
+    <div class="nl-tk" style="left:82%">5</div>
+    <div class="nl-tk" style="left:97%">6</div>
+  </div>
+  <button class="nl-btn" id="nlBtn9" onclick="runNLDemo9()">수직선에 그리기 →</button>
+  <div class="nl-res" id="nlRes9">겹치는 범위: <b>1 &lt; x &lt; 5</b> → 자연수 2, 3, 4 → <b>3개</b>!</div>
+</div>
 <div class="tip-box">두 부등식을 동시에 만족하는 걸 <b>연립부등식</b>이라고 해요. 수직선에 색칠하면 겹치는 부분이 한눈에! &lt; 와 ≤ 끝점 차이 확인 필수.</div>
 <button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">'두 부등식을 동시에 만족'이라는 건 결국 'A 도 통과하고 B 도 통과하는 x' 라는 뜻이에요. 마치 학원 시험에서 영어도 합격하고 수학도 합격해야 하는 거랑 똑같죠. 한 쪽만 통과한 사람은 안 되고, <b>둘 다 통과한 사람의 명단(=공통 범위)</b>만 답이 되는 거예요. 그래서 따로 풀고 겹치는 부분을 찾는 게 자연스러운 방법이에요.</div>`,
     practice:[
@@ -922,6 +1032,22 @@ const UNITS = [
 <div class="step-row"><div class="step-num">2</div><div class="step-text">x 좌표: (m × B의 x) + (n × A의 x), 그걸 (m+n)으로 나누기</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">y 좌표도 똑같은 방식으로 계산</div></div>
 <div class="example-block"><div class="ex-label">예시</div>A(1, 2)와 B(7, 8)을 2 : 1 로 나누는 점<br>x: (2 × 7 + 1 × 1) ÷ (2+1) = (14+1) ÷ 3 = 15 ÷ 3 = <b>5</b><br>y: (2 × 8 + 1 × 2) ÷ (2+1) = (16+2) ÷ 3 = 18 ÷ 3 = <b>6</b><br><span class="arrow">→</span> <b>(5, 6)</b></div>
+<div class="ip-demo" id="ipDemo10">
+  <div style="font-size:11px;font-weight:800;color:#94a3b8;letter-spacing:.08em;margin-bottom:8px">A(1,2)와 B(7,8)을 2:1로 나누는 점 P 👇</div>
+  <div class="ip-seg">
+    <div class="ip-ep"><span>A(1,2)</span></div>
+    <div class="ip-line">
+      <div class="ip-pt" id="ipPt10"><span>P</span></div>
+    </div>
+    <div class="ip-ep"><span>B(7,8)</span></div>
+  </div>
+  <div class="ip-calc" id="ipCalc10">
+    <div class="ip-cc"><div class="ip-cc-lbl">x 좌표</div><div class="ip-cc-val">(2×7+1×1)÷3 = <b>5</b></div></div>
+    <div class="ip-cc"><div class="ip-cc-lbl">y 좌표</div><div class="ip-cc-val">(2×8+1×2)÷3 = <b>6</b></div></div>
+  </div>
+  <button class="ip-btn" id="ipBtn10" onclick="runIPDemo10()">점 P 이동하기 →</button>
+  <div class="ip-res" id="ipRes10">내분점 P = <b>(5, 6)</b></div>
+</div>
 <div class="tip-box">두 점 사이를 비율로 나누는 점을 <b>내분점</b>이라고 해요. m은 B에, n은 A에 — X자로 짝짓기! 같은 글자끼리 곱하면 틀려요.</div>
 <button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">m : n 으로 나눈다는 건 점 P 가 <b>A 에서 m 칸, B 에서 n 칸</b> 떨어진 곳에 있다는 뜻이에요. 그러니까 m 이 클수록 P 는 A 에서 멀어지고 B 에 더 가까워지죠 — B 의 영향이 더 크다는 뜻이에요. 그래서 B 의 좌표에 m 을, A 의 좌표에 n 을 곱한 뒤 (m + n) 으로 나누면 P 의 정확한 위치가 나와요. 이름과 곱하는 점이 X 자로 엇갈리는 게 어색하지만, '먼 점이 P 를 더 강하게 잡아당긴다'고 생각하면 자연스러워져요.</div>`,
     practice:[
@@ -949,6 +1075,32 @@ const UNITS = [
 <div class="step-row"><div class="step-num">2</div><div class="step-text">위(분자): 점의 좌표를 식에 넣은 결과의 절댓값 | |</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">아래(분모): √(a² + b²) 계산 후 위 ÷ 아래</div></div>
 <div class="example-block"><div class="ex-label">예시</div>원점 (0, 0)에서 3x + 4y − 15 = 0 까지의 거리<br>위: |3 × 0 + 4 × 0 − 15| = |−15| = 15<br>아래: √(3² + 4²) = √(9 + 16) = √25 = 5<br><span class="arrow">→</span> 거리 = 15 ÷ 5 = <b>3</b></div>
+<div class="pt-demo" id="ptDemo11">
+  <div style="font-size:11px;font-weight:800;color:#94a3b8;letter-spacing:.08em;margin-bottom:10px">원점(0,0) → 3x+4y−15=0 거리 계산 👇</div>
+  <div class="pt-frac-wrap">
+    <div class="pt-row">
+      <span class="pt-abs">|</span>
+      <span class="pt-slot" id="ptA11">?</span><span class="pt-txt">×0+</span>
+      <span class="pt-slot" id="ptB11">?</span><span class="pt-txt">×0+</span>
+      <span class="pt-slot" id="ptC11">?</span>
+      <span class="pt-abs">|</span>
+      <span class="pt-txt">=</span>
+      <span class="pt-slot" id="ptNum11">?</span>
+    </div>
+    <div class="pt-fline"></div>
+    <div class="pt-row">
+      <span class="pt-txt">√(</span>
+      <span class="pt-slot" id="ptD11">?</span>
+      <span class="pt-txt">) =</span>
+      <span class="pt-slot" id="ptDen11">?</span>
+    </div>
+  </div>
+  <div style="text-align:center;font-size:13px;font-weight:600;color:#64748b;margin-top:6px">
+    거리 = 분자 ÷ 분모 = <span class="pt-slot" id="ptFinal11" style="font-size:15px">?</span>
+  </div>
+  <button class="pt-btn" id="ptBtn11" onclick="runPTDemo11()">숫자 채워보기 →</button>
+  <div class="pt-res" id="ptRes11">거리 d = 15 ÷ 5 = <b>3</b> ✓</div>
+</div>
 <div class="tip-box">| | 표시는 <b>절댓값</b>(부호 떼고 양수로 만들기)이에요. 3·4·5 / 5·12·13 같은 수가 자주 등장 — √ 안이 딱 떨어지는지 확인!</div>
 <button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">직선 ax + by + c = 0 에 점이 <b>딱 위에 있으면 식의 값이 0</b> 이 되고, 멀어질수록 그 값이 커져요. 그래서 ax₀ + by₀ + c 의 절댓값은 점이 직선에서 떨어진 정도를 알려주는 신호 역할을 해요. 다만 이 값은 직선의 기울기에 따라 부풀려지기 때문에, √(a² + b²) 로 나눠 단위를 정리해주면 진짜 거리가 나오는 거예요.</div>`,
     practice:[
@@ -1029,6 +1181,27 @@ const UNITS = [
 <div class="step-row"><div class="step-num">2</div><div class="step-text">A에도 있고 B에도 있는 것만 골라내기</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">{ } 안에 쓰기, n( ) 은 개수</div></div>
 <div class="example-block"><div class="ex-label">예시</div>A = {1, 2, 3, 4}, B = {3, 4, 5, 6} 일 때 A ∩ B 와 그 개수<br>A의 것 중 B에도 있는 것: 3 ✓, 4 ✓<br>A ∩ B = <b>{3, 4}</b><br><span class="arrow">→</span> 개수 n(A ∩ B) = <b>2</b></div>
+<div class="vn-demo" id="vnDemo14">
+  <div style="font-size:11px;font-weight:800;color:#94a3b8;letter-spacing:.08em;margin-bottom:8px">A={1,2,3,4}, B={3,4,5,6} 벤다이어그램 👇</div>
+  <div class="vn-box">
+    <div class="vn-circle vn-ca" id="vnCa14"></div>
+    <div class="vn-circle vn-cb" id="vnCb14"></div>
+    <div class="vn-ov" id="vnOv14"></div>
+    <div class="vn-cl vn-cl-a">A</div>
+    <div class="vn-cl vn-cl-b">B</div>
+    <!-- A만 -->
+    <div class="vn-el" style="left:16%;top:38%">1</div>
+    <div class="vn-el" style="left:20%;top:58%">2</div>
+    <!-- 겹치는 부분 -->
+    <div class="vn-el" style="left:44%;top:36%"><b>3</b></div>
+    <div class="vn-el" style="left:44%;top:56%"><b>4</b></div>
+    <!-- B만 -->
+    <div class="vn-el" style="right:18%;top:38%">5</div>
+    <div class="vn-el" style="right:14%;top:58%">6</div>
+  </div>
+  <button class="vn-btn" id="vnBtn14" onclick="runVNDemo14()">벤다이어그램 보기 →</button>
+  <div class="vn-res" id="vnRes14">A ∩ B = <b>{3, 4}</b> → n(A∩B) = <b>2</b></div>
+</div>
 <div class="tip-box">{ } 안에 들어가는 것을 <b>원소</b>, 공통으로 든 모임을 <b>교집합</b>(∩), 한 쪽이라도 든 모임을 <b>합집합</b>(∪)이라고 해요. ∩ = X자(공통), ∪ = 컵 모양(전부 담기).</div>
 <button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">교집합(∩)은 그 자체가 <b>'두 집합 모두에 속한 원소들의 모임'</b>이라는 정의예요. 그래서 깊은 원리를 따질 게 아니라, A 의 원소를 하나씩 보면서 'B 안에도 있나?' 체크하면 끝이에요. ∩ 기호 모양도 위에서 본 두 집합이 X 자로 만나는 부분만 떼어낸 거라, 보면 바로 의미가 와닿아요.</div>`,
     practice:[
@@ -1082,6 +1255,27 @@ const UNITS = [
 <div class="step-row"><div class="step-num">1</div><div class="step-text">f⁻¹(k) 구하기 → <b>f(?) = k</b> 인 ? 를 찾기</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">표나 식에서 결과(오른쪽)가 k 인 것의 입력값(왼쪽)을 읽기</div></div>
 <div class="example-block"><div class="ex-label">예시</div>f(3) = 7 일 때 f⁻¹(7) 의 값<br>f(?) = 7 인 ? 찾기<br>주어진 조건: f(<b>3</b>) = 7<br><span class="arrow">→</span> f⁻¹(7) = <b>3</b></div>
+<div class="iv-demo" id="ivDemo16">
+  <div style="font-size:11px;font-weight:800;color:#94a3b8;letter-spacing:.08em;margin-bottom:8px">버튼을 눌러 화살표가 반전되는 걸 보세요 👇</div>
+  <div class="iv-nodes">
+    <div class="iv-node iv-nin"><div class="iv-nval">3</div><div class="iv-nlbl">입력</div></div>
+    <div class="iv-mid">
+      <div class="iv-arrow" id="ivFwd16">
+        <div class="iv-aline iv-af"></div>
+        <div class="iv-ahead">→</div>
+      </div>
+      <div class="iv-albl iv-lbl-f" id="ivLblF16">f : 3 → 7</div>
+      <div class="iv-arrow" id="ivBck16" style="flex-direction:row-reverse">
+        <div class="iv-aline iv-ab"></div>
+        <div class="iv-ahead">←</div>
+      </div>
+      <div class="iv-albl iv-lbl-inv" id="ivLblInv16">f⁻¹ : 7 → 3</div>
+    </div>
+    <div class="iv-node iv-nout"><div class="iv-nval">7</div><div class="iv-nlbl">출력</div></div>
+  </div>
+  <button class="iv-btn" id="ivBtn16" onclick="runIVDemo16()">화살표 반전하기 →</button>
+  <div class="iv-res" id="ivRes16">f(3)=7 이면 f⁻¹(7)=<b>3</b> ← 입출력 뒤집기!</div>
+</div>
 <div class="tip-box">x를 넣으면 결과가 나오는 식을 <b>함수</b>(f), 거꾸로 가는 식을 <b>역함수</b>(f⁻¹)라고 해요. 화살표를 거꾸로 따라가면 끝!</div>
 <button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">함수 f 가 <b>3 을 7 로 보내는</b> 화살표라면, 역함수 f⁻¹ 는 <b>7 을 3 으로 되돌려 보내는</b> 반대 방향 화살표예요. 그러니까 f(3) = 7 과 f⁻¹(7) = 3 은 같은 사실을 두 가지 방식으로 적은 것뿐이에요. 결국 역함수 값을 묻는 건 '결과가 7 인 입력값이 뭐였지?' 라는 질문이라, 화살표를 거꾸로 따라가기만 하면 돼요.</div>`,
     practice:[
@@ -1675,6 +1869,108 @@ function runPolyDemo0() {
 }
 
 // 개념 카드 스텝 스태거 애니메이션
+// ── 연립부등식 수직선 (Unit 9) ──
+function runNLDemo9() {
+  const btn = document.getElementById('nlBtn9');
+  if (!btn) return; btn.disabled = true; btn.textContent = '그리는 중...';
+  const ids = ['nlBndA9','nlBndB9','nlOcir1_9','nlOcir5_9','nlBndOv9','nlRes9'];
+  setTimeout(() => { document.getElementById('nlBndA9').classList.add('show'); document.getElementById('nlOcir1_9').classList.add('show'); }, 200);
+  setTimeout(() => { document.getElementById('nlBndB9').classList.add('show'); document.getElementById('nlOcir5_9').classList.add('show'); }, 800);
+  setTimeout(() => {
+    document.getElementById('nlBndOv9').classList.add('show');
+    document.getElementById('nlRes9').classList.add('show');
+    btn.textContent = '다시 보기'; btn.disabled = false;
+    btn.onclick = () => { ids.forEach(id => document.getElementById(id)?.classList.remove('show')); btn.textContent = '수직선에 그리기 →'; btn.onclick = runNLDemo9; };
+  }, 1600);
+}
+
+// ── 내분점 슬라이더 (Unit 10) ──
+function runIPDemo10() {
+  const btn = document.getElementById('ipBtn10');
+  if (!btn) return; btn.disabled = true; btn.textContent = '이동 중...';
+  // P가 2:1 위치(66.7%)로 이동
+  setTimeout(() => { document.getElementById('ipPt10').style.left = '66.7%'; }, 100);
+  setTimeout(() => {
+    document.querySelectorAll('#ipCalc10 .ip-cc').forEach((c, i) => setTimeout(() => c.classList.add('show'), i * 250));
+  }, 900);
+  setTimeout(() => {
+    document.getElementById('ipRes10').classList.add('show');
+    btn.textContent = '다시 보기'; btn.disabled = false;
+    btn.onclick = () => {
+      document.getElementById('ipPt10').style.transition = 'none';
+      document.getElementById('ipPt10').style.left = '0%';
+      document.querySelectorAll('#ipCalc10 .ip-cc').forEach(c => c.classList.remove('show'));
+      document.getElementById('ipRes10').classList.remove('show');
+      setTimeout(() => { document.getElementById('ipPt10').style.transition = 'left 1.1s cubic-bezier(.22,1,.36,1)'; }, 50);
+      btn.textContent = '점 P 이동하기 →'; btn.onclick = runIPDemo10; btn.disabled = false;
+    };
+  }, 1800);
+}
+
+// ── 점과 직선 거리 공식 채우기 (Unit 11) ──
+function runPTDemo11() {
+  const btn = document.getElementById('ptBtn11');
+  if (!btn) return; btn.disabled = true; btn.textContent = '채우는 중...';
+  const steps = [
+    () => { document.getElementById('ptA11').textContent='3'; document.getElementById('ptA11').classList.add('filled'); },
+    () => { document.getElementById('ptB11').textContent='4'; document.getElementById('ptB11').classList.add('filled'); },
+    () => { document.getElementById('ptC11').textContent='-15'; document.getElementById('ptC11').classList.add('filled'); },
+    () => { document.getElementById('ptD11').textContent='9+16'; document.getElementById('ptD11').classList.add('filled'); },
+    () => { document.getElementById('ptNum11').textContent='15'; document.getElementById('ptNum11').classList.add('filled'); document.getElementById('ptDen11').textContent='√25=5'; document.getElementById('ptDen11').classList.add('filled'); },
+    () => { document.getElementById('ptFinal11').textContent='3'; document.getElementById('ptFinal11').classList.add('final'); document.getElementById('ptRes11').classList.add('show'); btn.textContent='다시 보기'; btn.disabled=false; btn.onclick=resetPTDemo11; }
+  ];
+  steps.forEach((fn, i) => setTimeout(fn, (i+1)*400));
+}
+function resetPTDemo11() {
+  ['ptA11','ptB11','ptC11','ptD11','ptNum11','ptDen11'].forEach(id => {
+    const el = document.getElementById(id); if(!el) return;
+    el.textContent='?'; el.className='pt-slot';
+  });
+  const f = document.getElementById('ptFinal11'); if(f){f.textContent='?'; f.className='pt-slot';}
+  document.getElementById('ptRes11').classList.remove('show');
+  const btn = document.getElementById('ptBtn11');
+  btn.textContent='숫자 채워보기 →'; btn.onclick=runPTDemo11; btn.disabled=false;
+}
+
+// ── 집합 벤다이어그램 (Unit 14) ──
+function runVNDemo14() {
+  const btn = document.getElementById('vnBtn14');
+  if (!btn) return; btn.disabled = true; btn.textContent = '그리는 중...';
+  setTimeout(() => { document.getElementById('vnCa14').classList.add('show'); document.getElementById('vnCb14').classList.add('show'); }, 200);
+  setTimeout(() => {
+    document.querySelectorAll('#vnDemo14 .vn-el').forEach((el, i) => setTimeout(() => el.classList.add('show'), i * 120));
+  }, 700);
+  setTimeout(() => {
+    document.getElementById('vnOv14').classList.add('show');
+    document.getElementById('vnRes14').classList.add('show');
+    btn.textContent = '다시 보기'; btn.disabled = false;
+    btn.onclick = () => {
+      ['vnCa14','vnCb14','vnOv14','vnRes14'].forEach(id => document.getElementById(id)?.classList.remove('show'));
+      document.querySelectorAll('#vnDemo14 .vn-el').forEach(el => el.classList.remove('show'));
+      btn.textContent='벤다이어그램 보기 →'; btn.onclick=runVNDemo14; btn.disabled=false;
+    };
+  }, 1800);
+}
+
+// ── 역함수 화살표 반전 (Unit 16) ──
+function runIVDemo16() {
+  const btn = document.getElementById('ivBtn16');
+  if (!btn) return; btn.disabled = true;
+  setTimeout(() => { document.getElementById('ivFwd16').classList.add('show'); document.getElementById('ivLblF16').classList.add('show'); }, 300);
+  setTimeout(() => {
+    document.getElementById('ivFwd16').classList.remove('show'); document.getElementById('ivLblF16').classList.remove('show');
+  }, 1200);
+  setTimeout(() => {
+    document.getElementById('ivBck16').classList.add('show'); document.getElementById('ivLblInv16').classList.add('show');
+    document.getElementById('ivRes16').classList.add('show');
+    btn.textContent = '다시 보기'; btn.disabled = false;
+    btn.onclick = () => {
+      ['ivFwd16','ivLblF16','ivBck16','ivLblInv16','ivRes16'].forEach(id => document.getElementById(id)?.classList.remove('show'));
+      btn.textContent='화살표 반전하기 →'; btn.onclick=runIVDemo16; btn.disabled=false;
+    };
+  }, 1800);
+}
+
 function animateConceptSteps(box) {
   const els = Array.from(box.children);
   els.forEach((el, i) => {
