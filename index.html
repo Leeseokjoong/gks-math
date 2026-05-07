@@ -733,6 +733,67 @@ header h1{font-size:18px;flex:1}
 .c7-err b{color:#dc2626}
 .c7-memory{background:linear-gradient(135deg,#eff6ff,#f5f3ff);border:1.5px solid #c7d2fe;border-radius:12px;padding:14px;font-size:14px;font-weight:700;color:#3730a3;text-align:center;line-height:1.7}
 .c7-memory b{color:#dc2626}
+/* ── 연립일차부등식(id:9) 슬라이드 전용 ── */
+.c9-s{display:flex;flex-direction:column;justify-content:center;min-height:100%}
+.c9-tag{font-size:10.5px;font-weight:800;color:#94a3b8;letter-spacing:.05em;margin-bottom:4px}
+.c9-h{font-size:18px;font-weight:800;color:#1e1b4b;line-height:1.2;margin-bottom:10px}
+.c9-gate-wrap{display:flex;gap:8px;margin-bottom:10px}
+.c9-gate{flex:1;border-radius:12px;padding:11px 8px;text-align:center;border:2px solid transparent;transition:.3s}
+.c9-gate-a{background:#eff6ff;border-color:#93c5fd}
+.c9-gate-b{background:#fdf4ff;border-color:#d8b4fe}
+.c9-gate-icon{font-size:22px;margin-bottom:4px}
+.c9-gate-eq{font-size:12px;font-weight:800;color:#334155}
+.c9-gate-a .c9-gate-eq{color:#1d4ed8}
+.c9-gate-b .c9-gate-eq{color:#7c3aed}
+.c9-gate-result{font-size:11px;font-weight:700;color:#64748b;margin-top:3px}
+.c9-and-badge{background:#1e293b;color:#e2e8f0;border-radius:999px;padding:5px 14px;font-size:12px;font-weight:800;text-align:center;display:inline-block;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;gap:6px}
+.c9-solve-box{background:#f8faff;border-radius:12px;padding:13px 14px;border-left:3px solid #2563eb;margin-bottom:8px}
+.c9-solve-box2{border-left-color:#7c3aed;background:#fdf4ff}
+.c9-solve-lbl{font-size:10px;font-weight:800;color:#94a3b8;letter-spacing:.06em;margin-bottom:8px}
+.c9-solve-step{font-size:13px;font-weight:700;color:#64748b;line-height:2;opacity:0;transition:opacity .4s}
+.c9-solve-step.show{opacity:1;color:#334155}
+.c9-solve-step b{color:#1d4ed8}
+.c9-solve-box2 .c9-solve-step b{color:#7c3aed}
+.c9-solve-ans{font-size:15px;font-weight:900;opacity:0;transition:opacity .4s;margin-top:4px}
+.c9-solve-ans.show{opacity:1}
+.c9-solve-box .c9-solve-ans{color:#1d4ed8}
+.c9-solve-box2 .c9-solve-ans{color:#7c3aed}
+.c9-btn{display:block;width:100%;padding:10px;background:#2563eb;color:white;border:none;border-radius:10px;font-size:13.5px;font-weight:700;cursor:pointer;transition:.2s;margin-top:8px}
+.c9-btn:hover{background:#1d4ed8}
+.c9-btn:disabled{opacity:.4;cursor:not-allowed}
+.c9-numline{background:#1e293b;border-radius:14px;padding:16px 14px;margin-bottom:8px}
+.c9-nl-title{font-size:11px;font-weight:800;color:#94a3b8;letter-spacing:.05em;margin-bottom:12px;text-align:center}
+.c9-nl-track{position:relative;height:60px;margin:0 8px}
+.c9-nl-axis{position:absolute;top:50%;left:0;right:0;height:2px;background:#475569;border-radius:1px}
+.c9-nl-bar{position:absolute;top:calc(50% - 5px);height:10px;border-radius:4px;opacity:0;transition:opacity .5s,width .5s}
+.c9-nl-bar-a{background:rgba(59,130,246,.5);top:calc(50% - 14px)}
+.c9-nl-bar-b{background:rgba(167,139,250,.5);top:calc(50% + 4px)}
+.c9-nl-bar-ov{background:#facc15;top:calc(50% - 5px);z-index:2}
+.c9-nl-bar.show{opacity:1}
+.c9-nl-tick{position:absolute;top:calc(50% + 8px);transform:translateX(-50%);font-size:11px;font-weight:700;color:#94a3b8}
+.c9-nl-label{position:absolute;top:calc(50% - 26px);transform:translateX(-50%);font-size:9.5px;font-weight:800;color:#60a5fa}
+.c9-nl-label-b{top:calc(50% + 18px);color:#a78bfa}
+.c9-nl-dot{position:absolute;top:calc(50% - 5px);width:10px;height:10px;border-radius:50%;border:2.5px solid;background:#1e293b;transform:translateX(-50%);z-index:3}
+.c9-nl-lgd{display:flex;gap:10px;justify-content:center;margin-top:8px;flex-wrap:wrap}
+.c9-nl-lgd-item{display:flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#94a3b8}
+.c9-nl-lgd-dot{width:10px;height:10px;border-radius:2px}
+.c9-result-box{background:#fef9c3;border:2px solid #fde047;border-radius:12px;padding:12px;text-align:center;opacity:0;transition:opacity .4s;margin-bottom:8px}
+.c9-result-box.show{opacity:1}
+.c9-result-range{font-size:20px;font-weight:900;color:#1e1b4b;margin-bottom:4px}
+.c9-result-range b{color:#dc2626}
+.c9-result-sub{font-size:12px;font-weight:600;color:#64748b}
+.c9-ans-wrap{background:#f8faff;border-radius:12px;padding:14px;margin-bottom:10px}
+.c9-ans-eq{font-size:16px;font-weight:800;color:#334155;text-align:center;margin-bottom:6px}
+.c9-ans-eq .c9-a-blank{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:#e2e8f0;color:#94a3b8;font-size:16px;font-weight:900;transition:.4s}
+.c9-ans-eq .c9-a-blank.filled{background:#dc2626;color:white}
+.c9-ans-arrow{font-size:16px;color:#94a3b8;text-align:center;margin:4px 0;transition:opacity .4s;opacity:0}
+.c9-ans-arrow.show{opacity:1}
+.c9-ans-final{font-size:20px;font-weight:900;color:#16a34a;text-align:center;opacity:0;transition:opacity .4s;background:#dcfce7;border-radius:10px;padding:10px}
+.c9-ans-final.show{opacity:1}
+.c9-err-list{display:flex;flex-direction:column;gap:7px;margin-bottom:12px}
+.c9-err{background:#fff8f8;border:1.5px solid #fecaca;border-radius:10px;padding:10px 12px;font-size:12.5px;color:#7f1d1d;line-height:1.7}
+.c9-err b{color:#dc2626}
+.c9-memory{background:linear-gradient(135deg,#eff6ff,#fdf4ff);border:1.5px solid #c7d2fe;border-radius:12px;padding:14px;font-size:14px;font-weight:700;color:#1e1b4b;text-align:center;line-height:1.7}
 /* ── 삼차방정식(id:8) 슬라이드 전용 ── */
 .c8-s{display:flex;flex-direction:column;justify-content:center;min-height:100%}
 .c8-tag{font-size:10.5px;font-weight:800;color:#94a3b8;letter-spacing:.05em;margin-bottom:4px}
@@ -1913,34 +1974,99 @@ const UNITS = [
   },
   {
     id:9, title:"연립일차부등식", sub:"공통 범위 찾기",
-    concept:`<div class="formula-box" style="text-align:left">x&gt;1 & x&lt;5 → 공통: <b>1&lt;x&lt;5</b> (자연수: 2,3,4)<br>x&gt;2 & x&lt;6 → 공통: <b>2&lt;x&lt;6</b> (자연수: 3,4,5)<br>x≥3 & x&lt;7 → 공통: <b>3≤x&lt;7</b> (자연수: 3~6)<br><div style="margin-top:8px;padding-top:8px;border-top:1.5px dashed rgba(37,99,235,.25);font-size:11px;text-align:center;color:#475569">규칙: 각각 풀기 → 겹치는 범위만 정답</div></div>
-<div class="step-row"><div class="step-num">1</div><div class="step-text">첫 번째 부등식 풀어 x 범위 구하기</div></div>
-<div class="step-row"><div class="step-num">2</div><div class="step-text">두 번째 부등식 풀어 x 범위 구하기</div></div>
-<div class="step-row"><div class="step-num">3</div><div class="step-text">두 범위를 <b>수직선</b>(숫자 직선)에 그려 겹치는 부분 찾기</div></div>
-<div class="example-block"><div class="ex-label">예시</div>2x &gt; 2 이고 x &lt; 5 인 자연수 x의 개수<br>① 2x &gt; 2 → 양변 ÷ 2 → x &gt; 1<br>② x &lt; 5<br>겹치는 범위: 1 &lt; x &lt; 5<br>그 사이 자연수: 2, 3, 4 → <b>3개</b></div>
-<div class="nl-demo" id="nlDemo9">
-  <div style="font-size:11px;font-weight:800;color:#94a3b8;letter-spacing:.08em;margin-bottom:10px">버튼을 눌러 두 범위를 수직선에 그려보세요 👇</div>
-  <div class="nl-lgd"><span class="nl-la">① x &gt; 1</span><span class="nl-lb">② x &lt; 5</span><span class="nl-lov">겹치는 범위</span></div>
-  <div class="nl-tbox">
-    <div class="nl-aline"></div>
-    <div class="nl-bnd nl-bnd-a" id="nlBndA9"></div>
-    <div class="nl-bnd nl-bnd-b" id="nlBndB9"></div>
-    <div class="nl-bnd nl-bnd-ov" id="nlBndOv9"></div>
-    <div class="nl-ocir" id="nlOcir1_9" style="left:21%;border-color:#1d4ed8"></div>
-    <div class="nl-ocir" id="nlOcir5_9" style="left:82%;border-color:#0891b2"></div>
-    <div class="nl-tk" style="left:8%">0</div>
-    <div class="nl-tk" style="left:21%">1</div>
-    <div class="nl-tk" style="left:36%">2</div>
-    <div class="nl-tk" style="left:51%">3</div>
-    <div class="nl-tk" style="left:67%">4</div>
-    <div class="nl-tk" style="left:82%">5</div>
-    <div class="nl-tk" style="left:97%">6</div>
+    concept:`<div class="c9-s">
+  <div class="c9-tag">1 / 5 · 도입</div>
+  <div class="c9-h">두 문을 동시에 통과하기</div>
+  <div class="c9-gate-wrap">
+    <div class="c9-gate c9-gate-a">
+      <div class="c9-gate-icon">🚪</div>
+      <div class="c9-gate-eq">x + 2 &lt; 9</div>
+      <div class="c9-gate-result">→ x &lt; 7</div>
+    </div>
+    <div class="c9-gate c9-gate-b">
+      <div class="c9-gate-icon">🚪</div>
+      <div class="c9-gate-eq">5x &gt; x + 12</div>
+      <div class="c9-gate-result">→ x &gt; 3</div>
+    </div>
   </div>
-  <button class="nl-btn" id="nlBtn9" onclick="runNLDemo9()">수직선에 그리기 →</button>
-  <div class="nl-res" id="nlRes9">겹치는 범위: <b>1 &lt; x &lt; 5</b> → 자연수 2, 3, 4 → <b>3개</b>!</div>
+  <div class="c9-and-badge">🔒 두 문을 <b style="color:#facc15">동시에</b> 통과해야 합격!</div>
+  <div style="background:#fef9c3;border-radius:10px;padding:10px 14px;font-size:13px;font-weight:700;color:#713f12;text-align:center;line-height:1.7">
+    하나만 통과하면 ❌<br>둘 다 통과한 구간만 ✅ <b>→ 공통 범위 찾기</b>
+  </div>
 </div>
-<div class="tip-box">두 부등식을 동시에 만족하는 걸 <b>연립부등식</b>이라고 해요. 수직선에 색칠하면 겹치는 부분이 한눈에! &lt; 와 ≤ 끝점 차이 확인 필수.</div>
-<button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">'두 부등식을 동시에 만족'이라는 건 결국 'A 도 통과하고 B 도 통과하는 x' 라는 뜻이에요. 마치 학원 시험에서 영어도 합격하고 수학도 합격해야 하는 거랑 똑같죠. 한 쪽만 통과한 사람은 안 되고, <b>둘 다 통과한 사람의 명단(=공통 범위)</b>만 답이 되는 거예요. 그래서 따로 풀고 겹치는 부분을 찾는 게 자연스러운 방법이에요.</div>`,
+<div class="c9-s">
+  <div class="c9-tag">2 / 5 · 각각 풀기</div>
+  <div class="c9-h">부등식을 하나씩 풀어요</div>
+  <div class="c9-solve-box">
+    <div class="c9-solve-lbl">① x + 2 &lt; 9</div>
+    <div class="c9-solve-step show">x + 2 &lt; 9</div>
+    <div class="c9-solve-step show">x &lt; 9 − 2</div>
+    <div class="c9-solve-ans show">→ <b>x &lt; 7</b></div>
+  </div>
+  <div class="c9-solve-box c9-solve-box2">
+    <div class="c9-solve-lbl">② 5x &gt; x + 12</div>
+    <div class="c9-solve-step" id="c9S1">5x &gt; x + 12</div>
+    <div class="c9-solve-step" id="c9S2">5x − x &gt; 12</div>
+    <div class="c9-solve-step" id="c9S3">4x &gt; 12</div>
+    <div class="c9-solve-ans" id="c9S4">→ <b>x &gt; 3</b></div>
+  </div>
+  <button class="c9-btn" id="c9SolveBtn" onclick="c9RunSolve()">② 단계별로 풀기 →</button>
+</div>
+<div class="c9-s">
+  <div class="c9-tag">3 / 5 · 수직선 겹치기</div>
+  <div class="c9-h">두 범위를 수직선에 그려요</div>
+  <div class="c9-numline">
+    <div class="c9-nl-title">버튼을 눌러 겹치는 구간을 확인하세요 👇</div>
+    <div class="c9-nl-track" id="c9NlTrack">
+      <div class="c9-nl-axis"></div>
+      <div class="c9-nl-bar c9-nl-bar-a" id="c9BarA" style="left:46%;width:54%"></div>
+      <div class="c9-nl-bar c9-nl-bar-b" id="c9BarB" style="left:0;width:68%"></div>
+      <div class="c9-nl-bar c9-nl-bar-ov" id="c9BarOv" style="left:46%;width:22%"></div>
+      <div class="c9-nl-dot" id="c9Dot3" style="left:46%;border-color:#60a5fa;opacity:0"></div>
+      <div class="c9-nl-dot" id="c9Dot7" style="left:68%;border-color:#a78bfa;opacity:0"></div>
+      <div class="c9-nl-tick" style="left:8%">1</div>
+      <div class="c9-nl-tick" style="left:24%">2</div>
+      <div class="c9-nl-tick" style="left:46%">3</div>
+      <div class="c9-nl-tick" style="left:68%">7</div>
+      <div class="c9-nl-tick" style="left:90%">9</div>
+    </div>
+    <div class="c9-nl-lgd">
+      <div class="c9-nl-lgd-item"><div class="c9-nl-lgd-dot" style="background:rgba(59,130,246,.5)"></div>x &gt; 3</div>
+      <div class="c9-nl-lgd-item"><div class="c9-nl-lgd-dot" style="background:rgba(167,139,250,.5)"></div>x &lt; 7</div>
+      <div class="c9-nl-lgd-item"><div class="c9-nl-lgd-dot" style="background:#facc15"></div>겹치는 구간</div>
+    </div>
+  </div>
+  <div class="c9-result-box" id="c9ResultBox">
+    <div class="c9-result-range">3 &lt; x &lt; <b>7</b></div>
+    <div class="c9-result-sub">두 조건을 동시에 만족하는 구간</div>
+  </div>
+  <button class="c9-btn" id="c9NlBtn" onclick="c9RunNl()">수직선에 겹치기 →</button>
+</div>
+<div class="c9-s">
+  <div class="c9-tag">4 / 5 · 문제 완성</div>
+  <div class="c9-h">a 값 찾기</div>
+  <div class="c9-ans-wrap">
+    <div style="font-size:12px;font-weight:700;color:#64748b;margin-bottom:8px">문제에서 해가 3 &lt; x &lt; a 라고 했으므로:</div>
+    <div class="c9-ans-eq">3 &lt; x &lt; 7</div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin:6px 0;font-size:14px;font-weight:700;color:#64748b">
+      <span>비교</span><span>⬇</span>
+    </div>
+    <div class="c9-ans-eq">3 &lt; x &lt; <span class="c9-a-blank" id="c9ABlank">a</span></div>
+  </div>
+  <div class="c9-ans-arrow" id="c9AnsArrow">a = 7 이어야 한다 ⬇</div>
+  <div class="c9-ans-final" id="c9AnsFinal">∴ a = 7</div>
+  <button class="c9-btn" id="c9AnsBtn" onclick="c9RunAns()">a 값 확인하기 →</button>
+</div>
+<div class="c9-s">
+  <div class="c9-tag">5 / 5 · 실수 주의 + 기억법</div>
+  <div class="c9-h">자주 틀리는 3가지</div>
+  <div class="c9-err-list">
+    <div class="c9-err">❌ <b>하나만 만족</b> — 연립은 두 조건 동시 만족, 공통 범위만 정답</div>
+    <div class="c9-err">❌ <b>방향 반대</b> — x &gt; 3 을 3 &gt; x 처럼 반대로 쓰지 않기</div>
+    <div class="c9-err">❌ <b>음수로 나눌 때</b> — 음수로 나누거나 곱하면 부등호 방향 반대!</div>
+  </div>
+  <div class="c9-memory">💡 "연립부등식은<br>겹치는 부분 찾기!"<br><span style="font-size:12px;font-weight:600;color:#6366f1;opacity:.85">각각 풀기 → 수직선 → 공통 범위</span></div>
+</div>`,
     practice:[
       {q:"연립부등식 x+3 < 8, 4x > x+6 의 해가 2 < x < a일 때, a의 값은?",
        c:["3","4","5","6"],a:2,
@@ -2719,6 +2845,57 @@ function c6ShowExpand() {
   if (!btn || !body) return;
   btn.style.display = 'none';
   body.classList.add('show');
+}
+
+// ── 연립일차부등식(id:9) ──
+function c9RunSolve() {
+  const btn = document.getElementById('c9SolveBtn');
+  if (!btn) return;
+  btn.disabled = true;
+  const show = (id, delay) => setTimeout(() => {
+    const el = document.getElementById(id);
+    if (el) el.classList.add('show');
+  }, delay);
+  show('c9S1', 200);
+  show('c9S2', 600);
+  show('c9S3', 1000);
+  show('c9S4', 1350);
+}
+function c9RunNl() {
+  const btn = document.getElementById('c9NlBtn');
+  if (!btn) return;
+  btn.disabled = true;
+  setTimeout(() => {
+    ['c9BarA','c9BarB','c9Dot3','c9Dot7'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) { el.classList.add('show'); el.style.opacity='1'; }
+    });
+  }, 200);
+  setTimeout(() => {
+    const ov = document.getElementById('c9BarOv');
+    if (ov) ov.classList.add('show');
+  }, 800);
+  setTimeout(() => {
+    const res = document.getElementById('c9ResultBox');
+    if (res) res.classList.add('show');
+  }, 1200);
+}
+function c9RunAns() {
+  const btn = document.getElementById('c9AnsBtn');
+  if (!btn) return;
+  btn.disabled = true;
+  setTimeout(() => {
+    const blank = document.getElementById('c9ABlank');
+    if (blank) { blank.classList.add('filled'); blank.textContent = '7'; }
+  }, 300);
+  setTimeout(() => {
+    const arr = document.getElementById('c9AnsArrow');
+    if (arr) arr.classList.add('show');
+  }, 700);
+  setTimeout(() => {
+    const fin = document.getElementById('c9AnsFinal');
+    if (fin) fin.classList.add('show');
+  }, 1100);
 }
 
 // ── 삼차방정식(id:8) ──
