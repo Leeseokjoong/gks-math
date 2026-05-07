@@ -733,6 +733,56 @@ header h1{font-size:18px;flex:1}
 .c7-err b{color:#dc2626}
 .c7-memory{background:linear-gradient(135deg,#eff6ff,#f5f3ff);border:1.5px solid #c7d2fe;border-radius:12px;padding:14px;font-size:14px;font-weight:700;color:#3730a3;text-align:center;line-height:1.7}
 .c7-memory b{color:#dc2626}
+/* ── 삼차방정식(id:8) 슬라이드 전용 ── */
+.c8-s{display:flex;flex-direction:column;justify-content:center;min-height:100%}
+.c8-tag{font-size:10.5px;font-weight:800;color:#94a3b8;letter-spacing:.05em;margin-bottom:4px}
+.c8-h{font-size:18px;font-weight:800;color:#1e1b4b;line-height:1.2;margin-bottom:10px}
+.c8-compare{display:flex;gap:8px;margin-bottom:10px}
+.c8-cmp{flex:1;border-radius:12px;padding:11px 10px;text-align:center}
+.c8-cmp-2{background:#eff6ff;border:1.5px solid #93c5fd}
+.c8-cmp-3{background:#fdf4ff;border:1.5px solid #d8b4fe}
+.c8-cmp-lbl{font-size:10px;font-weight:800;letter-spacing:.04em;margin-bottom:6px}
+.c8-cmp-2 .c8-cmp-lbl{color:#1d4ed8}
+.c8-cmp-3 .c8-cmp-lbl{color:#7e22ce}
+.c8-cmp-num{font-size:28px;font-weight:900;line-height:1}
+.c8-cmp-2 .c8-cmp-num{color:#2563eb}
+.c8-cmp-3 .c8-cmp-num{color:#7c3aed}
+.c8-cmp-sub{font-size:11px;font-weight:600;color:#64748b;margin-top:4px}
+.c8-doors{display:flex;gap:6px;margin-bottom:8px}
+.c8-door{flex:1;border-radius:12px;padding:10px 6px;text-align:center;background:#f8faff;border:2px solid #e2e8f0;transition:.3s}
+.c8-door.open{background:#dcfce7;border-color:#86efac}
+.c8-door-eq{font-size:12px;font-weight:800;color:#475569}
+.c8-door.open .c8-door-eq{color:#15803d}
+.c8-door-root{font-size:18px;font-weight:900;color:#e2e8f0;transition:.3s}
+.c8-door.open .c8-door-root{color:#16a34a}
+.c8-zero-demo{background:#1e293b;border-radius:14px;padding:14px;margin-bottom:10px}
+.c8-zd-eq{font-size:14px;font-weight:700;color:#e2e8f0;text-align:center;margin-bottom:10px}
+.c8-zd-calc{display:flex;flex-direction:column;gap:4px}
+.c8-zd-row{font-size:13px;font-weight:700;color:#94a3b8;text-align:center;opacity:0;transition:opacity .4s;line-height:1.8}
+.c8-zd-row.show{opacity:1}
+.c8-zd-row b{color:#a5b4fc}
+.c8-zd-zero{font-size:22px;font-weight:900;color:#4ade80;opacity:0;transition:opacity .4s;text-align:center;margin-top:6px}
+.c8-zd-zero.show{opacity:1}
+.c8-btn{display:block;width:100%;padding:10px;background:#2563eb;color:white;border:none;border-radius:10px;font-size:13.5px;font-weight:700;cursor:pointer;transition:.2s}
+.c8-btn:hover{background:#1d4ed8}
+.c8-btn:disabled{opacity:.4;cursor:not-allowed}
+.c8-flow{display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:wrap;margin-bottom:10px}
+.c8-flow-item{background:#f8faff;border:1.5px solid #c7d2fe;border-radius:10px;padding:7px 10px;font-size:12px;font-weight:700;color:#3730a3;text-align:center}
+.c8-flow-arrow{color:#94a3b8;font-size:14px;font-weight:700}
+.c8-ex-box{background:#f8faff;border-radius:12px;padding:13px 14px;border-left:3px solid #7c3aed}
+.c8-ex-prob{font-size:13px;font-weight:600;color:#334155;margin-bottom:10px}
+.c8-ex-prob b{color:#7c3aed}
+.c8-step-list{display:flex;flex-direction:column;gap:6px}
+.c8-step{display:flex;align-items:flex-start;gap:8px;font-size:13px;font-weight:600;color:#64748b;opacity:.35;transition:opacity .35s,color .35s}
+.c8-step.active{opacity:1;color:#1e1b4b}
+.c8-step-num{min-width:22px;height:22px;border-radius:50%;background:#e2e8f0;color:#64748b;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.35s}
+.c8-step.active .c8-step-num{background:#7c3aed;color:white}
+.c8-step-ans{background:#fdf4ff;border-radius:10px;padding:9px 12px;font-size:15px;font-weight:900;color:#7e22ce;text-align:center;max-height:0;overflow:hidden;opacity:0;transition:max-height .4s,opacity .4s}
+.c8-step-ans.show{max-height:50px;opacity:1}
+.c8-err-list{display:flex;flex-direction:column;gap:7px;margin-bottom:12px}
+.c8-err{background:#fff8f8;border:1.5px solid #fecaca;border-radius:10px;padding:10px 12px;font-size:12.5px;color:#7f1d1d;line-height:1.7}
+.c8-err b{color:#dc2626}
+.c8-memory{background:linear-gradient(135deg,#fdf4ff,#eff6ff);border:1.5px solid #d8b4fe;border-radius:12px;padding:14px;font-size:14px;font-weight:700;color:#4c1d95;text-align:center;line-height:1.7}
 /* ── 나머지정리(id:2) 슬라이드 전용 ── */
 .c2-s{display:flex;flex-direction:column;justify-content:center;min-height:100%}
 .c2-tag{font-size:10.5px;font-weight:800;color:#94a3b8;letter-spacing:.05em;margin-bottom:4px}
@@ -1749,13 +1799,100 @@ const UNITS = [
   },
   {
     id:8, title:"삼차방정식의 해", sub:"근 대입하여 미정계수",
-    concept:`<div class="formula-box" style="text-align:left">x=<b>2</b>가 근 → x=2 대입 → 결과=0<br>x=<b>−1</b>이 근 → x=−1 대입 → 결과=0<br>x=<b>3</b>이 근 → x=3 대입 → 결과=0<br><div style="margin-top:8px;padding-top:8px;border-top:1.5px dashed rgba(37,99,235,.25);font-size:11px;text-align:center;color:#475569">규칙: 근 k → 식에 k 대입 → 결과=0</div></div>
-<div class="step-row"><div class="step-num">1</div><div class="step-text">'근(해)이 k'라는 말 = 'x 자리에 k 넣으면 식 전체 = 0'</div></div>
-<div class="step-row"><div class="step-num">2</div><div class="step-text">x 자리에 k를 넣은 식 = 0 으로 놓기</div></div>
-<div class="step-row"><div class="step-num">3</div><div class="step-text">남은 모르는 글자 풀기</div></div>
-<div class="example-block"><div class="ex-label">예시</div>x³ + ax − 2 = 0 의 답 중 하나가 1일 때 a<br>x 자리에 1 넣기: (1)³ + a × (1) − 2 = 0<br>1 + a − 2 = 0<br>a − 1 = 0<br><span class="arrow">→</span> a = <b>1</b></div>
-<div class="tip-box">방정식이 0이 되게 하는 x 값을 <b>근(해)</b>이라고 해요. '한 근이 k'라는 말을 보는 순간 x = k 를 대입! 거듭제곱과 부호 계산이 실수 포인트예요.</div>
-<button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">'근'이라는 말 자체가 <b>'식을 0 으로 만드는 x 값'</b>이라는 뜻이에요. 그러니까 'x = 1 이 근' 이라고 하면 자동으로 'x 자리에 1 을 넣으면 식 = 0' 이라는 정보를 공짜로 얻는 셈이죠. 이걸 이용해서 모르는 글자가 들어 있는 자리를 풀면 끝이에요. 어렵게 식을 인수분해할 필요 없이, 근의 정의 한 줄로 해결되는 거예요.</div>`,
+    concept:`<div class="c8-s">
+  <div class="c8-tag">1 / 5 · 도입</div>
+  <div class="c8-h">답 3개를 숨겨 놓은 잠금장치</div>
+  <div class="c8-compare">
+    <div class="c8-cmp c8-cmp-2">
+      <div class="c8-cmp-lbl">이차방정식</div>
+      <div class="c8-cmp-num">2</div>
+      <div class="c8-cmp-sub">근이 최대 2개</div>
+    </div>
+    <div class="c8-cmp c8-cmp-3">
+      <div class="c8-cmp-lbl">삼차방정식</div>
+      <div class="c8-cmp-num">3</div>
+      <div class="c8-cmp-sub">근이 최대 3개</div>
+    </div>
+  </div>
+  <div style="font-size:11.5px;font-weight:700;color:#64748b;margin-bottom:7px;text-align:center">세 개의 문이 숨어 있어요 — 문을 탭해 열어보세요 👇</div>
+  <div class="c8-doors">
+    <div class="c8-door" id="c8Door1" onclick="c8OpenDoor(1)">
+      <div class="c8-door-eq">(x−1)=0</div>
+      <div class="c8-door-root" id="c8Root1">?</div>
+    </div>
+    <div class="c8-door" id="c8Door2" onclick="c8OpenDoor(2)">
+      <div class="c8-door-eq">(x−2)=0</div>
+      <div class="c8-door-root" id="c8Root2">?</div>
+    </div>
+    <div class="c8-door" id="c8Door3" onclick="c8OpenDoor(3)">
+      <div class="c8-door-eq">(x−3)=0</div>
+      <div class="c8-door-root" id="c8Root3">?</div>
+    </div>
+  </div>
+  <div style="font-size:12px;font-weight:700;color:#7c3aed;text-align:center">(x−1)(x−2)(x−3) = 0</div>
+</div>
+<div class="c8-s">
+  <div class="c8-tag">2 / 5 · "0 만들기" 원리</div>
+  <div class="c8-h">x=1 넣으면 진짜 0이 된다</div>
+  <div class="c8-zero-demo">
+    <div class="c8-zd-eq">x³ − 6x² + 11x − 6 = 0</div>
+    <div class="c8-zd-calc">
+      <div class="c8-zd-row" id="c8Zr1">x = <b>1</b> 대입</div>
+      <div class="c8-zd-row" id="c8Zr2">= 1³ − 6(1²) + 11(1) − 6</div>
+      <div class="c8-zd-row" id="c8Zr3">= 1 − 6 + 11 − 6</div>
+      <div class="c8-zd-zero" id="c8Zzero">= 0 ✓</div>
+    </div>
+  </div>
+  <button class="c8-btn" id="c8ZBtn" onclick="c8RunZero()">x = 1 대입해보기 →</button>
+  <div style="font-size:12px;font-weight:600;color:#64748b;text-align:center;margin-top:6px;line-height:1.6">식이 0이 된다 = <b style="color:#7c3aed">x=1이 근</b>이라는 증거</div>
+</div>
+<div class="c8-s">
+  <div class="c8-tag">3 / 5 · 검정고시 핵심 패턴</div>
+  <div class="c8-h">"한 근이 k" → 바로 대입!</div>
+  <div class="c8-flow">
+    <div class="c8-flow-item">근이 k</div>
+    <div class="c8-flow-arrow">→</div>
+    <div class="c8-flow-item">x = k 대입</div>
+    <div class="c8-flow-arrow">→</div>
+    <div class="c8-flow-item">식 = 0</div>
+    <div class="c8-flow-arrow">→</div>
+    <div class="c8-flow-item">미지수 계산</div>
+  </div>
+  <div class="c8-ex-box">
+    <div class="c8-ex-prob">x³ + 4x² − x + a = 0 의 한 근이 <b>1</b> 일 때, a = ?</div>
+    <div class="c8-step-list">
+      <div class="c8-step active"><span class="c8-step-num">1</span>근이 1 → x = 1 대입</div>
+      <div class="c8-step active"><span class="c8-step-num">2</span>1³ + 4(1²) − 1 + a = 0</div>
+      <div class="c8-step active"><span class="c8-step-num">3</span>1 + 4 − 1 + a = 0 → 4 + a = 0</div>
+      <div class="c8-step active"><span class="c8-step-num">4</span>a = <b style="color:#7c3aed;font-size:16px">−4</b></div>
+    </div>
+  </div>
+</div>
+<div class="c8-s">
+  <div class="c8-tag">4 / 5 · 스텝 풀이</div>
+  <div class="c8-h">단계별로 직접 해보기</div>
+  <div class="c8-ex-box" style="border-left-color:#2563eb">
+    <div class="c8-ex-prob">x³ + 2x² + x + a = 0 의 한 근이 <b>−1</b> 일 때, a = ?</div>
+    <div class="c8-step-list" id="c8StepList">
+      <div class="c8-step active" id="c8St1"><span class="c8-step-num active">1</span>근이 −1 → x = <b>−1</b> 대입</div>
+      <div class="c8-step" id="c8St2"><span class="c8-step-num">2</span>(−1)³ + 2(−1)² + (−1) + a = 0</div>
+      <div class="c8-step" id="c8St3"><span class="c8-step-num">3</span>−1 + 2 − 1 + a = 0</div>
+      <div class="c8-step" id="c8St4"><span class="c8-step-num">4</span>0 + a = 0 → <b>a = 0</b></div>
+    </div>
+  </div>
+  <div class="c8-step-ans" id="c8StAns">정답: a = 0 ✓</div>
+  <button class="c8-btn" id="c8StBtn" onclick="c8NextStep()" style="margin-top:8px">다음 단계 →</button>
+</div>
+<div class="c8-s">
+  <div class="c8-tag">5 / 5 · 실수 주의 + 기억법</div>
+  <div class="c8-h">자주 틀리는 3가지</div>
+  <div class="c8-err-list">
+    <div class="c8-err">❌ <b>대입 안 하기</b> — "근"이 나오면 무조건 x에 대입, 식 = 0</div>
+    <div class="c8-err">❌ <b>음수 제곱 실수</b> — (−1)³ = <b>−1</b>, (−1)² = <b>+1</b> 부호 조심</div>
+    <div class="c8-err">❌ <b>a도 같이 대입</b> — 숫자는 x 자리에만, a는 미지수로 남겨두기</div>
+  </div>
+  <div class="c8-memory">🔑 "근이 나오면<br>그 숫자를 넣어서 0 만들기!"</div>
+</div>`,
     practice:[
       {q:"x³ + x² + x + a = 0의 한 근이 −1일 때, 상수 a의 값은?",
        c:["1","2","3","4"],a:0,
@@ -2582,6 +2719,40 @@ function c6ShowExpand() {
   if (!btn || !body) return;
   btn.style.display = 'none';
   body.classList.add('show');
+}
+
+// ── 삼차방정식(id:8) ──
+function c8OpenDoor(n) {
+  const door = document.getElementById('c8Door' + n);
+  const root = document.getElementById('c8Root' + n);
+  if (!door || !root || door.classList.contains('open')) return;
+  door.classList.add('open');
+  root.textContent = 'x = ' + n;
+}
+function c8RunZero() {
+  const btn = document.getElementById('c8ZBtn');
+  if (!btn) return;
+  btn.disabled = true;
+  const show = (id, delay) => setTimeout(() => {
+    const el = document.getElementById(id);
+    if (el) el.classList.add('show');
+  }, delay);
+  show('c8Zr1', 200);
+  show('c8Zr2', 600);
+  show('c8Zr3', 1000);
+  show('c8Zzero', 1400);
+}
+let c8StepState = 1;
+function c8NextStep() {
+  c8StepState++;
+  const btn = document.getElementById('c8StBtn');
+  const step = document.getElementById('c8St' + c8StepState);
+  if (step) step.classList.add('active');
+  if (c8StepState >= 4) {
+    if (btn) btn.style.display = 'none';
+    const ans = document.getElementById('c8StAns');
+    if (ans) ans.classList.add('show');
+  }
 }
 
 // ── 이차함수 최대·최소(id:7) ──
