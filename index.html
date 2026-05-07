@@ -48,7 +48,7 @@ header h1{font-size:18px;flex:1}
 .cn-pill-ghost{display:inline-flex;padding:5px 10px;border-radius:999px;background:#f8faff;color:var(--cn-ink2);font-size:11px;font-weight:600;box-shadow:inset 0 0 0 1px #e2e8f0;white-space:nowrap;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;max-width:130px}
 .cn-page-no{margin-left:auto;font-size:11px;color:#94a3b8;font-weight:700;white-space:nowrap;flex-shrink:0;font-variant-numeric:tabular-nums}
 .cn-eyebrow{font-size:11px;font-weight:700;color:var(--cn-accent);letter-spacing:.05em;margin-bottom:4px}
-.cn-card-title{font-size:19px;font-weight:800;line-height:1.2;letter-spacing:-.015em;color:var(--cn-ink);margin-bottom:14px}
+.cn-card-title{font-size:20px;font-weight:800;line-height:1.2;letter-spacing:-.015em;color:var(--cn-ink);margin-bottom:14px}
 .cn-progress{display:flex;gap:4px;margin-top:14px;padding-top:2px}
 .cn-bar{flex:1;height:4px;border-radius:999px;background:#e2e8f0;transition:background .2s}
 .cn-bar.active{background:var(--cn-primary)}
@@ -61,13 +61,13 @@ header h1{font-size:18px;flex:1}
 .pd-btn,.rd-btn,.cd-btn,.cn-btn,.mr-btn,.vt-btn,.qd-btn,.id-btn{background:var(--cn-primary)!important}
 .pd-btn:hover,.rd-btn:hover,.cd-btn:hover,.cn-btn:hover,.mr-btn:hover,.vt-btn:hover,.qd-btn:hover,.id-btn:hover{background:var(--cn-accent)!important}
 /* 개념 내부 블록 */
-.concept-box{line-height:1.8;font-size:14.5px;color:#1e293b}
+.concept-box{line-height:1.9;font-size:15.5px;color:#1e293b}
 .concept-box b{color:#1d4ed8;font-weight:800}
-.concept-box > *{opacity:0;animation:csStepIn .3s ease forwards}
+.concept-box > *{opacity:0;animation:csStepIn .5s ease forwards}
 .concept-box .step-row{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;background:#f8faff;border-radius:10px;margin:0}
 .concept-box .step-row + .step-row{margin-top:8px}
 .concept-box .step-num{min-width:24px;height:24px;border-radius:50%;background:#2563eb;color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-.concept-box .step-text{font-size:14px;line-height:1.7;color:#334155}
+.concept-box .step-text{font-size:15px;line-height:1.75;color:#334155}
 .concept-box .step-text b{color:#1d4ed8}
 .concept-box .formula-box{background:#eff6ff;border:1.5px solid #93c5fd;border-radius:12px;padding:14px 16px;text-align:center;font-size:15px;font-weight:700;color:#1e40af;letter-spacing:.02em;margin:0}
 .concept-box .tip-box{background:#eff6ff;border-left:3px solid #2563eb;border-radius:0 10px 10px 0;padding:10px 14px;font-size:13px;color:#1e40af;font-weight:600;line-height:1.6;margin:0}
@@ -438,6 +438,13 @@ header h1{font-size:18px;flex:1}
 .why-box{display:none;border-left:3px solid #8b5cf6;background:rgba(139,92,246,.06);padding:12px 16px;margin-top:6px;border-radius:0 8px 8px 8px;line-height:1.7;font-size:13.5px;color:#1e293b}
 .why-box.open{display:block}
 
+/* ── 단계별 탭 넘기기 ── */
+.step-next-btn{width:100%;background:var(--cn-primary);border:none;border-radius:10px;color:#fff;font-size:14px;font-weight:700;padding:10px 14px;cursor:pointer;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:6px;transition:.18s}
+.step-next-btn:hover{background:var(--cn-accent)}
+.step-next-btn:active{transform:scale(.97)}
+.step-next-btn.done{display:none}
+.step-counter{font-size:12px;opacity:.75;margin-left:auto}
+
 /* ── 수정요청 버튼 & 모달 ── */
 .fb-btn{width:100%;background:none;border:1.5px solid #e2e8f0;border-radius:8px;color:#94a3b8;font-size:12px;font-weight:700;padding:7px 14px;cursor:pointer;margin-top:10px;display:flex;align-items:center;justify-content:center;gap:5px;transition:.18s}
 .fb-btn:hover{border-color:#1d4ed8;color:#1d4ed8;background:#f0f4ff}
@@ -545,6 +552,9 @@ header h1{font-size:18px;flex:1}
       <div class="cn-eyebrow" id="conceptEyebrow"></div>
       <div class="cn-card-title" id="conceptHeaderTitle"></div>
       <div class="concept-box" id="conceptBox"></div>
+      <button class="step-next-btn done" id="stepNextBtn" onclick="revealNextStep()">
+        다음 단계 <span>→</span><span class="step-counter" id="stepCounter"></span>
+      </button>
       <div class="cn-progress" id="conceptProgress"></div>
       <button class="fb-btn" id="feedbackBtn" onclick="openFeedback()">✏️ 수정 요청</button>
     </div>
@@ -678,7 +688,8 @@ const UNITS = [
   },
   {
     id:1, title:"항등식의 성질", sub:"미정계수 구하기",
-    concept:`<div class="formula-box">왼쪽 = 오른쪽이 되려면<br>x² 자리·x 자리·숫자 자리가 <b>각각</b> 같아야 함</div>
+    concept:`<div class="tip-box">📌 핵심 용어 먼저! <b>항</b>은 숫자나 문자의 곱 덩어리 (3x², 2x, 5 각각이 항), <b>계수</b>는 항에서 문자 앞 숫자 (3x²의 계수 = 3), <b>차수</b>는 문자의 지수 (3x²의 차수 = 2)</div>
+<div class="formula-box">왼쪽 = 오른쪽이 되려면<br>x² 자리·x 자리·숫자 자리가 <b>각각</b> 같아야 함</div>
 <div class="step-row"><div class="step-num">1</div><div class="step-text">왼쪽과 오른쪽에서 x² 앞 숫자, x 앞 숫자, 그냥 숫자를 각각 찾기</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">같은 자리끼리 <b>=</b>로 묶어 작은 식 만들기</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">그 식들을 풀어 모르는 글자 값 구하기</div></div>
@@ -725,7 +736,8 @@ const UNITS = [
   },
   {
     id:2, title:"나머지 정리", sub:"대입하여 나머지 계산",
-    concept:`<div class="formula-box">f(x)를 (x − a)로 나눈 나머지 = f(a)<br>(괄호 안을 0으로 만드는 a를 식에 그대로 넣기)</div>
+    concept:`<div class="tip-box">📐 나눗셈 기초: <b>7 ÷ 3 = 2 … 1</b> 이면<br><b>7 = 3 × 2 + 1</b> (피제수 = 제수 × 몫 + 나머지)<br>다항식도 똑같이: <b>f(x) = (나누는 식) × 몫 + 나머지</b><br>→ 제수를 0으로 만드는 x 값을 넣으면 앞 항이 사라져 나머지만 남아요!</div>
+<div class="formula-box">f(x)를 (x − a)로 나눈 나머지 = f(a)<br>(괄호 안을 0으로 만드는 a를 식에 그대로 넣기)</div>
 <div class="step-row"><div class="step-num">1</div><div class="step-text">나누는 식 (x − a)에서 <b>괄호 안을 0으로 만드는 x 값</b> 찾기</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">원래 식의 <b>x 자리에 그 값을 그대로 넣기</b> → 답이 나머지</div></div>
 <div class="remain-demo" id="remainDemo2">
@@ -773,7 +785,8 @@ const UNITS = [
   },
   {
     id:3, title:"인수분해 공식", sub:"세제곱 합·차 공식",
-    concept:`<div class="formula-box">a³+b³ = (a+b)(a²−ab+b²)<br>a³−b³ = (a−b)(a²+ab+b²)</div>
+    concept:`<div class="tip-box">🔢 세제곱 인식 훈련: <b>8 = 2³, 27 = 3³, 64 = 4³, 125 = 5³</b> — 이 네 개만 외우면 문제 99% 해결!</div>
+<div class="formula-box">a³+b³ = (a+b)(a²−ab+b²)<br>a³−b³ = (a−b)(a²+ab+b²)</div>
 <div class="step-row"><div class="step-num">1</div><div class="step-text">세제곱 안의 수 찾기 — 8 = 2³, 27 = 3³ 처럼 (예: x³−8 → a=x, b=2)</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">앞 괄호: 식의 <b>원래 부호 그대로</b> (+이면 +, −이면 −)</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">뒤 괄호: 가운데 부호만 <b>반대로</b> 쓰기</div></div>
@@ -1994,15 +2007,56 @@ function runIVDemo16() {
   }, 1800);
 }
 
+let _stepEls = [];
+let _stepIdx = 0;
+
 function animateConceptSteps(box) {
-  const els = Array.from(box.children);
-  els.forEach((el, i) => {
+  _stepEls = Array.from(box.children);
+  _stepIdx = 0;
+  // 첫 번째 요소만 보이고 나머지는 숨기기
+  _stepEls.forEach((el, i) => {
+    if (i === 0) {
+      el.style.display = '';
+      el.style.opacity = '0';
+      el.style.animation = 'none';
+      el.offsetHeight;
+      el.style.animation = 'csStepIn .5s ease forwards';
+      el.style.animationDelay = '0ms';
+    } else {
+      el.style.display = 'none';
+      el.style.opacity = '0';
+    }
+  });
+  _updateStepBtn();
+}
+
+function revealNextStep() {
+  _stepIdx++;
+  if (_stepIdx < _stepEls.length) {
+    const el = _stepEls[_stepIdx];
+    el.style.display = '';
     el.style.opacity = '0';
     el.style.animation = 'none';
-    el.offsetHeight; // reflow
-    el.style.animation = `csStepIn .32s ease forwards`;
-    el.style.animationDelay = `${i * 90}ms`;
-  });
+    el.offsetHeight;
+    el.style.animation = 'csStepIn .5s ease forwards';
+    el.style.animationDelay = '0ms';
+    // 스크롤해서 보이게
+    setTimeout(() => el.scrollIntoView({behavior:'smooth', block:'nearest'}), 80);
+  }
+  _updateStepBtn();
+}
+
+function _updateStepBtn() {
+  const btn = document.getElementById('stepNextBtn');
+  const ctr = document.getElementById('stepCounter');
+  if (!btn) return;
+  const total = _stepEls.length;
+  if (_stepIdx >= total - 1) {
+    btn.classList.add('done');
+  } else {
+    btn.classList.remove('done');
+    ctr.textContent = `${_stepIdx + 1} / ${total}`;
+  }
 }
 
 function shuffle(arr) {
