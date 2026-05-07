@@ -174,8 +174,11 @@ header h1{font-size:18px;flex:1}
 /* ── 항등식 인터랙티브 애니메이션 (Unit 1) ── */
 .ident-demo{background:#f8faff;border-radius:12px;padding:14px;margin:0}
 .id-exlbl{font-size:11px;font-weight:800;color:#94a3b8;letter-spacing:.08em;margin-bottom:10px}
-.id-row{display:flex;align-items:center;gap:6px;margin-bottom:8px;flex-wrap:wrap}
-.id-label{font-size:12px;font-weight:800;color:#64748b;min-width:44px}
+.id-exprs{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+.id-side{display:flex;flex-direction:column;align-items:center;gap:5px}
+.id-side-lbl{font-size:11px;font-weight:800;color:#64748b;letter-spacing:.5px}
+.id-eq-sign{font-size:22px;font-weight:900;color:#334155;padding-top:18px}
+.id-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .id-op{font-size:15px;font-weight:700;color:#64748b;padding:0 2px}
 .id-t{display:inline-flex;align-items:center;justify-content:center;min-width:46px;height:40px;padding:0 8px;font-size:13px;font-weight:800;color:white;border-radius:8px;transition:transform .25s,box-shadow .25s;cursor:default}
 .id-t.id-t-x2{background:#dc2626}
@@ -428,8 +431,17 @@ const UNITS = [
 <div class="step-row"><div class="step-num">3</div><div class="step-text">그 식들을 풀어 모르는 글자 값 구하기</div></div>
 <div class="ident-demo" id="identDemo1">
   <div class="id-exlbl">버튼을 눌러 같은 자리끼리 맞춰보세요 👇</div>
-  <div class="id-row"><span class="id-label">왼쪽</span><span class="id-t id-t-x2">2x²</span><span class="id-op">+</span><span class="id-t id-t-x">ax</span><span class="id-op">+</span><span class="id-t id-t-c">3</span></div>
-  <div class="id-row"><span class="id-label">오른쪽</span><span class="id-t id-t-x2">bx²</span><span class="id-op">+</span><span class="id-t id-t-x">5x</span><span class="id-op">+</span><span class="id-t id-t-c">3</span></div>
+  <div class="id-exprs">
+    <div class="id-side">
+      <div class="id-side-lbl">왼쪽</div>
+      <div class="id-row"><span class="id-t id-t-x2">2x²</span><span class="id-op">+</span><span class="id-t id-t-x">ax</span><span class="id-op">+</span><span class="id-t id-t-c">3</span></div>
+    </div>
+    <div class="id-eq-sign">=</div>
+    <div class="id-side">
+      <div class="id-side-lbl">오른쪽</div>
+      <div class="id-row"><span class="id-t id-t-x2">bx²</span><span class="id-op">+</span><span class="id-t id-t-x">5x</span><span class="id-op">+</span><span class="id-t id-t-c">3</span></div>
+    </div>
+  </div>
   <button class="id-btn" id="idBtn1" onclick="runIdentDemo1()">같은 자리끼리 맞추기 →</button>
   <div class="id-matches" id="idMatches1" style="display:none">
     <div class="id-match id-match-x2"><span class="id-match-lbl">🔴 x² 자리</span><span class="id-match-eq">2 = b &nbsp;→&nbsp; <b>b = 2</b></span></div>
