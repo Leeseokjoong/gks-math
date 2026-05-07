@@ -438,12 +438,18 @@ header h1{font-size:18px;flex:1}
 .why-box{display:none;border-left:3px solid #8b5cf6;background:rgba(139,92,246,.06);padding:12px 16px;margin-top:6px;border-radius:0 8px 8px 8px;line-height:1.7;font-size:13.5px;color:#1e293b}
 .why-box.open{display:block}
 
-/* ── 단계별 탭 넘기기 ── */
-.step-next-btn{width:100%;background:var(--cn-primary);border:none;border-radius:10px;color:#fff;font-size:14px;font-weight:700;padding:10px 14px;cursor:pointer;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:6px;transition:.18s}
-.step-next-btn:hover{background:var(--cn-accent)}
-.step-next-btn:active{transform:scale(.97)}
-.step-next-btn.done{display:none}
-.step-counter{font-size:12px;opacity:.75;margin-left:auto}
+/* ── 개념 카드 스와이퍼 ── */
+.concept-box{overflow:hidden!important}
+.cs-track{display:flex;transition:transform .38s cubic-bezier(.2,.8,.2,1);will-change:transform}
+.cs-slide{min-width:100%;box-sizing:border-box;padding:2px 0}
+.cs-nav-row{display:flex;align-items:center;gap:8px;margin-top:14px}
+.cs-arrow{width:36px;height:36px;border-radius:50%;border:1.5px solid #e2e8f0;background:white;font-size:17px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:.18s;color:#64748b;padding:0}
+.cs-arrow:hover:not(:disabled){border-color:var(--cn-primary);color:var(--cn-primary);background:#eff6ff}
+.cs-arrow:disabled{opacity:.25;pointer-events:none}
+.cs-dots{display:flex;gap:5px;align-items:center;flex:1;justify-content:center;flex-wrap:wrap}
+.cs-dot{width:7px;height:7px;border-radius:50%;background:#e2e8f0;transition:.25s;cursor:pointer}
+.cs-dot.on{background:var(--cn-primary);width:18px;border-radius:4px}
+.cs-lbl{font-size:11px;color:#94a3b8;font-weight:700;white-space:nowrap;flex-shrink:0}
 
 /* ── 수정요청 버튼 & 모달 ── */
 .fb-btn{width:100%;background:none;border:1.5px solid #e2e8f0;border-radius:8px;color:#94a3b8;font-size:12px;font-weight:700;padding:7px 14px;cursor:pointer;margin-top:10px;display:flex;align-items:center;justify-content:center;gap:5px;transition:.18s}
@@ -552,9 +558,12 @@ header h1{font-size:18px;flex:1}
       <div class="cn-eyebrow" id="conceptEyebrow"></div>
       <div class="cn-card-title" id="conceptHeaderTitle"></div>
       <div class="concept-box" id="conceptBox"></div>
-      <button class="step-next-btn done" id="stepNextBtn" onclick="revealNextStep()">
-        다음 단계 <span>→</span><span class="step-counter" id="stepCounter"></span>
-      </button>
+      <div class="cs-nav-row" id="conceptNav" style="display:none">
+        <button class="cs-arrow" id="csPrev" onclick="conceptPrev()">←</button>
+        <div class="cs-dots" id="csDots"></div>
+        <span class="cs-lbl" id="csLbl"></span>
+        <button class="cs-arrow" id="csNext" onclick="conceptNext()">→</button>
+      </div>
       <div class="cn-progress" id="conceptProgress"></div>
       <button class="fb-btn" id="feedbackBtn" onclick="openFeedback()">✏️ 수정 요청</button>
     </div>
@@ -2007,56 +2016,92 @@ function runIVDemo16() {
   }, 1800);
 }
 
-let _stepEls = [];
-let _stepIdx = 0;
+// ── 개념 카드 스와이퍼 ──────────────────────────────────────
+let _csSlides = [];
+let _csIdx = 0;
+let _csStartX = null;
 
 function animateConceptSteps(box) {
-  _stepEls = Array.from(box.children);
-  _stepIdx = 0;
-  // 첫 번째 요소만 보이고 나머지는 숨기기
-  _stepEls.forEach((el, i) => {
-    if (i === 0) {
-      el.style.display = '';
-      el.style.opacity = '0';
-      el.style.animation = 'none';
-      el.offsetHeight;
-      el.style.animation = 'csStepIn .5s ease forwards';
-      el.style.animationDelay = '0ms';
-    } else {
-      el.style.display = 'none';
-      el.style.opacity = '0';
-    }
+  const children = Array.from(box.children);
+  if (!children.length) return;
+  _csSlides = [];
+  _csIdx = 0;
+
+  // box 초기화 후 track + slide 구조로 재빌드
+  box.innerHTML = '';
+  const track = document.createElement('div');
+  track.className = 'cs-track';
+  track.id = 'csTrack';
+
+  children.forEach(child => {
+    const slide = document.createElement('div');
+    slide.className = 'cs-slide';
+    child.style.opacity = '1';
+    child.style.animation = '';
+    slide.appendChild(child);
+    track.appendChild(slide);
+    _csSlides.push(slide);
   });
-  _updateStepBtn();
+  box.appendChild(track);
+
+  // 터치/포인터 스와이프 이벤트
+  box.addEventListener('pointerdown', _csDown, {passive:true});
+  box.addEventListener('pointerup',   _csUp);
+  box.addEventListener('pointercancel', () => { _csStartX = null; });
+
+  _csGoTo(0, false);
 }
 
-function revealNextStep() {
-  _stepIdx++;
-  if (_stepIdx < _stepEls.length) {
-    const el = _stepEls[_stepIdx];
-    el.style.display = '';
-    el.style.opacity = '0';
+function _csGoTo(idx, animate) {
+  const track = document.getElementById('csTrack');
+  if (!track) return;
+  _csIdx = Math.max(0, Math.min(idx, _csSlides.length - 1));
+  if (animate === false) track.style.transition = 'none';
+  track.style.transform = `translateX(${-_csIdx * 100}%)`;
+  if (animate === false) { track.offsetHeight; track.style.transition = ''; }
+
+  // 현재 슬라이드 슬라이드인 애니메이션
+  const cur = _csSlides[_csIdx];
+  if (cur && cur.firstElementChild) {
+    const el = cur.firstElementChild;
     el.style.animation = 'none';
     el.offsetHeight;
-    el.style.animation = 'csStepIn .5s ease forwards';
-    el.style.animationDelay = '0ms';
-    // 스크롤해서 보이게
-    setTimeout(() => el.scrollIntoView({behavior:'smooth', block:'nearest'}), 80);
+    el.style.animation = 'csStepIn .45s ease forwards';
   }
-  _updateStepBtn();
+  _syncCsNav();
 }
 
-function _updateStepBtn() {
-  const btn = document.getElementById('stepNextBtn');
-  const ctr = document.getElementById('stepCounter');
-  if (!btn) return;
-  const total = _stepEls.length;
-  if (_stepIdx >= total - 1) {
-    btn.classList.add('done');
-  } else {
-    btn.classList.remove('done');
-    ctr.textContent = `${_stepIdx + 1} / ${total}`;
-  }
+function conceptNext() { _csGoTo(_csIdx + 1); }
+function conceptPrev() { _csGoTo(_csIdx - 1); }
+
+function _syncCsNav() {
+  const nav  = document.getElementById('conceptNav');
+  const prev = document.getElementById('csPrev');
+  const next = document.getElementById('csNext');
+  const dots = document.getElementById('csDots');
+  const lbl  = document.getElementById('csLbl');
+  if (!nav) return;
+
+  const total = _csSlides.length;
+  nav.style.display = total > 1 ? 'flex' : 'none';
+  if (prev) prev.disabled = _csIdx === 0;
+  if (next) next.disabled = _csIdx === total - 1;
+  if (lbl)  lbl.textContent = `${_csIdx + 1} / ${total}`;
+  if (dots) dots.innerHTML = _csSlides.map((_, i) =>
+    `<div class="cs-dot ${i === _csIdx ? 'on' : ''}" onclick="_csGoTo(${i})"></div>`
+  ).join('');
+}
+
+function _csDown(e) {
+  if (e.target.closest('button,input,textarea,select,a')) return;
+  _csStartX = e.clientX;
+}
+function _csUp(e) {
+  if (_csStartX === null) return;
+  const dx = e.clientX - _csStartX;
+  _csStartX = null;
+  if (dx < -50) conceptNext();
+  else if (dx > 50) conceptPrev();
 }
 
 function shuffle(arr) {
