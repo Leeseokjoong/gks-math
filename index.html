@@ -1802,10 +1802,7 @@ function renderPractice() {
   document.getElementById('conceptHeaderNum').textContent=`${id+1} / 20`;
   document.getElementById('conceptUnitPill').textContent=unit.sub;
   document.getElementById('conceptEyebrow').textContent=`${String(id+1).padStart(2,'0')} · 핵심 개념`;
-  // 하단 진행 바 (5칸, 4유형씩)
-  const filled = Math.min(5, Math.ceil((id+1)/4));
-  document.getElementById('conceptProgress').innerHTML=
-    Array.from({length:5},(_,i)=>`<div class="cn-bar${i<filled?' active':''}"></div>`).join('');
+  document.getElementById('conceptProgress').innerHTML='';
   // 카드 슬라이드인 애니메이션 재실행
   const cw = document.getElementById('conceptCard');
   cw.style.animation='none';
