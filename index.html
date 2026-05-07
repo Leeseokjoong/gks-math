@@ -460,6 +460,13 @@ header h1{font-size:18px;flex:1}
 .cs-dot{width:7px;height:7px;border-radius:50%;background:#e2e8f0;transition:.25s;cursor:pointer}
 .cs-dot.on{background:var(--cn-primary);width:18px;border-radius:4px}
 .cs-lbl{font-size:11px;color:#94a3b8;font-weight:700;white-space:nowrap;flex-shrink:0}
+/* ── 심화 설명 영역 ── */
+.deep-section{margin-top:10px}
+.deep-toggle-btn{width:100%;background:none;border:1.5px solid #8b5cf6;border-radius:8px;color:#7c3aed;font-size:13px;font-weight:700;padding:8px 14px;cursor:pointer;text-align:left;display:flex;align-items:center;justify-content:space-between;transition:.18s}
+.deep-toggle-btn:hover{background:rgba(139,92,246,.07)}
+.deep-toggle-btn::after{content:'▼';font-size:10px;color:#a78bfa;transition:.2s}
+.deep-toggle-btn.open::after{content:'▲'}
+.deep-content{display:none;border-left:3px solid #8b5cf6;background:rgba(139,92,246,.06);padding:14px 16px;margin-top:6px;border-radius:0 8px 8px 8px;line-height:1.75;font-size:13.5px;color:#1e293b}
 .cs-cta{background:linear-gradient(135deg,#2563eb,#06b6d4)!important;justify-content:center!important;overflow:hidden}
 .cs-cta-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:8px}
 .cs-cta-title{font-size:20px;font-weight:900;color:#fff}
@@ -760,8 +767,7 @@ const UNITS = [
   },
   {
     id:2, title:"나머지 정리", sub:"대입하여 나머지 계산",
-    concept:`<div class="tip-box">📐 나눗셈 기초: <b>7 ÷ 3 = 2 … 1</b> 이면<br><b>7 = 3 × 2 + 1</b> (피제수 = 제수 × 몫 + 나머지)<br>다항식도 똑같이: <b>f(x) = (나누는 식) × 몫 + 나머지</b><br>→ 제수를 0으로 만드는 x 값을 넣으면 앞 항이 사라져 나머지만 남아요!</div>
-<div class="formula-box">f(x)를 (x − a)로 나눈 나머지 = f(a)<br>(괄호 안을 0으로 만드는 a를 식에 그대로 넣기)</div>
+    concept:`<div class="formula-box">f(x)를 (x − a)로 나눈 나머지 = f(a)<br>(괄호 안을 0으로 만드는 a를 식에 그대로 넣기)</div>
 <div class="step-row"><div class="step-num">1</div><div class="step-text">나누는 식 (x − a)에서 <b>괄호 안을 0으로 만드는 x 값</b> 찾기</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">원래 식의 <b>x 자리에 그 값을 그대로 넣기</b> → 답이 나머지</div></div>
 <div class="remain-demo" id="remainDemo2">
@@ -788,7 +794,7 @@ const UNITS = [
   <div class="rd-final" id="rdFinal2"><span class="arrow">→</span> 나머지 = <b>7</b></div>
 </div>
 <div class="tip-box">f(x)는 'x 자리에 무엇을 넣으면 결과가 나오는 식', 이 규칙을 <b>나머지정리</b>라고 해요. (x+1)로 나눌 땐 x+1=0 → <b>x = −1</b>! 부호가 가장 잦은 실수예요.</div>
-<button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">나누기를 식으로 쓰면 <b>f(x) = (x − a) × 몫 + 나머지</b> 가 돼요. 여기에 <b>x = a</b>를 넣으면 (x − a) 부분이 (a − a) = 0 이 되니까 앞 항이 통째로 사라지고 <b>나머지만 남아요</b>. 그래서 복잡하게 직접 나눌 필요 없이, 괄호를 0으로 만드는 a만 식에 넣으면 바로 나머지가 튀어나오는 거예요.</div>`,
+<button class="why-btn" onclick="toggleWhy(this)">심화: 왜 대입하면 나머지가 나올까?</button><div class="why-box"><b>나눗셈 원리 먼저:</b><br>7 ÷ 3 = 2 … 1 이면 <b>7 = 3 × 2 + 1</b> (피제수 = 제수 × 몫 + 나머지).<br>다항식도 똑같이: <b>f(x) = (x − a) × 몫 + 나머지</b>.<br><br><b>왜 x = a를 넣으면 될까?</b><br>위 식에 x = a를 대입하면 (a − a) = 0 이 되어 앞 항이 통째로 사라지고 <b>나머지만 남아요</b>.<br>그래서 직접 나눌 필요 없이, 괄호를 0으로 만드는 값만 식에 넣으면 바로 나머지가 나오는 거예요.</div>`,
     practice:[
       {q:"2x³ − x + 1을 x − 1로 나누었을 때의 나머지는?",
        c:["1","2","3","4"],a:1,
@@ -2048,8 +2054,9 @@ function animateConceptSteps(box) {
   track.className = 'cs-track';
   track.id = 'csTrack';
 
-  // 그룹핑: 연속 step-row 묶기 / why-btn+why-box 한 슬라이드
+  // 그룹핑: 연속 step-row 묶기 / why-btn+why-box는 심화로 분리
   const groups = [];
+  const deepBoxes = []; // why-box 내용만 수집
   let i = 0;
   while (i < children.length) {
     const el = children[i];
@@ -2058,9 +2065,10 @@ function animateConceptSteps(box) {
       while (i < children.length && children[i].classList.contains('step-row')) g.push(children[i++]);
       groups.push(g);
     } else if (el.classList.contains('why-btn')) {
-      const g = [el]; i++;
-      if (i < children.length && children[i].classList.contains('why-box')) g.push(children[i++]);
-      groups.push(g);
+      i++; // why-btn 버튼 자체는 버림
+      if (i < children.length && children[i].classList.contains('why-box')) {
+        deepBoxes.push(children[i++]);
+      }
     } else {
       groups.push([el]); i++;
     }
@@ -2097,6 +2105,48 @@ function animateConceptSteps(box) {
   const w = box.offsetWidth;
   _csSlides.forEach(s => { s.style.width = w + 'px'; });
   _csGoTo(0, false);
+
+  // 심화 영역 렌더
+  _renderDeepSection(deepBoxes);
+}
+
+function _renderDeepSection(boxes) {
+  // 기존 심화 영역 제거
+  const old = document.getElementById('deepSection');
+  if (old) old.remove();
+  if (!boxes.length) return;
+
+  const nav = document.getElementById('conceptNav');
+  if (!nav) return;
+
+  const section = document.createElement('div');
+  section.id = 'deepSection';
+  section.className = 'deep-section';
+
+  const btn = document.createElement('button');
+  btn.className = 'deep-toggle-btn';
+  btn.textContent = '심화 설명 보기';
+
+  const content = document.createElement('div');
+  content.className = 'deep-content';
+
+  boxes.forEach((box, i) => {
+    if (i > 0) { const hr = document.createElement('hr'); hr.style.cssText='border:none;border-top:1px solid rgba(139,92,246,.2);margin:10px 0'; content.appendChild(hr); }
+    const wrap = document.createElement('div');
+    wrap.innerHTML = box.innerHTML;
+    content.appendChild(wrap);
+  });
+
+  btn.onclick = function() {
+    const isOpen = content.style.display === 'block';
+    content.style.display = isOpen ? 'none' : 'block';
+    btn.classList.toggle('open', !isOpen);
+    btn.textContent = isOpen ? '심화 설명 보기' : '심화 설명 닫기';
+  };
+
+  section.appendChild(btn);
+  section.appendChild(content);
+  nav.after(section);
 }
 
 function _csGoTo(idx, animate) {
