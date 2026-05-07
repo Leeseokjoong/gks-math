@@ -482,6 +482,49 @@ header h1{font-size:18px;flex:1}
 .id1-bad{background:#fff0f0;border:1.5px solid #fca5a5;color:#991b1b}
 .id1-good{background:#f0fdf4;border:1.5px solid #86efac;color:#166534}
 .id1-why{font-size:12.5px;color:#334155;line-height:1.65;margin-top:8px;padding:8px 12px;background:#f8faff;border-radius:8px}
+/* ── 다항식(id:0) 슬라이드 전용 ── */
+.p0-s{display:flex;flex-direction:column;justify-content:center;height:100%}
+.p0-tag{font-size:11px;font-weight:800;color:#0ea5e9;letter-spacing:.06em;margin-bottom:6px}
+.p0-h{font-size:17px;font-weight:800;color:#1e1b4b;line-height:1.3;margin-bottom:8px}
+.p0-desc{font-size:13.5px;color:#334155;line-height:1.65;margin-bottom:10px}
+.p0-fruit-row{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:9px 12px;border-radius:10px;margin-bottom:6px}
+.p0-fruit-ok{background:#f0fdf4;color:#166534;border:1.5px solid #86efac}
+.p0-fruit-bad{background:#fff0f0;color:#991b1b;border:1.5px solid #fca5a5}
+.p0-chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px;justify-content:center}
+.p0-chip{padding:7px 14px;border-radius:9px;font-size:15px;font-weight:800}
+.p0-chip-x2{background:#fff0f3;color:#be123c;border:1.5px solid #fda4af}
+.p0-chip-x{background:#eff6ff;color:#1d4ed8;border:1.5px solid #93c5fd}
+.p0-chip-n{background:#f0fdf4;color:#15803d;border:1.5px solid #86efac}
+.p0-blocks{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.p0-block-row{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;font-size:14px;font-weight:700}
+.p0-br-x2{background:#fff0f3;color:#be123c;border:1.5px solid #fda4af}
+.p0-br-x{background:#eff6ff;color:#1d4ed8;border:1.5px solid #93c5fd}
+.p0-br-n{background:#f0fdf4;color:#15803d;border:1.5px solid #86efac}
+.p0-table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:8px}
+.p0-table th{padding:5px 6px;font-weight:800;font-size:10.5px;letter-spacing:.04em;text-align:left;border-bottom:2px solid #e2e8f0;color:#64748b}
+.p0-table td{padding:7px 6px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
+.p0-td-x2{color:#be123c;font-weight:800}
+.p0-td-x{color:#1d4ed8;font-weight:800}
+.p0-td-n{color:#15803d;font-weight:800}
+.p0-box-wrap{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.p0-box{border-radius:12px;padding:12px 15px;cursor:pointer;transition:.25s;border:2px solid transparent;-webkit-user-select:none;user-select:none}
+.p0-box-a{background:#eff6ff;border-color:#93c5fd}
+.p0-box-b{background:#f5f3ff;border-color:#c4b5fd}
+.p0-box-header{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:800}
+.p0-box-label-a{color:#1d4ed8}
+.p0-box-label-b{color:#6d28d9}
+.p0-box-icon{font-size:20px;transition:transform .25s}
+.p0-box-body{max-height:0;overflow:hidden;transition:max-height .35s ease,opacity .35s ease;opacity:0}
+.p0-box.open .p0-box-body{max-height:80px;opacity:1}
+.p0-box-expr{font-size:13.5px;font-weight:700;color:#334155;margin-top:6px;padding:5px 8px;background:rgba(255,255,255,.75);border-radius:8px}
+.p0-box-hint{font-size:11px;color:#94a3b8;margin-top:3px}
+.p0-calc-reveal{margin-top:10px;padding:10px 14px;background:#fefce8;border:1.5px solid #fde047;border-radius:10px;font-size:13px;font-weight:700;color:#854d0e;text-align:center;max-height:0;overflow:hidden;opacity:0;transition:max-height .4s ease,opacity .4s ease}
+.p0-calc-reveal.show{max-height:60px;opacity:1}
+.p0-err-list{display:flex;flex-direction:column;gap:7px;margin-top:8px}
+.p0-err{border-radius:10px;padding:9px 12px}
+.p0-err-bad{background:#fff0f0;border:1.5px solid #fca5a5}
+.p0-err-title{font-size:11.5px;font-weight:800;margin-bottom:3px;color:#dc2626}
+.p0-err-body{font-size:12px;font-weight:600;color:#334155;line-height:1.6}
 .cs-nav-row{display:flex;align-items:center;gap:8px;margin-top:14px}
 .cs-arrow{width:36px;height:36px;border-radius:50%;border:1.5px solid #e2e8f0;background:white;font-size:17px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:.18s;color:#64748b;padding:0}
 .cs-arrow:hover:not(:disabled){border-color:var(--cn-primary);color:var(--cn-primary);background:#eff6ff}
@@ -709,26 +752,75 @@ header h1{font-size:18px;flex:1}
 const UNITS = [
   {
     id:0, title:"다항식의 연산", sub:"덧셈과 뺄셈",
-    concept:`<div class="formula-box">같은 모양끼리만 더하거나 빼기</div>
-<div class="step-row"><div class="step-num">1</div><div class="step-text"><b>+, −</b> 부호로 식을 조각조각 나누기<br>(예: 2x²+3x−1 → 2x², 3x, −1 세 조각)</div></div>
-<div class="step-row"><div class="step-num">2</div><div class="step-text">x²끼리, x끼리, 숫자끼리 <b>같은 모양</b>으로 묶기</div></div>
-<div class="step-row"><div class="step-num">3</div><div class="step-text">묶은 것끼리 <b>x 앞 숫자</b>만 더하거나 빼기</div></div>
-<div class="poly-demo" id="polyDemo0">
-  <div class="pd-exlbl">버튼을 눌러 같은 모양끼리 묶어보세요 👇</div>
-  <div id="pdExprs0">
-    <div class="pd-row"><span class="pd-var">A =</span><span class="pd-t pt-x2">x²</span><span class="pd-op">+</span><span class="pd-t pt-x">3x</span><span class="pd-op">−</span><span class="pd-t pt-c">1</span></div>
-    <div class="pd-row"><span class="pd-var">B =</span><span class="pd-t pt-x2">x²</span><span class="pd-op">−</span><span class="pd-t pt-x">x</span><span class="pd-op">+</span><span class="pd-t pt-c">4</span></div>
+    concept:`<div class="p0-s">
+  <div class="p0-tag">1 / 5 · 도입</div>
+  <div class="p0-h">같은 종류끼리만 계산된다</div>
+  <div class="p0-desc">사과는 사과끼리, 바나나는 바나나끼리만 합칠 수 있어요.</div>
+  <div class="p0-fruit-row p0-fruit-ok">🍎 2개 + 🍎 3개 = 🍎 5개 ✅</div>
+  <div class="p0-fruit-row p0-fruit-bad">🍎 2개 + 🍌 3개 = "사과바나나 5개" ❌</div>
+  <div class="p0-desc" style="margin-top:10px;margin-bottom:6px">다항식도 똑같아요. <b>+, −</b>로 끊으면 세 조각:</div>
+  <div style="text-align:center;font-size:16px;font-weight:800;color:#1e1b4b">2x² + 3x − 1</div>
+  <div class="p0-chips">
+    <div class="p0-chip p0-chip-x2">2x²</div>
+    <div class="p0-chip p0-chip-x">3x</div>
+    <div class="p0-chip p0-chip-n">−1</div>
   </div>
-  <button class="pd-btn" id="pdBtn0" onclick="runPolyDemo0()">같은 모양끼리 묶기 →</button>
-  <div class="pd-groups" id="pdGroups0" style="display:none">
-    <div class="pd-grp pd-gx2"><div class="pd-ghead">🔴 x²끼리</div><div class="pd-gcalc">x² + x²</div><div class="pd-gans">= 2x²</div></div>
-    <div class="pd-grp pd-gx"><div class="pd-ghead">🔵 x끼리</div><div class="pd-gcalc">3x − x</div><div class="pd-gans">= 2x</div></div>
-    <div class="pd-grp pd-gc"><div class="pd-ghead">🟢 숫자끼리</div><div class="pd-gcalc">−1 + 4</div><div class="pd-gans">= 3</div></div>
-  </div>
-  <div class="pd-final" id="pdFinal0"><span class="arrow">→</span> A + B = <b>2x² + 2x + 3</b></div>
 </div>
-<div class="tip-box">'x 앞 숫자'를 <b>계수</b>, +/− 사이의 한 조각을 <b>항</b>이라고 불러요. 🔴●=x², 🔵▲=x, 🟢■=상수 — 다른 모양은 절대 합치면 안 돼요!</div>
-<button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">x²와 x는 단위가 달라요. <b>x = 3</b>일 때 x는 3이지만 x²는 9, <b>x = 10</b>이면 x는 10이고 x²는 100이죠. 같은 x인데도 값이 완전히 달라요. 그래서 2x² + 3x를 5x²이라고 합치면, x = 10일 땐 200 + 30 = 230인데 5x²은 500이 되어 답이 틀려버려요. 그러니까 x²은 x²끼리, x는 x끼리만 모아야 어떤 x를 넣어도 식이 맞는 거예요.</div>`,
+<div class="p0-s">
+  <div class="p0-tag">2 / 5 · 핵심 규칙</div>
+  <div class="p0-h">같은 종류 블록끼리 정리하기</div>
+  <div class="p0-desc">계산은 아래 세 종류 안에서만 가능해요.</div>
+  <div class="p0-blocks">
+    <div class="p0-block-row p0-br-x2">🔴&nbsp; x² 블록끼리</div>
+    <div class="p0-block-row p0-br-x">🔵&nbsp; x 블록끼리</div>
+    <div class="p0-block-row p0-br-n">🟢&nbsp; 숫자 블록끼리</div>
+  </div>
+  <div class="id1-why" style="margin-top:12px">x²와 x는 다른 종류예요. x=10이면 x=10, x²=100 — 절대 합칠 수 없어요!</div>
+</div>
+<div class="p0-s">
+  <div class="p0-tag">3 / 5 · 예시 풀이</div>
+  <div class="p0-h">(2x²+3x−1)+(x²−5x+4)</div>
+  <table class="p0-table">
+    <thead><tr><th>종류</th><th>A에서</th><th>B에서</th><th>계산</th><th>결과</th></tr></thead>
+    <tbody>
+      <tr><td class="p0-td-x2">🔴 x²</td><td>2x²</td><td>+x²</td><td>2+1</td><td class="p0-td-x2">3x²</td></tr>
+      <tr><td class="p0-td-x">🔵 x</td><td>3x</td><td>−5x</td><td>3−5</td><td class="p0-td-x">−2x</td></tr>
+      <tr><td class="p0-td-n">🟢 숫자</td><td>−1</td><td>+4</td><td>−1+4</td><td class="p0-td-n">3</td></tr>
+      <tr style="background:#f8faff"><td colspan="4" style="text-align:right;font-size:11.5px;color:#64748b;font-weight:700">답:</td><td style="color:#7c3aed;font-weight:900;font-size:14px">3x²−2x+3</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="p0-s">
+  <div class="p0-tag">4 / 5 · 치환 감각</div>
+  <div class="p0-h">A, B는 긴 식의 이름표</div>
+  <div class="p0-desc" style="margin-bottom:4px">상자를 탭해서 식을 열어보세요 👇</div>
+  <div class="p0-box-wrap">
+    <div class="p0-box p0-box-a" id="p0BoxA" onclick="p0OpenBox('A')">
+      <div class="p0-box-header"><span class="p0-box-label-a">A =</span><span class="p0-box-icon" id="p0IconA">📦</span></div>
+      <div class="p0-box-body" id="p0BodyA">
+        <div class="p0-box-expr">2x² + 3x − 1</div>
+        <div class="p0-box-hint">A 자리에 이 식을 대입해요</div>
+      </div>
+    </div>
+    <div class="p0-box p0-box-b" id="p0BoxB" onclick="p0OpenBox('B')">
+      <div class="p0-box-header"><span class="p0-box-label-b">B =</span><span class="p0-box-icon" id="p0IconB">📦</span></div>
+      <div class="p0-box-body" id="p0BodyB">
+        <div class="p0-box-expr">x² − 5x + 4</div>
+        <div class="p0-box-hint">B 자리에 이 식을 대입해요</div>
+      </div>
+    </div>
+  </div>
+  <div class="p0-calc-reveal" id="p0Calc">A+B = (2x²+3x−1)+(x²−5x+4) → <b>3x²−2x+3</b></div>
+</div>
+<div class="p0-s">
+  <div class="p0-tag">5 / 5 · 실수 주의</div>
+  <div class="p0-h">자주 틀리는 3가지</div>
+  <div class="p0-err-list">
+    <div class="p0-err p0-err-bad"><div class="p0-err-title">❌ 실수 1 — 다른 종류 합치기</div><div class="p0-err-body">2x² + 3x = 5x² (×) → x²와 x는 다른 종류!</div></div>
+    <div class="p0-err p0-err-bad"><div class="p0-err-title">❌ 실수 2 — 부호 놓치기</div><div class="p0-err-body">−5x의 마이너스를 빠뜨림<br>항 전체를 하나의 조각으로 보기</div></div>
+    <div class="p0-err p0-err-bad"><div class="p0-err-title">❌ 실수 3 — 괄호 제거 부호</div><div class="p0-err-body">A−B : −(x²−5x+4) → −x²<b>+5x</b>−4<br>마이너스가 들어가면 부호 전부 뒤집힘!</div></div>
+  </div>
+</div>`,
     practice:[
       {q:"A = x³ − 1, B = 2x³ + 4 일 때, A + B는?",
        c:["2x³ + 2","2x³ + 3","3x³ + 3","3x³ + 4"],a:2,
@@ -1996,6 +2088,23 @@ function runPolyDemo0() {
       document.getElementById('pdFinal0').classList.add('show');
     }, 700);
   }, 550);
+}
+
+// ── 다항식 치환 상자 인터랙션 (Unit 0 슬라이드 4) ──
+function p0OpenBox(who) {
+  const box = document.getElementById('p0Box' + who);
+  const icon = document.getElementById('p0Icon' + who);
+  if (!box || box.classList.contains('open')) return;
+  box.classList.add('open');
+  icon.textContent = '📂';
+  const aOpen = document.getElementById('p0BoxA') && document.getElementById('p0BoxA').classList.contains('open');
+  const bOpen = document.getElementById('p0BoxB') && document.getElementById('p0BoxB').classList.contains('open');
+  if (aOpen && bOpen) {
+    setTimeout(() => {
+      const calc = document.getElementById('p0Calc');
+      if (calc) calc.classList.add('show');
+    }, 200);
+  }
 }
 
 // 개념 카드 스텝 스태거 애니메이션
