@@ -140,6 +140,36 @@ header h1{font-size:18px;flex:1}
 .fi-frac-line{width:100%;min-width:100px;height:2.5px;background:#334155;border-radius:2px}
 .fi-frac-bot{padding-top:5px;font-size:14px;font-weight:700;color:#334155;letter-spacing:.5px}
 @keyframes fiShake{0%,100%{transform:translateX(0)}30%{transform:translateX(-5px)}70%{transform:translateX(5px)}}
+
+/* ── 다항식 인터랙티브 애니메이션 (Unit 0) ── */
+.poly-demo{background:#f8faff;border-radius:12px;padding:14px;margin:0}
+.pd-exlbl{font-size:11px;font-weight:800;color:#94a3b8;letter-spacing:.08em;margin-bottom:10px}
+.pd-exprs{transition:opacity .4s}
+.pd-row{display:flex;align-items:center;gap:6px;margin-bottom:8px;flex-wrap:wrap}
+.pd-var{font-size:14px;font-weight:800;color:#334155;min-width:28px}
+.pd-op{font-size:15px;font-weight:700;color:#64748b;padding:0 2px}
+.pd-t{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;font-size:12px;font-weight:800;color:white;transition:transform .25s,opacity .25s,box-shadow .25s;cursor:default;user-select:none}
+.pd-t.pt-x2{background:#dc2626;border-radius:50%}
+.pd-t.pt-x{background:#1d4ed8;clip-path:polygon(50% 2%,2% 98%,98% 98%);align-items:flex-end;padding-bottom:6px}
+.pd-t.pt-c{background:#15803d;border-radius:4px}
+.pd-t.flash{transform:scale(1.5)!important;box-shadow:0 4px 16px rgba(0,0,0,.25)!important;z-index:5;position:relative}
+.pd-btn{display:block;width:100%;padding:10px;margin-top:10px;background:#2563eb;color:white;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:.2s}
+.pd-btn:hover{background:#1d4ed8}
+.pd-groups{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.pd-grp{flex:1;min-width:76px;border-radius:10px;padding:10px 8px;text-align:center;opacity:0;transition:opacity .4s,transform .4s;transform:translateY(8px)}
+.pd-grp.show{opacity:1;transform:translateY(0)}
+.pd-gx2{background:#fee2e2;border:2px solid #dc2626}
+.pd-gx{background:#dbeafe;border:2px solid #1d4ed8}
+.pd-gc{background:#dcfce7;border:2px solid #15803d}
+.pd-ghead{font-size:13px;font-weight:800;color:#475569;margin-bottom:4px}
+.pd-gcalc{font-size:12px;color:#64748b;margin-bottom:4px}
+.pd-gans{font-size:15px;font-weight:900;color:#1e293b}
+.pd-gx2 .pd-gans{color:#dc2626}
+.pd-gx .pd-gans{color:#1d4ed8}
+.pd-gc .pd-gans{color:#15803d}
+.pd-final{text-align:center;font-size:15px;font-weight:700;color:#1e293b;opacity:0;transition:opacity .4s;margin-top:10px;padding:10px;background:white;border-radius:8px;border:2px solid #93c5fd}
+.pd-final.show{opacity:1}
+.pd-final b{color:#1d4ed8}
 </style>
 </head>
 <body>
@@ -319,8 +349,21 @@ const UNITS = [
 <div class="step-row"><div class="step-num">1</div><div class="step-text"><b>+, −</b> 부호로 식을 조각조각 나누기<br>(예: 2x²+3x−1 → 2x², 3x, −1 세 조각)</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">x²끼리, x끼리, 숫자끼리 <b>같은 모양</b>으로 묶기</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">묶은 것끼리 <b>x 앞 숫자</b>만 더하거나 빼기</div></div>
-<div class="example-block"><div class="ex-label">예시</div>A = 2x²+3x−1, B = x²−x+4 → A+B<br>x²끼리: 2 + 1 = <b>3</b> &nbsp;(x² 앞에 아무것도 없으면 1)<br>x끼리: 3 + (−1) = <b>2</b> &nbsp;(−x는 앞 숫자가 −1)<br>숫자끼리: (−1) + 4 = <b>3</b><br><span class="arrow">→</span> 정답: <b>3x²+2x+3</b></div>
-<div class="tip-box">'x 앞 숫자'를 <b>계수</b>, +/− 사이의 한 조각을 <b>항</b>이라고 불러요. x²와 x는 사과·배처럼 다른 과일 — 절대 합치면 안 돼요!</div>`,
+<div class="poly-demo" id="polyDemo0">
+  <div class="pd-exlbl">버튼을 눌러 같은 모양끼리 묶어보세요 👇</div>
+  <div id="pdExprs0">
+    <div class="pd-row"><span class="pd-var">A =</span><span class="pd-t pt-x2">x²</span><span class="pd-op">+</span><span class="pd-t pt-x">3x</span><span class="pd-op">−</span><span class="pd-t pt-c">1</span></div>
+    <div class="pd-row"><span class="pd-var">B =</span><span class="pd-t pt-x2">x²</span><span class="pd-op">−</span><span class="pd-t pt-x">x</span><span class="pd-op">+</span><span class="pd-t pt-c">4</span></div>
+  </div>
+  <button class="pd-btn" id="pdBtn0" onclick="runPolyDemo0()">같은 모양끼리 묶기 →</button>
+  <div class="pd-groups" id="pdGroups0" style="display:none">
+    <div class="pd-grp pd-gx2"><div class="pd-ghead">🔴 x²끼리</div><div class="pd-gcalc">x² + x²</div><div class="pd-gans">= 2x²</div></div>
+    <div class="pd-grp pd-gx"><div class="pd-ghead">🔵 x끼리</div><div class="pd-gcalc">3x − x</div><div class="pd-gans">= 2x</div></div>
+    <div class="pd-grp pd-gc"><div class="pd-ghead">🟢 숫자끼리</div><div class="pd-gcalc">−1 + 4</div><div class="pd-gans">= 3</div></div>
+  </div>
+  <div class="pd-final" id="pdFinal0"><span class="arrow">→</span> A + B = <b>2x² + 2x + 3</b></div>
+</div>
+<div class="tip-box">'x 앞 숫자'를 <b>계수</b>, +/− 사이의 한 조각을 <b>항</b>이라고 불러요. 🔴●=x², 🔵▲=x, 🟢■=상수 — 다른 모양은 절대 합치면 안 돼요!</div>`,
     practice:[
       {q:"A = x³ − 1, B = 2x³ + 4 일 때, A + B는?",
        c:["2x³ + 2","2x³ + 3","3x³ + 3","3x³ + 4"],a:2,
@@ -1108,6 +1151,42 @@ function loadState() {
       ST.examScores = d.examScores||new Array(10).fill(null);
     }
   } catch(e){}
+}
+
+// ── 다항식 인터랙티브 데모 (Unit 0) ──
+function runPolyDemo0() {
+  const btn = document.getElementById('pdBtn0');
+  if (!btn) return;
+  btn.disabled = true;
+  btn.style.opacity = '0.5';
+
+  // 1단계: 모든 도형 flash
+  const tiles = document.querySelectorAll('#polyDemo0 .pd-t');
+  tiles.forEach((el, i) => {
+    setTimeout(() => {
+      el.classList.add('flash');
+      setTimeout(() => el.classList.remove('flash'), 350);
+    }, i * 60);
+  });
+
+  // 2단계: 식 흐리게 + 그룹 박스 등장
+  setTimeout(() => {
+    const exprs = document.getElementById('pdExprs0');
+    if (exprs) exprs.style.opacity = '0.25';
+    btn.style.display = 'none';
+
+    const groups = document.getElementById('pdGroups0');
+    groups.style.display = 'flex';
+    // 강제 reflow
+    groups.offsetHeight;
+    groups.querySelectorAll('.pd-grp').forEach((g, i) => {
+      setTimeout(() => g.classList.add('show'), i * 160);
+    });
+
+    setTimeout(() => {
+      document.getElementById('pdFinal0').classList.add('show');
+    }, 700);
+  }, 550);
 }
 
 // 개념 카드 스텝 스태거 애니메이션
