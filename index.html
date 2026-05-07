@@ -657,6 +657,63 @@ header h1{font-size:18px;flex:1}
 .cs-dot{width:7px;height:7px;border-radius:50%;background:#e2e8f0;transition:.25s;cursor:pointer}
 .cs-dot.on{background:var(--cn-primary);width:18px;border-radius:4px}
 .cs-lbl{font-size:11px;color:#94a3b8;font-weight:700;white-space:nowrap;flex-shrink:0}
+/* ── 나머지정리(id:2) 슬라이드 전용 ── */
+.c2-s{display:flex;flex-direction:column;justify-content:center;min-height:100%}
+.c2-tag{font-size:10.5px;font-weight:800;color:#94a3b8;letter-spacing:.05em;margin-bottom:4px}
+.c2-h{font-size:18px;font-weight:800;color:#1e1b4b;line-height:1.2;margin-bottom:12px}
+.c2-analogy{background:#f8faff;border-radius:12px;padding:14px;margin-bottom:8px;text-align:center}
+.c2-num-row{display:flex;align-items:center;justify-content:center;gap:6px;font-size:22px;font-weight:900;flex-wrap:wrap;margin-bottom:8px}
+.c2-num-chunk{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:#e2e8f0;font-size:18px;font-weight:900}
+.c2-nc-div{background:#dbeafe;color:#1d4ed8}
+.c2-nc-quot{background:#fef3c7;color:#92400e}
+.c2-nc-rem{background:#dcfce7;color:#15803d}
+.c2-num-eq{font-size:20px;font-weight:700;color:#64748b}
+.c2-num-op{font-size:16px;font-weight:700;color:#94a3b8}
+.c2-num-labels{display:flex;gap:0;justify-content:center;font-size:9px;font-weight:700;color:#94a3b8;letter-spacing:.03em;flex-wrap:nowrap;white-space:nowrap}
+.c2-num-labels span{min-width:36px;text-align:center}
+.c2-arrow-down{text-align:center;font-size:11.5px;font-weight:700;color:#7c3aed;margin:8px 0 6px}
+.c2-poly-row{display:flex;align-items:center;justify-content:center;gap:5px;font-size:13px;font-weight:700;flex-wrap:wrap}
+.c2-poly-fx{color:#1e1b4b;font-weight:800}
+.c2-poly-xa{background:#dbeafe;color:#1d4ed8;border-radius:6px;padding:2px 7px;font-weight:800}
+.c2-poly-quot{background:#fef3c7;color:#92400e;border-radius:6px;padding:2px 7px}
+.c2-poly-rem{background:#dcfce7;color:#15803d;border-radius:6px;padding:2px 7px;font-weight:800}
+.c2-zero-demo{background:#f8faff;border-radius:12px;padding:14px;margin-bottom:10px}
+.c2-zd-step{font-size:13.5px;font-weight:700;color:#334155;line-height:2.1;text-align:center;transition:opacity .4s}
+.c2-zterm{background:#dbeafe;color:#1d4ed8;border-radius:6px;padding:1px 7px;transition:background .4s,color .4s,text-decoration .4s}
+.c2-zterm.c2-zero{background:#fee2e2;color:#dc2626}
+.c2-zterm.c2-vanish{background:transparent;color:#94a3b8;text-decoration:line-through;font-size:12px}
+.c2-zrem{background:#dcfce7;color:#15803d;border-radius:6px;padding:1px 7px;transition:background .5s,box-shadow .5s}
+.c2-zrem.c2-highlight{box-shadow:0 0 0 2.5px #16a34a;font-weight:900}
+.c2-zd-arrow{font-size:11px;font-weight:700;color:#7c3aed;text-align:center;margin:3px 0;transition:opacity .4s}
+.c2-zd-result{background:#dcfce7;border-radius:10px;padding:10px;text-align:center;font-size:14px;font-weight:700;color:#15803d;margin-top:8px;transition:opacity .4s}
+.c2-zd-result b{color:#065f46;font-size:16px}
+.c2-btn{display:block;width:100%;padding:10px;background:#2563eb;color:white;border:none;border-radius:10px;font-size:13.5px;font-weight:700;cursor:pointer;transition:.2s}
+.c2-btn:hover{background:#1d4ed8}
+.c2-btn:disabled{opacity:.4;cursor:not-allowed}
+.c2-ex-card{background:#f8faff;border-radius:12px;padding:12px 14px;margin-bottom:8px;border-left:3px solid #2563eb}
+.c2-ex-card2{border-left-color:#7c3aed}
+.c2-ex-label{font-size:10px;font-weight:800;color:#94a3b8;letter-spacing:.06em;margin-bottom:4px}
+.c2-ex-prob{font-size:13px;font-weight:600;color:#334155;margin-bottom:8px}
+.c2-ex-steps{display:flex;flex-direction:column;gap:5px;margin-bottom:8px}
+.c2-ex-step{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#334155}
+.c2-ex-num{min-width:20px;height:20px;border-radius:50%;background:#2563eb;color:white;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.c2-ex-card2 .c2-ex-num{background:#7c3aed}
+.c2-ex-ans{background:white;border-radius:8px;padding:6px 12px;font-size:13px;font-weight:700;color:#1e1b4b;border:1.5px solid #e2e8f0;text-align:center}
+.c2-ex-ans b{color:#dc2626;font-size:15px}
+.c2-desc{font-size:13px;color:#64748b;margin-bottom:10px}
+.c2-flip-wrap{display:flex;gap:8px;margin-bottom:10px}
+.c2-flip-card{flex:1;background:#1d4ed8;color:white;border-radius:12px;padding:14px 8px;text-align:center;font-size:14px;font-weight:800;cursor:pointer;transition:background .3s,transform .3s;-webkit-user-select:none;user-select:none;min-height:64px;display:flex;align-items:center;justify-content:center}
+.c2-flip-card.flipped{background:#dc2626;transform:scale(1.05)}
+.c2-flip-card .c2-flip-back{display:none;flex-direction:column;align-items:center}
+.c2-flip-card.flipped .c2-flip-front{display:none}
+.c2-flip-card.flipped .c2-flip-back{display:flex}
+.c2-flip-back b{font-size:20px;display:block}
+.c2-flip-rule{background:#fff7ed;border:1.5px solid #fed7aa;border-radius:10px;padding:10px 12px;font-size:12px;font-weight:600;color:#92400e;line-height:1.9;text-align:center}
+.c2-flip-rule b{color:#dc2626}
+.c2-err-list{display:flex;flex-direction:column;gap:7px;margin-bottom:12px}
+.c2-err{background:#fff8f8;border:1.5px solid #fecaca;border-radius:10px;padding:10px 12px;font-size:12.5px;color:#7f1d1d;line-height:1.7}
+.c2-err b{color:#dc2626}
+.c2-memory{background:linear-gradient(135deg,#eff6ff,#f5f3ff);border:1.5px solid #c7d2fe;border-radius:12px;padding:14px;font-size:13.5px;font-weight:700;color:#3730a3;text-align:center;line-height:1.65}
 /* ── 심화 설명 영역 ── */
 .deep-section{margin-top:10px}
 .deep-toggle-btn{width:100%;background:none;border:1.5px solid #8b5cf6;border-radius:8px;color:#7c3aed;font-size:13px;font-weight:700;padding:8px 14px;cursor:pointer;text-align:left;display:flex;align-items:center;justify-content:space-between;transition:.18s}
@@ -1036,34 +1093,107 @@ const UNITS = [
   },
   {
     id:2, title:"나머지 정리", sub:"대입하여 나머지 계산",
-    concept:`<div class="formula-box" style="text-align:left">x²+x+1 ÷ (x−<b>2</b>): f(<b>2</b>)=4+2+1=<b>7</b><br>x²−3x+5 ÷ (x−<b>1</b>): f(<b>1</b>)=1−3+5=<b>3</b><br>x²+5 ÷ (x+<b>2</b>): f(<b>−2</b>)=4+5=<b>9</b><br><div style="margin-top:8px;padding-top:8px;border-top:1.5px dashed rgba(37,99,235,.25);font-size:11px;text-align:center;color:#475569">규칙: (x−k)로 나눈 나머지 = f(k)</div></div>
-<div class="step-row"><div class="step-num">1</div><div class="step-text">나누는 식 (x − a)에서 <b>괄호 안을 0으로 만드는 x 값</b> 찾기</div></div>
-<div class="step-row"><div class="step-num">2</div><div class="step-text">원래 식의 <b>x 자리에 그 값을 그대로 넣기</b> → 답이 나머지</div></div>
-<div class="remain-demo" id="remainDemo2">
-  <div class="rd-exlbl">버튼을 눌러 x에 값을 대입해보세요 👇</div>
-  <div class="rd-question">
-    (x − 2) = 0 이 되는 x는? &nbsp;→&nbsp; x = <span class="rd-xval" id="rdXval">?</span>
-  </div>
-  <div class="rd-expr-wrap">
-    f(x) =
-    <div class="rd-expr">
-      <span class="rd-xt" id="rdX1">x</span><span class="rd-sup">²</span>
-      <span class="rd-op">+</span>
-      <span class="rd-xt" id="rdX2">x</span>
-      <span class="rd-op">+</span>
-      <span class="rd-const">1</span>
+    concept:`<div class="c2-s">
+  <div class="c2-tag">1 / 5 · 도입</div>
+  <div class="c2-h">나머지정리 = 나눗셈 원리</div>
+  <div class="c2-analogy">
+    <div class="c2-num-row">
+      <span class="c2-num-chunk">7</span>
+      <span class="c2-num-eq">=</span>
+      <span class="c2-num-chunk c2-nc-div">3</span>
+      <span class="c2-num-op">×</span>
+      <span class="c2-num-chunk c2-nc-quot">2</span>
+      <span class="c2-num-op">+</span>
+      <span class="c2-num-chunk c2-nc-rem">1</span>
+    </div>
+    <div class="c2-num-labels">
+      <span>피제수</span><span></span><span>제수</span><span></span><span>몫</span><span></span><span>나머지</span>
     </div>
   </div>
-  <button class="rd-btn" id="rdBtn2" onclick="runRemainDemo2()">보이는 모든 x에 그 값 대입하기 →</button>
-  <div class="rd-calc" id="rdCalc2" style="display:none">
-    <div class="rd-calc-row" id="rdC1">= 2² + 2 + 1</div>
-    <div class="rd-calc-row" id="rdC2">= 4 + 2 + 1</div>
-    <div class="rd-calc-row" id="rdC3">= <b>7</b></div>
+  <div class="c2-arrow-down">⬇ 다항식도 똑같아요</div>
+  <div class="c2-poly-row">
+    <span class="c2-poly-fx">f(x)</span>
+    <span class="c2-num-eq">=</span>
+    <span class="c2-poly-xa">(x−a)</span>
+    <span class="c2-num-op">×</span>
+    <span class="c2-poly-quot">몫</span>
+    <span class="c2-num-op">+</span>
+    <span class="c2-poly-rem">나머지</span>
   </div>
-  <div class="rd-final" id="rdFinal2"><span class="arrow">→</span> 나머지 = <b>7</b></div>
 </div>
-<div class="tip-box">f(x)는 'x 자리에 무엇을 넣으면 결과가 나오는 식', 이 규칙을 <b>나머지정리</b>라고 해요. (x+1)로 나눌 땐 x+1=0 → <b>x = −1</b>! 부호가 가장 잦은 실수예요.</div>
-<button class="why-btn" onclick="toggleWhy(this)">심화: 왜 대입하면 나머지가 나올까?</button><div class="why-box"><b>나눗셈 원리 먼저:</b><br>7 ÷ 3 = 2 … 1 이면 <b>7 = 3 × 2 + 1</b> (피제수 = 제수 × 몫 + 나머지).<br>다항식도 똑같이: <b>f(x) = (x − a) × 몫 + 나머지</b>.<br><br><b>왜 x = a를 넣으면 될까?</b><br>위 식에 x = a를 대입하면 (a − a) = 0 이 되어 앞 항이 통째로 사라지고 <b>나머지만 남아요</b>.<br>그래서 직접 나눌 필요 없이, 괄호를 0으로 만드는 값만 식에 넣으면 바로 나머지가 나오는 거예요.</div>`,
+<div class="c2-s">
+  <div class="c2-tag">2 / 5 · 핵심 원리</div>
+  <div class="c2-h">왜 x=a를 넣을까?</div>
+  <div class="c2-zero-demo">
+    <div class="c2-zd-step" id="c2ZStep0">
+      f(x) = <span class="c2-zterm">(x−a)</span> × 몫 + <span class="c2-zrem">나머지</span>
+    </div>
+    <div class="c2-zd-arrow" id="c2ZArrow1" style="opacity:0">x = a 를 넣으면 ↓</div>
+    <div class="c2-zd-step" id="c2ZStep1" style="opacity:0">
+      f(a) = <span class="c2-zterm c2-zero">(a−a)</span> × 몫 + <span class="c2-zrem">나머지</span>
+    </div>
+    <div class="c2-zd-arrow" id="c2ZArrow2" style="opacity:0">(a−a) = <b>0</b> → 앞 항이 사라짐 ↓</div>
+    <div class="c2-zd-step" id="c2ZStep2" style="opacity:0">
+      f(a) = <span class="c2-zterm c2-vanish">0 × 몫</span> + <span class="c2-zrem c2-highlight">나머지</span>
+    </div>
+    <div class="c2-zd-result" id="c2ZResult" style="opacity:0">∴ f(a) = <b>나머지</b></div>
+  </div>
+  <button class="c2-btn" id="c2ZBtn" onclick="c2RunZero()">0 만드는 순간 보기 →</button>
+</div>
+<div class="c2-s">
+  <div class="c2-tag">3 / 5 · 예시 풀이</div>
+  <div class="c2-h">두 문제로 익히기</div>
+  <div class="c2-ex-card">
+    <div class="c2-ex-label">예시 1</div>
+    <div class="c2-ex-prob">f(x) = x² + x + 1 을 <b>x − 2</b> 로 나누기</div>
+    <div class="c2-ex-steps">
+      <div class="c2-ex-step"><span class="c2-ex-num">1</span> x − 2 = 0 → <b>x = 2</b></div>
+      <div class="c2-ex-step"><span class="c2-ex-num">2</span> f(2) = 4 + 2 + 1 = <b>7</b></div>
+    </div>
+    <div class="c2-ex-ans">나머지 = <b>7</b></div>
+  </div>
+  <div class="c2-ex-card c2-ex-card2">
+    <div class="c2-ex-label">예시 2 — 부호 주의!</div>
+    <div class="c2-ex-prob">f(x) = x² − 3x + 4 를 <b>x + 1</b> 로 나누기</div>
+    <div class="c2-ex-steps">
+      <div class="c2-ex-step"><span class="c2-ex-num">1</span> x + 1 = x − (<b>−1</b>) → <b>x = −1</b></div>
+      <div class="c2-ex-step"><span class="c2-ex-num">2</span> f(−1) = 1 + 3 + 4 = <b>8</b></div>
+    </div>
+    <div class="c2-ex-ans">나머지 = <b>8</b></div>
+  </div>
+</div>
+<div class="c2-s">
+  <div class="c2-tag">4 / 5 · 부호 주의</div>
+  <div class="c2-h">넣는 숫자, 부호가 반대예요!</div>
+  <div class="c2-desc">카드를 탭해서 실제로 넣어야 할 숫자를 확인하세요 👇</div>
+  <div class="c2-flip-wrap">
+    <div class="c2-flip-card" id="c2Flip1" onclick="c2Flip(1)">
+      <div class="c2-flip-front">x + 3</div>
+      <div class="c2-flip-back"><span style="font-size:10px;opacity:.8">넣기:</span><b>−3</b></div>
+    </div>
+    <div class="c2-flip-card" id="c2Flip2" onclick="c2Flip(2)">
+      <div class="c2-flip-front">x − 5</div>
+      <div class="c2-flip-back"><span style="font-size:10px;opacity:.8">넣기:</span><b>+5</b></div>
+    </div>
+    <div class="c2-flip-card" id="c2Flip3" onclick="c2Flip(3)">
+      <div class="c2-flip-front">x + 1</div>
+      <div class="c2-flip-back"><span style="font-size:10px;opacity:.8">넣기:</span><b>−1</b></div>
+    </div>
+  </div>
+  <div class="c2-flip-rule">
+    x + k → 넣는 숫자: <b>−k</b><br>x − k → 넣는 숫자: <b>+k</b>
+  </div>
+</div>
+<div class="c2-s">
+  <div class="c2-tag">5 / 5 · 실수 주의 + 기억법</div>
+  <div class="c2-h">자주 틀리는 3가지</div>
+  <div class="c2-err-list">
+    <div class="c2-err">❌ <b>부호 반대</b> — x + 3이면 +3이 아니라 <b>−3</b> 넣기</div>
+    <div class="c2-err">❌ <b>몫·나머지 혼동</b> — 대입해서 나온 값은 나머지, 몫이 아님</div>
+    <div class="c2-err">❌ <b>제곱 계산 실수</b> — (−2)² = <b>4</b>, −4가 아님!</div>
+  </div>
+  <div class="c2-memory">💡 "0 만드는 숫자를 넣으면<br>나머지가 나온다!"</div>
+</div>`,
     practice:[
       {q:"2x³ − x + 1을 x − 1로 나누었을 때의 나머지는?",
        c:["1","2","3","4"],a:1,
@@ -2298,6 +2428,28 @@ function c6ShowExpand() {
   if (!btn || !body) return;
   btn.style.display = 'none';
   body.classList.add('show');
+}
+
+// ── 나머지정리(id:2) 슬라이드 2 — 0 만들기 데모 ──
+function c2RunZero() {
+  const btn = document.getElementById('c2ZBtn');
+  if (!btn) return;
+  btn.disabled = true;
+  const show = (id, delay) => setTimeout(() => {
+    const el = document.getElementById(id);
+    if (el) el.style.opacity = '1';
+  }, delay);
+  show('c2ZArrow1', 300);
+  show('c2ZStep1',  600);
+  show('c2ZArrow2', 1100);
+  show('c2ZStep2',  1400);
+  show('c2ZResult', 1900);
+}
+
+// ── 나머지정리(id:2) 슬라이드 4 — 부호 반전 카드 ──
+function c2Flip(n) {
+  const card = document.getElementById('c2Flip' + n);
+  if (card) card.classList.toggle('flipped');
 }
 
 // ── 이차함수 최대최소 (Unit 7) ──
