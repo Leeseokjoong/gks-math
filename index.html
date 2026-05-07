@@ -439,9 +439,16 @@ header h1{font-size:18px;flex:1}
 .why-box.open{display:block}
 
 /* ── 개념 카드 스와이퍼 ── */
-.concept-box{overflow:hidden!important}
-.cs-track{display:flex;transition:transform .38s cubic-bezier(.2,.8,.2,1);will-change:transform;animation:none!important;opacity:1!important}
-.cs-slide{flex-shrink:0;box-sizing:border-box;padding:2px 0}
+.concept-box{overflow:hidden!important;min-height:240px}
+.cs-track{display:flex;align-items:stretch;transition:transform .38s cubic-bezier(.2,.8,.2,1);will-change:transform;animation:none!important;opacity:1!important}
+.cs-slide{flex-shrink:0;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:10px;padding:16px 2px;min-height:240px}
+/* 슬라이드 안에서 내용 크기 키우기 */
+.cs-slide .formula-box{font-size:17px!important;padding:20px 18px!important;line-height:1.8}
+.cs-slide .step-row{padding:13px 16px!important}
+.cs-slide .step-text{font-size:15.5px!important;line-height:1.75}
+.cs-slide .tip-box{font-size:14px!important;padding:14px 16px!important;line-height:1.7}
+.cs-slide .why-btn{font-size:13.5px!important}
+.cs-slide .why-box{font-size:14px!important;line-height:1.75}
 .cs-nav-row{display:flex;align-items:center;gap:8px;margin-top:14px}
 .cs-arrow{width:36px;height:36px;border-radius:50%;border:1.5px solid #e2e8f0;background:white;font-size:17px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:.18s;color:#64748b;padding:0}
 .cs-arrow:hover:not(:disabled){border-color:var(--cn-primary);color:var(--cn-primary);background:#eff6ff}
@@ -2033,12 +2040,28 @@ function animateConceptSteps(box) {
   track.className = 'cs-track';
   track.id = 'csTrack';
 
-  children.forEach(child => {
+  // 그룹핑: 연속 step-row 묶기 / why-btn+why-box 한 슬라이드
+  const groups = [];
+  let i = 0;
+  while (i < children.length) {
+    const el = children[i];
+    if (el.classList.contains('step-row')) {
+      const g = [];
+      while (i < children.length && children[i].classList.contains('step-row')) g.push(children[i++]);
+      groups.push(g);
+    } else if (el.classList.contains('why-btn')) {
+      const g = [el]; i++;
+      if (i < children.length && children[i].classList.contains('why-box')) g.push(children[i++]);
+      groups.push(g);
+    } else {
+      groups.push([el]); i++;
+    }
+  }
+
+  groups.forEach(group => {
     const slide = document.createElement('div');
     slide.className = 'cs-slide';
-    child.style.opacity = '1';
-    child.style.animation = '';
-    slide.appendChild(child);
+    group.forEach(el => { el.style.opacity = '1'; el.style.animation = ''; slide.appendChild(el); });
     track.appendChild(slide);
     _csSlides.push(slide);
   });
@@ -2065,13 +2088,14 @@ function _csGoTo(idx, animate) {
   track.style.transform = `translateX(${-_csIdx * slideW}px)`;
   if (animate === false) { track.offsetHeight; track.style.transition = ''; }
 
-  // 현재 슬라이드 슬라이드인 애니메이션
+  // 현재 슬라이드 내 모든 요소에 순차 애니메이션
   const cur = _csSlides[_csIdx];
-  if (cur && cur.firstElementChild) {
-    const el = cur.firstElementChild;
-    el.style.animation = 'none';
-    el.offsetHeight;
-    el.style.animation = 'csStepIn .45s ease forwards';
+  if (cur) {
+    Array.from(cur.children).forEach((el, i) => {
+      el.style.animation = 'none';
+      el.offsetHeight;
+      el.style.animation = `csStepIn .45s ease ${i * 80}ms forwards`;
+    });
   }
   _syncCsNav();
 }
