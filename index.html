@@ -671,6 +671,68 @@ header h1{font-size:18px;flex:1}
 .cs-dot{width:7px;height:7px;border-radius:50%;background:#e2e8f0;transition:.25s;cursor:pointer}
 .cs-dot.on{background:var(--cn-primary);width:18px;border-radius:4px}
 .cs-lbl{font-size:11px;color:#94a3b8;font-weight:700;white-space:nowrap;flex-shrink:0}
+/* ── 이차함수 최대·최소(id:7) 슬라이드 전용 ── */
+.c7-s{display:flex;flex-direction:column;justify-content:center;min-height:100%}
+.c7-tag{font-size:10.5px;font-weight:800;color:#94a3b8;letter-spacing:.05em;margin-bottom:4px}
+.c7-h{font-size:18px;font-weight:800;color:#1e1b4b;line-height:1.2;margin-bottom:12px}
+.c7-formula-wrap{background:#f8faff;border-radius:14px;padding:14px 16px;margin-bottom:10px;text-align:center}
+.c7-formula-lbl{font-size:10px;font-weight:800;color:#94a3b8;letter-spacing:.06em;margin-bottom:8px}
+.c7-formula-row{display:flex;align-items:baseline;justify-content:center;gap:1px;font-size:20px;font-weight:900;flex-wrap:wrap;margin-bottom:8px}
+.c7-fa{color:#1e1b4b}
+.c7-fp{color:#7c3aed;background:#f5f3ff;border-radius:6px;padding:0 6px}
+.c7-fq{color:#dc2626;background:#fff1f2;border-radius:6px;padding:0 6px;font-size:24px}
+.c7-formula-legend{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.c7-leg-p{font-size:11.5px;font-weight:700;color:#7c3aed;background:#f5f3ff;border-radius:6px;padding:3px 10px}
+.c7-leg-q{font-size:11.5px;font-weight:700;color:#dc2626;background:#fff1f2;border-radius:6px;padding:3px 10px}
+.c7-leg-q b{color:#dc2626}
+.c7-arrow{font-size:11.5px;font-weight:700;color:#7c3aed;text-align:center;margin:8px 0 6px}
+.c7-spotlight{background:#1e293b;border-radius:12px;padding:14px;text-align:center}
+.c7-sp-eq{font-size:17px;font-weight:800;color:#e2e8f0;margin-bottom:6px}
+.c7-sp-q{color:#f87171;font-size:22px;font-weight:900;background:rgba(239,68,68,.15);border-radius:6px;padding:0 6px}
+.c7-sp-label{font-size:13px;font-weight:700;color:#94a3b8}
+.c7-sp-label b{color:#f87171;font-size:15px}
+.c7-dir-wrap{display:flex;gap:10px;margin-bottom:10px}
+.c7-dir-card{flex:1;border-radius:14px;padding:12px 8px;text-align:center;cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s;border:2px solid transparent;-webkit-user-select:none;user-select:none}
+.c7-dir-up{background:#eff6ff;border-color:#bfdbfe}
+.c7-dir-up.picked{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.18);transform:scale(1.03)}
+.c7-dir-down{background:#fff1f2;border-color:#fecdd3}
+.c7-dir-down.picked{border-color:#dc2626;box-shadow:0 0 0 3px rgba(220,38,38,.15);transform:scale(1.03)}
+.c7-dir-svg{display:flex;justify-content:center;margin-bottom:4px}
+.c7-dir-a{background:#dbeafe;color:#1d4ed8;border-radius:6px;padding:2px 8px;font-size:12px;font-weight:800}
+.c7-dir-a-neg{background:#fee2e2;color:#dc2626}
+.c7-dir-name{font-size:12px;font-weight:700;color:#475569;margin-top:4px}
+.c7-dir-ans{font-size:12.5px;font-weight:700;color:#1e1b4b;margin-top:3px}
+.c7-dir-ans b{color:#16a34a}
+.c7-dir-hint{font-size:11.5px;font-weight:700;color:#94a3b8;text-align:center;transition:color .3s}
+.c7-ex-card{background:#eff6ff;border-radius:12px;padding:12px 14px;margin-bottom:8px;border-left:3px solid #2563eb}
+.c7-ex-card2{background:#fff1f2;border-left-color:#dc2626}
+.c7-ex-label{font-size:10px;font-weight:800;color:#94a3b8;letter-spacing:.06em;margin-bottom:5px}
+.c7-ex-eq{font-size:15px;font-weight:800;color:#1e1b4b;margin-bottom:8px}
+.c7-ex-q{color:#2563eb;font-size:17px}
+.c7-ex-q2{color:#dc2626;font-size:17px}
+.c7-ex-steps{display:flex;flex-direction:column;gap:5px}
+.c7-ex-step{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:#334155}
+.c7-ex-num{min-width:20px;height:20px;border-radius:50%;background:#2563eb;color:white;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.c7-ex-num2{background:#dc2626}
+.c7-tip{background:#fef9c3;border-left:3px solid #eab308;border-radius:0 8px 8px 0;padding:8px 12px;font-size:12px;font-weight:600;color:#713f12;line-height:1.6}
+.c7-speed-wrap{background:#1e293b;border-radius:14px;padding:18px;text-align:center;margin-bottom:10px}
+.c7-speed-eq{font-size:18px;font-weight:800;color:#e2e8f0;margin-bottom:6px}
+.c7-speed-q{color:#94a3b8;transition:color .4s,font-size .4s,text-shadow .4s}
+.c7-speed-q.lit{color:#f87171;font-size:22px;text-shadow:0 0 12px rgba(248,113,113,.6)}
+.c7-speed-arrow{font-size:20px;color:#64748b;transition:opacity .35s;margin:4px 0}
+.c7-speed-result{display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity .4s}
+.c7-speed-ans{font-size:16px;font-weight:800;color:#f87171}
+.c7-speed-badge{background:#16a34a;color:white;border-radius:8px;padding:3px 10px;font-size:11px;font-weight:800}
+.c7-btn{display:block;width:100%;padding:10px;background:#2563eb;color:white;border:none;border-radius:10px;font-size:13.5px;font-weight:700;cursor:pointer;transition:.2s;margin-bottom:8px}
+.c7-btn:hover{background:#1d4ed8}
+.c7-btn:disabled{opacity:.4;cursor:not-allowed}
+.c7-speed-rule{font-size:12.5px;font-weight:600;color:#94a3b8;text-align:center;line-height:1.8;transition:opacity .4s}
+.c7-speed-rule b{color:#f87171}
+.c7-err-list{display:flex;flex-direction:column;gap:7px;margin-bottom:12px}
+.c7-err{background:#fff8f8;border:1.5px solid #fecaca;border-radius:10px;padding:10px 12px;font-size:12.5px;color:#7f1d1d;line-height:1.7}
+.c7-err b{color:#dc2626}
+.c7-memory{background:linear-gradient(135deg,#eff6ff,#f5f3ff);border:1.5px solid #c7d2fe;border-radius:12px;padding:14px;font-size:14px;font-weight:700;color:#3730a3;text-align:center;line-height:1.7}
+.c7-memory b{color:#dc2626}
 /* ── 나머지정리(id:2) 슬라이드 전용 ── */
 .c2-s{display:flex;flex-direction:column;justify-content:center;min-height:100%}
 .c2-tag{font-size:10.5px;font-weight:800;color:#94a3b8;letter-spacing:.05em;margin-bottom:4px}
@@ -1568,27 +1630,105 @@ const UNITS = [
   },
   {
     id:7, title:"이차함수의 최대·최소", sub:"꼭짓점과 범위",
-    concept:`<div class="formula-box" style="text-align:left">y=2(x−<b>3</b>)²+<b>1</b> → 꼭짓점(<b>3,1</b>), 최솟값<b>1</b><br>y=−(x+<b>2</b>)²+<b>5</b> → 꼭짓점(<b>−2,5</b>), 최댓값<b>5</b><br>y=(x−<b>1</b>)²−<b>4</b> → 꼭짓점(<b>1,−4</b>), 최솟값<b>−4</b><br><div style="margin-top:8px;padding-top:8px;border-top:1.5px dashed rgba(37,99,235,.25);font-size:11px;text-align:center;color:#475569">규칙: a>0 → 최솟값=q, a&lt;0 → 최댓값=q</div></div>
-<div class="step-row"><div class="step-num">1</div><div class="step-text">식이 y = a(x − p)² + q 모양인지 확인</div></div>
-<div class="step-row"><div class="step-num">2</div><div class="step-text">괄호 안의 <b>p</b>(부호 반대로!), 마지막의 <b>q</b>를 그대로 읽기 → 꺾이는 점 (p, q)</div></div>
-<div class="step-row"><div class="step-num">3</div><div class="step-text">a가 양수면 q가 가장 작은 값(<b>최솟값</b>), 음수면 가장 큰 값(<b>최댓값</b>)</div></div>
-<div class="quad-demo" id="quadDemo7">
-  <div style="font-size:11px;font-weight:800;color:#94a3b8;letter-spacing:.08em;margin-bottom:8px">버튼을 눌러 꼭짓점을 읽어보세요 👇</div>
-  <div class="qd-expr">
-    y = <span class="qd-t qd-a" id="qdA7">2</span>
-    &nbsp;(x − <span class="qd-t qd-p" id="qdP7">3</span>)²&nbsp;
-    + <span class="qd-t qd-q" id="qdQ7">1</span>
+    concept:`<div class="c7-s">
+  <div class="c7-tag">1 / 5 · 도입</div>
+  <div class="c7-h">꼭짓점의 y값이 답이다</div>
+  <div class="c7-formula-wrap">
+    <div class="c7-formula-lbl">꼭짓점 형태</div>
+    <div class="c7-formula-row">
+      <span class="c7-fa">y = </span><span class="c7-fa">a</span><span class="c7-fa">(x − </span><span class="c7-fp">p</span><span class="c7-fa">)² + </span><span class="c7-fq">q</span>
+    </div>
+    <div class="c7-formula-legend">
+      <span class="c7-leg-p">p = x좌표</span>
+      <span class="c7-leg-q">q = y좌표 = <b>답!</b></span>
+    </div>
   </div>
-  <button class="qd-btn" id="qdBtn7" onclick="runQuadDemo7()">꼭짓점 읽기 →</button>
-  <div class="qd-cards" id="qdCards7" style="display:none">
-    <div class="qd-card qd-card-a"><div class="qd-card-lbl">a</div><div class="qd-card-val">2</div><div class="qd-card-note">양수 →<br>아래로 볼록</div></div>
-    <div class="qd-card qd-card-p"><div class="qd-card-lbl">p (부호 반대!)</div><div class="qd-card-val">3</div><div class="qd-card-note">(x−3) 이므로<br>p = 3</div></div>
-    <div class="qd-card qd-card-q"><div class="qd-card-lbl">q = 최솟값</div><div class="qd-card-val">1</div><div class="qd-card-note">꼭짓점<br>(3, 1)</div></div>
+  <div class="c7-arrow">검정고시에서는 q값만 보면 끝 ⬇</div>
+  <div class="c7-spotlight">
+    <div class="c7-sp-eq">y = 2(x − 3)² + <span class="c7-sp-q">−7</span></div>
+    <div class="c7-sp-label">최솟값 = <b>−7</b></div>
   </div>
-  <div class="qd-final" id="qdFinal7"><span class="arrow">→</span> 최솟값 = <b>1</b></div>
 </div>
-<div class="tip-box">그래프가 꺾이는 점을 <b>꼭짓점</b>이라고 해요. y = (x + 2)² + 3 → p = <b>−2</b>! 괄호 안 부호와 반대로 읽기.</div>
-<button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">(x − p)² 부분은 <b>제곱이라 절대 음수가 안 돼요</b> — 아무리 작아도 0 이에요. 그러니까 a(x − p)² + q 에서 제곱 부분이 0 이 되는 순간(x = p 일 때) 식 전체가 가장 작거나 가장 큰 값이 되죠. a 가 양수면 q 에 양수가 더해지니 q 가 최저, a 가 음수면 q 에 음수가 더해지니 q 가 최고가 되는 거예요.</div>`,
+<div class="c7-s">
+  <div class="c7-tag">2 / 5 · 방향 판단</div>
+  <div class="c7-h">a 부호로 최대·최소 결정</div>
+  <div class="c7-dir-wrap">
+    <div class="c7-dir-card c7-dir-up" id="c7DirUp" onclick="c7SelectDir('up')">
+      <div class="c7-dir-svg">
+        <svg viewBox="0 0 80 60" width="72" height="54">
+          <path d="M8 52 Q40 4 72 52" stroke="#2563eb" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <circle cx="40" cy="8" r="4" fill="#2563eb"/>
+          <text x="48" y="12" font-size="10" font-weight="800" fill="#2563eb">q</text>
+        </svg>
+      </div>
+      <div class="c7-dir-rule"><span class="c7-dir-a">a &gt; 0</span></div>
+      <div class="c7-dir-name">아래로 볼록</div>
+      <div class="c7-dir-ans">→ <b>최솟값</b> = q</div>
+    </div>
+    <div class="c7-dir-card c7-dir-down" id="c7DirDown" onclick="c7SelectDir('down')">
+      <div class="c7-dir-svg">
+        <svg viewBox="0 0 80 60" width="72" height="54">
+          <path d="M8 8 Q40 56 72 8" stroke="#dc2626" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <circle cx="40" cy="52" r="4" fill="#dc2626"/>
+          <text x="48" y="56" font-size="10" font-weight="800" fill="#dc2626">q</text>
+        </svg>
+      </div>
+      <div class="c7-dir-rule"><span class="c7-dir-a c7-dir-a-neg">a &lt; 0</span></div>
+      <div class="c7-dir-name">위로 볼록</div>
+      <div class="c7-dir-ans">→ <b>최댓값</b> = q</div>
+    </div>
+  </div>
+  <div class="c7-dir-hint" id="c7DirHint">포물선을 탭해서 확인해보세요 👆</div>
+</div>
+<div class="c7-s">
+  <div class="c7-tag">3 / 5 · 예시 풀이</div>
+  <div class="c7-h">두 문제로 익히기</div>
+  <div class="c7-ex-card">
+    <div class="c7-ex-label">예시 1</div>
+    <div class="c7-ex-eq">y = (x − 2)² + <span class="c7-ex-q">3</span></div>
+    <div class="c7-ex-steps">
+      <div class="c7-ex-step"><span class="c7-ex-num">1</span> a = 1 &gt; 0 → 아래로 볼록 → <b>최솟값</b></div>
+      <div class="c7-ex-step"><span class="c7-ex-num">2</span> q = <b>3</b> → 최솟값 = <b>3</b></div>
+    </div>
+  </div>
+  <div class="c7-ex-card c7-ex-card2">
+    <div class="c7-ex-label">예시 2</div>
+    <div class="c7-ex-eq">y = −(x + 1)² + <span class="c7-ex-q2">5</span></div>
+    <div class="c7-ex-steps">
+      <div class="c7-ex-step"><span class="c7-ex-num c7-ex-num2">1</span> a = −1 &lt; 0 → 위로 볼록 → <b>최댓값</b></div>
+      <div class="c7-ex-step"><span class="c7-ex-num c7-ex-num2">2</span> q = <b>5</b> → 최댓값 = <b>5</b></div>
+    </div>
+  </div>
+  <div class="c7-tip">x+1 = x−(−1) 이므로 p = −1, 부호 주의!</div>
+</div>
+<div class="c7-s">
+  <div class="c7-tag">4 / 5 · 딱 보면 답</div>
+  <div class="c7-h">검정고시 스피드 감각</div>
+  <div class="c7-speed-wrap">
+    <div class="c7-speed-eq" id="c7SpeedEq">
+      y = 2(x − 3)² <span class="c7-speed-q" id="c7SpeedQ">−&nbsp;7</span>
+    </div>
+    <div class="c7-speed-arrow" id="c7SpeedArrow" style="opacity:0">⬇</div>
+    <div class="c7-speed-result" id="c7SpeedResult" style="opacity:0">
+      <span class="c7-speed-ans">최솟값 = −7</span>
+      <span class="c7-speed-badge">✓ 정답</span>
+    </div>
+  </div>
+  <button class="c7-btn" id="c7SpeedBtn" onclick="c7RunSpeed()">q값 찾기 →</button>
+  <div class="c7-speed-rule" id="c7SpeedRule" style="opacity:0">
+    a = 2 &gt; 0 이므로 최솟값<br>q = −7 → <b>바로 답!</b>
+  </div>
+</div>
+<div class="c7-s">
+  <div class="c7-tag">5 / 5 · 실수 주의 + 기억법</div>
+  <div class="c7-h">자주 틀리는 3가지</div>
+  <div class="c7-err-list">
+    <div class="c7-err">❌ <b>p값을 답으로 쓰기</b> — 최대·최소는 y값(q), x좌표(p) 아님</div>
+    <div class="c7-err">❌ <b>부호 착각</b> — (x+2)² 이면 p = <b>−2</b>, +2가 아님</div>
+    <div class="c7-err">❌ <b>최대·최소 반대</b> — 위로 볼록 = 최댓값, 아래로 볼록 = 최솟값</div>
+  </div>
+  <div class="c7-memory">💡 "꼭짓점의 <b>q값</b>이 최대·최소!"<br><span style="font-size:12px;font-weight:600;color:#6366f1;opacity:.85">a &gt; 0 → 최솟값 · a &lt; 0 → 최댓값</span></div>
+</div>`,
     practice:[
       {q:"−1 ≤ x ≤ 2일 때, y = −(x−1)² + 5의 최댓값은?",
        c:["3","4","5","6"],a:2,
@@ -2442,6 +2582,40 @@ function c6ShowExpand() {
   if (!btn || !body) return;
   btn.style.display = 'none';
   body.classList.add('show');
+}
+
+// ── 이차함수 최대·최소(id:7) ──
+function c7SelectDir(dir) {
+  document.getElementById('c7DirUp').classList.toggle('picked', dir === 'up');
+  document.getElementById('c7DirDown').classList.toggle('picked', dir === 'down');
+  const hint = document.getElementById('c7DirHint');
+  if (hint) {
+    hint.style.color = dir === 'up' ? '#2563eb' : '#dc2626';
+    hint.textContent = dir === 'up'
+      ? '✅ a > 0 → 아래로 볼록 → 최솟값 = q'
+      : '✅ a < 0 → 위로 볼록 → 최댓값 = q';
+  }
+}
+function c7RunSpeed() {
+  const btn = document.getElementById('c7SpeedBtn');
+  if (!btn) return;
+  btn.disabled = true;
+  setTimeout(() => {
+    const q = document.getElementById('c7SpeedQ');
+    if (q) q.classList.add('lit');
+  }, 300);
+  setTimeout(() => {
+    const arr = document.getElementById('c7SpeedArrow');
+    if (arr) arr.style.opacity = '1';
+  }, 700);
+  setTimeout(() => {
+    const res = document.getElementById('c7SpeedResult');
+    if (res) res.style.opacity = '1';
+  }, 1000);
+  setTimeout(() => {
+    const rule = document.getElementById('c7SpeedRule');
+    if (rule) rule.style.opacity = '1';
+  }, 1300);
 }
 
 // ── 나머지정리(id:2) 슬라이드 2 — 0 만들기 데모 ──
