@@ -205,9 +205,16 @@ header h1{font-size:18px;flex:1}
 
 /* ── 켤레복소수 (Unit 4) ── */
 .conj-demo{background:#f8faff;border-radius:12px;padding:14px;margin:0}
-.cn-expr{display:flex;align-items:center;justify-content:center;gap:5px;margin:10px 0;font-size:16px;font-weight:700;color:#1e293b;flex-wrap:wrap}
-.cn-sign{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:6px;font-size:16px;font-weight:900;background:#f59e0b;color:white;transition:background .4s,transform .3s}
-.cn-sign.flipped{background:#dc2626;transform:scale(1.3)}
+.cn-rows{display:flex;flex-direction:column;gap:4px;margin:10px 0}
+.cn-row-orig,.cn-row-conj{display:flex;align-items:center;gap:8px}
+.cn-row-lbl{font-size:11px;font-weight:700;color:#94a3b8;width:32px;flex-shrink:0}
+.cn-row-val{font-size:15px;font-weight:700;color:#1e293b}
+.cn-row-eq{font-size:14px;color:#64748b;margin-left:4px}
+.cn-highlight{color:#2563eb}
+.cn-arrow-down{display:none;flex-direction:column;align-items:flex-start;padding-left:40px;gap:2px}
+.cn-arr-tip{font-size:11px;font-weight:700;color:#7c3aed;background:rgba(139,92,246,.1);padding:2px 8px;border-radius:999px}
+.cn-row-conj{opacity:0;transform:translateY(4px);transition:opacity .35s,transform .35s}
+.cn-row-conj.show{opacity:1;transform:none}
 .cn-btn{display:block;width:100%;padding:10px;background:#2563eb;color:white;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:.2s}
 .cn-btn:hover{background:#1d4ed8}
 .cn-compare{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
@@ -860,16 +867,23 @@ const UNITS = [
 <div class="step-row"><div class="step-num">1</div><div class="step-text">두 식이 같으려면 <b>i 없는 부분끼리, i 있는 부분끼리</b> 따로 같아야 함</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">짝꿍을 만들 땐 <b>i 앞 부호만 반대</b>로</div></div>
 <div class="conj-demo" id="conjDemo4">
-  <div style="font-size:11px;font-weight:800;color:#94a3b8;letter-spacing:.08em;margin-bottom:8px">버튼을 눌러 짝꿍을 만들어보세요 👇</div>
-  <div class="cn-expr">
-    <span style="font-size:15px;font-weight:700">(3</span>
-    <span class="cn-sign" id="cnSign4">+</span>
-    <span style="font-size:15px;font-weight:700">ai)</span>
-    <span style="font-size:13px;color:#64748b;margin:0 4px">의 짝꿍</span>
-    <span style="font-size:18px;font-weight:900;color:#64748b">=</span>
-    <span style="font-size:15px;font-weight:700">(b − 4i)</span>
+  <div style="font-size:11px;font-weight:800;color:#94a3b8;letter-spacing:.08em;margin-bottom:8px">버튼을 눌러 켤레복소수를 만들어보세요</div>
+  <div class="cn-rows">
+    <div class="cn-row-orig">
+      <span class="cn-row-lbl">원래</span>
+      <span class="cn-row-val">(3 + ai)</span>
+    </div>
+    <div class="cn-arrow-down" id="cnArrow4" style="display:none">
+      <span class="cn-arr-line"></span>
+      <span class="cn-arr-tip">짝꿍 (허수부 부호 반대)</span>
+    </div>
+    <div class="cn-row-conj" id="cnRowConj4" style="display:none">
+      <span class="cn-row-lbl">켤레</span>
+      <span class="cn-row-val cn-highlight">(3 − ai)</span>
+      <span class="cn-row-eq">= (b − 4i)</span>
+    </div>
   </div>
-  <button class="cn-btn" id="cnBtn4" onclick="runConjDemo4()">i 앞 부호 뒤집기 →</button>
+  <button class="cn-btn" id="cnBtn4" onclick="runConjDemo4()">켤레복소수 만들기 →</button>
   <div class="cn-compare" id="cnCompare4" style="display:none">
     <div class="cn-card cn-card-real"><div class="cn-card-lbl">실수부 비교</div><div class="cn-card-val">3 = b<br><b>b = 3</b></div></div>
     <div class="cn-card cn-card-imag"><div class="cn-card-lbl">허수부 비교</div><div class="cn-card-val">−a = −4<br><b>a = 4</b></div></div>
@@ -1742,13 +1756,15 @@ function runCubeDemo3() {
 function runConjDemo4() {
   const btn = document.getElementById('cnBtn4');
   if (!btn) return;
-  btn.disabled = true;
-  const sign = document.getElementById('cnSign4');
-  sign.classList.add('flipped');
-  setTimeout(() => { sign.textContent = '−'; }, 150);
-  setTimeout(() => { sign.style.transform = 'scale(1)'; }, 450);
+  btn.disabled = true; btn.style.display = 'none';
+  const arrow = document.getElementById('cnArrow4');
+  const conj = document.getElementById('cnRowConj4');
+  arrow.style.display = 'flex';
   setTimeout(() => {
-    btn.style.display = 'none';
+    conj.style.display = 'flex'; conj.offsetHeight;
+    conj.classList.add('show');
+  }, 250);
+  setTimeout(() => {
     const cmp = document.getElementById('cnCompare4');
     cmp.style.display = 'flex'; cmp.offsetHeight;
     cmp.querySelectorAll('.cn-card').forEach((c, i) => {
