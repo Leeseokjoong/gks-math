@@ -726,8 +726,8 @@ const UNITS = [
   },
   {
     id:1, title:"항등식의 성질", sub:"미정계수 구하기",
-    concept:`<div class="tip-box">📌 핵심 용어 먼저! <b>항</b>은 숫자나 문자의 곱 덩어리 (3x², 2x, 5 각각이 항), <b>계수</b>는 항에서 문자 앞 숫자 (3x²의 계수 = 3), <b>차수</b>는 문자의 지수 (3x²의 차수 = 2)</div>
-<div class="formula-box">왼쪽 = 오른쪽이 되려면<br>x² 자리·x 자리·숫자 자리가 <b>각각</b> 같아야 함</div>
+    concept:`<div class="tip-box">핵심 용어: <b>항</b> = 숫자나 문자의 곱 덩어리 (3x², 2x, 5 각각이 항), <b>계수</b> = 항에서 문자 앞 숫자 (3x²의 계수 = 3), <b>차수</b> = 문자의 지수 (3x²의 차수 = 2)</div>
+<div class="formula-box" style="text-align:left"><b>2</b>x² + <b>5</b>x + <b>3</b> = <b>a</b>x² + <b>b</b>x + <b>c</b><br>→ x² 자리: 2 = a &nbsp; x 자리: 5 = b &nbsp; 숫자: 3 = c<br><br><b>4</b>x² + <b>0</b>x + <b>7</b> = <b>a</b>x² + <b>b</b>x + <b>c</b><br>→ a = 4, &nbsp; b = 0, &nbsp; c = 7<br><div style="margin-top:8px;padding-top:8px;border-top:1.5px dashed rgba(37,99,235,.25);font-size:12px;text-align:center;color:#475569">규칙: 항등식 → 같은 차수 자리의 계수가 각각 같아야 함</div></div>
 <div class="step-row"><div class="step-num">1</div><div class="step-text">왼쪽과 오른쪽에서 x² 앞 숫자, x 앞 숫자, 그냥 숫자를 각각 찾기</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">같은 자리끼리 <b>=</b>로 묶어 작은 식 만들기</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">그 식들을 풀어 모르는 글자 값 구하기</div></div>
@@ -774,7 +774,7 @@ const UNITS = [
   },
   {
     id:2, title:"나머지 정리", sub:"대입하여 나머지 계산",
-    concept:`<div class="formula-box">f(x)를 (x − a)로 나눈 나머지 = f(a)<br>(괄호 안을 0으로 만드는 a를 식에 그대로 넣기)</div>
+    concept:`<div class="formula-box" style="text-align:left">x²+x+1 을 (x−<b>2</b>)로 나누면 &nbsp;→&nbsp; x에 <b>2</b> 대입: 4+2+1 = <b>7</b><br>x²−3x+5 를 (x−<b>1</b>)로 나누면 &nbsp;→&nbsp; x에 <b>1</b> 대입: 1−3+5 = <b>3</b><br>x²+2x 를 (x+<b>1</b>)로 나누면 &nbsp;→&nbsp; x에 <b>−1</b> 대입: 1−2 = <b>−1</b><br><div style="margin-top:8px;padding-top:8px;border-top:1.5px dashed rgba(37,99,235,.25);font-size:12px;text-align:center;color:#475569">규칙: (x−k)로 나눈 나머지 = x에 k를 그대로 넣은 값</div></div>
 <div class="step-row"><div class="step-num">1</div><div class="step-text">나누는 식 (x − a)에서 <b>괄호 안을 0으로 만드는 x 값</b> 찾기</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">원래 식의 <b>x 자리에 그 값을 그대로 넣기</b> → 답이 나머지</div></div>
 <div class="remain-demo" id="remainDemo2">
@@ -822,8 +822,8 @@ const UNITS = [
   },
   {
     id:3, title:"인수분해 공식", sub:"세제곱 합·차 공식",
-    concept:`<div class="tip-box">🔢 세제곱 인식 훈련: <b>8 = 2³, 27 = 3³, 64 = 4³, 125 = 5³</b> — 이 네 개만 외우면 문제 99% 해결!</div>
-<div class="formula-box">a³+b³ = (a+b)(a²−ab+b²)<br>a³−b³ = (a−b)(a²+ab+b²)</div>
+    concept:`<div class="tip-box">세제곱 암기: <b>8 = 2³, 27 = 3³, 64 = 4³, 125 = 5³</b> — 이 네 개만 알면 문제 99% 해결!</div>
+<div class="formula-box" style="text-align:left">x³ − 8 = x³ − <b>2³</b> &nbsp;→&nbsp; (x − <b>2</b>)(x² + 2x + 4)<br>x³ + 27 = x³ + <b>3³</b> &nbsp;→&nbsp; (x + <b>3</b>)(x² − 3x + 9)<br>x³ − 64 = x³ − <b>4³</b> &nbsp;→&nbsp; (x − <b>4</b>)(x² + 4x + 16)<br><div style="margin-top:8px;padding-top:8px;border-top:1.5px dashed rgba(37,99,235,.25);font-size:12px;text-align:center;color:#475569">공식: a³±b³ = (a±b)(a²∓ab+b²) &nbsp;(뒤 괄호 가운데 부호만 반대)</div></div>
 <div class="step-row"><div class="step-num">1</div><div class="step-text">세제곱 안의 수 찾기 — 8 = 2³, 27 = 3³ 처럼 (예: x³−8 → a=x, b=2)</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">앞 괄호: 식의 <b>원래 부호 그대로</b> (+이면 +, −이면 −)</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">뒤 괄호: 가운데 부호만 <b>반대로</b> 쓰기</div></div>
@@ -863,7 +863,7 @@ const UNITS = [
   },
   {
     id:4, title:"복소수와 켤레복소수", sub:"켤레복소수 성질",
-    concept:`<div class="formula-box">a + bi 의 짝꿍 = a − bi<br>(i 앞 부호만 뒤집기, 앞쪽 숫자는 그대로)</div>
+    concept:`<div class="formula-box" style="text-align:left">2 + 3i &nbsp;→&nbsp; 켤레: <b>2 − 3i</b> &nbsp;(i 앞 + → −)<br>5 − 4i &nbsp;→&nbsp; 켤레: <b>5 + 4i</b> &nbsp;(i 앞 − → +)<br>1 + 7i &nbsp;→&nbsp; 켤레: <b>1 − 7i</b><br><div style="margin-top:8px;padding-top:8px;border-top:1.5px dashed rgba(37,99,235,.25);font-size:12px;text-align:center;color:#475569">규칙: 앞 숫자(실수부)는 그대로, i 앞 숫자(허수부) 부호만 반대</div></div>
 <div class="step-row"><div class="step-num">1</div><div class="step-text">두 식이 같으려면 <b>i 없는 부분끼리, i 있는 부분끼리</b> 따로 같아야 함</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">짝꿍을 만들 땐 <b>i 앞 부호만 반대</b>로</div></div>
 <div class="conj-demo" id="conjDemo4">
@@ -912,7 +912,7 @@ const UNITS = [
   },
   {
     id:5, title:"이차방정식과 중근", sub:"판별식으로 중근 조건",
-    concept:`<div class="formula-box">x² + ◯x + △ = 0 이 답 하나만 가지려면<br>△ = (◯ ÷ 2)²</div>
+    concept:`<div class="formula-box" style="text-align:left">x² − 6x + □ = 0 &nbsp;→&nbsp; 6 ÷ 2 = 3 &nbsp;→&nbsp; 3² = <b>9</b> = □<br>x² + 4x + □ = 0 &nbsp;→&nbsp; 4 ÷ 2 = 2 &nbsp;→&nbsp; 2² = <b>4</b> = □<br>x² − 10x + □ = 0 &nbsp;→&nbsp; 10 ÷ 2 = 5 &nbsp;→&nbsp; 5² = <b>25</b> = □<br><div style="margin-top:8px;padding-top:8px;border-top:1.5px dashed rgba(37,99,235,.25);font-size:12px;text-align:center;color:#475569">규칙: 상수항 = (x 앞 계수 ÷ 2)² 이면 중근</div></div>
 <div class="step-row"><div class="step-num">1</div><div class="step-text">x² 앞 숫자가 1인지 확인 (다르면 양변을 그 수로 나누기)</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">x 앞 숫자를 <b>2로 나눈 뒤 제곱</b> → 그 값이 마지막 숫자</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">검산: (x ± □)² 모양으로 묶이는지 확인</div></div>
@@ -951,7 +951,7 @@ const UNITS = [
   },
   {
     id:6, title:"근과 계수의 관계", sub:"두 근의 합과 곱",
-    concept:`<div class="formula-box">x² − 5x + 6 = 0 의 두 근 → <b>곱하면 6, 더하면 5</b> 인 두 수<br>합 = −(x 앞 숫자) &nbsp;&nbsp; 곱 = (상수항)</div>
+    concept:`<div class="formula-box" style="text-align:left">x² − 5x + 6 = 0 &nbsp;→&nbsp; 두 근의 합 = <b>5</b>, 두 근의 곱 = <b>6</b><br><span style="font-size:12px;color:#64748b">&nbsp;&nbsp;&nbsp;(확인: 2+3=5, 2×3=6)</span><br>x² − 7x + 12 = 0 &nbsp;→&nbsp; 두 근의 합 = <b>7</b>, 두 근의 곱 = <b>12</b><br><span style="font-size:12px;color:#64748b">&nbsp;&nbsp;&nbsp;(확인: 3+4=7, 3×4=12)</span><br><div style="margin-top:8px;padding-top:8px;border-top:1.5px dashed rgba(37,99,235,.25);font-size:12px;text-align:center;color:#475569">규칙: 합 = −(x 앞 계수) &nbsp;·&nbsp; 곱 = 상수항</div></div>
 <div class="step-row"><div class="step-num">1</div><div class="step-text">두 근의 <b>곱</b> → 상수항(맨 뒤 숫자) 그대로 읽기</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">두 근의 <b>합</b> → x 앞 숫자에 <b>마이너스</b> 붙이기 (부호 반대)</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">x² 앞에 1이 아닌 수가 있으면 양변을 그 수로 나눈 뒤 적용</div></div>
@@ -991,7 +991,7 @@ const UNITS = [
   },
   {
     id:7, title:"이차함수의 최대·최소", sub:"꼭짓점과 범위",
-    concept:`<div class="formula-box">y = a(x − p)² + q 모양일 때<br>그래프가 꺾이는 점 = <b>(p, q)</b></div>
+    concept:`<div class="formula-box" style="text-align:left">y = 2(x − <b>3</b>)² + <b>1</b> &nbsp;→&nbsp; 꼭짓점 (<b>3</b>, <b>1</b>), a=2>0 → 최솟값 <b>1</b><br>y = −(x + <b>2</b>)² + <b>5</b> &nbsp;→&nbsp; 꼭짓점 (<b>−2</b>, <b>5</b>), a<0 → 최댓값 <b>5</b><br>y = (x − <b>1</b>)² − <b>4</b> &nbsp;→&nbsp; 꼭짓점 (<b>1</b>, <b>−4</b>), a>0 → 최솟값 <b>−4</b><br><div style="margin-top:8px;padding-top:8px;border-top:1.5px dashed rgba(37,99,235,.25);font-size:12px;text-align:center;color:#475569">규칙: y = a(x−p)²+q → 꼭짓점 (p, q), a>0이면 최솟값, a<0이면 최댓값</div></div>
 <div class="step-row"><div class="step-num">1</div><div class="step-text">식이 y = a(x − p)² + q 모양인지 확인</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">괄호 안의 <b>p</b>(부호 반대로!), 마지막의 <b>q</b>를 그대로 읽기 → 꺾이는 점 (p, q)</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">a가 양수면 q가 가장 작은 값(<b>최솟값</b>), 음수면 가장 큰 값(<b>최댓값</b>)</div></div>
@@ -1032,7 +1032,7 @@ const UNITS = [
   },
   {
     id:8, title:"삼차방정식의 해", sub:"근 대입하여 미정계수",
-    concept:`<div class="formula-box">'x = k가 근(해)이다' = 'x 자리에 k를 넣으면 식이 0이 된다'</div>
+    concept:`<div class="formula-box" style="text-align:left">x = <b>2</b>가 근 &nbsp;→&nbsp; 식에 x=<b>2</b> 대입 &nbsp;→&nbsp; 결과 = 0<br>x = <b>−1</b>이 근 &nbsp;→&nbsp; 식에 x=<b>−1</b> 대입 &nbsp;→&nbsp; 결과 = 0<br>x = <b>3</b>이 근 &nbsp;→&nbsp; 식에 x=<b>3</b> 대입 &nbsp;→&nbsp; 결과 = 0<br><div style="margin-top:8px;padding-top:8px;border-top:1.5px dashed rgba(37,99,235,.25);font-size:12px;text-align:center;color:#475569">규칙: 근(해) k → 식의 x 자리에 k를 넣으면 = 0</div></div>
 <div class="step-row"><div class="step-num">1</div><div class="step-text">'근(해)이 k'라는 말 = 'x 자리에 k 넣으면 식 전체 = 0'</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">x 자리에 k를 넣은 식 = 0 으로 놓기</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">남은 모르는 글자 풀기</div></div>
@@ -1059,7 +1059,7 @@ const UNITS = [
   },
   {
     id:9, title:"연립일차부등식", sub:"공통 범위 찾기",
-    concept:`<div class="formula-box">두 부등식을 따로 풀고 → <b>겹치는 범위</b> 찾기</div>
+    concept:`<div class="formula-box" style="text-align:left">x &gt; 1 이고 x &lt; 5 → 공통: <b>1 &lt; x &lt; 5</b> (자연수: 2, 3, 4)<br>x &gt; 2 이고 x &lt; 6 → 공통: <b>2 &lt; x &lt; 6</b> (자연수: 3, 4, 5)<br>x ≥ 3 이고 x &lt; 7 → 공통: <b>3 ≤ x &lt; 7</b> (자연수: 3, 4, 5, 6)<br><div style="margin-top:8px;padding-top:8px;border-top:1.5px dashed rgba(37,99,235,.25);font-size:12px;text-align:center;color:#475569">규칙: 두 부등식 따로 풀기 → 겹치는 범위만 정답</div></div>
 <div class="step-row"><div class="step-num">1</div><div class="step-text">첫 번째 부등식 풀어 x 범위 구하기</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">두 번째 부등식 풀어 x 범위 구하기</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">두 범위를 <b>수직선</b>(숫자 직선)에 그려 겹치는 부분 찾기</div></div>
@@ -1107,7 +1107,7 @@ const UNITS = [
   },
   {
     id:10, title:"선분의 내분점", sub:"내분점 공식",
-    concept:`<div class="formula-box">두 점 A(x₁, y₁), B(x₂, y₂) 사이를 m : n 으로 나누는 점<br>x = (m × Bx + n × Ax) ÷ (m+n) (y도 같은 방식)</div>
+    concept:`<div class="formula-box" style="text-align:left">A(<b>1</b>, 2), B(<b>7</b>, 8) 을 <b>1:2</b>로 나누는 점<br>x: (1×<b>7</b> + 2×<b>1</b>) ÷ 3 = 9÷3 = <b>3</b><br>y: (1×<b>8</b> + 2×<b>2</b>) ÷ 3 = 12÷3 = <b>4</b><br><br>A(<b>0</b>, 0), B(<b>6</b>, 4) 을 <b>1:1</b>로 나누는 점 (중점)<br>x: (1×6+1×0)÷2 = <b>3</b>, y: (1×4+1×0)÷2 = <b>2</b><br><div style="margin-top:8px;padding-top:8px;border-top:1.5px dashed rgba(37,99,235,.25);font-size:12px;text-align:center;color:#475569">규칙: x = (m×Bx + n×Ax) ÷ (m+n) &nbsp;(m은 B에, n은 A에 곱하기)</div></div>
 <div class="step-row"><div class="step-num">1</div><div class="step-text">m : n 비율 확인 — <b>m은 B 점에, n은 A 점에</b> 짝짓기 (X자로 곱하기)</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">x 좌표: (m × B의 x) + (n × A의 x), 그걸 (m+n)으로 나누기</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">y 좌표도 똑같은 방식으로 계산</div></div>
@@ -1150,7 +1150,7 @@ const UNITS = [
   },
   {
     id:11, title:"점과 직선 사이의 거리", sub:"거리 공식",
-    concept:`<div class="formula-box">점(x₀, y₀)에서 직선 ax + by + c = 0 까지의 거리<br>d = |ax₀ + by₀ + c| ÷ √(a² + b²)</div>
+    concept:`<div class="formula-box" style="text-align:left">원점(0,0)에서 3x+4y−15=0 까지<br>위: |3×<b>0</b>+4×<b>0</b>−15| = 15<br>아래: √(3²+4²) = √25 = 5 &nbsp;→&nbsp; 거리 = 15÷5 = <b>3</b><br><br>원점(0,0)에서 5x+12y−26=0 까지<br>위: |−26| = 26 &nbsp; 아래: √(25+144) = √169 = 13 &nbsp;→&nbsp; 거리 = <b>2</b><br><div style="margin-top:8px;padding-top:8px;border-top:1.5px dashed rgba(37,99,235,.25);font-size:12px;text-align:center;color:#475569">규칙: |점 좌표 대입한 값| ÷ √(x계수²+y계수²)</div></div>
 <div class="step-row"><div class="step-num">1</div><div class="step-text">직선식을 ax + by + c = 0 모양으로 정리하고 a, b, c 찾기</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">위(분자): 점의 좌표를 식에 넣은 결과의 절댓값 | |</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">아래(분모): √(a² + b²) 계산 후 위 ÷ 아래</div></div>
@@ -1203,7 +1203,7 @@ const UNITS = [
   },
   {
     id:12, title:"원과 직선의 위치 관계", sub:"접할 조건",
-    concept:`<div class="formula-box">원의 가운데에서 직선까지 거리 = 반지름 → <b>딱 한 점에서 만남</b></div>
+    concept:`<div class="formula-box" style="text-align:left">원 x²+y²=9, 직선 y=<b>3</b> &nbsp;→&nbsp; 반지름 √9=3, |3|=3 → 같음 → <b>접함</b><br>원 x²+y²=25, 직선 y=<b>5</b> &nbsp;→&nbsp; 반지름 √25=5, |5|=5 → <b>접함</b><br>원 x²+y²=16, 직선 y=<b>3</b> &nbsp;→&nbsp; 반지름 4, |3|=3 → 4≠3 → <b>두 점 만남</b><br><div style="margin-top:8px;padding-top:8px;border-top:1.5px dashed rgba(37,99,235,.25);font-size:12px;text-align:center;color:#475569">규칙: 원점~직선 거리 = 반지름이면 접함(딱 한 점)</div></div>
 <div class="step-row"><div class="step-num">1</div><div class="step-text">원 x² + y² = r² 에서 반지름 r = √(우변)</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">직선이 y = k 모양이면 원점에서 직선까지 거리 = <b>|k|</b></div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">|k| = r 로 놓고 k 값 구하기 (자연수 조건이면 양수만)</div></div>
@@ -1230,7 +1230,7 @@ const UNITS = [
   },
   {
     id:13, title:"도형의 대칭이동", sub:"원점 대칭",
-    concept:`<div class="formula-box">x축 대칭: (a, b) → (a, −b) &nbsp; y축 대칭: (a, b) → (−a, b)<br>원점 대칭: (a, b) → (−a, −b) &nbsp; y = x 대칭: (a, b) → (b, a)</div>
+    concept:`<div class="formula-box" style="text-align:left">(3, −4) 를 각각 대칭이동하면:<br>x축 대칭 → (<b>3</b>, <b>4</b>) &nbsp; y축 대칭 → (<b>−3</b>, <b>−4</b>)<br>원점 대칭 → (<b>−3</b>, <b>4</b>) &nbsp; y=x 대칭 → (<b>−4</b>, <b>3</b>)<br><br>(2, 5) 를 각각 대칭이동하면:<br>x축 → (<b>2</b>, <b>−5</b>) &nbsp; y축 → (<b>−2</b>, <b>5</b>) &nbsp; 원점 → (<b>−2</b>, <b>−5</b>)<br><div style="margin-top:8px;padding-top:8px;border-top:1.5px dashed rgba(37,99,235,.25);font-size:12px;text-align:center;color:#475569">x축=y 부호반대 / y축=x 부호반대 / 원점=둘다반대 / y=x=자리바꿈</div></div>
 <div class="step-row"><div class="step-num">1</div><div class="step-text">x축 대칭 → <b>x는 건드리지 않고, y 부호만</b> 반대로 (위아래 뒤집기)</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">y축 대칭 → <b>y는 건드리지 않고, x 부호만</b> 반대로 (좌우 뒤집기)</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">원점 대칭 → <b>x, y 둘 다</b> 부호 반대 &nbsp;|&nbsp; y = x 대칭 → <b>x와 y 자리를 서로 바꿈</b></div></div>
@@ -1257,7 +1257,7 @@ const UNITS = [
   },
   {
     id:14, title:"집합의 연산", sub:"교집합 A∩B",
-    concept:`<div class="formula-box">A ∩ B: 두 집합 <b>모두</b>에 들어 있는 것<br>A ∪ B: 두 집합 중 <b>한 쪽이라도</b> 들어 있는 것</div>
+    concept:`<div class="formula-box" style="text-align:left">A={1,2,3,4}, B={3,4,5,6}<br>A∩B (둘 다 있는 것) = <b>{3, 4}</b><br>A∪B (한쪽이라도 있는 것) = <b>{1, 2, 3, 4, 5, 6}</b><br><br>A={2,4,6}, B={4,6,8}<br>A∩B = <b>{4, 6}</b> &nbsp; A∪B = <b>{2, 4, 6, 8}</b><br><div style="margin-top:8px;padding-top:8px;border-top:1.5px dashed rgba(37,99,235,.25);font-size:12px;text-align:center;color:#475569">∩ = 겹치는 것만 / ∪ = 전부 합치기</div></div>
 <div class="step-row"><div class="step-num">1</div><div class="step-text">A 안의 것과 B 안의 것을 따로 나열</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">A에도 있고 B에도 있는 것만 골라내기</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">{ } 안에 쓰기, n( ) 은 개수</div></div>
@@ -1305,7 +1305,7 @@ const UNITS = [
   },
   {
     id:15, title:"명제의 필요충분조건", sub:"진리집합이 같아야",
-    concept:`<div class="formula-box">p ↔ q (필요충분) → 두 조건을 만족하는 x 값이 <b>완전히 같음</b></div>
+    concept:`<div class="formula-box" style="text-align:left">p: x = 5, &nbsp; q: x − 5 = 0<br>q 풀면: x = 5 &nbsp;→&nbsp; p와 완전히 같음 &nbsp;→&nbsp; <b>필요충분조건</b><br><br>p: x = 3, &nbsp; q: 2x − a = 0<br>q 풀면: x = a/2 = 3 &nbsp;→&nbsp; a = <b>6</b><br><div style="margin-top:8px;padding-top:8px;border-top:1.5px dashed rgba(37,99,235,.25);font-size:12px;text-align:center;color:#475569">규칙: q를 'x=?' 꼴로 풀어 p의 값과 같게 만들기</div></div>
 <div class="step-row"><div class="step-num">1</div><div class="step-text">'필요충분조건' = 두 조건이 정확히 같은 x를 가져야 함</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">q를 풀어 'x = ___' 모양으로 만들기</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">p의 x 값과 같아지도록 모르는 글자 결정</div></div>
@@ -1332,7 +1332,7 @@ const UNITS = [
   },
   {
     id:16, title:"역함수의 값", sub:"f(a)=b ↔ f⁻¹(b)=a",
-    concept:`<div class="formula-box">f(a) = b 이면 → f⁻¹(b) = a<br>(입력과 출력을 거꾸로 뒤집은 것)</div>
+    concept:`<div class="formula-box" style="text-align:left">f(<b>3</b>) = <b>7</b> &nbsp;→&nbsp; f⁻¹(<b>7</b>) = <b>3</b> &nbsp;(3 넣으면 7 나옴 → 7 나오려면 3 넣음)<br>f(<b>5</b>) = <b>10</b> &nbsp;→&nbsp; f⁻¹(<b>10</b>) = <b>5</b><br>f(<b>2</b>) = <b>4</b> &nbsp;→&nbsp; f⁻¹(<b>4</b>) = <b>2</b><br><div style="margin-top:8px;padding-top:8px;border-top:1.5px dashed rgba(37,99,235,.25);font-size:12px;text-align:center;color:#475569">규칙: f⁻¹(k) = ? &nbsp;→&nbsp; "k가 나오려면 뭘 넣어야 해?"</div></div>
 <div class="step-row"><div class="step-num">1</div><div class="step-text">f⁻¹(k) 구하기 → <b>"k가 나오려면 뭘 넣어야 해?"</b> = f(?) = k 인 ?를 찾기</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">표나 식에서 결과(오른쪽)가 k 인 것의 입력값(왼쪽)을 읽기</div></div>
 <div class="example-block"><div class="ex-label">예시</div>f(3) = 7 일 때 f⁻¹(7) 의 값<br>f(?) = 7 인 ? 찾기<br>주어진 조건: f(<b>3</b>) = 7<br><span class="arrow">→</span> f⁻¹(7) = <b>3</b></div>
@@ -1379,7 +1379,7 @@ const UNITS = [
   },
   {
     id:17, title:"유리함수의 점근선", sub:"수평·수직 점근선",
-    concept:`<div class="formula-box">y = k / (x − a) + b 모양일 때<br>세로선: x = a &nbsp;&nbsp; 가로선: y = b</div>
+    concept:`<div class="formula-box" style="text-align:left">y = 3/(x − <b>2</b>) + <b>4</b> &nbsp;→&nbsp; 세로선: x = <b>2</b>, 가로선: y = <b>4</b><br>y = 1/(x + <b>3</b>) − <b>1</b> &nbsp;→&nbsp; 세로선: x = <b>−3</b>, 가로선: y = <b>−1</b><br>y = 5/(x − <b>1</b>) + <b>7</b> &nbsp;→&nbsp; 세로선: x = <b>1</b>, 가로선: y = <b>7</b><br><div style="margin-top:8px;padding-top:8px;border-top:1.5px dashed rgba(37,99,235,.25);font-size:12px;text-align:center;color:#475569">규칙: 분모=0 만드는 x → 세로선 &nbsp;·&nbsp; 맨 뒤 ±숫자 → 가로선</div></div>
 <div class="step-row"><div class="step-num">1</div><div class="step-text">분수의 <b>아래 부분을 0으로 만드는 x</b> → 세로선</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">맨 끝의 + b 부분 → 가로선 y = b</div></div>
 <div class="example-block"><div class="ex-label">예시</div>y = 3 / (x − 2) + 4 의 점근선<br>분수의 아래 (x − 2) = 0 → x = 2 → <b>세로선: x = 2</b><br>맨 끝 +4 → <b>가로선: y = 4</b></div>
@@ -1405,7 +1405,7 @@ const UNITS = [
   },
   {
     id:18, title:"순열", sub:"순서 있는 배열 nPr",
-    concept:`<div class="formula-box">ₙPᵣ = n × (n−1) × (n−2) × … <b>(r 개 곱하기)</b></div>
+    concept:`<div class="formula-box" style="text-align:left">5명 중 2명을 순서있게 → ₅P₂ = 5 × 4 = <b>20</b><br>4명 중 3명을 순서있게 → ₄P₃ = 4 × 3 × 2 = <b>24</b><br>6명 중 2명을 순서있게 → ₆P₂ = 6 × 5 = <b>30</b><br><div style="margin-top:8px;padding-top:8px;border-top:1.5px dashed rgba(37,99,235,.25);font-size:12px;text-align:center;color:#475569">규칙: n부터 1씩 줄여가며 r개만 곱하기</div></div>
 <div class="step-row"><div class="step-num">1</div><div class="step-text">'순서대로 줄 세우기', '자리 정하기' 키워드 → 순열</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">자리마다 빈칸 채우기: 1번 자리 □ × 2번 자리 □ × … (r 개 칸)</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">첫 칸 = n, 다음 칸 = n−1, … 이렇게 1씩 줄여서 <b>r 개만</b> 곱하기</div></div>
@@ -1432,7 +1432,7 @@ const UNITS = [
   },
   {
     id:19, title:"조합", sub:"순서 없는 선택 nCr",
-    concept:`<div class="formula-box">ₙCᵣ = ₙPᵣ ÷ r! &nbsp;(순열에서 순서 중복을 제거)</div>
+    concept:`<div class="formula-box" style="text-align:left">5명 중 2명을 순서없이 → ₅C₂ = (5×4)÷(2×1) = <b>10</b><br>6명 중 3명을 순서없이 → ₆C₃ = (6×5×4)÷(3×2×1) = <b>20</b><br>4명 중 2명을 순서없이 → ₄C₂ = (4×3)÷(2×1) = <b>6</b><br><div style="margin-top:8px;padding-top:8px;border-top:1.5px dashed rgba(37,99,235,.25);font-size:12px;text-align:center;color:#475569">규칙: 순열처럼 r개 곱한 뒤 ÷ r! (순서 중복 제거)</div></div>
 <div class="step-row"><div class="step-num">1</div><div class="step-text">'순서 없이 뽑기·고르기·선택' 키워드 → 조합</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">위(분자): 순열처럼 n 부터 r 개 곱하기</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">아래(분모): r! 로 나누기 — 같은 r명을 줄 세우는 r! 가지 중복을 제거</div></div>
