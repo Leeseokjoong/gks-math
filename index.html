@@ -525,6 +525,36 @@ header h1{font-size:18px;flex:1}
 .p0-err-bad{background:#fff0f0;border:1.5px solid #fca5a5}
 .p0-err-title{font-size:11.5px;font-weight:800;margin-bottom:3px;color:#dc2626}
 .p0-err-body{font-size:12px;font-weight:600;color:#334155;line-height:1.6}
+/* ── 세제곱(id:3) 슬라이드 전용 ── */
+.c3-s{display:flex;flex-direction:column;justify-content:center;height:100%}
+.c3-tag{font-size:11px;font-weight:800;color:#8b5cf6;letter-spacing:.06em;margin-bottom:6px}
+.c3-h{font-size:17px;font-weight:800;color:#1e1b4b;line-height:1.3;margin-bottom:8px}
+.c3-desc{font-size:13.5px;color:#334155;line-height:1.65;margin-bottom:10px}
+.c3-cube-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}
+.c3-cube-card{background:#f5f3ff;border:1.5px solid #c4b5fd;border-radius:10px;padding:9px 4px;text-align:center}
+.c3-cube-num{font-size:20px;font-weight:900;color:#6d28d9}
+.c3-cube-eq{font-size:11px;font-weight:700;color:#7c3aed;margin-top:3px}
+.c3-formula{background:#f5f3ff;border:2px solid #c4b5fd;border-radius:14px;padding:13px 14px;margin-top:8px}
+.c3-formula-row{font-size:13px;font-weight:700;color:#1e1b4b;line-height:2.2;text-align:center}
+.c3-sign-rule{display:flex;gap:7px;margin-top:10px}
+.c3-sign-ok{flex:1;background:#eff6ff;border:1.5px solid #93c5fd;color:#1d4ed8;border-radius:8px;padding:6px 8px;font-size:11.5px;font-weight:800;text-align:center}
+.c3-sign-flip{flex:1;background:#fff0f3;border:1.5px solid #fda4af;color:#be123c;border-radius:8px;padding:6px 8px;font-size:11.5px;font-weight:800;text-align:center}
+.c3-step-box{background:#fafafa;border:1.5px solid #e2e8f0;border-radius:12px;padding:11px 13px;margin-top:8px}
+.c3-step-line{font-size:13px;font-weight:700;color:#334155;line-height:1.9;text-align:center}
+.c3-arrow-line{text-align:center;font-size:12px;color:#94a3b8;margin:1px 0}
+.c3-hl-a{color:#1d4ed8;font-weight:900}
+.c3-hl-b{color:#be123c;font-weight:900}
+.c3-expand-btn{width:100%;background:#f5f3ff;border:2px solid #c4b5fd;border-radius:10px;color:#6d28d9;font-size:13px;font-weight:800;padding:9px 14px;cursor:pointer;text-align:center;transition:.18s;margin-top:6px}
+.c3-expand-btn:hover{background:#ede9fe}
+.c3-expand-body{max-height:0;overflow:hidden;transition:max-height .4s ease,opacity .35s ease;opacity:0;margin-top:6px}
+.c3-expand-body.show{max-height:200px;opacity:1}
+.c3-expand-line{font-size:12px;color:#334155;font-weight:600;line-height:2;text-align:center}
+.c3-cancel{color:#dc2626;text-decoration:line-through;font-weight:800}
+.c3-result-line{font-size:14px;font-weight:900;color:#166534;background:#f0fdf4;border:1.5px solid #86efac;border-radius:8px;padding:7px;text-align:center;margin-top:6px}
+.c3-err-list{display:flex;flex-direction:column;gap:7px;margin-top:8px}
+.c3-err{border-radius:9px;padding:9px 12px;background:#fff0f0;border:1.5px solid #fca5a5}
+.c3-err-title{font-size:11.5px;font-weight:800;color:#dc2626;margin-bottom:3px}
+.c3-err-body{font-size:12px;font-weight:600;color:#334155;line-height:1.6}
 .cs-nav-row{display:flex;align-items:center;gap:8px;margin-top:14px}
 .cs-arrow{width:36px;height:36px;border-radius:50%;border:1.5px solid #e2e8f0;background:white;font-size:17px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:.18s;color:#64748b;padding:0}
 .cs-arrow:hover:not(:disabled){border-color:var(--cn-primary);color:var(--cn-primary);background:#eff6ff}
@@ -960,27 +990,72 @@ const UNITS = [
   },
   {
     id:3, title:"인수분해 공식", sub:"세제곱 합·차 공식",
-    concept:`<div class="tip-box">세제곱 암기: <b>8 = 2³, 27 = 3³, 64 = 4³, 125 = 5³</b> — 이 네 개만 알면 문제 99% 해결!</div>
-<div class="formula-box" style="text-align:left">x³−8 = x³−<b>2³</b> → (x−<b>2</b>)(x²+2x+4)<br>x³+27 = x³+<b>3³</b> → (x+<b>3</b>)(x²−3x+9)<br>x³−64 = x³−<b>4³</b> → (x−<b>4</b>)(x²+4x+16)<br><div style="margin-top:8px;padding-top:8px;border-top:1.5px dashed rgba(37,99,235,.25);font-size:11px;text-align:center;color:#475569">공식: a³±b³ = (a±b)(a²∓ab+b²)</div></div>
-<div class="step-row"><div class="step-num">1</div><div class="step-text">세제곱 안의 수 찾기 — 8 = 2³, 27 = 3³ 처럼 (예: x³−8 → a=x, b=2)</div></div>
-<div class="step-row"><div class="step-num">2</div><div class="step-text">앞 괄호: 식의 <b>원래 부호 그대로</b> (+이면 +, −이면 −)</div></div>
-<div class="step-row"><div class="step-num">3</div><div class="step-text">뒤 괄호: 가운데 부호만 <b>반대로</b> 쓰기</div></div>
-<div class="cube-demo" id="cubeDemo3">
-  <div style="font-size:11px;font-weight:800;color:#94a3b8;letter-spacing:.08em;margin-bottom:10px">x³ − 8 = x³ − 2³ 에서 a, b를 읽기 👇</div>
-  <div class="cd-identify">
-    <div class="cd-ab"><div class="cd-ab-lbl">a =</div><div class="cd-ab-tile cd-tile-a">x</div></div>
-    <div class="cd-ab"><div class="cd-ab-lbl">b =</div><div class="cd-ab-tile cd-tile-b">2</div></div>
-    <div class="cd-sign-badge">원래 부호: −</div>
+    concept:`<div class="c3-s">
+  <div class="c3-tag">1 / 5 · 도입</div>
+  <div class="c3-h">세제곱 = 거대한 큐브를 조각내기</div>
+  <div class="c3-desc">x³−8 에서 8=2³, 즉 x³−2³ — 세제곱끼리의 싸움이에요.</div>
+  <div style="text-align:center;font-size:13px;font-weight:700;color:#64748b;margin-bottom:6px">자주 나오는 세제곱 네 개 암기!</div>
+  <div class="c3-cube-cards">
+    <div class="c3-cube-card"><div class="c3-cube-num">8</div><div class="c3-cube-eq">= 2³</div></div>
+    <div class="c3-cube-card"><div class="c3-cube-num">27</div><div class="c3-cube-eq">= 3³</div></div>
+    <div class="c3-cube-card"><div class="c3-cube-num">64</div><div class="c3-cube-eq">= 4³</div></div>
+    <div class="c3-cube-card"><div class="c3-cube-num">125</div><div class="c3-cube-eq">= 5³</div></div>
   </div>
-  <button class="cd-btn" id="cdBtn3" onclick="runCubeDemo3()">공식 적용하기 →</button>
-  <div id="cdBrackets3" style="display:none" class="cd-brackets">
-    <div class="cd-br cd-front-br" id="cdFront3">앞 괄호: (x <span class="cd-sign-ok">−</span> 2) &nbsp;← 원래 부호 그대로</div>
-    <div class="cd-br cd-back-br" id="cdBack3">뒤 괄호: (x² <span class="cd-sign-flip">+</span> 2x + 4) &nbsp;← 가운데 부호 반대!</div>
-    <div class="cd-result" id="cdResult3">→ <b>(x − 2)(x² + 2x + 4)</b></div>
+  <div class="id1-why" style="margin-top:12px">이 네 개만 외우면 검정고시 문제 거의 다 풀려요!</div>
+</div>
+<div class="c3-s">
+  <div class="c3-tag">2 / 5 · 핵심 공식</div>
+  <div class="c3-h">공식 — 한 줄로 기억</div>
+  <div class="c3-formula">
+    <div class="c3-formula-row">a³ − b³ = (a <span class="c3-hl-b">−</span> b)(a² <span class="c3-hl-a">+</span> ab + b²)</div>
+    <div class="c3-formula-row">a³ + b³ = (a <span class="c3-hl-a">+</span> b)(a² <span class="c3-hl-b">−</span> ab + b²)</div>
+  </div>
+  <div class="c3-sign-rule">
+    <div class="c3-sign-ok">앞 괄호<br>원래 부호 그대로</div>
+    <div class="c3-sign-flip">뒤 가운데<br>반대 부호!</div>
+  </div>
+  <div class="id1-why" style="margin-top:10px">"앞은 그대로, 뒤 가운데는 반대로!" — 이 한 줄이 핵심이에요.</div>
+</div>
+<div class="c3-s">
+  <div class="c3-tag">3 / 5 · 예시 풀이</div>
+  <div class="c3-h">x³−8 과 x³+27 풀기</div>
+  <div class="c3-step-box">
+    <div class="c3-step-line">x³ − 8 = x³ − <span class="c3-hl-b">2³</span></div>
+    <div class="c3-arrow-line">↓ (a=x, b=2)</div>
+    <div class="c3-step-line">(x <span class="c3-hl-b">−</span> 2)(x² <span class="c3-hl-a">+</span> 2x + 4)</div>
+  </div>
+  <div class="c3-step-box" style="margin-top:8px">
+    <div class="c3-step-line">x³ + 27 = x³ + <span class="c3-hl-b">3³</span></div>
+    <div class="c3-arrow-line">↓ (a=x, b=3)</div>
+    <div class="c3-step-line">(x <span class="c3-hl-a">+</span> 3)(x² <span class="c3-hl-b">−</span> 3x + 9)</div>
+  </div>
+  <div class="c3-sign-rule" style="margin-top:10px">
+    <div class="c3-sign-ok">앞: 부호 그대로</div>
+    <div class="c3-sign-flip">뒤 가운데: 반대!</div>
   </div>
 </div>
-<div class="tip-box">곱하기 형태로 쪼개는 걸 <b>인수분해</b>라고 해요. 앞 괄호는 그대로, 뒤 괄호 가운데 부호는 반대! 헷갈리면 공식을 통째로 외우세요.</div>
-<button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">뒤 괄호의 가운데 부호가 반대인 이유는 직접 곱해보면 알 수 있어요. (a + b)(a² − ab + b²) 를 곱하면 <b>a³ − a²b + ab² + a²b − ab² + b³</b> 가 되는데, 가운데 −a²b 와 +a²b 가 서로 지워지고, +ab² 와 −ab² 도 지워져서 결국 <b>a³ + b³</b> 만 깔끔히 남아요. 가운데 부호가 반대여야만 이렇게 지워지기 때문에, 이 부호가 공식의 핵심인 거예요.</div>`,
+<div class="c3-s">
+  <div class="c3-tag">4 / 5 · 왜 부호가 반대일까?</div>
+  <div class="c3-h">전개하면 중간항이 사라져요</div>
+  <div class="c3-desc" style="margin-bottom:4px">(x−2)(x²<b>+</b>2x+4) 전개해보기 👇</div>
+  <button class="c3-expand-btn" id="c3ExpBtn" onclick="c3ShowExpand()">전개 과정 보기 →</button>
+  <div class="c3-expand-body" id="c3ExpBody">
+    <div class="c3-expand-line">= x·x² + x·2x + x·4 − 2·x² − 2·2x − 2·4</div>
+    <div class="c3-expand-line">= x³ + <span class="c3-cancel">+2x²</span> + 4x <span class="c3-cancel">−2x²</span> − 4x − 8</div>
+    <div class="c3-expand-line" style="font-size:11px;color:#94a3b8">↑ 같은 항끼리 충돌 → 상쇄!</div>
+    <div class="c3-result-line">= x³ − 8 ✓</div>
+  </div>
+  <div class="id1-why" style="margin-top:10px">+ 와 − 가 충돌해 지워지려면 → 뒤 가운데가 반대 부호여야 해요.</div>
+</div>
+<div class="c3-s">
+  <div class="c3-tag">5 / 5 · 실수 주의</div>
+  <div class="c3-h">자주 틀리는 3가지</div>
+  <div class="c3-err-list">
+    <div class="c3-err"><div class="c3-err-title">❌ 실수 1 — 세제곱 수를 못 찾기</div><div class="c3-err-body">8, 27, 64, 125 → 반드시 외우기!</div></div>
+    <div class="c3-err"><div class="c3-err-title">❌ 실수 2 — 뒤 가운데 부호를 그대로 쓰기</div><div class="c3-err-body">(x−2)(x²<b>−</b>2x+4) → 틀림!<br>뒤 가운데는 반드시 반대 부호</div></div>
+    <div class="c3-err"><div class="c3-err-title">❌ 실수 3 — 마지막 항을 제곱 안 하기</div><div class="c3-err-body">b=2 → 마지막 b²=<b>4</b>, b=3 → b²=<b>9</b></div></div>
+  </div>
+</div>`,
     practice:[
       {q:"x³ + 2³ = (x + a)(x² − 2x + 4) 일 때, 상수 a의 값은?",
        c:["1","2","3","4"],a:1,
@@ -1888,6 +1963,15 @@ function runCubeDemo3() {
   ['cdFront3','cdBack3','cdResult3'].forEach((id, i) => {
     setTimeout(() => document.getElementById(id).classList.add('show'), i * 420);
   });
+}
+
+// ── 세제곱 전개 상쇄 인터랙션 (Unit 3 슬라이드 4) ──
+function c3ShowExpand() {
+  const btn = document.getElementById('c3ExpBtn');
+  const body = document.getElementById('c3ExpBody');
+  if (!btn || !body) return;
+  btn.style.display = 'none';
+  body.classList.add('show');
 }
 
 // ── 켤레복소수 (Unit 4) ──
