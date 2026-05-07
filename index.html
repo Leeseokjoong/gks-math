@@ -460,6 +460,28 @@ header h1{font-size:18px;flex:1}
 .cs-slide .tip-box{font-size:14px!important;padding:14px 16px!important;line-height:1.7}
 .cs-slide .why-btn{font-size:13.5px!important}
 .cs-slide .why-box{font-size:14px!important;line-height:1.75;display:block!important}
+/* ── 항등식(id:1) 슬라이드 전용 ── */
+.id1-s{display:flex;flex-direction:column;justify-content:center;height:100%}
+.id1-tag{font-size:11px;font-weight:800;color:#7c3aed;letter-spacing:.06em;margin-bottom:6px}
+.id1-h{font-size:17px;font-weight:800;color:#1e1b4b;line-height:1.3;margin-bottom:8px}
+.id1-desc{font-size:13.5px;color:#334155;line-height:1.65;margin-bottom:10px}
+.id1-eqbox{background:#eff6ff;border:1.5px solid #93c5fd;border-radius:12px;padding:14px 16px;text-align:center;font-size:14px;font-weight:700;color:#1e40af;line-height:1.9}
+.id1-badge{font-size:12px;font-weight:700;color:#7c3aed;background:#ede9fe;padding:3px 12px;border-radius:999px;display:inline-block;margin-top:8px}
+.id1-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:8px}
+.id1-col{border-radius:10px;padding:10px 4px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:3px}
+.id1-cl{font-size:10px;font-weight:800;letter-spacing:.04em;margin-bottom:4px}
+.id1-cv{font-size:22px;font-weight:900;line-height:1}
+.id1-ca{font-size:13px;color:#94a3b8}
+.id1-ceq{font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;margin-top:2px}
+.id1-sq{background:#fff0f3}.id1-sq .id1-cl,.id1-sq .id1-cv{color:#be123c}.id1-sq .id1-ceq{background:#ffe4e6;color:#be123c}
+.id1-xc{background:#eff6ff}.id1-xc .id1-cl,.id1-xc .id1-cv{color:#1d4ed8}.id1-xc .id1-ceq{background:#dbeafe;color:#1d4ed8}
+.id1-nc{background:#f0fdf4}.id1-nc .id1-cl,.id1-nc .id1-cv{color:#15803d}.id1-nc .id1-ceq{background:#dcfce7;color:#15803d}
+.id1-concl{text-align:center;font-size:14px;font-weight:700;color:#1e1b4b;margin-top:10px;padding:9px;background:#f8faff;border-radius:8px;border:1.5px solid #e2e8f0}
+.id1-vs{display:flex;flex-direction:column;gap:8px}
+.id1-vs-row{border-radius:10px;padding:10px 12px;font-size:13px;font-weight:700;line-height:1.7}
+.id1-bad{background:#fff0f0;border:1.5px solid #fca5a5;color:#991b1b}
+.id1-good{background:#f0fdf4;border:1.5px solid #86efac;color:#166534}
+.id1-why{font-size:12.5px;color:#334155;line-height:1.65;margin-top:8px;padding:8px 12px;background:#f8faff;border-radius:8px}
 .cs-nav-row{display:flex;align-items:center;gap:8px;margin-top:14px}
 .cs-arrow{width:36px;height:36px;border-radius:50%;border:1.5px solid #e2e8f0;background:white;font-size:17px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:.18s;color:#64748b;padding:0}
 .cs-arrow:hover:not(:disabled){border-color:var(--cn-primary);color:var(--cn-primary);background:#eff6ff}
@@ -727,34 +749,57 @@ const UNITS = [
   },
   {
     id:1, title:"항등식의 성질", sub:"미정계수 구하기",
-    concept:`<div class="tip-box">핵심 용어: <b>항</b> = 숫자나 문자의 곱 덩어리 (3x², 2x, 5 각각이 항), <b>계수</b> = 항에서 문자 앞 숫자 (3x²의 계수 = 3), <b>차수</b> = 문자의 지수 (3x²의 차수 = 2)</div>
-<div class="formula-box" style="text-align:left"><b>2</b>x²+<b>5</b>x+<b>3</b> = <b>a</b>x²+<b>b</b>x+<b>c</b><br>→ x²:a=2, x:b=5, 숫자:c=3<br><br><b>4</b>x²+<b>0</b>x+<b>7</b> = <b>a</b>x²+<b>b</b>x+<b>c</b><br>→ a=4, b=0, c=7<br><div style="margin-top:8px;padding-top:8px;border-top:1.5px dashed rgba(37,99,235,.25);font-size:11px;text-align:center;color:#475569">규칙: 같은 차수 계수끼리 같다</div></div>
-<div class="step-row"><div class="step-num">1</div><div class="step-text">왼쪽과 오른쪽에서 x² 앞 숫자, x 앞 숫자, 그냥 숫자를 각각 찾기</div></div>
-<div class="step-row"><div class="step-num">2</div><div class="step-text">같은 자리끼리 <b>=</b>로 묶어 작은 식 만들기</div></div>
-<div class="step-row"><div class="step-num">3</div><div class="step-text">그 식들을 풀어 모르는 글자 값 구하기</div></div>
-<div class="ident-demo" id="identDemo1">
-  <div class="id-exlbl">버튼을 눌러 같은 자리끼리 맞춰보세요 👇</div>
-  <div class="id-exprs">
-    <div class="id-side">
-      <div class="id-side-lbl">왼쪽</div>
-      <div class="id-row"><span class="id-t id-t-x2">2x²</span><span class="id-op">+</span><span class="id-t id-t-x">ax</span><span class="id-op">+</span><span class="id-t id-t-c">3</span></div>
-    </div>
-    <div class="id-eq-sign">=</div>
-    <div class="id-side">
-      <div class="id-side-lbl">오른쪽</div>
-      <div class="id-row"><span class="id-t id-t-x2">bx²</span><span class="id-op">+</span><span class="id-t id-t-x">5x</span><span class="id-op">+</span><span class="id-t id-t-c">3</span></div>
-    </div>
-  </div>
-  <button class="id-btn" id="idBtn1" onclick="runIdentDemo1()">같은 자리끼리 맞추기 →</button>
-  <div class="id-matches" id="idMatches1" style="display:none">
-    <div class="id-match id-match-x2"><span class="id-match-lbl">🔴 x² 자리</span><span class="id-match-eq">2 = b &nbsp;→&nbsp; <b>b = 2</b></span></div>
-    <div class="id-match id-match-x"><span class="id-match-lbl">🔵 x 자리</span><span class="id-match-eq">a = 5 &nbsp;→&nbsp; <b>a = 5</b></span></div>
-    <div class="id-match id-match-c"><span class="id-match-lbl">🟢 숫자 자리</span><span class="id-match-eq">3 = 3 &nbsp;✓</span></div>
-  </div>
-  <div class="id-final" id="idFinal1"><span class="arrow">→</span> a + b = <b>7</b></div>
+    concept:`<div class="id1-s">
+  <div class="id1-tag">1 / 5 · 도입</div>
+  <div class="id1-h">항등식이란?</div>
+  <div class="id1-desc"><b>항등식</b>은 x에 어떤 수를 넣어도 <b>항상 등호(=)가 성립</b>하는 식이에요.</div>
+  <div class="id1-eqbox">2x² + 5x + 3 = ax² + bx + c<br>← 이 등호가 <b>항상</b> 성립하려면?</div>
+  <div class="id1-badge">목표: a, b, c 값 구하기</div>
+  <div class="id1-why" style="margin-top:14px">시험에서 "모든 x에 대해", "항상 성립" 같은 말 → <b>항등식 문제</b>예요!</div>
 </div>
-<div class="tip-box">'어떤 x를 넣어도 성립하는 식'을 <b>항등식</b>이라고 해요. '모든 x에 대해' 또는 '항상'이라는 말이 있으면 항등식 → 자리별로 비교!</div>
-<button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">'어떤 x를 넣어도 성립'이라는 건 정말 강력한 조건이에요. <b>x = 0</b>을 넣으면 x², x 부분이 다 사라져서 숫자끼리만 비교되고, <b>x = 1</b>을 넣으면 또 다른 식이 나오죠. 이런 식으로 여러 x 값을 넣다 보면, 결국 x² 자리·x 자리·숫자 자리가 <b>각각</b> 같지 않으면 안 된다는 결론이 나와요. 그래서 자리별 비교 한 번이면 x를 일일이 넣어보지 않아도 답을 찾을 수 있는 거예요.</div>`,
+<div class="id1-s">
+  <div class="id1-tag">2 / 5 · 핵심 규칙</div>
+  <div class="id1-h">같은 칸끼리 맞추기</div>
+  <div class="id1-desc">항등식은 <b>x² 칸 · x 칸 · 숫자 칸</b>이 각각 같아야 해요.</div>
+  <div class="id1-cols">
+    <div class="id1-col id1-sq"><div class="id1-cl">x² 칸</div><div class="id1-cv">2</div><div class="id1-ca">=</div><div class="id1-cv">a</div><div class="id1-ceq">a = 2</div></div>
+    <div class="id1-col id1-xc"><div class="id1-cl">x 칸</div><div class="id1-cv">5</div><div class="id1-ca">=</div><div class="id1-cv">b</div><div class="id1-ceq">b = 5</div></div>
+    <div class="id1-col id1-nc"><div class="id1-cl">숫자 칸</div><div class="id1-cv">3</div><div class="id1-ca">=</div><div class="id1-cv">c</div><div class="id1-ceq">c = 3</div></div>
+  </div>
+  <div class="id1-concl">같은 차수 계수는 서로 같다!</div>
+</div>
+<div class="id1-s">
+  <div class="id1-tag">3 / 5 · 예시</div>
+  <div class="id1-h">실전 예시</div>
+  <div class="id1-eqbox">3x² + ax + 5 = bx² + 7x + c</div>
+  <div class="id1-cols" style="margin-top:12px">
+    <div class="id1-col id1-sq"><div class="id1-cl">x² 칸</div><div class="id1-cv">3</div><div class="id1-ca">=</div><div class="id1-cv">b</div><div class="id1-ceq">b = 3</div></div>
+    <div class="id1-col id1-xc"><div class="id1-cl">x 칸</div><div class="id1-cv">a</div><div class="id1-ca">=</div><div class="id1-cv">7</div><div class="id1-ceq">a = 7</div></div>
+    <div class="id1-col id1-nc"><div class="id1-cl">숫자 칸</div><div class="id1-cv">5</div><div class="id1-ca">=</div><div class="id1-cv">c</div><div class="id1-ceq">c = 5</div></div>
+  </div>
+  <div class="id1-concl">a + b + c = 7 + 3 + 5 = <b>15</b></div>
+</div>
+<div class="id1-s">
+  <div class="id1-tag">4 / 5 · 함정 주의</div>
+  <div class="id1-h">숨은 0 조심!</div>
+  <div class="id1-desc">x 항이 없어 보여도 사실 <b>0x</b>가 숨어 있어요.</div>
+  <div class="id1-eqbox">4x² + 7 = ax² + bx + c</div>
+  <div class="id1-cols" style="margin-top:12px">
+    <div class="id1-col id1-sq"><div class="id1-cl">x² 칸</div><div class="id1-cv">4</div><div class="id1-ceq">a = 4</div></div>
+    <div class="id1-col id1-xc"><div class="id1-cl">x 칸</div><div class="id1-cv" style="color:#dc2626">0</div><div class="id1-ceq" style="background:#fee2e2;color:#dc2626">b = 0 ⚠</div></div>
+    <div class="id1-col id1-nc"><div class="id1-cl">숫자 칸</div><div class="id1-cv">7</div><div class="id1-ceq">c = 7</div></div>
+  </div>
+  <div class="id1-why">x 항이 없으면 → b = 0 이에요. 이걸 빠뜨리면 틀려요!</div>
+</div>
+<div class="id1-s">
+  <div class="id1-tag">5 / 5 · 확인</div>
+  <div class="id1-h">항등식 vs 아닌 식</div>
+  <div class="id1-vs">
+    <div class="id1-vs-row id1-bad">❌ 항등식 아님: 2x² + 5x + 3 = 3x² + 5x + 3<br><span style="font-size:11px;font-weight:500">x=1 대입: 10 ≠ 11 (성립 안 함)</span></div>
+    <div class="id1-vs-row id1-good">✅ 항등식 맞음: 2x² + 5x + 3 = 2x² + 5x + 3<br><span style="font-size:11px;font-weight:500">어떤 x를 넣어도 항상 성립!</span></div>
+  </div>
+  <div class="id1-why" style="margin-top:10px">핵심: 각 칸의 계수가 <b>완전히</b> 같아야만 항등식이에요.</div>
+</div>`,
     practice:[
       {q:"2x² + ax + 3 = bx² + 5x + 3 이 항등식일 때, a + b의 값은?",
        c:["5","6","7","8"],a:2,
