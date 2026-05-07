@@ -171,6 +171,34 @@ header h1{font-size:18px;flex:1}
 .pd-final.show{opacity:1}
 .pd-final b{color:#1d4ed8}
 
+/* ── 항등식 인터랙티브 애니메이션 (Unit 1) ── */
+.ident-demo{background:#f8faff;border-radius:12px;padding:14px;margin:0}
+.id-exlbl{font-size:11px;font-weight:800;color:#94a3b8;letter-spacing:.08em;margin-bottom:10px}
+.id-row{display:flex;align-items:center;gap:6px;margin-bottom:8px;flex-wrap:wrap}
+.id-label{font-size:12px;font-weight:800;color:#64748b;min-width:44px}
+.id-op{font-size:15px;font-weight:700;color:#64748b;padding:0 2px}
+.id-t{display:inline-flex;align-items:center;justify-content:center;min-width:46px;height:40px;padding:0 8px;font-size:13px;font-weight:800;color:white;border-radius:8px;transition:transform .25s,box-shadow .25s;cursor:default}
+.id-t.id-t-x2{background:#dc2626}
+.id-t.id-t-x{background:#1d4ed8}
+.id-t.id-t-c{background:#15803d}
+.id-t.flash{transform:scale(1.35)!important;box-shadow:0 4px 12px rgba(0,0,0,.25)!important;z-index:5;position:relative}
+.id-btn{display:block;width:100%;padding:10px;margin-top:10px;background:#2563eb;color:white;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:.2s}
+.id-btn:hover{background:#1d4ed8}
+.id-matches{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.id-match{flex:1;min-width:80px;border-radius:10px;padding:10px 8px;text-align:center;opacity:0;transition:opacity .4s,transform .4s;transform:translateY(8px)}
+.id-match.show{opacity:1;transform:translateY(0)}
+.id-match-x2{background:#fee2e2;border:2px solid #dc2626}
+.id-match-x{background:#dbeafe;border:2px solid #1d4ed8}
+.id-match-c{background:#dcfce7;border:2px solid #15803d}
+.id-match-lbl{display:block;font-size:11px;font-weight:800;color:#475569;margin-bottom:5px}
+.id-match-eq{font-size:13px;font-weight:700;color:#1e293b}
+.id-match-x2 .id-match-eq b{color:#dc2626}
+.id-match-x .id-match-eq b{color:#1d4ed8}
+.id-match-c .id-match-eq{color:#15803d;font-weight:700}
+.id-final{text-align:center;font-size:15px;font-weight:700;color:#1e293b;opacity:0;transition:opacity .4s;margin-top:10px;padding:10px;background:white;border-radius:8px;border:2px solid #93c5fd}
+.id-final.show{opacity:1}
+.id-final b{color:#1d4ed8}
+
 /* ── 왜 그럴까 접기/펴기 ── */
 .why-wrap{margin:0}
 .why-btn{width:100%;background:none;border:1.5px solid #8b5cf6;border-radius:8px;color:#7c3aed;font-size:13px;font-weight:700;padding:7px 14px;cursor:pointer;text-align:left;display:flex;align-items:center;justify-content:space-between;transition:.18s}
@@ -398,7 +426,18 @@ const UNITS = [
 <div class="step-row"><div class="step-num">1</div><div class="step-text">왼쪽과 오른쪽에서 x² 앞 숫자, x 앞 숫자, 그냥 숫자를 각각 찾기</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">같은 자리끼리 <b>=</b>로 묶어 작은 식 만들기</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">그 식들을 풀어 모르는 글자 값 구하기</div></div>
-<div class="example-block"><div class="ex-label">예시</div>2x²+ax+3 = bx²+5x+3 (어떤 x를 넣어도 성립)<br>x² 자리: 왼쪽 2, 오른쪽 b → 2 = b → <b>b = 2</b><br>x 자리: 왼쪽 a, 오른쪽 5 → a = 5 → <b>a = 5</b><br>숫자 자리: 3 = 3 (자동으로 맞음)<br><span class="arrow">→</span> a + b = <b>7</b></div>
+<div class="ident-demo" id="identDemo1">
+  <div class="id-exlbl">버튼을 눌러 같은 자리끼리 맞춰보세요 👇</div>
+  <div class="id-row"><span class="id-label">왼쪽</span><span class="id-t id-t-x2">2x²</span><span class="id-op">+</span><span class="id-t id-t-x">ax</span><span class="id-op">+</span><span class="id-t id-t-c">3</span></div>
+  <div class="id-row"><span class="id-label">오른쪽</span><span class="id-t id-t-x2">bx²</span><span class="id-op">+</span><span class="id-t id-t-x">5x</span><span class="id-op">+</span><span class="id-t id-t-c">3</span></div>
+  <button class="id-btn" id="idBtn1" onclick="runIdentDemo1()">같은 자리끼리 맞추기 →</button>
+  <div class="id-matches" id="idMatches1" style="display:none">
+    <div class="id-match id-match-x2"><span class="id-match-lbl">🔴 x² 자리</span><span class="id-match-eq">2 = b &nbsp;→&nbsp; <b>b = 2</b></span></div>
+    <div class="id-match id-match-x"><span class="id-match-lbl">🔵 x 자리</span><span class="id-match-eq">a = 5 &nbsp;→&nbsp; <b>a = 5</b></span></div>
+    <div class="id-match id-match-c"><span class="id-match-lbl">🟢 숫자 자리</span><span class="id-match-eq">3 = 3 &nbsp;✓</span></div>
+  </div>
+  <div class="id-final" id="idFinal1"><span class="arrow">→</span> a + b = <b>7</b></div>
+</div>
 <div class="tip-box">'어떤 x를 넣어도 성립하는 식'을 <b>항등식</b>이라고 해요. '모든 x에 대해' 또는 '항상'이라는 말이 있으면 항등식 → 자리별로 비교!</div>
 <button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">'어떤 x를 넣어도 성립'이라는 건 정말 강력한 조건이에요. <b>x = 0</b>을 넣으면 x², x 부분이 다 사라져서 숫자끼리만 비교되고, <b>x = 1</b>을 넣으면 또 다른 식이 나오죠. 이런 식으로 여러 x 값을 넣다 보면, 결국 x² 자리·x 자리·숫자 자리가 <b>각각</b> 같지 않으면 안 된다는 결론이 나와요. 그래서 자리별 비교 한 번이면 x를 일일이 넣어보지 않아도 답을 찾을 수 있는 거예요.</div>`,
     practice:[
@@ -1180,6 +1219,43 @@ function loadState() {
       ST.examScores = d.examScores||new Array(10).fill(null);
     }
   } catch(e){}
+}
+
+// ── 항등식 인터랙티브 데모 (Unit 1) ──
+function runIdentDemo1() {
+  const btn = document.getElementById('idBtn1');
+  if (!btn) return;
+  btn.disabled = true;
+  btn.style.opacity = '0.5';
+
+  // x², x, 상수 쌍을 순서대로 flash
+  const pairs = [
+    document.querySelectorAll('#identDemo1 .id-t-x2'),
+    document.querySelectorAll('#identDemo1 .id-t-x'),
+    document.querySelectorAll('#identDemo1 .id-t-c'),
+  ];
+  pairs.forEach((pair, pi) => {
+    setTimeout(() => {
+      pair.forEach(el => {
+        el.classList.add('flash');
+        setTimeout(() => el.classList.remove('flash'), 380);
+      });
+    }, pi * 220);
+  });
+
+  // flash 끝나면 매칭 카드 등장
+  setTimeout(() => {
+    btn.style.display = 'none';
+    const matches = document.getElementById('idMatches1');
+    matches.style.display = 'flex';
+    matches.offsetHeight;
+    matches.querySelectorAll('.id-match').forEach((m, i) => {
+      setTimeout(() => m.classList.add('show'), i * 160);
+    });
+    setTimeout(() => {
+      document.getElementById('idFinal1').classList.add('show');
+    }, 700);
+  }, 900);
 }
 
 // ── 왜 그럴까 토글 ──
