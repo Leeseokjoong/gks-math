@@ -460,6 +460,12 @@ header h1{font-size:18px;flex:1}
 .cs-dot{width:7px;height:7px;border-radius:50%;background:#e2e8f0;transition:.25s;cursor:pointer}
 .cs-dot.on{background:var(--cn-primary);width:18px;border-radius:4px}
 .cs-lbl{font-size:11px;color:#94a3b8;font-weight:700;white-space:nowrap;flex-shrink:0}
+.cs-cta{background:linear-gradient(135deg,#2563eb,#06b6d4)!important;justify-content:center!important;overflow:hidden}
+.cs-cta-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:8px}
+.cs-cta-icon{font-size:36px}
+.cs-cta-title{font-size:20px;font-weight:900;color:#fff}
+.cs-cta-sub{font-size:15px;font-weight:700;color:rgba(255,255,255,.92)}
+.cs-cta-hint{font-size:13px;color:rgba(255,255,255,.7);margin-top:4px}
 
 /* ── 수정요청 버튼 & 모달 ── */
 .fb-btn{width:100%;background:none;border:1.5px solid #e2e8f0;border-radius:8px;color:#94a3b8;font-size:12px;font-weight:700;padding:7px 14px;cursor:pointer;margin-top:10px;display:flex;align-items:center;justify-content:center;gap:5px;transition:.18s}
@@ -2068,6 +2074,20 @@ function animateConceptSteps(box) {
     track.appendChild(slide);
     _csSlides.push(slide);
   });
+  // 마지막 슬라이드 — 문제 풀기 CTA
+  const ctaSlide = document.createElement('div');
+  ctaSlide.className = 'cs-slide cs-cta';
+  ctaSlide.innerHTML = `
+    <div class="cs-cta-inner">
+      <div class="cs-cta-icon">✏️</div>
+      <div class="cs-cta-title">개념 완료!</div>
+      <div class="cs-cta-sub">이제 문제를 풀어볼까요?</div>
+      <div class="cs-cta-hint">아래 연습 문제에서 바로 확인하세요 👇</div>
+    </div>
+  `;
+  track.appendChild(ctaSlide);
+  _csSlides.push(ctaSlide);
+
   box.appendChild(track);
 
   // 터치/포인터 스와이프 이벤트
