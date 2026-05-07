@@ -170,6 +170,15 @@ header h1{font-size:18px;flex:1}
 .pd-final{text-align:center;font-size:15px;font-weight:700;color:#1e293b;opacity:0;transition:opacity .4s;margin-top:10px;padding:10px;background:white;border-radius:8px;border:2px solid #93c5fd}
 .pd-final.show{opacity:1}
 .pd-final b{color:#1d4ed8}
+
+/* ── 왜 그럴까 접기/펴기 ── */
+.why-wrap{margin:0}
+.why-btn{width:100%;background:none;border:1.5px solid #8b5cf6;border-radius:8px;color:#7c3aed;font-size:13px;font-weight:700;padding:7px 14px;cursor:pointer;text-align:left;display:flex;align-items:center;justify-content:space-between;transition:.18s}
+.why-btn:hover{background:rgba(139,92,246,.07)}
+.why-btn::after{content:'▼';font-size:10px;color:#a78bfa;transition:.2s}
+.why-btn.open::after{content:'▲'}
+.why-box{display:none;border-left:3px solid #8b5cf6;background:rgba(139,92,246,.06);padding:12px 16px;margin-top:6px;border-radius:0 8px 8px 8px;line-height:1.7;font-size:13.5px;color:#1e293b}
+.why-box.open{display:block}
 </style>
 </head>
 <body>
@@ -363,7 +372,8 @@ const UNITS = [
   </div>
   <div class="pd-final" id="pdFinal0"><span class="arrow">→</span> A + B = <b>2x² + 2x + 3</b></div>
 </div>
-<div class="tip-box">'x 앞 숫자'를 <b>계수</b>, +/− 사이의 한 조각을 <b>항</b>이라고 불러요. 🔴●=x², 🔵▲=x, 🟢■=상수 — 다른 모양은 절대 합치면 안 돼요!</div>`,
+<div class="tip-box">'x 앞 숫자'를 <b>계수</b>, +/− 사이의 한 조각을 <b>항</b>이라고 불러요. 🔴●=x², 🔵▲=x, 🟢■=상수 — 다른 모양은 절대 합치면 안 돼요!</div>
+<button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">x²와 x는 단위가 달라요. <b>x = 3</b>일 때 x는 3이지만 x²는 9, <b>x = 10</b>이면 x는 10이고 x²는 100이죠. 같은 x인데도 값이 완전히 달라요. 그래서 2x² + 3x를 5x²이라고 합치면, x = 10일 땐 200 + 30 = 230인데 5x²은 500이 되어 답이 틀려버려요. 그러니까 x²은 x²끼리, x는 x끼리만 모아야 어떤 x를 넣어도 식이 맞는 거예요.</div>`,
     practice:[
       {q:"A = x³ − 1, B = 2x³ + 4 일 때, A + B는?",
        c:["2x³ + 2","2x³ + 3","3x³ + 3","3x³ + 4"],a:2,
@@ -389,7 +399,8 @@ const UNITS = [
 <div class="step-row"><div class="step-num">2</div><div class="step-text">같은 자리끼리 <b>=</b>로 묶어 작은 식 만들기</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">그 식들을 풀어 모르는 글자 값 구하기</div></div>
 <div class="example-block"><div class="ex-label">예시</div>2x²+ax+3 = bx²+5x+3 (어떤 x를 넣어도 성립)<br>x² 자리: 왼쪽 2, 오른쪽 b → 2 = b → <b>b = 2</b><br>x 자리: 왼쪽 a, 오른쪽 5 → a = 5 → <b>a = 5</b><br>숫자 자리: 3 = 3 (자동으로 맞음)<br><span class="arrow">→</span> a + b = <b>7</b></div>
-<div class="tip-box">'어떤 x를 넣어도 성립하는 식'을 <b>항등식</b>이라고 해요. '모든 x에 대해' 또는 '항상'이라는 말이 있으면 항등식 → 자리별로 비교!</div>`,
+<div class="tip-box">'어떤 x를 넣어도 성립하는 식'을 <b>항등식</b>이라고 해요. '모든 x에 대해' 또는 '항상'이라는 말이 있으면 항등식 → 자리별로 비교!</div>
+<button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">'어떤 x를 넣어도 성립'이라는 건 정말 강력한 조건이에요. <b>x = 0</b>을 넣으면 x², x 부분이 다 사라져서 숫자끼리만 비교되고, <b>x = 1</b>을 넣으면 또 다른 식이 나오죠. 이런 식으로 여러 x 값을 넣다 보면, 결국 x² 자리·x 자리·숫자 자리가 <b>각각</b> 같지 않으면 안 된다는 결론이 나와요. 그래서 자리별 비교 한 번이면 x를 일일이 넣어보지 않아도 답을 찾을 수 있는 거예요.</div>`,
     practice:[
       {q:"2x² + ax + 3 = bx² + 5x + 3 이 항등식일 때, a + b의 값은?",
        c:["5","6","7","8"],a:2,
@@ -414,7 +425,8 @@ const UNITS = [
 <div class="step-row"><div class="step-num">1</div><div class="step-text">나누는 식 (x − a)에서 <b>괄호 안을 0으로 만드는 x 값</b> 찾기</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">원래 식의 <b>x 자리에 그 값을 그대로 넣기</b> → 답이 나머지</div></div>
 <div class="example-block"><div class="ex-label">예시</div>x²+x+1 을 (x − 2)로 나눈 나머지<br>(x − 2) = 0 → x = 2<br>x 자리에 2 넣기: 2² + 2 + 1<br>= 4 + 2 + 1 = <b>7</b><br><span class="arrow">→</span> 나머지 = <b>7</b></div>
-<div class="tip-box">f(x)는 'x 자리에 무엇을 넣으면 결과가 나오는 식', 이 규칙을 <b>나머지정리</b>라고 해요. (x+1)로 나눌 땐 x+1=0 → <b>x = −1</b>! 부호가 가장 잦은 실수예요.</div>`,
+<div class="tip-box">f(x)는 'x 자리에 무엇을 넣으면 결과가 나오는 식', 이 규칙을 <b>나머지정리</b>라고 해요. (x+1)로 나눌 땐 x+1=0 → <b>x = −1</b>! 부호가 가장 잦은 실수예요.</div>
+<button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">나누기를 식으로 쓰면 <b>f(x) = (x − a) × 몫 + 나머지</b> 가 돼요. 여기에 <b>x = a</b>를 넣으면 (x − a) 부분이 (a − a) = 0 이 되니까 앞 항이 통째로 사라지고 <b>나머지만 남아요</b>. 그래서 복잡하게 직접 나눌 필요 없이, 괄호를 0으로 만드는 a만 식에 넣으면 바로 나머지가 튀어나오는 거예요.</div>`,
     practice:[
       {q:"2x³ − x + 1을 x − 1로 나누었을 때의 나머지는?",
        c:["1","2","3","4"],a:1,
@@ -440,7 +452,8 @@ const UNITS = [
 <div class="step-row"><div class="step-num">2</div><div class="step-text">앞 괄호: 식의 <b>원래 부호 그대로</b> (+이면 +, −이면 −)</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">뒤 괄호: 가운데 부호만 <b>반대로</b> 쓰기</div></div>
 <div class="example-block"><div class="ex-label">예시</div>x³ − 8 쪼개기<br>x³ − 8 = x³ − 2³ (a = x, b = 2)<br>원래 부호 −이므로 차 공식 사용<br>앞 괄호: (x − 2) — 부호 그대로<br>뒤 괄호: (x² + 2x + 4) — 가운데 부호 반대(+로)<br><span class="arrow">→</span> <b>(x − 2)(x² + 2x + 4)</b></div>
-<div class="tip-box">곱하기 형태로 쪼개는 걸 <b>인수분해</b>라고 해요. 앞 괄호는 그대로, 뒤 괄호 가운데 부호는 반대! 헷갈리면 공식을 통째로 외우세요.</div>`,
+<div class="tip-box">곱하기 형태로 쪼개는 걸 <b>인수분해</b>라고 해요. 앞 괄호는 그대로, 뒤 괄호 가운데 부호는 반대! 헷갈리면 공식을 통째로 외우세요.</div>
+<button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">뒤 괄호의 가운데 부호가 반대인 이유는 직접 곱해보면 알 수 있어요. (a + b)(a² − ab + b²) 를 곱하면 <b>a³ − a²b + ab² + a²b − ab² + b³</b> 가 되는데, 가운데 −a²b 와 +a²b 가 서로 지워지고, +ab² 와 −ab² 도 지워져서 결국 <b>a³ + b³</b> 만 깔끔히 남아요. 가운데 부호가 반대여야만 이렇게 지워지기 때문에, 이 부호가 공식의 핵심인 거예요.</div>`,
     practice:[
       {q:"x³ + 2³ = (x + a)(x² − 2x + 4) 일 때, 상수 a의 값은?",
        c:["1","2","3","4"],a:1,
@@ -465,7 +478,8 @@ const UNITS = [
 <div class="step-row"><div class="step-num">1</div><div class="step-text">두 식이 같으려면 <b>i 없는 부분끼리, i 있는 부분끼리</b> 따로 같아야 함</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">짝꿍을 만들 땐 <b>i 앞 부호만 반대</b>로</div></div>
 <div class="example-block"><div class="ex-label">예시</div>(3 + ai)의 짝꿍이 b − 4i 일 때 a + b<br>(3 + ai)의 짝꿍 = 3 − ai (i 앞 부호만 반대)<br>3 − ai = b − 4i 양쪽 비교<br>i 없는 부분: 3 = b → <b>b = 3</b><br>i 앞 숫자 비교: −a = −4 → <b>a = 4</b><br><span class="arrow">→</span> a + b = <b>7</b></div>
-<div class="tip-box">i가 들어간 수를 <b>복소수</b>, 그 짝꿍을 <b>켤레복소수</b>라고 해요. i 없는 부분을 실수부, i 앞 숫자를 허수부라고 부르고, 두 식이 같으면 각각이 같아야 합니다.</div>`,
+<div class="tip-box">i가 들어간 수를 <b>복소수</b>, 그 짝꿍을 <b>켤레복소수</b>라고 해요. i 없는 부분을 실수부, i 앞 숫자를 허수부라고 부르고, 두 식이 같으면 각각이 같아야 합니다.</div>
+<button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">i 라는 친구는 <b>제곱하면 −1</b>이 되는 특이한 수라, 보통 숫자랑은 절대 섞이지 않아요. 그래서 a + bi 는 마치 'a 사과 + b 배' 같은 거예요 — 사과 개수와 배 개수를 따로 세야 하듯, 실수부와 허수부도 따로 비교해야 해요. 켤레가 i 앞 부호만 뒤집는 이유도, 곱했을 때 (a + bi)(a − bi) = a² + b² 처럼 i 가 깨끗이 사라져서 실수가 되기 때문이에요.</div>`,
     practice:[
       {q:"a − 4i의 켤레복소수가 1 + bi일 때, a + b의 값은?",
        c:["3","4","5","6"],a:2,
@@ -491,7 +505,8 @@ const UNITS = [
 <div class="step-row"><div class="step-num">2</div><div class="step-text">x 앞 숫자를 <b>2로 나눈 뒤 제곱</b> → 그 값이 마지막 숫자</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">검산: (x ± □)² 모양으로 묶이는지 확인</div></div>
 <div class="example-block"><div class="ex-label">예시</div>x² − 6x + a = 0 이 답 하나만 가질 때 a<br>x 앞 숫자: −6<br>−6 ÷ 2 = −3<br>(−3)² = <b>9</b><br>검산: x² − 6x + 9 = (x − 3)² → 답 x = 3 (하나) OK<br><span class="arrow">→</span> a = <b>9</b></div>
-<div class="tip-box">답이 두 개 같아 하나로 겹치는 걸 <b>중근</b>, (x ± □)² 모양을 <b>완전제곱식</b>이라고 해요. 중근이 되려면 완전제곱식이 되어야 합니다!</div>`,
+<div class="tip-box">답이 두 개 같아 하나로 겹치는 걸 <b>중근</b>, (x ± □)² 모양을 <b>완전제곱식</b>이라고 해요. 중근이 되려면 완전제곱식이 되어야 합니다!</div>
+<button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">답이 하나로 겹치려면 식이 (x − m)² 모양이 되어야 해요. 이걸 풀어 쓰면 <b>x² − 2mx + m²</b> 인데, 여기서 'x 앞 숫자'는 −2m, 마지막은 m² 이죠. 그러니까 'x 앞 숫자'를 2로 나눈 게 m 이고, 그걸 다시 제곱한 m² 이 마지막 숫자가 되는 거예요. (b ÷ 2)² 라는 공식은 이 관계를 거꾸로 이용한 지름길이에요.</div>`,
     practice:[
       {q:"이차방정식 x² + 6x + a = 0이 중근을 가질 때, 상수 a의 값은?",
        c:["6","8","9","12"],a:2,
@@ -517,7 +532,8 @@ const UNITS = [
 <div class="step-row"><div class="step-num">2</div><div class="step-text">두 답의 곱 → 그냥 숫자(맨 뒤) 그대로</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">x² 앞에 1이 아닌 수가 있으면 양변을 그 수로 나눈 뒤 적용</div></div>
 <div class="example-block"><div class="ex-label">예시</div>x² − 5x + 6 = 0 의 두 답의 합과 곱<br>x 앞 숫자: −5 → 합: <b>−(−5) = 5</b><br>그냥 숫자: 6 → 곱: <b>6</b><br>검산: (x−2)(x−3)=0 → 답 2와 3 (합=5, 곱=6) OK</div>
-<div class="tip-box">방정식의 답을 <b>근</b>, 'x 앞 숫자'를 <b>계수</b>라고 해요. 합 공식의 <b>마이너스</b>가 가장 잦은 실수입니다!</div>`,
+<div class="tip-box">방정식의 답을 <b>근</b>, 'x 앞 숫자'를 <b>계수</b>라고 해요. 합 공식의 <b>마이너스</b>가 가장 잦은 실수입니다!</div>
+<button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">두 답이 α 와 β 라면 식은 <b>(x − α)(x − β) = 0</b> 으로 묶을 수 있어요. 이걸 전개하면 <b>x² − (α + β)x + αβ = 0</b> 이 나오죠. 원래 식 x² + bx + c 와 자리별로 비교해보면, x 앞 숫자 b 는 −(α + β) 이고, 끝 숫자 c 는 αβ 예요. 그래서 식만 보고도 두 답을 직접 안 풀고 합과 곱을 바로 알 수 있는 거예요.</div>`,
     practice:[
       {q:"두 수 2, 5를 근으로 하는 x² − 7x + a = 0에서 a의 값은?",
        c:["8","9","10","11"],a:2,
@@ -542,8 +558,9 @@ const UNITS = [
 <div class="step-row"><div class="step-num">1</div><div class="step-text">식이 y = a(x − p)² + q 모양인지 확인</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">괄호 안의 <b>p</b>(부호 반대로!), 마지막의 <b>q</b>를 그대로 읽기 → 꺾이는 점 (p, q)</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">a가 양수면 q가 가장 작은 값(<b>최솟값</b>), 음수면 가장 큰 값(<b>최댓값</b>)</div></div>
-<div class="example-block"><div class="ex-label">예시</div>y = 2(x − 3)² + 1 의 가장 작은 값<br>괄호 안 −3 → p = 3 (부호 반대로 읽기)<br>+1 → q = 1<br>꺾이는 점: (3, 1)<br>a = 2 &gt; 0 → 그릇 모양(아래로 볼록) → 1이 가장 낮은 값<br><span class="arrow">→</span> 최솟값 = <b>1</b></div>
-<div class="tip-box">그래프가 꺾이는 점을 <b>꼭짓점</b>이라고 해요. y = (x + 2)² + 3 → p = <b>−2</b>! 괄호 안 부호와 반대로 읽기.</div>`,
+<div class="example-block"><div class="ex-label">예시</div>y = 2(x − 3)² + 1 의 가장 작은 값<br>괄호 안 −3 → p = 3 (부호 반대로 읽기)<br>+1 → q = 1<br>꺾이는 점: (3, 1)<br>a = 2 > 0 → 그릇 모양(아래로 볼록) → 1이 가장 낮은 값<br><span class="arrow">→</span> 최솟값 = <b>1</b></div>
+<div class="tip-box">그래프가 꺾이는 점을 <b>꼭짓점</b>이라고 해요. y = (x + 2)² + 3 → p = <b>−2</b>! 괄호 안 부호와 반대로 읽기.</div>
+<button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">(x − p)² 부분은 <b>제곱이라 절대 음수가 안 돼요</b> — 아무리 작아도 0 이에요. 그러니까 a(x − p)² + q 에서 제곱 부분이 0 이 되는 순간(x = p 일 때) 식 전체가 가장 작거나 가장 큰 값이 되죠. a 가 양수면 q 에 양수가 더해지니 q 가 최저, a 가 음수면 q 에 음수가 더해지니 q 가 최고가 되는 거예요.</div>`,
     practice:[
       {q:"−1 ≤ x ≤ 2일 때, y = −(x−1)² + 5의 최댓값은?",
        c:["3","4","5","6"],a:2,
@@ -569,7 +586,8 @@ const UNITS = [
 <div class="step-row"><div class="step-num">2</div><div class="step-text">x 자리에 k를 넣은 식 = 0 으로 놓기</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">남은 모르는 글자 풀기</div></div>
 <div class="example-block"><div class="ex-label">예시</div>x³ + ax − 2 = 0 의 답 중 하나가 1일 때 a<br>x 자리에 1 넣기: (1)³ + a × (1) − 2 = 0<br>1 + a − 2 = 0<br>a − 1 = 0<br><span class="arrow">→</span> a = <b>1</b></div>
-<div class="tip-box">방정식이 0이 되게 하는 x 값을 <b>근</b>(=답)이라고 해요. 대입할 때 거듭제곱과 부호 실수가 가장 잦아요!</div>`,
+<div class="tip-box">방정식이 0이 되게 하는 x 값을 <b>근</b>(=답)이라고 해요. 대입할 때 거듭제곱과 부호 실수가 가장 잦아요!</div>
+<button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">'근'이라는 말 자체가 <b>'식을 0 으로 만드는 x 값'</b>이라는 뜻이에요. 그러니까 'x = 1 이 근' 이라고 하면 자동으로 'x 자리에 1 을 넣으면 식 = 0' 이라는 정보를 공짜로 얻는 셈이죠. 이걸 이용해서 모르는 글자가 들어 있는 자리를 풀면 끝이에요. 어렵게 식을 인수분해할 필요 없이, 근의 정의 한 줄로 해결되는 거예요.</div>`,
     practice:[
       {q:"x³ + x² + x + a = 0의 한 근이 −1일 때, 상수 a의 값은?",
        c:["1","2","3","4"],a:0,
@@ -595,7 +613,8 @@ const UNITS = [
 <div class="step-row"><div class="step-num">2</div><div class="step-text">두 번째 부등식 풀어 x 범위 구하기</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">두 범위를 <b>수직선</b>(숫자 직선)에 그려 겹치는 부분 찾기</div></div>
 <div class="example-block"><div class="ex-label">예시</div>2x &gt; 2 이고 x &lt; 5 인 자연수 x의 개수<br>① 2x &gt; 2 → 양변 ÷ 2 → x &gt; 1<br>② x &lt; 5<br>겹치는 범위: 1 &lt; x &lt; 5<br>그 사이 자연수: 2, 3, 4 → <b>3개</b></div>
-<div class="tip-box">두 부등식을 동시에 만족하는 걸 <b>연립부등식</b>이라고 해요. 수직선에 색칠하면 겹치는 부분이 한눈에! &lt; 와 ≤ 끝점 차이 확인 필수.</div>`,
+<div class="tip-box">두 부등식을 동시에 만족하는 걸 <b>연립부등식</b>이라고 해요. 수직선에 색칠하면 겹치는 부분이 한눈에! &lt; 와 ≤ 끝점 차이 확인 필수.</div>
+<button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">'두 부등식을 동시에 만족'이라는 건 결국 'A 도 통과하고 B 도 통과하는 x' 라는 뜻이에요. 마치 학원 시험에서 영어도 합격하고 수학도 합격해야 하는 거랑 똑같죠. 한 쪽만 통과한 사람은 안 되고, <b>둘 다 통과한 사람의 명단(=공통 범위)</b>만 답이 되는 거예요. 그래서 따로 풀고 겹치는 부분을 찾는 게 자연스러운 방법이에요.</div>`,
     practice:[
       {q:"연립부등식 x+3 < 8, 4x > x+6 의 해가 2 < x < a일 때, a의 값은?",
        c:["3","4","5","6"],a:2,
@@ -621,7 +640,8 @@ const UNITS = [
 <div class="step-row"><div class="step-num">2</div><div class="step-text">x 좌표: (m × B의 x) + (n × A의 x), 그걸 (m+n)으로 나누기</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">y 좌표도 똑같은 방식으로 계산</div></div>
 <div class="example-block"><div class="ex-label">예시</div>A(1, 2)와 B(7, 8)을 2 : 1 로 나누는 점<br>x: (2 × 7 + 1 × 1) ÷ (2+1) = (14+1) ÷ 3 = 15 ÷ 3 = <b>5</b><br>y: (2 × 8 + 1 × 2) ÷ (2+1) = (16+2) ÷ 3 = 18 ÷ 3 = <b>6</b><br><span class="arrow">→</span> <b>(5, 6)</b></div>
-<div class="tip-box">두 점 사이를 비율로 나누는 점을 <b>내분점</b>이라고 해요. m은 B에, n은 A에 — X자로 짝짓기! 같은 글자끼리 곱하면 틀려요.</div>`,
+<div class="tip-box">두 점 사이를 비율로 나누는 점을 <b>내분점</b>이라고 해요. m은 B에, n은 A에 — X자로 짝짓기! 같은 글자끼리 곱하면 틀려요.</div>
+<button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">m : n 으로 나눈다는 건 점 P 가 <b>A 에서 m 칸, B 에서 n 칸</b> 떨어진 곳에 있다는 뜻이에요. 그러니까 m 이 클수록 P 는 A 에서 멀어지고 B 에 더 가까워지죠 — B 의 영향이 더 크다는 뜻이에요. 그래서 B 의 좌표에 m 을, A 의 좌표에 n 을 곱한 뒤 (m + n) 으로 나누면 P 의 정확한 위치가 나와요. 이름과 곱하는 점이 X 자로 엇갈리는 게 어색하지만, '먼 점이 P 를 더 강하게 잡아당긴다'고 생각하면 자연스러워져요.</div>`,
     practice:[
       {q:"두 점 A(−3, 0), B(1, 4)를 3:1로 내분하는 점의 좌표는?",
        c:["(−1, 2)","(0, 3)","(1, 3)","(1, 4)"],a:1,
@@ -647,7 +667,8 @@ const UNITS = [
 <div class="step-row"><div class="step-num">2</div><div class="step-text">위(분자): 점의 좌표를 식에 넣은 결과의 절댓값 | |</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">아래(분모): √(a² + b²) 계산 후 위 ÷ 아래</div></div>
 <div class="example-block"><div class="ex-label">예시</div>원점 (0, 0)에서 3x + 4y − 15 = 0 까지의 거리<br>위: |3 × 0 + 4 × 0 − 15| = |−15| = 15<br>아래: √(3² + 4²) = √(9 + 16) = √25 = 5<br><span class="arrow">→</span> 거리 = 15 ÷ 5 = <b>3</b></div>
-<div class="tip-box">| | 표시는 <b>절댓값</b>(부호 떼고 양수로 만들기)이에요. 3·4·5 / 5·12·13 같은 수가 자주 등장 — √ 안이 딱 떨어지는지 확인!</div>`,
+<div class="tip-box">| | 표시는 <b>절댓값</b>(부호 떼고 양수로 만들기)이에요. 3·4·5 / 5·12·13 같은 수가 자주 등장 — √ 안이 딱 떨어지는지 확인!</div>
+<button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">직선 ax + by + c = 0 에 점이 <b>딱 위에 있으면 식의 값이 0</b> 이 되고, 멀어질수록 그 값이 커져요. 그래서 ax₀ + by₀ + c 의 절댓값은 점이 직선에서 떨어진 정도를 알려주는 신호 역할을 해요. 다만 이 값은 직선의 기울기에 따라 부풀려지기 때문에, √(a² + b²) 로 나눠 단위를 정리해주면 진짜 거리가 나오는 거예요.</div>`,
     practice:[
       {q:"원점과 직선 5x − 12y + 26 = 0 사이의 거리는?",
        c:["1","2","3","4"],a:1,
@@ -673,7 +694,8 @@ const UNITS = [
 <div class="step-row"><div class="step-num">2</div><div class="step-text">직선이 y = k 모양이면 원점에서 직선까지 거리 = <b>|k|</b></div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">|k| = r 로 놓고 k 값 구하기 (자연수 조건이면 양수만)</div></div>
 <div class="example-block"><div class="ex-label">예시</div>원 x² + y² = 9 에 직선 y = a(자연수)가 딱 한 점에서 만날 때 a<br>반지름: r = √9 = 3<br>원점에서 y = a까지 거리 = |a|<br>|a| = 3 → a = 3 또는 −3<br>자연수 조건 → <b>a = 3</b></div>
-<div class="tip-box">딱 한 점에서 만나는 걸 <b>접한다</b>고 해요. 원의 가운데가 원점이 아닐 때도 같은 원리: '중심에서 직선까지 거리 = 반지름'!</div>`,
+<div class="tip-box">딱 한 점에서 만나는 걸 <b>접한다</b>고 해요. 원의 가운데가 원점이 아닐 때도 같은 원리: '중심에서 직선까지 거리 = 반지름'!</div>
+<button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">직선이 원에 가까이 가면 두 점에서 만나고, 살짝 멀어지면 한 점에서 살짝 스치고, 더 멀어지면 아예 안 만나요. 이 '한 점에서 살짝 스치는' 순간이 바로 <b>접함</b>이고, 이때 원의 중심에서 직선까지 거리가 정확히 <b>반지름과 같아요</b>. 그래서 '거리 = 반지름' 이라는 한 줄 조건만 풀면 접하는 경우를 다 찾을 수 있는 거예요.</div>`,
     practice:[
       {q:"직선 y = a와 원 x² + y² = 16이 한 점에서 만날 때, 자연수 a의 값은?",
        c:["2","3","4","5"],a:2,
@@ -698,7 +720,8 @@ const UNITS = [
 <div class="step-row"><div class="step-num">1</div><div class="step-text">어떤 축/점을 거울 삼아 비추는지 확인</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">규칙대로 부호 바꾸거나 좌표 자리 바꾸기</div></div>
 <div class="example-block"><div class="ex-label">예시</div>점 (3, −4)의 각 대칭점<br>x축 대칭 → y만 부호 반대 → <b>(3, 4)</b><br>y축 대칭 → x만 부호 반대 → <b>(−3, −4)</b><br>원점 대칭 → 둘 다 부호 반대 → <b>(−3, 4)</b><br>y = x 대칭 → x와 y 자리 바꿈 → <b>(−4, 3)</b></div>
-<div class="tip-box">거울로 비추듯 옮기는 걸 <b>대칭이동</b>이라고 해요. x축 대칭 = y만 뒤집기, y축 대칭 = x만 뒤집기 (이름과 반대!).</div>`,
+<div class="tip-box">거울로 비추듯 옮기는 걸 <b>대칭이동</b>이라고 해요. x축 대칭 = y만 뒤집기, y축 대칭 = x만 뒤집기 (이름과 반대!).</div>
+<button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">대칭이동은 그냥 <b>거울로 비춘 모습</b>이에요. x 축을 거울로 삼으면 위아래가 뒤집히니까 y 만 부호가 반대가 되고, y 축을 거울로 삼으면 좌우가 뒤집히니까 x 만 부호가 반대가 되죠. 원점 대칭은 점을 중심으로 180° 빙 돌린 거라 x 와 y 둘 다 부호가 반대가 되고요. y = x 대칭은 좀 특별해서, x 와 y 자리가 통째로 바뀌는 거예요.</div>`,
     practice:[
       {q:"점 (−1, 5)를 원점에 대하여 대칭이동한 점의 좌표는?",
        c:["(1, 5)","(−1, −5)","(1, −5)","(5, −1)"],a:2,
@@ -724,7 +747,8 @@ const UNITS = [
 <div class="step-row"><div class="step-num">2</div><div class="step-text">A에도 있고 B에도 있는 것만 골라내기</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">{ } 안에 쓰기, n( ) 은 개수</div></div>
 <div class="example-block"><div class="ex-label">예시</div>A = {1, 2, 3, 4}, B = {3, 4, 5, 6} 일 때 A ∩ B 와 그 개수<br>A의 것 중 B에도 있는 것: 3 ✓, 4 ✓<br>A ∩ B = <b>{3, 4}</b><br><span class="arrow">→</span> 개수 n(A ∩ B) = <b>2</b></div>
-<div class="tip-box">{ } 안에 들어가는 것을 <b>원소</b>, 공통으로 든 모임을 <b>교집합</b>(∩), 한 쪽이라도 든 모임을 <b>합집합</b>(∪)이라고 해요. ∩ = X자(공통), ∪ = 컵 모양(전부 담기).</div>`,
+<div class="tip-box">{ } 안에 들어가는 것을 <b>원소</b>, 공통으로 든 모임을 <b>교집합</b>(∩), 한 쪽이라도 든 모임을 <b>합집합</b>(∪)이라고 해요. ∩ = X자(공통), ∪ = 컵 모양(전부 담기).</div>
+<button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">교집합(∩)은 그 자체가 <b>'두 집합 모두에 속한 원소들의 모임'</b>이라는 정의예요. 그래서 깊은 원리를 따질 게 아니라, A 의 원소를 하나씩 보면서 'B 안에도 있나?' 체크하면 끝이에요. ∩ 기호 모양도 위에서 본 두 집합이 X 자로 만나는 부분만 떼어낸 거라, 보면 바로 의미가 와닿아요.</div>`,
     practice:[
       {q:"A = {a, b, c}, B = {b, c, d}일 때, A ∩ B는?",
        c:["{a, b}","{c, d}","{b, c}","{a, d}"],a:2,
@@ -750,7 +774,8 @@ const UNITS = [
 <div class="step-row"><div class="step-num">2</div><div class="step-text">q를 풀어 'x = ___' 모양으로 만들기</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">p의 x 값과 같아지도록 모르는 글자 결정</div></div>
 <div class="example-block"><div class="ex-label">예시</div>p: x = 5, &nbsp; q: 2x − a = 0 이 필요충분일 때 a<br>q 풀기: 2x = a → x = a / 2<br>p 와 같으려면: a / 2 = 5<br>양변 × 2<br><span class="arrow">→</span> a = <b>10</b></div>
-<div class="tip-box">참·거짓을 가릴 수 있는 문장을 <b>명제</b>, 두 조건이 정확히 같은 x들을 가지면 <b>필요충분조건</b>이라고 해요. q를 'x = ?' 모양으로 만든 뒤 p와 맞추세요.</div>`,
+<div class="tip-box">참·거짓을 가릴 수 있는 문장을 <b>명제</b>, 두 조건이 정확히 같은 x들을 가지면 <b>필요충분조건</b>이라고 해요. q를 'x = ?' 모양으로 만든 뒤 p와 맞추세요.</div>
+<button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">필요충분조건(↔)은 화살표가 양쪽 다 가는 거라, <b>'p 이면 q' 이면서 동시에 'q 이면 p'</b> 라는 뜻이에요. 한 방향만 통하는 게 아니라 두 방향 다 통하니까, 결국 p 인 x 들과 q 인 x 들이 정확히 같은 모임을 이루죠. 그러니까 q 를 풀어서 'x = ?' 모양으로 만든 뒤 p 의 값과 똑같이 만들면 되는 거예요.</div>`,
     practice:[
       {q:"p: x = 5, q: x − a = 0이 필요충분조건일 때, a의 값은?",
        c:["3","4","5","6"],a:2,
@@ -775,7 +800,8 @@ const UNITS = [
 <div class="step-row"><div class="step-num">1</div><div class="step-text">f⁻¹(k) 구하기 → <b>f(?) = k</b> 인 ? 를 찾기</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">표나 식에서 결과(오른쪽)가 k 인 것의 입력값(왼쪽)을 읽기</div></div>
 <div class="example-block"><div class="ex-label">예시</div>f(3) = 7 일 때 f⁻¹(7) 의 값<br>f(?) = 7 인 ? 찾기<br>주어진 조건: f(<b>3</b>) = 7<br><span class="arrow">→</span> f⁻¹(7) = <b>3</b></div>
-<div class="tip-box">x를 넣으면 결과가 나오는 식을 <b>함수</b>(f), 거꾸로 가는 식을 <b>역함수</b>(f⁻¹)라고 해요. 화살표를 거꾸로 따라가면 끝!</div>`,
+<div class="tip-box">x를 넣으면 결과가 나오는 식을 <b>함수</b>(f), 거꾸로 가는 식을 <b>역함수</b>(f⁻¹)라고 해요. 화살표를 거꾸로 따라가면 끝!</div>
+<button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">함수 f 가 <b>3 을 7 로 보내는</b> 화살표라면, 역함수 f⁻¹ 는 <b>7 을 3 으로 되돌려 보내는</b> 반대 방향 화살표예요. 그러니까 f(3) = 7 과 f⁻¹(7) = 3 은 같은 사실을 두 가지 방식으로 적은 것뿐이에요. 결국 역함수 값을 묻는 건 '결과가 7 인 입력값이 뭐였지?' 라는 질문이라, 화살표를 거꾸로 따라가기만 하면 돼요.</div>`,
     practice:[
       {q:"f(a) = 1, f(b) = 2, f(c) = 3일 때, f⁻¹(2)의 값은?",
        c:["a","b","c","없음"],a:1,
@@ -800,7 +826,8 @@ const UNITS = [
 <div class="step-row"><div class="step-num">1</div><div class="step-text">분수의 <b>아래 부분을 0으로 만드는 x</b> → 세로선</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">맨 끝의 + b 부분 → 가로선 y = b</div></div>
 <div class="example-block"><div class="ex-label">예시</div>y = 3 / (x − 2) + 4 의 점근선<br>분수의 아래 (x − 2) = 0 → x = 2 → <b>세로선: x = 2</b><br>맨 끝 +4 → <b>가로선: y = 4</b></div>
-<div class="tip-box">분수의 아래를 <b>분모</b>, 그래프가 가까이 가지만 닿지 않는 선을 <b>점근선</b>이라고 해요. y = 3/(x+2)+4 → x+2=0 → x = <b>−2</b>! 부호 반대로 읽기.</div>`,
+<div class="tip-box">분수의 아래를 <b>분모</b>, 그래프가 가까이 가지만 닿지 않는 선을 <b>점근선</b>이라고 해요. y = 3/(x+2)+4 → x+2=0 → x = <b>−2</b>! 부호 반대로 읽기.</div>
+<button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">분수는 <b>아래(분모)가 0 이 되는 순간 정의가 안 돼서</b>, 그래프가 그 x 값을 살짝 피해 가야 해요. 그래서 분모를 0 으로 만드는 x = a 자리에 '못 건너는 세로선'이 생기는 거죠. 한편 x 가 아주 커지면 분수 부분(예: 3 / (x − 2))은 거의 0 에 가까워져서, 결국 식 전체가 + b 만 남게 돼요. 그래서 멀리 갈수록 그래프가 y = b 라는 가로선에 딱 붙는 거예요.</div>`,
     practice:[
       {q:"유리함수 y = 1/(x+1) − 4의 점근선 y = a에서 a의 값은?",
        c:["−2","−3","−4","−5"],a:2,
@@ -823,9 +850,10 @@ const UNITS = [
     id:18, title:"순열", sub:"순서 있는 배열 nPr",
     concept:`<div class="formula-box">ₙPᵣ = n × (n−1) × (n−2) × … <b>(r 개 곱하기)</b></div>
 <div class="step-row"><div class="step-num">1</div><div class="step-text">'순서대로 줄 세우기', '자리 정하기' 키워드 → 순열</div></div>
-<div class="step-row"><div class="step-num">2</div><div class="step-text">n 부터 1씩 줄여가며 <b>r 개</b>만 곱하기</div></div>
-<div class="example-block"><div class="ex-label">예시</div>ₙPᵣ 계산 연습<br>₅P₃ = 5 × 4 × 3 = <b>60</b> &nbsp;(5에서 3개 곱)<br>₄P₂ = 4 × 3 = <b>12</b> &nbsp;(4에서 2개 곱)<br>₆P₂ = 6 × 5 = <b>30</b> &nbsp;(6에서 2개 곱)</div>
-<div class="tip-box">순서를 따져 줄 세우는 가짓수를 <b>순열</b>(P)이라고 해요. '나열·배열·줄세우기·자리정하기'면 순열! 정확히 r 개만 곱하기.</div>`,
+<div class="step-row"><div class="step-num">2</div><div class="step-text">n 부터 1씩 줄여가며 <b>r 개</b> 만 곱하기</div></div>
+<div class="example-block"><div class="ex-label">예시</div>₅P₃ = 5 × 4 × 3 = <b>60</b> &nbsp;(5에서 3개 곱)<br>₄P₂ = 4 × 3 = <b>12</b> &nbsp;(4에서 2개 곱)<br>₆P₂ = 6 × 5 = <b>30</b> &nbsp;(6에서 2개 곱)</div>
+<div class="tip-box">순서를 따져 줄 세우는 가짓수를 <b>순열</b>(P)이라고 해요. '나열·배열·줄세우기·자리정하기'면 순열! 정확히 r 개만 곱하기.</div>
+<button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">자리를 하나씩 채워나간다고 생각하면 돼요. 첫 번째 자리는 n 명 중 누가 와도 되니까 <b>n 가지</b>, 두 번째 자리는 한 명이 이미 갔으니 <b>(n − 1) 가지</b>, 세 번째 자리는 <b>(n − 2) 가지</b>… 이렇게 r 번째 자리까지 채우는 거죠. 각 자리의 선택은 곱으로 합쳐지니까 결과가 n × (n − 1) × … 식으로 r 개 곱이 되는 거예요.</div>`,
     practice:[
       {q:"3명의 학생 중 반장과 부반장을 각각 1명씩 뽑는 경우의 수는?",
        c:["3","4","6","9"],a:2,
@@ -850,8 +878,9 @@ const UNITS = [
 <div class="step-row"><div class="step-num">1</div><div class="step-text">'순서 없이 뽑기·고르기' 키워드 → 조합</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">위(분자): n 부터 r 개 곱하기 (순열과 같음)</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">아래(분모): r! = r × (r−1) × … × 1 로 나누기</div></div>
-<div class="example-block"><div class="ex-label">예시</div>ₙCᵣ 계산 연습<br>₅C₂ = (5 × 4) ÷ (2 × 1) = 20 ÷ 2 = <b>10</b><br>₆C₃ = (6 × 5 × 4) ÷ (3 × 2 × 1) = 120 ÷ 6 = <b>20</b></div>
-<div class="tip-box">순서 상관없이 뽑는 가짓수를 <b>조합</b>(C)이라고 해요. r! 은 r부터 1까지 다 곱한 것 (예: 3! = 3×2×1 = 6). '선택·고르기·뽑기'면 조합!</div>`,
+<div class="example-block"><div class="ex-label">예시</div>₅C₂ = (5 × 4) ÷ (2 × 1) = 20 ÷ 2 = <b>10</b><br>₆C₃ = (6 × 5 × 4) ÷ (3 × 2 × 1) = 120 ÷ 6 = <b>20</b></div>
+<div class="tip-box">순서 상관없이 뽑는 가짓수를 <b>조합</b>(C)이라고 해요. r! 은 r부터 1까지 다 곱한 것 (예: 3! = 3×2×1 = 6). '선택·고르기·뽑기'면 조합!</div>
+<button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">순열은 'A, B' 와 'B, A' 를 다른 경우로 세는데, 조합은 둘을 같은 걸로 봐요. 예를 들어 3 명 중 2 명을 고를 때, 순열은 '철수→영희' 와 '영희→철수' 를 따로 세지만 조합은 그냥 '철수랑 영희' 한 가지죠. 같은 r 명을 줄 세우는 방법이 r! 가지니까, <b>순열을 r! 로 나누면 순서 중복이 깔끔히 사라져 조합</b>이 되는 거예요.</div>`,
     practice:[
       {q:"4개의 과일 중에서 서로 다른 2개를 선택하는 경우의 수는?",
        c:["4","5","6","8"],a:2,
@@ -1151,6 +1180,12 @@ function loadState() {
       ST.examScores = d.examScores||new Array(10).fill(null);
     }
   } catch(e){}
+}
+
+// ── 왜 그럴까 토글 ──
+function toggleWhy(btn) {
+  btn.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('open');
 }
 
 // ── 다항식 인터랙티브 데모 (Unit 0) ──
