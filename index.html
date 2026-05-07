@@ -171,6 +171,110 @@ header h1{font-size:18px;flex:1}
 .pd-final.show{opacity:1}
 .pd-final b{color:#1d4ed8}
 
+/* ── 인수분해 세제곱 (Unit 3) ── */
+.cube-demo{background:#f8faff;border-radius:12px;padding:14px;margin:0}
+.cd-identify{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:10px;flex-wrap:wrap}
+.cd-ab{display:inline-flex;flex-direction:column;align-items:center;gap:4px}
+.cd-ab-lbl{font-size:11px;font-weight:800;color:#64748b}
+.cd-ab-tile{padding:6px 14px;border-radius:8px;font-size:15px;font-weight:800;color:white}
+.cd-tile-a{background:#7c3aed}.cd-tile-b{background:#0891b2}
+.cd-sign-badge{background:#fee2e2;border:1.5px solid #fca5a5;border-radius:6px;padding:4px 10px;font-size:13px;font-weight:700;color:#b91c1c}
+.cd-btn{display:block;width:100%;padding:10px;background:#2563eb;color:white;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:.2s}
+.cd-btn:hover{background:#1d4ed8}
+.cd-brackets{margin-top:10px}
+.cd-br{border-radius:8px;padding:9px 14px;font-size:13px;font-weight:600;opacity:0;transition:opacity .4s,transform .4s;transform:translateY(6px);margin-bottom:6px;line-height:1.6}
+.cd-br.show{opacity:1;transform:translateY(0)}
+.cd-front-br{background:#f3e8ff;border:1.5px solid #a855f7;color:#6b21a8}
+.cd-back-br{background:#e0f2fe;border:1.5px solid #0891b2;color:#0c4a6e}
+.cd-sign-ok{color:#16a34a;font-weight:900;font-size:15px}
+.cd-sign-flip{color:#dc2626;font-weight:900;font-size:15px}
+.cd-result{text-align:center;font-size:15px;font-weight:800;opacity:0;transition:opacity .4s;padding:10px;background:white;border-radius:8px;border:2px solid #93c5fd;margin-top:6px}
+.cd-result.show{opacity:1}.cd-result b{color:#7c3aed}
+
+/* ── 켤레복소수 (Unit 4) ── */
+.conj-demo{background:#f8faff;border-radius:12px;padding:14px;margin:0}
+.cn-expr{display:flex;align-items:center;justify-content:center;gap:5px;margin:10px 0;font-size:16px;font-weight:700;color:#1e293b;flex-wrap:wrap}
+.cn-sign{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:6px;font-size:16px;font-weight:900;background:#f59e0b;color:white;transition:background .4s,transform .3s}
+.cn-sign.flipped{background:#dc2626;transform:scale(1.3)}
+.cn-btn{display:block;width:100%;padding:10px;background:#2563eb;color:white;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:.2s}
+.cn-btn:hover{background:#1d4ed8}
+.cn-compare{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.cn-card{flex:1;min-width:90px;border-radius:10px;padding:10px 8px;text-align:center;opacity:0;transition:opacity .4s,transform .4s;transform:translateY(6px)}
+.cn-card.show{opacity:1;transform:translateY(0)}
+.cn-card-real{background:#fef9c3;border:2px solid #eab308}
+.cn-card-imag{background:#fce7f3;border:2px solid #db2777}
+.cn-card-lbl{font-size:11px;font-weight:800;color:#64748b;margin-bottom:4px}
+.cn-card-val{font-size:14px;font-weight:700;line-height:1.6}
+.cn-card-real .cn-card-val b{color:#d97706;font-size:17px}
+.cn-card-imag .cn-card-val b{color:#be185d;font-size:17px}
+.cn-final{text-align:center;font-size:15px;font-weight:700;opacity:0;transition:opacity .4s;margin-top:10px;padding:10px;background:white;border-radius:8px;border:2px solid #93c5fd}
+.cn-final.show{opacity:1}.cn-final b{color:#1d4ed8}
+
+/* ── 중근 조건 (Unit 5) ── */
+.midr-demo{background:#f8faff;border-radius:12px;padding:14px;margin:0}
+.mr-recipe{display:flex;align-items:center;justify-content:center;gap:8px;margin:12px 0;flex-wrap:wrap}
+.mr-box{display:inline-flex;flex-direction:column;align-items:center;gap:4px}
+.mr-val{min-width:48px;height:42px;display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:15px;font-weight:800;transition:background .5s,color .5s,border-color .5s}
+.mr-val.empty{background:#f1f5f9;color:#94a3b8;border:2px dashed #cbd5e1}
+.mr-val.active-blue{background:#e0f2fe;color:#0369a1;border:2px solid #7dd3fc}
+.mr-val.active-yellow{background:#fef9c3;color:#92400e;border:2px solid #fcd34d}
+.mr-val.active-green{background:#dcfce7;color:#15803d;border:2px solid #86efac}
+.mr-step-lbl{font-size:10px;font-weight:800;color:#94a3b8}
+.mr-arr{font-size:20px;color:#94a3b8;font-weight:700;line-height:1}
+.mr-btn{display:block;width:100%;padding:10px;background:#2563eb;color:white;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:.2s}
+.mr-btn:hover{background:#1d4ed8}
+.mr-verify{font-size:13px;font-weight:600;opacity:0;transition:opacity .4s;margin-top:10px;padding:8px 12px;background:#f0fdf4;border-radius:8px;border:1.5px solid #86efac;color:#15803d;text-align:center}
+.mr-verify.show{opacity:1}
+.mr-final{text-align:center;font-size:15px;font-weight:700;opacity:0;transition:opacity .4s;margin-top:8px;padding:10px;background:white;border-radius:8px;border:2px solid #93c5fd}
+.mr-final.show{opacity:1}.mr-final b{color:#1d4ed8}
+
+/* ── 근과 계수 (Unit 6) ── */
+.vieta-demo{background:#f8faff;border-radius:12px;padding:14px;margin:0}
+.vt-expr{display:flex;align-items:center;justify-content:center;gap:5px;margin:10px 0;flex-wrap:wrap}
+.vt-t{display:inline-flex;align-items:center;justify-content:center;padding:7px 12px;border-radius:8px;font-size:14px;font-weight:800;color:white;transition:transform .3s,box-shadow .3s}
+.vt-t.vt-x2{background:#64748b}
+.vt-t.vt-coef{background:#1d4ed8}
+.vt-t.vt-const{background:#15803d}
+.vt-t.glow{transform:scale(1.2);box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.vt-eq{font-size:14px;font-weight:700;color:#334155}
+.vt-btn{display:block;width:100%;padding:10px;background:#2563eb;color:white;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:.2s}
+.vt-btn:hover{background:#1d4ed8}
+.vt-results{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.vt-card{flex:1;min-width:100px;border-radius:10px;padding:10px 8px;text-align:center;opacity:0;transition:opacity .4s,transform .4s;transform:translateY(6px)}
+.vt-card.show{opacity:1;transform:translateY(0)}
+.vt-card-sum{background:#dbeafe;border:2px solid #1d4ed8}
+.vt-card-prod{background:#dcfce7;border:2px solid #15803d}
+.vt-card-lbl{font-size:11px;font-weight:800;color:#475569;margin-bottom:4px}
+.vt-card-calc{font-size:12px;color:#64748b;margin-bottom:3px}
+.vt-card-ans{font-size:18px;font-weight:900}
+.vt-card-sum .vt-card-ans{color:#1d4ed8}
+.vt-card-prod .vt-card-ans{color:#15803d}
+
+/* ── 이차함수 최대최소 (Unit 7) ── */
+.quad-demo{background:#f8faff;border-radius:12px;padding:14px;margin:0}
+.qd-expr{display:flex;align-items:center;justify-content:center;gap:4px;margin:10px 0;flex-wrap:wrap;font-size:15px;font-weight:600;color:#334155}
+.qd-t{display:inline-flex;align-items:center;justify-content:center;padding:6px 11px;border-radius:8px;font-size:14px;font-weight:800;color:white;transition:transform .3s,box-shadow .3s}
+.qd-t.qd-a{background:#f59e0b}
+.qd-t.qd-p{background:#7c3aed}
+.qd-t.qd-q{background:#0891b2}
+.qd-t.glow{transform:scale(1.25);box-shadow:0 4px 14px rgba(0,0,0,.2)}
+.qd-btn{display:block;width:100%;padding:10px;background:#2563eb;color:white;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:.2s}
+.qd-btn:hover{background:#1d4ed8}
+.qd-cards{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.qd-card{flex:1;min-width:76px;border-radius:10px;padding:10px 6px;text-align:center;opacity:0;transition:opacity .4s,transform .4s;transform:translateY(6px)}
+.qd-card.show{opacity:1;transform:translateY(0)}
+.qd-card-a{background:#fef9c3;border:2px solid #f59e0b}
+.qd-card-p{background:#f3e8ff;border:2px solid #7c3aed}
+.qd-card-q{background:#e0f2fe;border:2px solid #0891b2}
+.qd-card-lbl{font-size:10px;font-weight:800;color:#475569;margin-bottom:3px}
+.qd-card-val{font-size:17px;font-weight:900}
+.qd-card-a .qd-card-val{color:#d97706}
+.qd-card-p .qd-card-val{color:#7c3aed}
+.qd-card-q .qd-card-val{color:#0891b2}
+.qd-card-note{font-size:10px;color:#64748b;margin-top:3px;line-height:1.4}
+.qd-final{text-align:center;font-size:15px;font-weight:700;opacity:0;transition:opacity .4s;margin-top:10px;padding:10px;background:white;border-radius:8px;border:2px solid #93c5fd}
+.qd-final.show{opacity:1}.qd-final b{color:#1d4ed8}
+
 /* ── 나머지정리 인터랙티브 애니메이션 (Unit 2) ── */
 .remain-demo{background:#f8faff;border-radius:12px;padding:14px;margin:0}
 .rd-exlbl{font-size:11px;font-weight:800;color:#94a3b8;letter-spacing:.08em;margin-bottom:10px}
@@ -546,7 +650,20 @@ const UNITS = [
 <div class="step-row"><div class="step-num">1</div><div class="step-text">세제곱 안의 수 찾기 — 8 = 2³, 27 = 3³ 처럼 (예: x³−8 → a=x, b=2)</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">앞 괄호: 식의 <b>원래 부호 그대로</b> (+이면 +, −이면 −)</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">뒤 괄호: 가운데 부호만 <b>반대로</b> 쓰기</div></div>
-<div class="example-block"><div class="ex-label">예시</div>x³ − 8 쪼개기<br>x³ − 8 = x³ − 2³ (a = x, b = 2)<br>원래 부호 −이므로 차 공식 사용<br>앞 괄호: (x − 2) — 부호 그대로<br>뒤 괄호: (x² + 2x + 4) — 가운데 부호 반대(+로)<br><span class="arrow">→</span> <b>(x − 2)(x² + 2x + 4)</b></div>
+<div class="cube-demo" id="cubeDemo3">
+  <div style="font-size:11px;font-weight:800;color:#94a3b8;letter-spacing:.08em;margin-bottom:10px">x³ − 8 = x³ − 2³ 에서 a, b를 읽기 👇</div>
+  <div class="cd-identify">
+    <div class="cd-ab"><div class="cd-ab-lbl">a =</div><div class="cd-ab-tile cd-tile-a">x</div></div>
+    <div class="cd-ab"><div class="cd-ab-lbl">b =</div><div class="cd-ab-tile cd-tile-b">2</div></div>
+    <div class="cd-sign-badge">원래 부호: −</div>
+  </div>
+  <button class="cd-btn" id="cdBtn3" onclick="runCubeDemo3()">공식 적용하기 →</button>
+  <div id="cdBrackets3" style="display:none" class="cd-brackets">
+    <div class="cd-br cd-front-br" id="cdFront3">앞 괄호: (x <span class="cd-sign-ok">−</span> 2) &nbsp;← 원래 부호 그대로</div>
+    <div class="cd-br cd-back-br" id="cdBack3">뒤 괄호: (x² <span class="cd-sign-flip">+</span> 2x + 4) &nbsp;← 가운데 부호 반대!</div>
+    <div class="cd-result" id="cdResult3">→ <b>(x − 2)(x² + 2x + 4)</b></div>
+  </div>
+</div>
 <div class="tip-box">곱하기 형태로 쪼개는 걸 <b>인수분해</b>라고 해요. 앞 괄호는 그대로, 뒤 괄호 가운데 부호는 반대! 헷갈리면 공식을 통째로 외우세요.</div>
 <button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">뒤 괄호의 가운데 부호가 반대인 이유는 직접 곱해보면 알 수 있어요. (a + b)(a² − ab + b²) 를 곱하면 <b>a³ − a²b + ab² + a²b − ab² + b³</b> 가 되는데, 가운데 −a²b 와 +a²b 가 서로 지워지고, +ab² 와 −ab² 도 지워져서 결국 <b>a³ + b³</b> 만 깔끔히 남아요. 가운데 부호가 반대여야만 이렇게 지워지기 때문에, 이 부호가 공식의 핵심인 거예요.</div>`,
     practice:[
@@ -572,7 +689,23 @@ const UNITS = [
     concept:`<div class="formula-box">a + bi 의 짝꿍 = a − bi<br>(i 앞 부호만 뒤집기, 앞쪽 숫자는 그대로)</div>
 <div class="step-row"><div class="step-num">1</div><div class="step-text">두 식이 같으려면 <b>i 없는 부분끼리, i 있는 부분끼리</b> 따로 같아야 함</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">짝꿍을 만들 땐 <b>i 앞 부호만 반대</b>로</div></div>
-<div class="example-block"><div class="ex-label">예시</div>(3 + ai)의 짝꿍이 b − 4i 일 때 a + b<br>(3 + ai)의 짝꿍 = 3 − ai (i 앞 부호만 반대)<br>3 − ai = b − 4i 양쪽 비교<br>i 없는 부분: 3 = b → <b>b = 3</b><br>i 앞 숫자 비교: −a = −4 → <b>a = 4</b><br><span class="arrow">→</span> a + b = <b>7</b></div>
+<div class="conj-demo" id="conjDemo4">
+  <div style="font-size:11px;font-weight:800;color:#94a3b8;letter-spacing:.08em;margin-bottom:8px">버튼을 눌러 짝꿍을 만들어보세요 👇</div>
+  <div class="cn-expr">
+    <span style="font-size:15px;font-weight:700">(3</span>
+    <span class="cn-sign" id="cnSign4">+</span>
+    <span style="font-size:15px;font-weight:700">ai)</span>
+    <span style="font-size:13px;color:#64748b;margin:0 4px">의 짝꿍</span>
+    <span style="font-size:18px;font-weight:900;color:#64748b">=</span>
+    <span style="font-size:15px;font-weight:700">(b − 4i)</span>
+  </div>
+  <button class="cn-btn" id="cnBtn4" onclick="runConjDemo4()">i 앞 부호 뒤집기 →</button>
+  <div class="cn-compare" id="cnCompare4" style="display:none">
+    <div class="cn-card cn-card-real"><div class="cn-card-lbl">실수부 비교</div><div class="cn-card-val">3 = b<br><b>b = 3</b></div></div>
+    <div class="cn-card cn-card-imag"><div class="cn-card-lbl">허수부 비교</div><div class="cn-card-val">−a = −4<br><b>a = 4</b></div></div>
+  </div>
+  <div class="cn-final" id="cnFinal4"><span class="arrow">→</span> a + b = <b>7</b></div>
+</div>
 <div class="tip-box">i가 들어간 수를 <b>복소수</b>, 그 짝꿍을 <b>켤레복소수</b>라고 해요. i 없는 부분을 실수부, i 앞 숫자를 허수부라고 부르고, 두 식이 같으면 각각이 같아야 합니다.</div>
 <button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">i 라는 친구는 <b>제곱하면 −1</b>이 되는 특이한 수라, 보통 숫자랑은 절대 섞이지 않아요. 그래서 a + bi 는 마치 'a 사과 + b 배' 같은 거예요 — 사과 개수와 배 개수를 따로 세야 하듯, 실수부와 허수부도 따로 비교해야 해요. 켤레가 i 앞 부호만 뒤집는 이유도, 곱했을 때 (a + bi)(a − bi) = a² + b² 처럼 i 가 깨끗이 사라져서 실수가 되기 때문이에요.</div>`,
     practice:[
@@ -599,7 +732,19 @@ const UNITS = [
 <div class="step-row"><div class="step-num">1</div><div class="step-text">x² 앞 숫자가 1인지 확인 (다르면 양변을 그 수로 나누기)</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">x 앞 숫자를 <b>2로 나눈 뒤 제곱</b> → 그 값이 마지막 숫자</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">검산: (x ± □)² 모양으로 묶이는지 확인</div></div>
-<div class="example-block"><div class="ex-label">예시</div>x² − 6x + a = 0 이 답 하나만 가질 때 a<br>x 앞 숫자: −6<br>−6 ÷ 2 = −3<br>(−3)² = <b>9</b><br>검산: x² − 6x + 9 = (x − 3)² → 답 x = 3 (하나) OK<br><span class="arrow">→</span> a = <b>9</b></div>
+<div class="midr-demo" id="midrDemo5">
+  <div style="font-size:11px;font-weight:800;color:#94a3b8;letter-spacing:.08em;margin-bottom:8px">x² − 6x + a = 0 → a 구하는 레시피 👇</div>
+  <div class="mr-recipe">
+    <div class="mr-box"><div class="mr-step-lbl">x 앞 숫자</div><div class="mr-val active-blue" id="mrStart5">−6</div></div>
+    <div class="mr-arr">÷2</div>
+    <div class="mr-box"><div class="mr-step-lbl">반으로</div><div class="mr-val empty" id="mrMid5">?</div></div>
+    <div class="mr-arr">²</div>
+    <div class="mr-box"><div class="mr-step-lbl">제곱 = a</div><div class="mr-val empty" id="mrEnd5">?</div></div>
+  </div>
+  <button class="mr-btn" id="mrBtn5" onclick="runMidrDemo5()">레시피 실행하기 →</button>
+  <div class="mr-verify" id="mrVerify5">검산: x² − 6x + 9 = (x − 3)² ✓ 답이 x = 3 하나</div>
+  <div class="mr-final" id="mrFinal5"><span class="arrow">→</span> a = <b>9</b></div>
+</div>
 <div class="tip-box">답이 두 개 같아 하나로 겹치는 걸 <b>중근</b>, (x ± □)² 모양을 <b>완전제곱식</b>이라고 해요. 중근이 되려면 완전제곱식이 되어야 합니다!</div>
 <button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">답이 하나로 겹치려면 식이 (x − m)² 모양이 되어야 해요. 이걸 풀어 쓰면 <b>x² − 2mx + m²</b> 인데, 여기서 'x 앞 숫자'는 −2m, 마지막은 m² 이죠. 그러니까 'x 앞 숫자'를 2로 나눈 게 m 이고, 그걸 다시 제곱한 m² 이 마지막 숫자가 되는 거예요. (b ÷ 2)² 라는 공식은 이 관계를 거꾸로 이용한 지름길이에요.</div>`,
     practice:[
@@ -626,7 +771,20 @@ const UNITS = [
 <div class="step-row"><div class="step-num">1</div><div class="step-text">두 답의 합 → x 앞 숫자에 <b>마이너스</b> 붙이기</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">두 답의 곱 → 그냥 숫자(맨 뒤) 그대로</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">x² 앞에 1이 아닌 수가 있으면 양변을 그 수로 나눈 뒤 적용</div></div>
-<div class="example-block"><div class="ex-label">예시</div>x² − 5x + 6 = 0 의 두 답의 합과 곱<br>x 앞 숫자: −5 → 합: <b>−(−5) = 5</b><br>그냥 숫자: 6 → 곱: <b>6</b><br>검산: (x−2)(x−3)=0 → 답 2와 3 (합=5, 곱=6) OK</div>
+<div class="vieta-demo" id="vietaDemo6">
+  <div style="font-size:11px;font-weight:800;color:#94a3b8;letter-spacing:.08em;margin-bottom:8px">버튼을 눌러 합과 곱을 읽어보세요 👇</div>
+  <div class="vt-expr">
+    <span class="vt-t vt-x2">x²</span>
+    <span class="vt-t vt-coef" id="vtCoef6">− 5x</span>
+    <span class="vt-t vt-const" id="vtConst6">+ 6</span>
+    <span class="vt-eq">= 0</span>
+  </div>
+  <button class="vt-btn" id="vtBtn6" onclick="runVietaDemo6()">합과 곱 읽기 →</button>
+  <div class="vt-results" id="vtResults6" style="display:none">
+    <div class="vt-card vt-card-sum"><div class="vt-card-lbl">🔵 두 답의 합</div><div class="vt-card-calc">−(−5)</div><div class="vt-card-ans">= 5</div></div>
+    <div class="vt-card vt-card-prod"><div class="vt-card-lbl">🟢 두 답의 곱</div><div class="vt-card-calc">그대로</div><div class="vt-card-ans">= 6</div></div>
+  </div>
+</div>
 <div class="tip-box">방정식의 답을 <b>근</b>, 'x 앞 숫자'를 <b>계수</b>라고 해요. 합 공식의 <b>마이너스</b>가 가장 잦은 실수입니다!</div>
 <button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">두 답이 α 와 β 라면 식은 <b>(x − α)(x − β) = 0</b> 으로 묶을 수 있어요. 이걸 전개하면 <b>x² − (α + β)x + αβ = 0</b> 이 나오죠. 원래 식 x² + bx + c 와 자리별로 비교해보면, x 앞 숫자 b 는 −(α + β) 이고, 끝 숫자 c 는 αβ 예요. 그래서 식만 보고도 두 답을 직접 안 풀고 합과 곱을 바로 알 수 있는 거예요.</div>`,
     practice:[
@@ -653,7 +811,21 @@ const UNITS = [
 <div class="step-row"><div class="step-num">1</div><div class="step-text">식이 y = a(x − p)² + q 모양인지 확인</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">괄호 안의 <b>p</b>(부호 반대로!), 마지막의 <b>q</b>를 그대로 읽기 → 꺾이는 점 (p, q)</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">a가 양수면 q가 가장 작은 값(<b>최솟값</b>), 음수면 가장 큰 값(<b>최댓값</b>)</div></div>
-<div class="example-block"><div class="ex-label">예시</div>y = 2(x − 3)² + 1 의 가장 작은 값<br>괄호 안 −3 → p = 3 (부호 반대로 읽기)<br>+1 → q = 1<br>꺾이는 점: (3, 1)<br>a = 2 > 0 → 그릇 모양(아래로 볼록) → 1이 가장 낮은 값<br><span class="arrow">→</span> 최솟값 = <b>1</b></div>
+<div class="quad-demo" id="quadDemo7">
+  <div style="font-size:11px;font-weight:800;color:#94a3b8;letter-spacing:.08em;margin-bottom:8px">버튼을 눌러 꼭짓점을 읽어보세요 👇</div>
+  <div class="qd-expr">
+    y = <span class="qd-t qd-a" id="qdA7">2</span>
+    &nbsp;(x − <span class="qd-t qd-p" id="qdP7">3</span>)²&nbsp;
+    + <span class="qd-t qd-q" id="qdQ7">1</span>
+  </div>
+  <button class="qd-btn" id="qdBtn7" onclick="runQuadDemo7()">꼭짓점 읽기 →</button>
+  <div class="qd-cards" id="qdCards7" style="display:none">
+    <div class="qd-card qd-card-a"><div class="qd-card-lbl">a</div><div class="qd-card-val">2</div><div class="qd-card-note">양수 →<br>아래로 볼록</div></div>
+    <div class="qd-card qd-card-p"><div class="qd-card-lbl">p (부호 반대!)</div><div class="qd-card-val">3</div><div class="qd-card-note">(x−3) 이므로<br>p = 3</div></div>
+    <div class="qd-card qd-card-q"><div class="qd-card-lbl">q = 최솟값</div><div class="qd-card-val">1</div><div class="qd-card-note">꼭짓점<br>(3, 1)</div></div>
+  </div>
+  <div class="qd-final" id="qdFinal7"><span class="arrow">→</span> 최솟값 = <b>1</b></div>
+</div>
 <div class="tip-box">그래프가 꺾이는 점을 <b>꼭짓점</b>이라고 해요. y = (x + 2)² + 3 → p = <b>−2</b>! 괄호 안 부호와 반대로 읽기.</div>
 <button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">(x − p)² 부분은 <b>제곱이라 절대 음수가 안 돼요</b> — 아무리 작아도 0 이에요. 그러니까 a(x − p)² + q 에서 제곱 부분이 0 이 되는 순간(x = p 일 때) 식 전체가 가장 작거나 가장 큰 값이 되죠. a 가 양수면 q 에 양수가 더해지니 q 가 최저, a 가 음수면 q 에 음수가 더해지니 q 가 최고가 되는 거예요.</div>`,
     practice:[
@@ -1275,6 +1447,94 @@ function loadState() {
       ST.examScores = d.examScores||new Array(10).fill(null);
     }
   } catch(e){}
+}
+
+// ── 인수분해 세제곱 (Unit 3) ──
+function runCubeDemo3() {
+  const btn = document.getElementById('cdBtn3');
+  if (!btn) return;
+  btn.disabled = true; btn.style.display = 'none';
+  const wrap = document.getElementById('cdBrackets3');
+  wrap.style.display = 'block'; wrap.offsetHeight;
+  ['cdFront3','cdBack3','cdResult3'].forEach((id, i) => {
+    setTimeout(() => document.getElementById(id).classList.add('show'), i * 420);
+  });
+}
+
+// ── 켤레복소수 (Unit 4) ──
+function runConjDemo4() {
+  const btn = document.getElementById('cnBtn4');
+  if (!btn) return;
+  btn.disabled = true;
+  const sign = document.getElementById('cnSign4');
+  sign.classList.add('flipped');
+  setTimeout(() => { sign.textContent = '−'; }, 150);
+  setTimeout(() => { sign.style.transform = 'scale(1)'; }, 450);
+  setTimeout(() => {
+    btn.style.display = 'none';
+    const cmp = document.getElementById('cnCompare4');
+    cmp.style.display = 'flex'; cmp.offsetHeight;
+    cmp.querySelectorAll('.cn-card').forEach((c, i) => {
+      setTimeout(() => c.classList.add('show'), i * 220);
+    });
+    setTimeout(() => document.getElementById('cnFinal4').classList.add('show'), 600);
+  }, 700);
+}
+
+// ── 중근 조건 (Unit 5) ──
+function runMidrDemo5() {
+  const btn = document.getElementById('mrBtn5');
+  if (!btn) return;
+  btn.disabled = true; btn.style.opacity = '0.5';
+  setTimeout(() => {
+    document.getElementById('mrMid5').textContent = '−3';
+    document.getElementById('mrMid5').className = 'mr-val active-yellow';
+  }, 500);
+  setTimeout(() => {
+    document.getElementById('mrEnd5').textContent = '9';
+    document.getElementById('mrEnd5').className = 'mr-val active-green';
+  }, 1100);
+  setTimeout(() => {
+    btn.style.display = 'none';
+    document.getElementById('mrVerify5').classList.add('show');
+  }, 1700);
+  setTimeout(() => document.getElementById('mrFinal5').classList.add('show'), 2300);
+}
+
+// ── 근과 계수 (Unit 6) ──
+function runVietaDemo6() {
+  const btn = document.getElementById('vtBtn6');
+  if (!btn) return;
+  btn.disabled = true;
+  setTimeout(() => document.getElementById('vtCoef6').classList.add('glow'), 100);
+  setTimeout(() => document.getElementById('vtConst6').classList.add('glow'), 500);
+  setTimeout(() => {
+    btn.style.display = 'none';
+    const res = document.getElementById('vtResults6');
+    res.style.display = 'flex'; res.offsetHeight;
+    res.querySelectorAll('.vt-card').forEach((c, i) => {
+      setTimeout(() => c.classList.add('show'), i * 250);
+    });
+  }, 900);
+}
+
+// ── 이차함수 최대최소 (Unit 7) ──
+function runQuadDemo7() {
+  const btn = document.getElementById('qdBtn7');
+  if (!btn) return;
+  btn.disabled = true;
+  setTimeout(() => document.getElementById('qdA7').classList.add('glow'), 100);
+  setTimeout(() => document.getElementById('qdP7').classList.add('glow'), 450);
+  setTimeout(() => document.getElementById('qdQ7').classList.add('glow'), 800);
+  setTimeout(() => {
+    btn.style.display = 'none';
+    const cards = document.getElementById('qdCards7');
+    cards.style.display = 'flex'; cards.offsetHeight;
+    cards.querySelectorAll('.qd-card').forEach((c, i) => {
+      setTimeout(() => c.classList.add('show'), i * 200);
+    });
+    setTimeout(() => document.getElementById('qdFinal7').classList.add('show'), 800);
+  }, 1200);
 }
 
 // ── 나머지정리 인터랙티브 데모 (Unit 2) ──
