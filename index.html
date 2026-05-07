@@ -2049,12 +2049,10 @@ function animateConceptSteps(box) {
   box.addEventListener('pointerup',   _csUp);
   box.addEventListener('pointercancel', () => { _csStartX = null; });
 
-  // 렌더링 완료 후 실제 너비 측정
-  requestAnimationFrame(() => {
-    const w = box.offsetWidth;
-    _csSlides.forEach(s => { s.style.width = w + 'px'; });
-    _csGoTo(0, false);
-  });
+  // showScreen 이후 호출되므로 offsetWidth 즉시 측정 가능
+  const w = box.offsetWidth;
+  _csSlides.forEach(s => { s.style.width = w + 'px'; });
+  _csGoTo(0, false);
 }
 
 function _csGoTo(idx, animate) {
@@ -2207,9 +2205,9 @@ function startUnit(id) {
   ST.selected = null;
   ST.submitted = false;
   if (ST.qIndex[id]===undefined) ST.qIndex[id]=0;
-  renderPractice();
-  showScreen('practice');
+  showScreen('practice');                                        // 먼저 화면 표시 (offsetWidth 측정 가능하게)
   document.getElementById('headerTitle').textContent = UNITS[id].title;
+  renderPractice();
 }
 
 function renderPractice() {
