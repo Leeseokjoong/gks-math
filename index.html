@@ -876,7 +876,7 @@ const UNITS = [
   </div>
   <div class="cn-final" id="cnFinal4"><span class="arrow">→</span> a + b = <b>7</b></div>
 </div>
-<div class="tip-box">i가 들어간 수를 <b>복소수</b>, 그 짝꿍을 <b>켤레복소수</b>라고 해요. i 없는 부분을 실수부, i 앞 숫자를 허수부라고 부르고, 두 식이 같으면 각각이 같아야 합니다.</div>
+<div class="tip-box">a + bi에서 <b>a = 실수부</b>(i 없는 부분), <b>b = 허수부</b>(i 앞 숫자). 켤레복소수는 신발 한 켤레처럼 <b>허수부 부호만 반대</b>로 뒤집어요 — a + bi ↔ a − bi. 두 복소수가 같으면 실수부끼리, 허수부끼리 따로 비교합니다.</div>
 <button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">i 라는 친구는 <b>제곱하면 −1</b>이 되는 특이한 수라, 보통 숫자랑은 절대 섞이지 않아요. 그래서 a + bi 는 마치 'a 사과 + b 배' 같은 거예요 — 사과 개수와 배 개수를 따로 세야 하듯, 실수부와 허수부도 따로 비교해야 해요. 켤레가 i 앞 부호만 뒤집는 이유도, 곱했을 때 (a + bi)(a − bi) = a² + b² 처럼 i 가 깨끗이 사라져서 실수가 되기 때문이에요.</div>`,
     practice:[
       {q:"a − 4i의 켤레복소수가 1 + bi일 때, a + b의 값은?",
@@ -915,7 +915,7 @@ const UNITS = [
   <div class="mr-verify" id="mrVerify5">검산: x² − 6x + 9 = (x − 3)² ✓ 답이 x = 3 하나</div>
   <div class="mr-final" id="mrFinal5"><span class="arrow">→</span> a = <b>9</b></div>
 </div>
-<div class="tip-box">답이 두 개 같아 하나로 겹치는 걸 <b>중근</b>, (x ± □)² 모양을 <b>완전제곱식</b>이라고 해요. 중근이 되려면 완전제곱식이 되어야 합니다!</div>
+<div class="tip-box">기억법: <b>"가운데(x 앞) 계수를 반으로 나눈 뒤 제곱 = 상수항"</b> → 이게 성립해야 중근! 예) x² − 6x + □ → 6 ÷ 2 = 3 → 3² = <b>9</b>. 이때 (x − 3)² 로 묶이는 식을 <b>완전제곱식</b>, 겹치는 한 근을 <b>중근</b>이라 해요.</div>
 <button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">답이 하나로 겹치려면 식이 (x − m)² 모양이 되어야 해요. 이걸 풀어 쓰면 <b>x² − 2mx + m²</b> 인데, 여기서 'x 앞 숫자'는 −2m, 마지막은 m² 이죠. 그러니까 'x 앞 숫자'를 2로 나눈 게 m 이고, 그걸 다시 제곱한 m² 이 마지막 숫자가 되는 거예요. (b ÷ 2)² 라는 공식은 이 관계를 거꾸로 이용한 지름길이에요.</div>`,
     practice:[
       {q:"이차방정식 x² + 6x + a = 0이 중근을 가질 때, 상수 a의 값은?",
@@ -937,9 +937,9 @@ const UNITS = [
   },
   {
     id:6, title:"근과 계수의 관계", sub:"두 근의 합과 곱",
-    concept:`<div class="formula-box">x² 앞 숫자가 1일 때 (예: x² − 5x + 6 = 0)<br>두 답의 합 = <b>−</b>(x 앞 숫자) &nbsp;&nbsp; 두 답의 곱 = (그냥 숫자)</div>
-<div class="step-row"><div class="step-num">1</div><div class="step-text">두 답의 합 → x 앞 숫자에 <b>마이너스</b> 붙이기</div></div>
-<div class="step-row"><div class="step-num">2</div><div class="step-text">두 답의 곱 → 그냥 숫자(맨 뒤) 그대로</div></div>
+    concept:`<div class="formula-box">x² − 5x + 6 = 0 의 두 근 → <b>곱하면 6, 더하면 5</b> 인 두 수<br>합 = −(x 앞 숫자) &nbsp;&nbsp; 곱 = (상수항)</div>
+<div class="step-row"><div class="step-num">1</div><div class="step-text">두 근의 <b>곱</b> → 상수항(맨 뒤 숫자) 그대로 읽기</div></div>
+<div class="step-row"><div class="step-num">2</div><div class="step-text">두 근의 <b>합</b> → x 앞 숫자에 <b>마이너스</b> 붙이기 (부호 반대)</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">x² 앞에 1이 아닌 수가 있으면 양변을 그 수로 나눈 뒤 적용</div></div>
 <div class="vieta-demo" id="vietaDemo6">
   <div style="font-size:11px;font-weight:800;color:#94a3b8;letter-spacing:.08em;margin-bottom:8px">버튼을 눌러 합과 곱을 읽어보세요 👇</div>
@@ -1018,12 +1018,12 @@ const UNITS = [
   },
   {
     id:8, title:"삼차방정식의 해", sub:"근 대입하여 미정계수",
-    concept:`<div class="formula-box">'x = k가 답이다' = 'x 자리에 k를 넣으면 식이 0이 된다'</div>
-<div class="step-row"><div class="step-num">1</div><div class="step-text">'답이 k'라는 말 = 'x 자리에 k 넣으면 식 전체 = 0'</div></div>
+    concept:`<div class="formula-box">'x = k가 근(해)이다' = 'x 자리에 k를 넣으면 식이 0이 된다'</div>
+<div class="step-row"><div class="step-num">1</div><div class="step-text">'근(해)이 k'라는 말 = 'x 자리에 k 넣으면 식 전체 = 0'</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">x 자리에 k를 넣은 식 = 0 으로 놓기</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">남은 모르는 글자 풀기</div></div>
 <div class="example-block"><div class="ex-label">예시</div>x³ + ax − 2 = 0 의 답 중 하나가 1일 때 a<br>x 자리에 1 넣기: (1)³ + a × (1) − 2 = 0<br>1 + a − 2 = 0<br>a − 1 = 0<br><span class="arrow">→</span> a = <b>1</b></div>
-<div class="tip-box">방정식이 0이 되게 하는 x 값을 <b>근</b>(=답)이라고 해요. 대입할 때 거듭제곱과 부호 실수가 가장 잦아요!</div>
+<div class="tip-box">방정식이 0이 되게 하는 x 값을 <b>근(해)</b>이라고 해요. '한 근이 k'라는 말을 보는 순간 x = k 를 대입! 거듭제곱과 부호 계산이 실수 포인트예요.</div>
 <button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">'근'이라는 말 자체가 <b>'식을 0 으로 만드는 x 값'</b>이라는 뜻이에요. 그러니까 'x = 1 이 근' 이라고 하면 자동으로 'x 자리에 1 을 넣으면 식 = 0' 이라는 정보를 공짜로 얻는 셈이죠. 이걸 이용해서 모르는 글자가 들어 있는 자리를 풀면 끝이에요. 어렵게 식을 인수분해할 필요 없이, 근의 정의 한 줄로 해결되는 거예요.</div>`,
     practice:[
       {q:"x³ + x² + x + a = 0의 한 근이 −1일 때, 상수 a의 값은?",
@@ -1217,10 +1217,11 @@ const UNITS = [
   {
     id:13, title:"도형의 대칭이동", sub:"원점 대칭",
     concept:`<div class="formula-box">x축 대칭: (a, b) → (a, −b) &nbsp; y축 대칭: (a, b) → (−a, b)<br>원점 대칭: (a, b) → (−a, −b) &nbsp; y = x 대칭: (a, b) → (b, a)</div>
-<div class="step-row"><div class="step-num">1</div><div class="step-text">어떤 축/점을 거울 삼아 비추는지 확인</div></div>
-<div class="step-row"><div class="step-num">2</div><div class="step-text">규칙대로 부호 바꾸거나 좌표 자리 바꾸기</div></div>
+<div class="step-row"><div class="step-num">1</div><div class="step-text">x축 대칭 → <b>x는 건드리지 않고, y 부호만</b> 반대로 (위아래 뒤집기)</div></div>
+<div class="step-row"><div class="step-num">2</div><div class="step-text">y축 대칭 → <b>y는 건드리지 않고, x 부호만</b> 반대로 (좌우 뒤집기)</div></div>
+<div class="step-row"><div class="step-num">3</div><div class="step-text">원점 대칭 → <b>x, y 둘 다</b> 부호 반대 &nbsp;|&nbsp; y = x 대칭 → <b>x와 y 자리를 서로 바꿈</b></div></div>
 <div class="example-block"><div class="ex-label">예시</div>점 (3, −4)의 각 대칭점<br>x축 대칭 → y만 부호 반대 → <b>(3, 4)</b><br>y축 대칭 → x만 부호 반대 → <b>(−3, −4)</b><br>원점 대칭 → 둘 다 부호 반대 → <b>(−3, 4)</b><br>y = x 대칭 → x와 y 자리 바꿈 → <b>(−4, 3)</b></div>
-<div class="tip-box">거울로 비추듯 옮기는 걸 <b>대칭이동</b>이라고 해요. x축 대칭 = y만 뒤집기, y축 대칭 = x만 뒤집기 (이름과 반대!).</div>
+<div class="tip-box">거울로 비추듯 옮기는 걸 <b>대칭이동</b>이라고 해요. 헷갈릴 때: <b>x축 거울 = y만 뒤집기, y축 거울 = x만 뒤집기</b> (이름과 반대!). 원점 = 둘 다 뒤집기.</div>
 <button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">대칭이동은 그냥 <b>거울로 비춘 모습</b>이에요. x 축을 거울로 삼으면 위아래가 뒤집히니까 y 만 부호가 반대가 되고, y 축을 거울로 삼으면 좌우가 뒤집히니까 x 만 부호가 반대가 되죠. 원점 대칭은 점을 중심으로 180° 빙 돌린 거라 x 와 y 둘 다 부호가 반대가 되고요. y = x 대칭은 좀 특별해서, x 와 y 자리가 통째로 바뀌는 거예요.</div>`,
     practice:[
       {q:"점 (−1, 5)를 원점에 대하여 대칭이동한 점의 좌표는?",
@@ -1295,7 +1296,7 @@ const UNITS = [
 <div class="step-row"><div class="step-num">2</div><div class="step-text">q를 풀어 'x = ___' 모양으로 만들기</div></div>
 <div class="step-row"><div class="step-num">3</div><div class="step-text">p의 x 값과 같아지도록 모르는 글자 결정</div></div>
 <div class="example-block"><div class="ex-label">예시</div>p: x = 5, &nbsp; q: 2x − a = 0 이 필요충분일 때 a<br>q 풀기: 2x = a → x = a / 2<br>p 와 같으려면: a / 2 = 5<br>양변 × 2<br><span class="arrow">→</span> a = <b>10</b></div>
-<div class="tip-box">참·거짓을 가릴 수 있는 문장을 <b>명제</b>, 두 조건이 정확히 같은 x들을 가지면 <b>필요충분조건</b>이라고 해요. q를 'x = ?' 모양으로 만든 뒤 p와 맞추세요.</div>
+<div class="tip-box"><b>충분조건</b>: p면 무조건 q (p → q). <b>필요조건</b>: q면 무조건 p (← 방향). <b>필요충분</b>: 양방향 모두 성립 → 두 조건의 x 값이 <b>완전히 같음</b>. 문제에서 필요충분이 나오면 q를 'x = ?' 로 풀어 p와 같게 하면 끝!</div>
 <button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">필요충분조건(↔)은 화살표가 양쪽 다 가는 거라, <b>'p 이면 q' 이면서 동시에 'q 이면 p'</b> 라는 뜻이에요. 한 방향만 통하는 게 아니라 두 방향 다 통하니까, 결국 p 인 x 들과 q 인 x 들이 정확히 같은 모임을 이루죠. 그러니까 q 를 풀어서 'x = ?' 모양으로 만든 뒤 p 의 값과 똑같이 만들면 되는 거예요.</div>`,
     practice:[
       {q:"p: x = 5, q: x − a = 0이 필요충분조건일 때, a의 값은?",
@@ -1318,7 +1319,7 @@ const UNITS = [
   {
     id:16, title:"역함수의 값", sub:"f(a)=b ↔ f⁻¹(b)=a",
     concept:`<div class="formula-box">f(a) = b 이면 → f⁻¹(b) = a<br>(입력과 출력을 거꾸로 뒤집은 것)</div>
-<div class="step-row"><div class="step-num">1</div><div class="step-text">f⁻¹(k) 구하기 → <b>f(?) = k</b> 인 ? 를 찾기</div></div>
+<div class="step-row"><div class="step-num">1</div><div class="step-text">f⁻¹(k) 구하기 → <b>"k가 나오려면 뭘 넣어야 해?"</b> = f(?) = k 인 ?를 찾기</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">표나 식에서 결과(오른쪽)가 k 인 것의 입력값(왼쪽)을 읽기</div></div>
 <div class="example-block"><div class="ex-label">예시</div>f(3) = 7 일 때 f⁻¹(7) 의 값<br>f(?) = 7 인 ? 찾기<br>주어진 조건: f(<b>3</b>) = 7<br><span class="arrow">→</span> f⁻¹(7) = <b>3</b></div>
 <div class="iv-demo" id="ivDemo16">
@@ -1392,8 +1393,9 @@ const UNITS = [
     id:18, title:"순열", sub:"순서 있는 배열 nPr",
     concept:`<div class="formula-box">ₙPᵣ = n × (n−1) × (n−2) × … <b>(r 개 곱하기)</b></div>
 <div class="step-row"><div class="step-num">1</div><div class="step-text">'순서대로 줄 세우기', '자리 정하기' 키워드 → 순열</div></div>
-<div class="step-row"><div class="step-num">2</div><div class="step-text">n 부터 1씩 줄여가며 <b>r 개</b> 만 곱하기</div></div>
-<div class="example-block"><div class="ex-label">예시</div>₅P₃ = 5 × 4 × 3 = <b>60</b> &nbsp;(5에서 3개 곱)<br>₄P₂ = 4 × 3 = <b>12</b> &nbsp;(4에서 2개 곱)<br>₆P₂ = 6 × 5 = <b>30</b> &nbsp;(6에서 2개 곱)</div>
+<div class="step-row"><div class="step-num">2</div><div class="step-text">자리마다 빈칸 채우기: 1번 자리 □ × 2번 자리 □ × … (r 개 칸)</div></div>
+<div class="step-row"><div class="step-num">3</div><div class="step-text">첫 칸 = n, 다음 칸 = n−1, … 이렇게 1씩 줄여서 <b>r 개만</b> 곱하기</div></div>
+<div class="example-block"><div class="ex-label">예시 (빈칸 채우기)</div>5명 중 반장·부반장 뽑기 (2자리)<br>반장 자리: □ = 5가지 &nbsp; 부반장 자리: □ = 4가지<br>5 × 4 = ₅P₂ = <b>20</b></div>
 <div class="tip-box">순서를 따져 줄 세우는 가짓수를 <b>순열</b>(P)이라고 해요. '나열·배열·줄세우기·자리정하기'면 순열! 정확히 r 개만 곱하기.</div>
 <button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">자리를 하나씩 채워나간다고 생각하면 돼요. 첫 번째 자리는 n 명 중 누가 와도 되니까 <b>n 가지</b>, 두 번째 자리는 한 명이 이미 갔으니 <b>(n − 1) 가지</b>, 세 번째 자리는 <b>(n − 2) 가지</b>… 이렇게 r 번째 자리까지 채우는 거죠. 각 자리의 선택은 곱으로 합쳐지니까 결과가 n × (n − 1) × … 식으로 r 개 곱이 되는 거예요.</div>`,
     practice:[
@@ -1416,11 +1418,11 @@ const UNITS = [
   },
   {
     id:19, title:"조합", sub:"순서 없는 선택 nCr",
-    concept:`<div class="formula-box">ₙCᵣ = ₙPᵣ ÷ r! &nbsp;(순서 중복 제거한 순열)</div>
-<div class="step-row"><div class="step-num">1</div><div class="step-text">'순서 없이 뽑기·고르기' 키워드 → 조합</div></div>
-<div class="step-row"><div class="step-num">2</div><div class="step-text">위(분자): n 부터 r 개 곱하기 (순열과 같음)</div></div>
-<div class="step-row"><div class="step-num">3</div><div class="step-text">아래(분모): r! = r × (r−1) × … × 1 로 나누기</div></div>
-<div class="example-block"><div class="ex-label">예시</div>₅C₂ = (5 × 4) ÷ (2 × 1) = 20 ÷ 2 = <b>10</b><br>₆C₃ = (6 × 5 × 4) ÷ (3 × 2 × 1) = 120 ÷ 6 = <b>20</b></div>
+    concept:`<div class="formula-box">ₙCᵣ = ₙPᵣ ÷ r! &nbsp;(순열에서 순서 중복을 제거)</div>
+<div class="step-row"><div class="step-num">1</div><div class="step-text">'순서 없이 뽑기·고르기·선택' 키워드 → 조합</div></div>
+<div class="step-row"><div class="step-num">2</div><div class="step-text">위(분자): 순열처럼 n 부터 r 개 곱하기</div></div>
+<div class="step-row"><div class="step-num">3</div><div class="step-text">아래(분모): r! 로 나누기 — 같은 r명을 줄 세우는 r! 가지 중복을 제거</div></div>
+<div class="example-block"><div class="ex-label">예시 (왜 나누는가)</div>3명(A, B, C) 중 2명 고르기<br>순열: AB, BA, AC, CA, BC, CB = 6 (AB ≠ BA 로 셈)<br>조합: AB=BA 이므로 ÷ 2! = 6 ÷ 2 = <b>3</b> &nbsp;(AB, AC, BC)<br>₃C₂ = (3×2) ÷ (2×1) = <b>3</b></div>
 <div class="tip-box">순서 상관없이 뽑는 가짓수를 <b>조합</b>(C)이라고 해요. r! 은 r부터 1까지 다 곱한 것 (예: 3! = 3×2×1 = 6). '선택·고르기·뽑기'면 조합!</div>
 <button class="why-btn" onclick="toggleWhy(this)">왜 그럴까? 🔍</button><div class="why-box">순열은 'A, B' 와 'B, A' 를 다른 경우로 세는데, 조합은 둘을 같은 걸로 봐요. 예를 들어 3 명 중 2 명을 고를 때, 순열은 '철수→영희' 와 '영희→철수' 를 따로 세지만 조합은 그냥 '철수랑 영희' 한 가지죠. 같은 r 명을 줄 세우는 방법이 r! 가지니까, <b>순열을 r! 로 나누면 순서 중복이 깔끔히 사라져 조합</b>이 되는 거예요.</div>`,
     practice:[
