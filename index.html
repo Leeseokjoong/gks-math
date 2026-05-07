@@ -2033,11 +2033,9 @@ function animateConceptSteps(box) {
   track.className = 'cs-track';
   track.id = 'csTrack';
 
-  const slideW = box.offsetWidth + 'px';
   children.forEach(child => {
     const slide = document.createElement('div');
     slide.className = 'cs-slide';
-    slide.style.width = slideW;
     child.style.opacity = '1';
     child.style.animation = '';
     slide.appendChild(child);
@@ -2051,7 +2049,12 @@ function animateConceptSteps(box) {
   box.addEventListener('pointerup',   _csUp);
   box.addEventListener('pointercancel', () => { _csStartX = null; });
 
-  _csGoTo(0, false);
+  // 렌더링 완료 후 실제 너비 측정
+  requestAnimationFrame(() => {
+    const w = box.offsetWidth;
+    _csSlides.forEach(s => { s.style.width = w + 'px'; });
+    _csGoTo(0, false);
+  });
 }
 
 function _csGoTo(idx, animate) {
