@@ -529,11 +529,11 @@ header h1{font-size:18px;flex:1}
 .p0-box-label-b{color:#6d28d9}
 .p0-box-icon{font-size:22px;transition:transform .25s}
 .p0-box-body{max-height:0;overflow:hidden;transition:max-height .35s ease,opacity .35s ease;opacity:0}
-.p0-box.open .p0-box-body{max-height:80px;opacity:1}
+.p0-box.open .p0-box-body{max-height:160px;opacity:1}
 .p0-box-expr{font-size:15px;font-weight:700;color:#334155;margin-top:6px;padding:5px 8px;background:rgba(255,255,255,.75);border-radius:8px}
 .p0-box-hint{font-size:12px;color:#94a3b8;margin-top:3px}
 .p0-calc-reveal{margin-top:10px;padding:10px 14px;background:#fefce8;border:1.5px solid #fde047;border-radius:10px;font-size:14px;font-weight:700;color:#854d0e;text-align:center;max-height:0;overflow:hidden;opacity:0;transition:max-height .4s ease,opacity .4s ease}
-.p0-calc-reveal.show{max-height:60px;opacity:1}
+.p0-calc-reveal.show{max-height:120px;opacity:1}
 .p0-err-list{display:flex;flex-direction:column;gap:7px;margin-top:8px}
 .p0-err{border-radius:10px;padding:9px 12px}
 .p0-err-bad{background:#fff0f0;border:1.5px solid #fca5a5}
@@ -3386,7 +3386,7 @@ function _csGoTo(idx, animate) {
   const _applyHeight = (noAnim) => {
     const slide = _csSlides[_csIdx];
     if (!slide) return;
-    const h = Math.max(220, Math.min(slide.scrollHeight + 2, 520));
+    const h = Math.max(220, Math.min(slide.scrollHeight + 2, 640));
     if (noAnim) {
       box.style.transition = 'none';
       box.style.height = h + 'px';
@@ -3404,7 +3404,7 @@ function _csGoTo(idx, animate) {
     window._csRO = new ResizeObserver(() => {
       const slide = _csSlides[_csIdx];
       if (!slide) return;
-      const h = Math.max(220, Math.min(slide.scrollHeight + 2, 520));
+      const h = Math.max(220, Math.min(slide.scrollHeight + 2, 640));
       box.style.height = h + 'px';
     });
     window._csRO.observe(cur);
