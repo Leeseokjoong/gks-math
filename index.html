@@ -475,7 +475,7 @@ header h1{font-size:18px;flex:1}
 .cs-slide .why-btn{font-size:15px!important}
 .cs-slide .why-box{font-size:15px!important;line-height:1.75;display:block!important}
 /* ── 항등식(id:1) 슬라이드 전용 ── */
-.id1-s{display:flex;flex-direction:column;justify-content:center;min-height:100%}
+.id1-s{display:flex;flex-direction:column;justify-content:center}
 .id1-tag{font-size:12px;font-weight:800;color:#7c3aed;letter-spacing:.06em;margin-bottom:6px}
 .id1-h{font-size:19px;font-weight:800;color:#1e1b4b;line-height:1.3;margin-bottom:8px}
 .id1-desc{font-size:15px;color:#334155;line-height:1.65;margin-bottom:10px}
@@ -497,7 +497,7 @@ header h1{font-size:18px;flex:1}
 .id1-good{background:#f0fdf4;border:1.5px solid #86efac;color:#166534}
 .id1-why{font-size:14px;color:#334155;line-height:1.65;margin-top:8px;padding:8px 12px;background:#f8faff;border-radius:8px}
 /* ── 다항식(id:0) 슬라이드 전용 ── */
-.p0-s{display:flex;flex-direction:column;justify-content:center;min-height:100%}
+.p0-s{display:flex;flex-direction:column;justify-content:center}
 .p0-tag{font-size:12px;font-weight:800;color:#0ea5e9;letter-spacing:.06em;margin-bottom:6px}
 .p0-h{font-size:19px;font-weight:800;color:#1e1b4b;line-height:1.3;margin-bottom:8px}
 .p0-desc{font-size:15px;color:#334155;line-height:1.65;margin-bottom:10px}
@@ -520,6 +520,22 @@ header h1{font-size:18px;flex:1}
 .p0-td-x2{color:#be123c;font-weight:800}
 .p0-td-x{color:#1d4ed8;font-weight:800}
 .p0-td-n{color:#15803d;font-weight:800}
+/* 다항식 합 세로 정렬 표 */
+.p0-vt-wrap{margin-top:8px;display:flex;flex-direction:column;gap:4px}
+.p0-vt-header,.p0-vt-row{display:grid;grid-template-columns:42px 1fr 1fr 1fr;align-items:center;gap:4px;padding:7px 8px}
+.p0-vt-header{background:#f8faff;border-radius:8px;font-size:12px;font-weight:800}
+.p0-vt-h{text-align:center}
+.p0-vt-row{font-size:16px;font-weight:800}
+.p0-vt-lbl{text-align:center;font-size:12px;font-weight:800;color:#94a3b8}
+.p0-vt-plus{color:#7c3aed}
+.p0-vt-c-x2{color:#be123c;text-align:center}
+.p0-vt-c-x{color:#1d4ed8;text-align:center}
+.p0-vt-c-n{color:#15803d;text-align:center}
+.p0-vt-line{height:2px;background:#cbd5e1;margin:2px 6px;border-radius:2px}
+.p0-vt-ans{background:#fdf4ff;border-radius:8px}
+.p0-vt-ans .p0-vt-lbl{color:#7c3aed}
+.p0-vt-ans .p0-vt-c-x2,.p0-vt-ans .p0-vt-c-x,.p0-vt-ans .p0-vt-c-n{font-size:17px;font-weight:900}
+.p0-vt-final{text-align:center;font-size:15px;font-weight:900;color:#7c3aed;background:#f5f3ff;border:1.5px solid #d8b4fe;border-radius:10px;padding:9px;margin-top:4px}
 .p0-box-wrap{display:flex;flex-direction:column;gap:10px;margin-top:4px}
 .p0-box{border-radius:12px;padding:12px 15px;cursor:pointer;transition:.25s;border:2px solid transparent;-webkit-user-select:none;user-select:none}
 .p0-box-a{background:#eff6ff;border-color:#93c5fd}
@@ -540,7 +556,7 @@ header h1{font-size:18px;flex:1}
 .p0-err-title{font-size:13px;font-weight:800;margin-bottom:3px;color:#dc2626}
 .p0-err-body{font-size:13px;font-weight:600;color:#334155;line-height:1.6}
 /* ── 세제곱(id:3) 슬라이드 전용 ── */
-.c3-s{display:flex;flex-direction:column;justify-content:center;min-height:100%}
+.c3-s{display:flex;flex-direction:column;justify-content:center}
 .c3-tag{font-size:12px;font-weight:800;color:#8b5cf6;letter-spacing:.06em;margin-bottom:6px}
 .c3-h{font-size:19px;font-weight:800;color:#1e1b4b;line-height:1.3;margin-bottom:8px}
 .c3-desc{font-size:15px;color:#334155;line-height:1.65;margin-bottom:10px}
@@ -570,7 +586,7 @@ header h1{font-size:18px;flex:1}
 .c3-err-title{font-size:13px;font-weight:800;color:#dc2626;margin-bottom:3px}
 .c3-err-body{font-size:13px;font-weight:600;color:#334155;line-height:1.6}
 /* ── 복소수(id:4) 슬라이드 전용 ── */
-.c4-s{display:flex;flex-direction:column;justify-content:center;min-height:100%}
+.c4-s{display:flex;flex-direction:column;justify-content:center}
 .c4-tag{font-size:12px;font-weight:800;color:#0ea5e9;letter-spacing:.06em;margin-bottom:6px}
 .c4-h{font-size:19px;font-weight:800;color:#1e1b4b;line-height:1.3;margin-bottom:8px}
 .c4-desc{font-size:15px;color:#334155;line-height:1.65;margin-bottom:10px}
@@ -597,7 +613,7 @@ header h1{font-size:18px;flex:1}
 .c4-err-title{font-size:13px;font-weight:800;color:#dc2626;margin-bottom:3px}
 .c4-err-body{font-size:13px;font-weight:600;color:#334155;line-height:1.6}
 /* ── 중근(id:5) 슬라이드 전용 ── */
-.c5-s{display:flex;flex-direction:column;justify-content:center;min-height:100%}
+.c5-s{display:flex;flex-direction:column;justify-content:center}
 .c5-tag{font-size:12px;font-weight:800;color:#f59e0b;letter-spacing:.06em;margin-bottom:6px}
 .c5-h{font-size:19px;font-weight:800;color:#1e1b4b;line-height:1.3;margin-bottom:8px}
 .c5-desc{font-size:15px;color:#334155;line-height:1.65;margin-bottom:10px}
@@ -624,7 +640,7 @@ header h1{font-size:18px;flex:1}
 .c5-err-title{font-size:13px;font-weight:800;color:#dc2626;margin-bottom:3px}
 .c5-err-body{font-size:13px;font-weight:600;color:#334155;line-height:1.6}
 /* ── 근과 계수(id:6) 슬라이드 전용 ── */
-.c6-s{display:flex;flex-direction:column;justify-content:center;min-height:100%}
+.c6-s{display:flex;flex-direction:column;justify-content:center}
 .c6-tag{font-size:12px;font-weight:800;color:#10b981;letter-spacing:.06em;margin-bottom:6px}
 .c6-h{font-size:19px;font-weight:800;color:#1e1b4b;line-height:1.3;margin-bottom:8px}
 .c6-desc{font-size:15px;color:#334155;line-height:1.65;margin-bottom:10px}
@@ -672,7 +688,7 @@ header h1{font-size:18px;flex:1}
 .cs-dot.on{background:var(--cn-primary);width:18px;border-radius:4px}
 .cs-lbl{font-size:11px;color:#94a3b8;font-weight:700;white-space:nowrap;flex-shrink:0}
 /* ── 이차함수 최대·최소(id:7) 슬라이드 전용 ── */
-.c7-s{display:flex;flex-direction:column;justify-content:center;min-height:100%}
+.c7-s{display:flex;flex-direction:column;justify-content:center}
 .c7-tag{font-size:12px;font-weight:800;color:#94a3b8;letter-spacing:.05em;margin-bottom:4px}
 .c7-h{font-size:20px;font-weight:800;color:#1e1b4b;line-height:1.2;margin-bottom:12px}
 .c7-formula-wrap{background:#f8faff;border-radius:14px;padding:14px 16px;margin-bottom:10px;text-align:center}
@@ -734,7 +750,7 @@ header h1{font-size:18px;flex:1}
 .c7-memory{background:linear-gradient(135deg,#eff6ff,#f5f3ff);border:1.5px solid #c7d2fe;border-radius:12px;padding:14px;font-size:15px;font-weight:700;color:#3730a3;text-align:center;line-height:1.7}
 .c7-memory b{color:#dc2626}
 /* ── 연립일차부등식(id:9) 슬라이드 전용 ── */
-.c9-s{display:flex;flex-direction:column;justify-content:center;min-height:100%}
+.c9-s{display:flex;flex-direction:column;justify-content:center}
 .c9-tag{font-size:12px;font-weight:800;color:#94a3b8;letter-spacing:.05em;margin-bottom:4px}
 .c9-h{font-size:20px;font-weight:800;color:#1e1b4b;line-height:1.2;margin-bottom:10px}
 .c9-gate-wrap{display:flex;gap:8px;margin-bottom:10px}
@@ -795,7 +811,7 @@ header h1{font-size:18px;flex:1}
 .c9-err b{color:#dc2626}
 .c9-memory{background:linear-gradient(135deg,#eff6ff,#fdf4ff);border:1.5px solid #c7d2fe;border-radius:12px;padding:14px;font-size:15px;font-weight:700;color:#1e1b4b;text-align:center;line-height:1.7}
 /* ── 삼차방정식(id:8) 슬라이드 전용 ── */
-.c8-s{display:flex;flex-direction:column;justify-content:center;min-height:100%}
+.c8-s{display:flex;flex-direction:column;justify-content:center}
 .c8-tag{font-size:12px;font-weight:800;color:#94a3b8;letter-spacing:.05em;margin-bottom:4px}
 .c8-h{font-size:20px;font-weight:800;color:#1e1b4b;line-height:1.2;margin-bottom:10px}
 .c8-compare{display:flex;gap:8px;margin-bottom:10px}
@@ -845,7 +861,7 @@ header h1{font-size:18px;flex:1}
 .c8-err b{color:#dc2626}
 .c8-memory{background:linear-gradient(135deg,#fdf4ff,#eff6ff);border:1.5px solid #d8b4fe;border-radius:12px;padding:14px;font-size:15px;font-weight:700;color:#4c1d95;text-align:center;line-height:1.7}
 /* ── 나머지정리(id:2) 슬라이드 전용 ── */
-.c2-s{display:flex;flex-direction:column;justify-content:center;min-height:100%}
+.c2-s{display:flex;flex-direction:column;justify-content:center}
 .c2-tag{font-size:12px;font-weight:800;color:#94a3b8;letter-spacing:.05em;margin-bottom:4px}
 .c2-h{font-size:20px;font-weight:800;color:#1e1b4b;line-height:1.2;margin-bottom:12px}
 .c2-analogy{background:#f8faff;border-radius:12px;padding:14px;margin-bottom:8px;text-align:center}
@@ -1148,15 +1164,34 @@ const UNITS = [
 <div class="p0-s">
   <div class="p0-tag">3 / 5 · 예시 풀이</div>
   <div class="p0-h">(2x²+3x−1)+(x²−5x+4)</div>
-  <table class="p0-table">
-    <thead><tr><th>종류</th><th>A에서</th><th>B에서</th><th>계산</th><th>결과</th></tr></thead>
-    <tbody>
-      <tr><td class="p0-td-x2">🔴 x²</td><td>2x²</td><td>+x²</td><td>2+1</td><td class="p0-td-x2">3x²</td></tr>
-      <tr><td class="p0-td-x">🔵 x</td><td>3x</td><td>−5x</td><td>3−5</td><td class="p0-td-x">−2x</td></tr>
-      <tr><td class="p0-td-n">🟢 숫자</td><td>−1</td><td>+4</td><td>−1+4</td><td class="p0-td-n">3</td></tr>
-      <tr style="background:#f8faff"><td colspan="4" style="text-align:right;font-size:11.5px;color:#64748b;font-weight:700">답:</td><td style="color:#7c3aed;font-weight:900;font-size:14px">3x²−2x+3</td></tr>
-    </tbody>
-  </table>
+  <div class="p0-vt-wrap">
+    <div class="p0-vt-header">
+      <span class="p0-vt-lbl"></span>
+      <span class="p0-vt-h p0-vt-c-x2">🔴 x²</span>
+      <span class="p0-vt-h p0-vt-c-x">🔵 x</span>
+      <span class="p0-vt-h p0-vt-c-n">🟢 숫자</span>
+    </div>
+    <div class="p0-vt-row">
+      <span class="p0-vt-lbl">A</span>
+      <span class="p0-vt-c-x2">2x²</span>
+      <span class="p0-vt-c-x">+3x</span>
+      <span class="p0-vt-c-n">−1</span>
+    </div>
+    <div class="p0-vt-row">
+      <span class="p0-vt-lbl p0-vt-plus">+B</span>
+      <span class="p0-vt-c-x2">+x²</span>
+      <span class="p0-vt-c-x">−5x</span>
+      <span class="p0-vt-c-n">+4</span>
+    </div>
+    <div class="p0-vt-line"></div>
+    <div class="p0-vt-row p0-vt-ans">
+      <span class="p0-vt-lbl">답</span>
+      <span class="p0-vt-c-x2">3x²</span>
+      <span class="p0-vt-c-x">−2x</span>
+      <span class="p0-vt-c-n">+3</span>
+    </div>
+    <div class="p0-vt-final">= 3x² − 2x + 3</div>
+  </div>
 </div>
 <div class="p0-s">
   <div class="p0-tag">4 / 5 · 치환 감각</div>
@@ -3160,8 +3195,8 @@ function p0OpenBox(who) {
       if (calc) calc.classList.add('show');
     }, 150);
   }
-  // 박스·계산 박스 트랜지션 전체를 커버 (800ms 감시)
-  _csWatchHeight(800);
+  // 박스·계산 박스 트랜지션 전체를 커버 (1500ms 감시)
+  _csWatchHeight(1500);
 }
 
 // 개념 카드 스텝 스태거 애니메이션
