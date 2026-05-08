@@ -3130,18 +3130,31 @@ function runPolyDemo0() {
 }
 
 // ── 다항식 치환 상자 인터랙션 (Unit 0 슬라이드 4) ──
+function _csRefreshHeight() {
+  const conceptBox = document.getElementById('conceptBox');
+  if (!conceptBox || !_csSlides) return;
+  const slide = _csSlides[_csIdx];
+  if (!slide) return;
+  const h = Math.max(220, Math.min(slide.scrollHeight + 2, 640));
+  conceptBox.style.height = h + 'px';
+}
+
 function p0OpenBox(who) {
   const box = document.getElementById('p0Box' + who);
   const icon = document.getElementById('p0Icon' + who);
   if (!box || box.classList.contains('open')) return;
   box.classList.add('open');
   icon.textContent = '📂';
+  // 박스 열림 트랜지션(350ms) 완료 후 높이 갱신
+  setTimeout(_csRefreshHeight, 380);
   const aOpen = document.getElementById('p0BoxA') && document.getElementById('p0BoxA').classList.contains('open');
   const bOpen = document.getElementById('p0BoxB') && document.getElementById('p0BoxB').classList.contains('open');
   if (aOpen && bOpen) {
     setTimeout(() => {
       const calc = document.getElementById('p0Calc');
       if (calc) calc.classList.add('show');
+      // 계산 박스 트랜지션(400ms) 완료 후 높이 재갱신
+      setTimeout(_csRefreshHeight, 430);
     }, 200);
   }
 }
