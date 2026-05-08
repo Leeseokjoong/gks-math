@@ -3130,13 +3130,20 @@ function runPolyDemo0() {
 }
 
 // ── 다항식 치환 상자 인터랙션 (Unit 0 슬라이드 4) ──
-function _csRefreshHeight() {
+// 개념박스 높이를 duration ms 동안 매 프레임마다 재계산 (트랜지션 중 놓침 없음)
+function _csWatchHeight(duration) {
   const conceptBox = document.getElementById('conceptBox');
-  if (!conceptBox || !_csSlides) return;
-  const slide = _csSlides[_csIdx];
-  if (!slide) return;
-  const h = Math.max(220, Math.min(slide.scrollHeight + 2, 640));
-  conceptBox.style.height = h + 'px';
+  if (!conceptBox) return;
+  const deadline = Date.now() + duration;
+  function tick() {
+    if (!_csSlides) return;
+    const slide = _csSlides[_csIdx];
+    if (!slide) return;
+    const h = Math.max(220, Math.min(slide.scrollHeight + 2, 640));
+    if (parseInt(conceptBox.style.height) !== h) conceptBox.style.height = h + 'px';
+    if (Date.now() < deadline) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
 }
 
 function p0OpenBox(who) {
@@ -3145,18 +3152,16 @@ function p0OpenBox(who) {
   if (!box || box.classList.contains('open')) return;
   box.classList.add('open');
   icon.textContent = '📂';
-  // 박스 열림 트랜지션(350ms) 완료 후 높이 갱신
-  setTimeout(_csRefreshHeight, 380);
-  const aOpen = document.getElementById('p0BoxA') && document.getElementById('p0BoxA').classList.contains('open');
-  const bOpen = document.getElementById('p0BoxB') && document.getElementById('p0BoxB').classList.contains('open');
+  const aOpen = document.getElementById('p0BoxA')?.classList.contains('open');
+  const bOpen = document.getElementById('p0BoxB')?.classList.contains('open');
   if (aOpen && bOpen) {
     setTimeout(() => {
       const calc = document.getElementById('p0Calc');
       if (calc) calc.classList.add('show');
-      // 계산 박스 트랜지션(400ms) 완료 후 높이 재갱신
-      setTimeout(_csRefreshHeight, 430);
-    }, 200);
+    }, 150);
   }
+  // 박스·계산 박스 트랜지션 전체를 커버 (800ms 감시)
+  _csWatchHeight(800);
 }
 
 // 개념 카드 스텝 스태거 애니메이션
