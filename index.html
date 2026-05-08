@@ -460,7 +460,7 @@ header h1{font-size:18px;flex:1}
 .why-box.open{display:block}
 
 /* ── 개념 카드 스와이퍼 ── */
-.concept-box{overflow-x:hidden!important;overflow-y:auto;height:300px;background:#fff;border-radius:16px;border:1px solid #e2e8f0}
+.concept-box{overflow:hidden;height:300px;min-height:220px;background:#fff;border-radius:16px;border:1px solid #e2e8f0;transition:height .35s cubic-bezier(.2,.8,.2,1)}
 .cs-track{display:flex;align-items:stretch;height:100%;transition:transform .38s cubic-bezier(.2,.8,.2,1);will-change:transform;animation:none!important;opacity:1!important}
 .cs-slide{flex-shrink:0;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center;gap:12px;padding:20px 18px;overflow-y:auto;overflow-x:hidden}
 /* 단일 요소 슬라이드 — 꽉 채우기 */
@@ -3381,6 +3381,35 @@ function _csGoTo(idx, animate) {
       el.style.animation = `csStepIn .45s ease ${i * 80}ms forwards`;
     });
   }
+
+  // 슬라이드 내용 높이에 맞게 박스 자동 리사이즈
+  const _applyHeight = (noAnim) => {
+    const slide = _csSlides[_csIdx];
+    if (!slide) return;
+    const h = Math.max(220, Math.min(slide.scrollHeight + 2, 520));
+    if (noAnim) {
+      box.style.transition = 'none';
+      box.style.height = h + 'px';
+      box.offsetHeight;
+      box.style.transition = '';
+    } else {
+      box.style.height = h + 'px';
+    }
+  };
+  requestAnimationFrame(() => requestAnimationFrame(() => _applyHeight(animate === false)));
+
+  // 슬라이드 내 인터랙션(버튼 클릭 등)으로 높이 바뀔 때도 자동 반영
+  if (window._csRO) window._csRO.disconnect();
+  if (window.ResizeObserver && cur) {
+    window._csRO = new ResizeObserver(() => {
+      const slide = _csSlides[_csIdx];
+      if (!slide) return;
+      const h = Math.max(220, Math.min(slide.scrollHeight + 2, 520));
+      box.style.height = h + 'px';
+    });
+    window._csRO.observe(cur);
+  }
+
   _syncCsNav();
 }
 
