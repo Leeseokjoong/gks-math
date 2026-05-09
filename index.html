@@ -430,6 +430,8 @@ header h1{font-size:18px;flex:1}
 .vn-res.show{opacity:1}.vn-res b{color:var(--cn-primary)}
 
 /* ── 역함수 화살표 반전 (Unit 16) ── */
+.iv-mapdiag{background:#f8faff;border-radius:12px;padding:14px 10px 10px;margin-bottom:10px;border:1.5px solid #e0e7ff}
+.iv-mapdiag-caption{text-align:center;font-size:12px;font-weight:700;color:#4c1d95;margin-top:6px;padding:5px 10px;background:#ede9fe;border-radius:8px}
 .iv-demo{background:#f8faff;border-radius:12px;padding:14px;margin:0}
 .iv-nodes{display:flex;align-items:center;justify-content:center;gap:0;margin:8px 0}
 .iv-node{width:56px;height:56px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;flex-shrink:0}
@@ -496,6 +498,11 @@ header h1{font-size:18px;flex:1}
 .id1-bad{background:#fff0f0;border:1.5px solid #fca5a5;color:#991b1b}
 .id1-good{background:#f0fdf4;border:1.5px solid #86efac;color:#166534}
 .id1-why{font-size:14px;color:#334155;line-height:1.65;margin-top:8px;padding:8px 12px;background:#f8faff;border-radius:8px}
+.id1-eqsplit{margin-top:10px;background:#fffbeb;border:1.5px solid #fcd34d;border-radius:10px;padding:10px 12px;text-align:center}
+.id1-eqsplit-row{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:6px}
+.id1-eqsplit-side{background:#fff;border:1.5px solid #e2e8f0;border-radius:8px;padding:5px 18px;font-size:15px;font-weight:800;color:#1e3a8a}
+.id1-eqsplit-eq{font-size:22px;font-weight:900;color:#d97706}
+.id1-eqsplit-hint{font-size:13px;font-weight:700;color:#92400e;line-height:1.5}
 /* ── 다항식(id:0) 슬라이드 전용 ── */
 .p0-s{display:flex;flex-direction:column;justify-content:center}
 .p0-tag{font-size:12px;font-weight:800;color:#0ea5e9;letter-spacing:.06em;margin-bottom:6px}
@@ -1250,7 +1257,15 @@ const UNITS = [
   <div class="id1-desc"><b>항등식</b>은 x에 어떤 수를 넣어도 <b>항상 등호(=)가 성립</b>하는 식이에요.</div>
   <div class="id1-eqbox">2x² + 5x + 3 = ax² + bx + c<br>← 이 등호가 <b>항상</b> 성립하려면?</div>
   <div class="id1-badge">목표: a, b, c 값 구하기</div>
-  <div class="id1-why" style="margin-top:14px">시험에서 "모든 x에 대해", "항상 성립" 같은 말 → <b>항등식 문제</b>예요!</div>
+  <div class="id1-eqsplit">
+    <div class="id1-eqsplit-row">
+      <span class="id1-eqsplit-side">좌변</span>
+      <span class="id1-eqsplit-eq">=</span>
+      <span class="id1-eqsplit-side">우변</span>
+    </div>
+    <div class="id1-eqsplit-hint">등호(=)를 기준으로 <b>양옆이 무조건 같아야</b> 합니다!</div>
+  </div>
+  <div class="id1-why" style="margin-top:10px">시험에서 "모든 x에 대해", "항상 성립" 같은 말 → <b>항등식 문제</b>예요!</div>
 </div>
 <div class="id1-s">
   <div class="id1-tag">2 / 5 · 핵심 규칙</div>
@@ -2347,7 +2362,24 @@ const UNITS = [
   },
   {
     id:16, title:"역함수의 값", sub:"f(a)=b ↔ f⁻¹(b)=a",
-    concept:`<div class="formula-box" style="text-align:left">f(<b>3</b>)=<b>7</b> → f⁻¹(<b>7</b>)=<b>3</b> (입출력 반전)<br>f(<b>5</b>)=<b>10</b> → f⁻¹(<b>10</b>)=<b>5</b><br>f(<b>2</b>)=<b>4</b> → f⁻¹(<b>4</b>)=<b>2</b><br><div style="margin-top:8px;padding-top:8px;border-top:1.5px dashed rgba(37,99,235,.25);font-size:11px;text-align:center;color:#475569">규칙: f(a)=b이면 f⁻¹(b)=a</div></div>
+    concept:`<div class="iv-mapdiag">
+<svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:300px;display:block;margin:0 auto">
+  <ellipse cx="55" cy="60" rx="45" ry="48" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="55" y="54" text-anchor="middle" font-size="17" font-weight="800" fill="#1e3a8a" font-family="Georgia,serif">x</text>
+  <text x="55" y="74" text-anchor="middle" font-size="10" font-weight="700" fill="#3b82f6">입력</text>
+  <ellipse cx="245" cy="60" rx="45" ry="48" fill="#fdf4ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="245" y="54" text-anchor="middle" font-size="17" font-weight="800" fill="#4c1d95" font-family="Georgia,serif">y</text>
+  <text x="245" y="74" text-anchor="middle" font-size="10" font-weight="700" fill="#7c3aed">출력</text>
+  <line x1="103" y1="38" x2="194" y2="38" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="197,38 186,33 186,43" fill="#2563eb"/>
+  <text x="150" y="27" text-anchor="middle" font-size="12" font-weight="800" fill="#2563eb">f (x)</text>
+  <line x1="197" y1="82" x2="106" y2="82" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="103,82 114,77 114,87" fill="#7c3aed"/>
+  <text x="150" y="100" text-anchor="middle" font-size="12" font-weight="800" fill="#7c3aed">f ⁻¹(x)</text>
+</svg>
+<div class="iv-mapdiag-caption">등호(=)를 기준으로 <b>방향만 반대</b>로 가면 역함수!</div>
+</div>
+<div class="formula-box" style="text-align:left">f(<b>3</b>)=<b>7</b> → f⁻¹(<b>7</b>)=<b>3</b> (입출력 반전)<br>f(<b>5</b>)=<b>10</b> → f⁻¹(<b>10</b>)=<b>5</b><br>f(<b>2</b>)=<b>4</b> → f⁻¹(<b>4</b>)=<b>2</b><br><div style="margin-top:8px;padding-top:8px;border-top:1.5px dashed rgba(37,99,235,.25);font-size:11px;text-align:center;color:#475569">규칙: f(a)=b이면 f⁻¹(b)=a</div></div>
 <div class="step-row"><div class="step-num">1</div><div class="step-text">f⁻¹(k) 구하기 → <b>"k가 나오려면 뭘 넣어야 해?"</b> = f(?) = k 인 ?를 찾기</div></div>
 <div class="step-row"><div class="step-num">2</div><div class="step-text">표나 식에서 결과(오른쪽)가 k 인 것의 입력값(왼쪽)을 읽기</div></div>
 <div class="example-block"><div class="ex-label">예시</div>f(3) = 7 일 때 f⁻¹(7) 의 값<br>f(?) = 7 인 ? 찾기<br>주어진 조건: f(<b>3</b>) = 7<br><span class="arrow">→</span> f⁻¹(7) = <b>3</b></div>
